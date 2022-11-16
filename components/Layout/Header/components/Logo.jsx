@@ -1,0 +1,20 @@
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+const Logo = () => {
+  return (
+    <div className="header-logo">
+      <Link href={"/"}>
+        <Image
+          src={"/image/Tarane-Logo3.png"}
+          alt="کافه ترانه"
+          height={70}
+          width={70}
+        />
+      </Link>
+    </div>
+  );
+};
+
+export default Logo;

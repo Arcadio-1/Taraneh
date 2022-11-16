@@ -1,0 +1,85 @@
+.backDrop {
+  position: fixed;
+  background-color: rgba(51, 51, 51, 0.317);
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+// .Modal {
+//   &-enter {
+//     opacity: 0;
+//   }
+//   &-enter-active {
+//     opacity: 1;
+//     transition: opacity 200ms;
+//   }
+//   &-exit {
+//     opacity: 1;
+//   }
+//   &-exit-active {
+//     opacity: 0;
+//     transition: opacity 200ms;
+//   }
+// }
+
+// .Modal {
+//   border: 2px solid red;
+// }
+// .Modal-enter {
+//   opacity: 0;
+// }
+// .Modal-enter-active {
+//   opacity: 1;
+//   transition: opacity 200ms;
+// }
+// .Modal-exit {
+//   opacity: 1;
+// }
+// .Modal-exit-active {
+//   opacity: 0;
+//   transition: opacity 200ms;
+// }
+.testDiv {
+  z-index: 10000;
+  width: 10rem;
+  height: 10rem;
+  background-color: red;
+}
+.ModalOpen {
+  animation: openModal 0.4s ease-out forwards;
+}
+
+.ModalClosed {
+  animation: closeModal 1s ease-out forwards;
+}
+@keyframes openModal {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(90%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeModal {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(60%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}

@@ -1,0 +1,105 @@
+.header {
+  // position: absolute;
+  width: 100%;
+  background-color: color(g0-2);
+  padding: 1rem;
+  &-container {
+    // border: 1px solid red;
+    width: 100%;
+    max-width: 960px;
+    display: grid;
+    grid-template-areas:
+      "logo search search search search search log log log log log basket"
+      "links links links links links links links links links links links links";
+    align-items: center;
+    margin: 0 auto;
+    // border: 1px solid red;
+    // justify-content: space-between;
+    padding: 0 1em;
+    gap: 1rem;
+  }
+  &-logo {
+    grid-area: logo;
+  }
+  &-search {
+    grid-area: search;
+    // border: 2px solid color(g0-3);
+    background-color: rgba(color(g0-4), 0.5);
+    position: relative;
+    border-radius: 5px;
+    max-width: 30em;
+    &-searchBtn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      @include dflex;
+      padding: 0 0.5em;
+      background-color: transparent;
+      border: transparent;
+      // border: 2px solid red;
+      svg {
+        cursor: pointer;
+        path {
+          fill: color(light-4);
+        }
+        &:hover {
+          transform: scale(1.1);
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+    }
+    &-input {
+      font-size: 1.5em;
+      padding-right: 2.3em;
+      color: color(light-2);
+      background-color: transparent;
+      border: transparent;
+      width: 100%;
+      line-height: 2.5em;
+    }
+  }
+  &-log {
+    margin-right: auto;
+    border: 2px solid rgba(color(light-2), 0.1);
+    padding: 0.5em 1rem;
+    border-radius: 5px; // width: 10rem;
+    @include dflex;
+    gap: 0.5em;
+    font-family: iransans;
+
+    grid-area: log;
+    line-height: 2rem;
+    span {
+      font-size: 1.5rem;
+      &:first-child {
+        cursor: pointer;
+      }
+      &:last-child {
+        cursor: pointer;
+      }
+    }
+  }
+  &-basket {
+    margin-right: auto;
+
+    grid-area: basket;
+  }
+  &-navLinks {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+    padding-right: 1em;
+    grid-area: links;
+    list-style: none;
+    display: flex;
+    gap: 2em;
+    // border: 2px solid red;
+    &-item {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+}

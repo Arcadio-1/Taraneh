@@ -1,0 +1,243 @@
+$colors: (
+  success: #068e21,
+  error: #db5959,
+  warning: #dcd215,
+  dark-op15: rgba(34, 34, 34, 0.15),
+  dark-op25: rgba(34, 34, 34, 0.25),
+  dark-op50: rgba(34, 34, 34, 0.5),
+  dark-op75: rgba(34, 34, 34, 0.75),
+  dark-op80: rgba(34, 34, 34, 0.8),
+  dark-op85: rgba(34, 34, 34, 0.85),
+  dark-op90: rgba(34, 34, 34, 0.9),
+  dark-1: #111,
+  dark-2: #222,
+  dark-3: #333,
+  dark-4: #444,
+  dark-5: #555,
+  dark-6: #666,
+  light-op15: rgba(255, 255, 255, 0.15),
+  light-op25: rgba(255, 255, 255, 0.251),
+  light-op50: rgba(255, 255, 255, 0.502),
+  light-op75: rgba(255, 255, 255, 0.592),
+  light-op80: rgba(255, 255, 255, 0.7),
+  light-op85: rgba(255, 255, 255, 0.8),
+  light-op90: rgba(255, 255, 255, 0.9),
+  light-1: #fff,
+  light-2: #eee,
+  light-3: #ddd,
+  light-4: #ccc,
+  light-5: #bbb,
+  light-6: #aaa,
+
+  g0-1: #404258,
+  g0-2: #474e68,
+  g0-3: #50577a,
+  g0-4: #6b728e,
+
+  g1-1: #264653,
+  g1-2: #2a9d8f,
+  g1-3: #e9c46a,
+  g1-4: #f4a261,
+  g1-5: #e76f51,
+  g1-6: #1ccaff,
+  g1-7: #2079c5,
+
+  g2-1: #8e9aaf,
+  g2-2: #cbc0d3,
+  g2-3: #efd3d7,
+  g2-4: #feeafa,
+  g2-5: #dee2ff,
+  ////drink
+  drink-1: #00b4d8,
+  drink-2: #05aacb,
+  drink-3: #049dbb,
+  drink-4: #099bb8,
+  drink-5: #068fab,
+  drink-l1: #e3faff,
+  drink-l2: #ccf1fa,
+  drink-l3: #b8e7f3,
+  drink-l4: #9cd9e8,
+  drink-l5: #82cfe3,
+  drink-d0: #062c43,
+  drink-d1: #063756,
+  drink-d2: #064369,
+  drink-d3: #054973,
+  drink-d4: #045080,
+  drink-d5: #03568a,
+  ///
+  coffee-1: #d56d0c,
+  coffee-2: #be7208,
+  coffee-3: #b36c08,
+  coffee-4: #ac6808,
+  coffee-5: #975c08,
+  coffee-l1: #ffe8d3,
+  coffee-l2: #fcdec2,
+  coffee-l3: #f4d0af,
+  coffee-l4: #edc198,
+  coffee-l5: #e0b185,
+  coffee-d0: #281503,
+  coffee-d1: #351c04,
+  coffee-d2: #462404,
+  coffee-d3: #522a04,
+  coffee-d4: #603003,
+  coffee-d5: #6c3502,
+  ////////
+  tools-1: #098509,
+  tools-2: #087008,
+  tools-3: #076507,
+  tools-4: #086e08,
+  tools-5: #076a07,
+  tools-l1: #c9edc9,
+  tools-l1-5: #9dca9d,
+  tools-l2: #91bf91,
+  tools-l3: #a7dda7,
+  tools-l4: #71d971,
+  tools-l5: #5fcc5f,
+  tools-d1: #022d02,
+  tools-d2: #033b03,
+  tools-d3: #044904,
+  tools-d4: #055c05,
+  tools-d5: #0a8f0a,
+  /////////////
+  news-1: #9c07aa,
+  news-2: #a903b8,
+  news-3: #9c08aa,
+  news-4: #9712a3,
+  news-5: #7a226b,
+  news-l1: #fde9ff,
+  news-l2: #f8ccfd,
+  news-l3: #f5bffb,
+  news-l4: #efabf7,
+  news-l5: #ea9df3,
+  news-d0: #1e0220,
+  news-d1: #2d0431,
+  news-d2: #330437,
+  news-d3: #410546,
+  news-d4: #49064f,
+  news-d5: #57055e,
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+$font-sizes: (
+  xl: 3rem,
+  lg: 2.5rem,
+  md: 2rem,
+  sm: 1.8rem,
+  xs: 1.6rem,
+);
+
+@function size($size) {
+  @return map-get($font-sizes, $size);
+}
+@mixin responsive($brekPoint) {
+  @if ($brekPoint==xl) {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+  @if ($brekPoint==lg) {
+    @media (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if ($brekPoint==md) {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  @if ($brekPoint==sm) {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+  @if ($brekPoint==xs) {
+    @media (max-width: 400px) {
+      @content;
+    }
+  }
+}
+@mixin blogResponsive($brekPoint) {
+  @if ($brekPoint==xl) {
+    @media (max-width: 1676px) {
+      @content;
+    }
+  }
+  @if ($brekPoint==lg) {
+    @media (max-width: 1158px) {
+      @content;
+    }
+  }
+  @if ($brekPoint==md) {
+    @media (max-width: 720px) {
+      @content;
+    }
+  }
+  @if ($brekPoint==sm) {
+    @media (max-width: 450px) {
+      @content;
+    }
+  }
+  // @if ($brekPoint==xs) {
+  //   @media (max-width: 400px) {
+  //     @content;
+  //   }
+  // }
+}
+@mixin dflex($just: center, $alin: center) {
+  display: flex;
+  align-items: $alin;
+  justify-content: $just;
+}
+@mixin navLink {
+  padding: 0.2rem 0.8rem;
+  border-radius: 5px;
+  // color: color(dark-2);
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: color(dark-1);
+    background-color: color(light-3);
+  }
+}
+@mixin toman {
+  width: 2rem;
+  height: 2rem;
+  border: transparent;
+  background-image: url("./icon/toman.svg");
+  fill: red;
+  path {
+    fill: red;
+  }
+}
+@mixin btnImage($url) {
+  border: transparent;
+  background-image: url($url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.08);
+  }
+}
+@mixin bg-dark-c-light {
+  background-color: color(dark-op50);
+  color: color(light-2);
+}
+
+@mixin blur-3 {
+  backdrop-filter: blur(3px);
+}
+@mixin blur-4 {
+  backdrop-filter: blur(4px);
+}
+@mixin blur-5 {
+  backdrop-filter: blur(5px);
+}
+@mixin blur-6 {
+  backdrop-filter: blur(6px);
+}

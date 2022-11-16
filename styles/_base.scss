@@ -1,0 +1,91 @@
+@font-face {
+  font-family: iransans;
+  src: url(./fonts/iransans/ttf/IRANSansWeb.ttf);
+}
+@font-face {
+  font-family: iransansnum;
+  src: url(./fonts/iransans/ttf-num/IRANSansWebFaNum.ttf);
+}
+@font-face {
+  font-family: iransansbold;
+  src: url(./fonts/iransans/ttf/IRANSansWeb_Bold.ttf);
+}
+@font-face {
+  font-family: iranyekan;
+  src: url(./fonts/iranyekan/IRANYekanWeb.ttf);
+}
+@font-face {
+  font-family: iranyekan-bold;
+  src: url(./fonts/iranyekan/IRANYekanWeb-Bold.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
+}
+html {
+  font-size: 62.5%;
+  @include responsive(lg) {
+    font-size: 58%;
+  }
+  @include responsive(md) {
+    font-size: 55%;
+  }
+  @include responsive(sm) {
+    font-size: 53%;
+  }
+  @include responsive(xs) {
+    font-size: 51%;
+  }
+}
+body {
+  background-color: color(g0-1);
+  color: color(light-2);
+  font-family: iransans;
+}
+a {
+  color: color(light-2);
+  text-decoration: none;
+}
+.MAIN {
+  width: 100%;
+  max-width: 1676px;
+  margin: 21rem auto 0rem auto;
+}
+.MAIN-Blog {
+  width: 100%;
+  font-family: iransans;
+  margin: 0rem auto 0rem auto;
+  padding-bottom: 3rem;
+  input {
+    font-family: iransans;
+  }
+}
+.dark {
+  background-color: color(dark-3);
+}
+.drink {
+  background-color: color(drink-l4);
+}
+.Ddrink {
+  background-color: color(drink-d1);
+}
+.coffee {
+  background-color: color(coffee-l4);
+}
+.Dcoffee {
+  background-color: color(coffee-d1);
+}
+.tools {
+  background-color: color(tools-l2);
+}
+.Dtools {
+  background-color: color(tools-d1);
+}
+.news {
+  background-color: color(news-l2);
+}
+.Dnews {
+  background-color: color(news-d0);
+}

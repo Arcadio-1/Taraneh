@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="28.721" viewBox="0 0 36 28.721">
+  <g id="Group_432" data-name="Group 432" transform="translate(-3.487 -4.451)">
+    <rect id="Rectangle_204" data-name="Rectangle 204" width="36" height="28.721" rx="2" transform="translate(3.487 4.451)" fill="rgba(120,210,79,0.28)" opacity="0.8"/>
+    <g id="like" transform="translate(5.69 16.172)">
+      <circle id="Ellipse_5" data-name="Ellipse 5" cx="7.5" cy="7.5" r="7.5" fill="none" stroke="#78d24f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_81" data-name="Path 81" d="M15.5,19.823c0,.753-.916,1.364-2.046,1.364s-2.045-.61-2.045-1.364" transform="translate(-5.958 -9.785)" fill="none" stroke="#78d24f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <circle id="Ellipse_6" data-name="Ellipse 6" cx="1.016" cy="1.016" r="1.016" transform="translate(3.798 5.082)" fill="#78d24f"/>
+      <circle id="Ellipse_7" data-name="Ellipse 7" cx="1.016" cy="1.016" r="1.016" transform="translate(9.17 5.082)" fill="#78d24f"/>
+    </g>
+    <path id="Path_106" data-name="Path 106" d="M8.5,0,17,15,8.5,8.349,0,15Z" transform="translate(21.19 16.172)" fill="#78d24f"/>
+  </g>
+</svg>
