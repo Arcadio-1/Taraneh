@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import FacebookIcon from "../../../ui/Icons/socialMediaIcons/FaceBookIcon";
+import FacebookIcon from "../../../ui/Icons/socialMediaIcons/FacebookIcon";
 import InstagramIcon from "../../../ui/Icons/socialMediaIcons/InstagramIcon";
 import LinkedInIcon from "../../../ui/Icons/socialMediaIcons/LinkedInIcon";
 import TelegramIcon from "../../../ui/Icons/socialMediaIcons/TelegramIcon";
