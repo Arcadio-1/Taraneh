@@ -2,6 +2,13 @@
 @import "./base";
 @import "./ui";
 
+@import "../components/ui/Icons/icons.scss";
 @import "../components/Layout/Header/header";
 @import "../components/Layout/Footer/footer";
-@import "../components/ui/Icons/icons.scss";
+@import "../components/Home/Hero/hero";
+@import "../components/ui/LoadingSpiner/loadingSpiner";
+@import "../components/Home/TopRate/topRate";
+@import "../components/sliderSection/sliderSection";
+@import "../components/ui/productCard/productCard.scss";
+@import "../components/Account/account";
+@import "../components/ui/FormItem/formItem";

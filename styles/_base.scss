@@ -40,18 +40,19 @@ html {
   }
 }
 body {
-  background-color: color(g0-1);
-  color: color(light-2);
+  background-color: color(g0-5);
+  color: color(dark-2);
   font-family: iransans;
 }
 a {
-  color: color(light-2);
+  color: color(dark-2);
   text-decoration: none;
 }
 .MAIN {
   width: 100%;
-  max-width: 1676px;
-  margin: 21rem auto 0rem auto;
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 1em;
 }
 .MAIN-Blog {
   width: 100%;

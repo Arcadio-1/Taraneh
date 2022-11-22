@@ -1,0 +1,42 @@
+.loadingSpiner {
+  text-align: center;
+  display: inline;
+  margin: 2rem;
+  &-spiner {
+    margin: 0rem auto;
+    width: 5rem;
+    height: 5rem;
+    border: 3px solid #333;
+    border-radius: 50%;
+    border-color: transparent royalblue;
+    animation: spiner 2s linear infinite;
+    @keyframes spiner {
+      from {
+        transform: rotate(0deg);
+        // border-color: transparent royalblue;
+      }
+      to {
+        transform: rotate(360deg);
+        border-color: royalblue transparent;
+      }
+    }
+  }
+  &-text {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-family: iranyekan;
+    animation: opacityChanger 1s ease-in-out infinite;
+    color: royalblue;
+    @keyframes opacityChanger {
+      0% {
+        opacity: 0.7;
+      }
+      40% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.8;
+      }
+    }
+  }
+}

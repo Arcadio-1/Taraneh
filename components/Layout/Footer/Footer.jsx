@@ -5,7 +5,7 @@ import SocialMedia from "./components/SocialMedia";
 import FooterNav from "./components/FooterNav";
 import Contact from "./components/Contact";
 import Copyright from "./components/Copyright";
-
+import getFromJson from "../../../lib/readjson";
 const Footer = () => {
   const navs = [
     {
@@ -61,6 +61,21 @@ const Footer = () => {
       ],
     },
   ];
+  const uploadHandler = async () => {
+    const data = await getFromJson("products.json");
+    console.log(data);
+    const request = await fetch("/api/jsonUploader", {
+      method: "POST",
+      body: JSON.stringify({
+        items: data,
+        serverName: "products",
+        collectionName: "allProducts",
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const respose = await request.json();
+    console.log(respose);
+  };
   return (
     <footer className="footer">
       <Subscribe />
@@ -71,6 +86,7 @@ const Footer = () => {
             <FooterNav key={index} title={item.title} items={item.items} />
           );
         })}
+        <p onClick={uploadHandler}>upload Json</p>
       </div>
       <div className="footer-socialAndContact">
         <Contact />

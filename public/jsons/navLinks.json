@@ -1,0 +1,27 @@
+[
+  {
+    "id": 0,
+    "link": "/",
+    "title": "صفحه نخست"
+  },
+  {
+    "id": 1,
+    "link": "/products",
+    "title": "محصولات"
+  },
+  {
+    "id": 2,
+    "link": "/blog",
+    "title": "اخبار و آموزش"
+  },
+  {
+    "id": 3,
+    "link": "/repair",
+    "title": "تعمیرات"
+  },
+  {
+    "id": 4,
+    "link": "/reservation",
+    "title": "رزرو"
+  }
+]

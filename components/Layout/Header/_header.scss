@@ -1,12 +1,15 @@
 .header {
-  // position: absolute;
+  z-index: 10;
+  position: absolute;
+  top: 0;
   width: 100%;
-  background-color: color(g0-2);
+  background-color: rgba(color(light-2), 0.75);
   padding: 1rem;
+  @include blur-4;
   &-container {
     // border: 1px solid red;
     width: 100%;
-    max-width: 960px;
+    max-width: 1200px;
     display: grid;
     grid-template-areas:
       "logo search search search search search log log log log log basket"
@@ -15,7 +18,7 @@
     margin: 0 auto;
     // border: 1px solid red;
     // justify-content: space-between;
-    padding: 0 1em;
+    padding: 0 2em;
     gap: 1rem;
   }
   &-logo {
@@ -24,7 +27,8 @@
   &-search {
     grid-area: search;
     // border: 2px solid color(g0-3);
-    background-color: rgba(color(g0-4), 0.5);
+    // background-color: rgba(color(g0-4), 0.5);
+    background-color: rgba(color(light-1), 0.7);
     position: relative;
     border-radius: 5px;
     max-width: 30em;
@@ -41,12 +45,12 @@
       svg {
         cursor: pointer;
         path {
-          fill: color(light-4);
+          fill: color(dark-4);
         }
         &:hover {
           transform: scale(1.1);
           path {
-            fill: color(light-2);
+            fill: color(dark-2);
           }
         }
       }
@@ -54,24 +58,28 @@
     &-input {
       font-size: 1.5em;
       padding-right: 2.3em;
-      color: color(light-2);
+      color: color(dark-2);
       background-color: transparent;
       border: transparent;
       width: 100%;
       line-height: 2.5em;
+      outline: transparent;
     }
   }
   &-log {
+    cursor: pointer;
     margin-right: auto;
-    border: 2px solid rgba(color(light-2), 0.1);
+    // border: 2px solid rgba(color(dark-2), 0.1);
+    background-color: rgba(color(light-1), 0.2);
     padding: 0.5em 1rem;
     border-radius: 5px; // width: 10rem;
-    @include dflex;
-    gap: 0.5em;
     font-family: iransans;
-
     grid-area: log;
     line-height: 2rem;
+    a {
+      @include dflex;
+      gap: 0.5em;
+    }
     span {
       font-size: 1.5rem;
       &:first-child {
@@ -81,16 +89,40 @@
         cursor: pointer;
       }
     }
+    svg {
+      path {
+        fill: color(dark-2);
+      }
+    }
+    &:hover {
+      transition: all 0.1s ease-in-out;
+      background-color: rgba(color(light-1), 0.6);
+      svg {
+        path {
+          // fill: color(dark-1);
+          fill: color(g1-2);
+        }
+      }
+    }
   }
   &-basket {
+    @include dflex;
+    padding: 0.8em;
+    border-radius: 50%;
     margin-right: auto;
-
     grid-area: basket;
+    background-color: rgba(color(light-2), 0.5);
+    svg {
+      path {
+        fill: color(dark-2);
+      }
+    }
   }
   &-navLinks {
+    color: color(dark-2);
     margin: 0 auto;
     width: 100%;
-    max-width: 700px;
+    max-width: 1000px;
     padding-right: 1em;
     grid-area: links;
     list-style: none;

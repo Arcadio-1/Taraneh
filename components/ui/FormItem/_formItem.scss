@@ -1,0 +1,12 @@
+.FormItem {
+  border: 2px solid red;
+  position: relative;
+  @include dflex;
+  &-label {
+    position: absolute;
+    top: 0;
+    // : 10px;
+  }
+  &-input {
+  }
+}

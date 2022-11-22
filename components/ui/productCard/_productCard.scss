@@ -1,0 +1,204 @@
+.productCard {
+  @include dflex(space-between);
+  flex-direction: column;
+  padding: 0.5em;
+  background-color: color(light-1);
+  border-radius: 4px;
+  height: 100%;
+  @include blur-3;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 0px 8px rgba(51, 51, 51, 0.504);
+    // transform: scale(1.01);
+    .productCard-thumbnail {
+      &-icons {
+        transition: all 0.2s ease-in-out;
+        transform: translateX(1px);
+        opacity: 1;
+      }
+    }
+  }
+  &-thumbnail {
+    padding: 0.5em;
+    position: relative;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+    &-tags {
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include dflex(flex-start, flex-end);
+      flex-direction: column;
+      gap: 0.2em;
+      &-offPersent {
+        font-family: iransansnum;
+        @include dflex;
+        color: color(light-1);
+        background-color: color(g1-6);
+        padding: 0.1em 0.5em;
+      }
+      &-special {
+        color: color(light-2);
+        background-color: color(g1-7);
+        padding: 0.1em 0.5em;
+      }
+      &-topSell {
+        color: color(light-2);
+        background-color: color(g1-7);
+        padding: 0.1em 0.5em;
+      }
+    }
+    &-icons {
+      position: absolute;
+      @include dflex;
+      flex-direction: column;
+      gap: 0.5em;
+      transform: translateX(40px);
+      opacity: 0;
+      &-expans {
+        @include dflex;
+        padding: 0.4em;
+        border-radius: 50%;
+        background-color: rgba(color(light-1), 0.5);
+        // box-shadow: 0px 0px 2px rgba(51, 51, 51, 0.451);
+        border: 1px solid rgba(#333, 0.1);
+        &:hover {
+          cursor: pointer;
+          background-color: color(g1-6);
+          svg {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-like {
+        @include dflex;
+        padding: 0.4em;
+        border-radius: 50%;
+        // box-shadow: 0px 0px 2px rgba(51, 51, 51, 0.451);
+        background-color: rgba(color(light-1), 0.5);
+        border: 1px solid rgba(#333, 0.1);
+        svg {
+          path {
+            fill: color(dark-2);
+          }
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: color(g1-6);
+          svg {
+            path {
+              fill: color(light-2);
+            }
+          }
+        }
+      }
+    }
+    &-image {
+      // border: 2px solid red;
+      width: 100%;
+      @include dflex;
+      img {
+      }
+    }
+  }
+  &-content {
+    @include dflex(flex-start, flex-start);
+    flex-direction: column;
+    gap: 1rem;
+    // border: 2px solid red;
+    width: 100%;
+    &-title {
+      font: 1.4em;
+      font-weight: 400;
+    }
+    &-availability {
+      color: color(light-2);
+      display: inline;
+      padding: 0.1em 0.5em;
+      border-radius: 4px;
+    }
+    .available {
+      background-color: color(g1-2);
+    }
+    .notAvailable {
+      background-color: color(g1-5);
+    }
+    &-stars {
+      @include dflex(flex-end, flex-end);
+      &-rate {
+        // border: 2px solid red;
+        font-family: iransansnum;
+      }
+    }
+    &-price {
+      &-container {
+        // border: 2px solid red;
+        font-family: iransansnum;
+        font-size: 1.5em;
+        @include dflex;
+        // border: 2px solid red;
+
+        width: 100%;
+      }
+      &-sellingPrice {
+        // border: 2px solid red;
+        font-size: 1.1em;
+        svg {
+          path {
+            fill: rgba(color(dark-2), 0.7);
+          }
+        }
+      }
+      &-price {
+        opacity: 0.4;
+        margin-bottom: 1em;
+        text-decoration: line-through;
+      }
+    }
+  }
+  &-action {
+    @include dflex;
+    flex-direction: column;
+    width: 100%;
+    &-submitBtn {
+      color: color(light-2);
+      padding: 0.3em 1em;
+      width: 100%;
+      background-color: color(g1-2);
+      // border: 2px solid color(g0-3);
+      border: transparent;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    &-quantity {
+      @include dflex;
+      border: 2px solid rgba(color(dark-2), 0.5);
+      border-radius: 10px;
+      &-input {
+        line-height: 1.8em;
+        border: transparent;
+        background-color: transparent;
+      }
+      svg {
+        width: 1.2em;
+        height: 1.2em;
+        path {
+        }
+      }
+      &-plus {
+        border-radius: 0px 10px 10px 0px;
+        padding: 0.5em;
+        @include dflex;
+        background-color: color(g1-3);
+      }
+      &-minus {
+        border-radius: 10px 0px 0px 10px;
+        @include dflex;
+        height: 100%;
+        background-color: #cdcbcb;
+        padding: 0.5em;
+      }
+    }
+  }
+}

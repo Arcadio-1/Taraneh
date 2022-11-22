@@ -1,0 +1,13 @@
+.hero {
+  @include dflex;
+  &-slide {
+    // width: 10em;
+    &-item {
+      img {
+        width: 100%;
+        height: auto;
+        background-attachment: fixed;
+      }
+    }
+  }
+}

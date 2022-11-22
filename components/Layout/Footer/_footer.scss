@@ -1,9 +1,10 @@
 .footer {
-  background-color: color(g0-2);
+  background-color: color(light-1);
   &-subscribe {
     // border: 2px solid red;
     // background-color: #063756;
-    background-color: color(g0-3);
+    background-color: color(g1-1);
+    color: color(light-2);
     width: 100%;
     padding: 1.5em 1em 0px 1em;
     &-container {
@@ -30,7 +31,7 @@
         padding: 0.5em;
         height: 4rem;
         margin-top: 2em;
-        background-color: color(g0-4);
+        background-color: color(light-2);
         @include dflex;
         svg {
           //   border: 2px solid red;
@@ -51,14 +52,20 @@
           border: transparent;
         }
         &-submit {
+          cursor: pointer;
+          font-weight: 600;
           padding: 0.7em 1.5em;
           background-color: color(g0-1);
           color: color(light-2);
           border: transparent;
+          &:hover {
+            transform: scale(1.01);
+          }
         }
       }
     }
     &-image {
+      @include dflex;
     }
   }
   &-icons {
@@ -80,28 +87,28 @@
       }
       &-icon {
         svg {
-          width: 3rem;
-          height: 3rem;
+          width: 2rem;
+          height: 2rem;
         }
         .deliveryIcon {
           path {
-            stroke: color(light-2);
+            stroke: color(dark-2);
           }
         }
         .returnMoneyIcon {
-          stroke: color(light-2);
+          stroke: color(dark-2);
         }
         .discountIcon {
-          fill: color(light-2);
+          fill: color(dark-2);
         }
         .moneyIcon {
           path {
-            fill: color(light-2);
+            fill: color(dark-2);
           }
         }
         .suppurtIcon {
           path {
-            stroke: color(light-2);
+            stroke: color(dark-2);
           }
         }
       }
@@ -112,6 +119,7 @@
     &-title {
       // border: 2px solid red;
       font-size: 1.5rem;
+      font-weight: 400;
     }
     &-icons {
       margin-top: 1rem;
@@ -123,10 +131,10 @@
         width: 3rem;
         height: 3rem;
         path {
-          fill: rgba(color(light-2), 0.7);
+          fill: rgba(color(dark-2), 0.7);
         }
         rect {
-          fill: rgba(color(light-2), 0.7);
+          fill: rgba(color(dark-2), 0.7);
         }
       }
     }
@@ -144,14 +152,15 @@
       gap: 1rem;
       flex-direction: column;
       &-title {
-        font-size: 1.4em;
+        font-size: 1.5em;
         margin-bottom: auto;
+        font-weight: 400;
       }
       &-list {
         list-style: none;
         &-item {
           margin-bottom: 0.5em;
-          font-size: 1.3em;
+          font-size: 1.2em;
         }
       }
     }
@@ -168,7 +177,7 @@
     margin-top: 1rem;
     @include dflex;
     svg {
-      fill: rgba(color(light-2), 0.5);
+      fill: rgba(color(dark-2), 0.5);
     }
   }
   &-contact {
@@ -176,7 +185,7 @@
       width: 3rem;
       height: 3rem;
       path {
-        fill: rgba(color(light-2), 0.8);
+        fill: rgba(color(dark-2), 0.5);
       }
     }
     &-items {
@@ -186,6 +195,9 @@
       &-item {
         @include dflex(flex-start);
         gap: 0.5em;
+        padding-left: 0.5em;
+        border-radius: 5px;
+        background-color: rgba(color(light-2), 0.5);
       }
     }
   }
