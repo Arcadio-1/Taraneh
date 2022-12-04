@@ -26,7 +26,7 @@ const NotifCard = (props) => {
             message: "null",
           })
         );
-      }, 3000);
+      }, 300000);
       return () => {
         clearTimeout(clearnotif);
       };
@@ -42,7 +42,7 @@ const NotifCard = (props) => {
             {notifState.status === "success" && <SuccessIcon />}
             {notifState.status === "warning" && <WarningIcon />}
             {notifState.status === "error" && <ErrorIcon />}
-            {notifState.status === "info" && <InfoIcon />}
+            {notifState.status === "loading" && <InfoIcon />}
           </div>
           <div className="sideNotif-container">
             <p className="sideNotif-message">{notifState.message}</p>
