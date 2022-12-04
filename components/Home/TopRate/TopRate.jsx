@@ -4,23 +4,33 @@ import SliderSection from "../../sliderSection/SliderSection";
 
 const TopRate = () => {
   const products = useSelector((state) => state.getData.products);
-  let prods = [...products];
-  let topRateProducts = [];
-  console.log(products);
+  const getProductsStatus = useSelector(
+    (state) => state.ui.getAllproductsStatus
+  );
 
-  if (products.length > 0) {
+  let topRateProducts = [];
+
+  if (getProductsStatus && getProductsStatus.status === "success") {
+    let prods = [...products];
     topRateProducts = prods.sort((prodA, prodB) => {
       return prodA.statistics.rate < prodB.statistics.rate ? 1 : -1;
     });
     topRateProducts = topRateProducts.slice(0, 10);
   }
-  console.log(topRateProducts);
-  return (
-    <section className="topRate">
-      <h1 className="topRate-title">محبوب ترین محصولات</h1>
-      <SliderSection items={topRateProducts} />
-    </section>
-  );
+  if (getProductsStatus && getProductsStatus.status !== "error")
+    return (
+      <section className="topRate">
+        <h1 className="topRate-title">محبوب ترین محصولات</h1>
+        <SliderSection items={topRateProducts} />
+      </section>
+    );
+  if (getProductsStatus && getProductsStatus.status === "error")
+    return (
+      <section className="topRate">
+        <h1 className="topRate-title">محبوب ترین محصولات</h1>
+        <p>اتصال به سرور ممکن نیست</p>
+      </section>
+    );
 };
 
 export default TopRate;

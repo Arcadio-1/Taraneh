@@ -14,7 +14,6 @@ useSelector;
 
 const SliderSection = (props) => {
   const status = useSelector((state) => state.ui.getAllproductsStatus);
-
   const { items } = props;
   return (
     <section className="sliderSection">
@@ -43,6 +42,11 @@ const SliderSection = (props) => {
               </SwiperSlide>
             );
           })}
+        {status && status.status === "error" && (
+          <SwiperSlide>
+            <p>cant get Data</p>
+          </SwiperSlide>
+        )}
       </Swiper>
     </section>
   );

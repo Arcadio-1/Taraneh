@@ -1,5 +1,71 @@
 .account {
-  border: 2px solid gray;
-  max-width: 600px;
+  max-width: 400px;
   margin: 18rem auto;
+  border-radius: 10px;
+  background-color: rgba(color(light-1), 0.5);
+  @include blur-3;
+  padding: 3em;
+  &-login {
+    @include dflex;
+    flex-direction: column;
+    // gap: rem;
+    &-title {
+      margin-left: auto;
+      margin-bottom: 1em;
+      // border: 2px solid red;
+      opacity: 0.7;
+    }
+    &-forgetPassword {
+      margin: -1em auto;
+      max-width: 300px;
+      // border: 2px solid red;
+      a {
+        color: color(g1-7);
+      }
+    }
+  }
+  &-signup {
+    &-title {
+      margin-bottom: 1em;
+    }
+    &-form {
+      &-line {
+        gap: 2em;
+      }
+    }
+    &-link {
+      // padding: 1rem;
+      color: color(g1-7);
+      width: 100%;
+      .logIcon {
+        width: 2rem;
+        height: 2em;
+        path {
+          fill: color(g1-7);
+        }
+      }
+      &-item {
+        margin-right: auto;
+        border-bottom: 2px solid rgba(color(g1-7), 0.7);
+        padding: 0.3em 1em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5em;
+        cursor: pointer;
+        &:hover {
+          border: transparent;
+          border-radius: 5px;
+          color: color(light-2);
+          background-color: rgba(color(g1-7), 0.7);
+
+          .logIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+        }
+      }
+    }
+  }
 }

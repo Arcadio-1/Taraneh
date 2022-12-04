@@ -1,12 +1,137 @@
 .FormItem {
-  border: 2px solid red;
-  position: relative;
-  @include dflex;
-  &-label {
+  width: 100%;
+  margin-bottom: 2.9em;
+  &-container {
+    @include dflex;
+    position: relative;
+  }
+  &-icon {
     position: absolute;
-    top: 0;
-    // : 10px;
+    top: 5px;
+    left: 5px;
+    svg {
+      opacity: 0.8;
+      width: 1.5em;
+      height: 1.5em;
+      // fill: red;
+    }
+    .userIcon {
+      path {
+        fill: color(dark-2);
+      }
+    }
+    .mailIcon {
+      fill: color(dark-2);
+      fill: none;
+    }
+    .mobileIcon {
+      fill: color(dark-2);
+    }
+    .addressIcon {
+      fill: color(dark-2);
+    }
+  }
+  &-label {
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    font-size: 1.3em;
+    top: 3px;
+    right: 5px;
+    opacity: 0.5;
   }
   &-input {
+    border-radius: 5px;
+    border: transparent;
+    height: 1.9em;
+    width: 100%;
+    font-family: iransans;
+  }
+  &-textArea {
+    font-family: iransansnum;
+    border-radius: 5px;
+    border: transparent;
+    width: 100%;
+    height: 10em;
+    font-size: 1.2em;
+    padding: 0.3em;
+  }
+  &-select {
+    // display: none;
+    color: color(dark-4);
+    background-color: rgba(color(light-1), 0.5);
+    border: transparent;
+    padding-right: 0.5em;
+    width: 100%;
+    height: 2em;
+    cursor: pointer;
+    padding-left: 5em;
+  }
+  .labelUper {
+    transition: all 0.3s ease-in-out;
+    // color: green;
+    top: -20px;
+    opacity: 1;
+  }
+  &-errorMsg {
+    color: color(g1-5);
+  }
+  &-showPassword {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    @include dflex(flex-start);
+    // border: 2px solid red;
+    &-checker {
+      margin-top: 3px;
+      display: inline-block;
+      height: 15px;
+      position: relative;
+      width: 30px;
+      // &-label {
+      // }
+      .checker-label-slider.round {
+        border-radius: 50px;
+      }
+      .checker-label-slider {
+        background-color: #ccc;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: 0.2s;
+        &::before {
+          background-color: #fff;
+          bottom: 4px;
+          content: "";
+          height: 26px;
+          top: 2.3px;
+          left: 2px;
+          position: absolute;
+          transition: 0.2s;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+      }
+      input {
+        display: none;
+      }
+      input:checked + .checker-label-slider {
+        background-color: #66bb6a;
+      }
+
+      input:checked + .checker-label-slider:before {
+        transform: translateX(16px);
+      }
+    }
+    .showIcon,
+    .hideIcon {
+      width: 2.5em;
+      height: 2.5em;
+      path {
+        fill: rgba(color(dark-1), 0.6);
+      }
+    }
   }
 }

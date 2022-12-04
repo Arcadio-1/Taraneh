@@ -18,7 +18,7 @@ async function handler(req, res) {
     if (!result) {
       throw new Error("insert faild");
     }
-    res.status(200).json({ message: "success" });
+    res.status(200).json({ message: "success", result: result });
   } catch (error) {
     res.status(201).json({ message: error.message });
   }

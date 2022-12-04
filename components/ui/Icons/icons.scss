@@ -293,7 +293,8 @@
 .mailIcon {
   width: 2rem;
   height: 2rem;
-  fill: color(dark-1);
+  stroke: color(dark-1);
+  stroke-width: 2px;
 }
 .userIcon {
   width: 2rem;
@@ -340,6 +341,34 @@
   }
 }
 .logIcon {
+  width: 2rem;
+  height: 2rem;
+  path {
+    fill: color(light-2);
+  }
+}
+.infoIcon {
+  width: 2rem;
+  height: 2rem;
+  path {
+    fill: color(light-2);
+  }
+}
+.errorIcon {
+  width: 2rem;
+  height: 2rem;
+  path {
+    fill: color(light-2);
+  }
+}
+.warningIcon {
+  width: 2rem;
+  height: 2rem;
+  path {
+    fill: color(light-2);
+  }
+}
+.successIcon {
   width: 2rem;
   height: 2rem;
   path {

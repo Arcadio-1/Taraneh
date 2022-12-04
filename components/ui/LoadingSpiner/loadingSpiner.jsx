@@ -1,8 +1,18 @@
-const LoadingSpinner = () => {
+import ErrorIcon from "../Icons/notificationsIcons/ErrorIcon";
+
+const LoadingSpinner = ({ text, type }) => {
   return (
     <div className="loadingSpiner">
-      <div className="loadingSpiner-spiner"></div>
-      <h2 className="loadingSpiner-text">در حال بارگیری...</h2>
+      {type !== "warning" && <div className="loadingSpiner-spiner"></div>}
+      {type === "warning" && <ErrorIcon />}
+
+      <h2
+        className={`loadingSpiner-text ${
+          type === "warning" && "loadingSpiner-text-warning"
+        }`}
+      >
+        {text}
+      </h2>
     </div>
   );
 };

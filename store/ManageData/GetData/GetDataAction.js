@@ -11,19 +11,26 @@ export const getAllProducts = () => {
           message: "در حال دریافت لیست محصولات",
         })
       );
+
       const request = await fetch("/api/productsManager", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      if (!request || request.status === "error") {
-        throw new Error("خطا در دریافت لیست محصولات");
-      }
+
+      // console.log(request);
+      // console.log("request");
+      // if (request.status === "error") {
+      //   throw new Error("خطا در دریافت لیست محصولات");
+      // }
+
       const data = await request.json();
-      if (!data) {
+      // console.log(data);
+      if (data.status === "error") {
         throw new Error("خطا در دریافت اطلاعات لیست محصولات");
       }
-      console.log(data.data);
+
       dispatch(getDataSliceActions.getProducts(data.data));
+
       dispatch(
         uiAction.setGetAllProductsStatus({
           status: "success",

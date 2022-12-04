@@ -97,21 +97,45 @@
     &:hover {
       transition: all 0.1s ease-in-out;
       background-color: rgba(color(light-1), 0.6);
-      svg {
-        path {
-          // fill: color(dark-1);
-          fill: color(g1-2);
+    }
+    &-signin {
+      &:hover {
+        transition: all 0.1s ease-in-out;
+        background-color: rgba(color(light-1), 0.6);
+        svg {
+          path {
+            // fill: color(dark-1);
+            fill: color(g1-2);
+          }
+        }
+      }
+    }
+    &-signout {
+      gap: 1em;
+      @include dflex;
+      &:hover {
+        svg {
+          path {
+            fill: color(g1-5);
+          }
         }
       }
     }
   }
   &-basket {
-    @include dflex;
-    padding: 0.8em;
-    border-radius: 50%;
-    margin-right: auto;
     grid-area: basket;
-    background-color: rgba(color(light-2), 0.5);
+    width: 100%;
+    @include dflex;
+    gap: 1em;
+    &-container {
+      @include dflex;
+      width: 5em;
+      height: 5em;
+      padding: 0.8em;
+      border-radius: 50%;
+      // margin: auto;
+      background-color: rgba(color(light-2), 0.5);
+    }
     svg {
       path {
         fill: color(dark-2);
@@ -132,6 +156,35 @@
     &-item {
       font-size: 1.5rem;
       cursor: pointer;
+    }
+  }
+  &-profile {
+    margin-right: auto;
+    grid-area: log;
+    // border: 2px solid red;
+    position: relative;
+    @include dflex(flex-end, flex-end);
+    flex-direction: column;
+    &-icons {
+      width: 5em;
+      height: 5em;
+      @include dflex;
+      padding: 0.8em;
+      border-radius: 50%;
+      margin-right: auto;
+      background-color: rgba(color(light-2), 0.5);
+      .profileIcon {
+        path {
+          fill: color(dark-2);
+        }
+      }
+      .arrowIcon {
+        position: absolute;
+        top: 1.2em;
+        left: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     }
   }
 }

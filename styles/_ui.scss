@@ -7,6 +7,9 @@
   height: 100%;
   z-index: 20;
 }
+.dflex {
+  @include dflex;
+}
 // .Modal {
 //   &-enter {
 //     opacity: 0;
@@ -75,11 +78,93 @@
     transform: translateY(0);
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.4;
     transform: translateY(60%);
   }
   100% {
     opacity: 0;
     transform: translateY(-100%);
+  }
+}
+.Form {
+  width: 100%;
+  // border: 2px solid red;
+  &-action {
+    // border: 2px solid red;
+    // max-width: 300px;
+    margin: 2em auto;
+    @include dflex;
+    gap: 1em;
+    &-submit {
+      cursor: pointer;
+      font-family: iransans;
+      padding: 0.2em 3em;
+      border-radius: 3px;
+      color: color(light-2);
+      background-color: color(g1-2);
+      border: transparent;
+      // font-size: 1.5em;
+      &:hover {
+        background-color: rgba(color(g1-2), 0.9);
+      }
+    }
+    &-secondary {
+      cursor: pointer;
+      font-family: iransans;
+      border-radius: 3px;
+      padding: 0.2em 1em;
+      color: color(light-2);
+      margin-left: auto;
+      background-color: rgba(color(g1-7), 0.7);
+      border: transparent;
+      &:hover {
+        background-color: rgba(color(g1-7), 0.65);
+      }
+    }
+  }
+}
+.sideNotif {
+  position: fixed;
+  z-index: 100;
+  top: 150px;
+  left: 10px;
+  // padding: 0.5em 2em;
+  border-radius: 5px;
+  color: color(light-1);
+  &-header {
+    @include dflex(space-between);
+    height: 3em;
+    padding: 0 0.5em;
+    border-bottom: 2px solid rgba(color(light-1), 0.5);
+    .closeIcon-svg {
+      width: 2em;
+      height: 2em;
+      path {
+        fill: color(light-1);
+      }
+    }
+  }
+  &-message {
+    padding: 1em 3em;
+    font-size: 1.5em;
+  }
+  &-success {
+    animation: openModal 0.4s ease-out forwards;
+    background-color: color(success);
+  }
+  &-info {
+    animation: openModal 0.4s ease-out forwards;
+    background-color: color(info);
+  }
+  &-error {
+    animation: openModal 0.4s ease-out forwards;
+    background-color: color(error);
+  }
+  &-warning {
+    animation: openModal 0.4s ease-out forwards;
+    background-color: color(warning);
+  }
+  &-null {
+    animation: closeModal 1s ease-out forwards;
   }
 }
