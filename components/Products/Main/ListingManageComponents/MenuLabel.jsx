@@ -1,7 +1,7 @@
 import React from "react";
 import MenuArrowIcon from "../../../ui/Icons/MenuArrowIcon";
 import Menu from "./Menu";
-import useToggleMenu from "../../../../Hook/useToggoleMenu";
+import useToggleMenu from "../../../../Hook/UseToggoleMenu";
 import { useRouter } from "next/router";
 
 const MenuLabel = (props) => {
