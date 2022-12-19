@@ -19,6 +19,7 @@
     }
   }
   &-thumbnail {
+    @include dflex;
     padding: 0.5em;
     position: relative;
     width: 100%;
@@ -97,6 +98,8 @@
     }
     &-image {
       @include dflex;
+      width: 80%;
+      // border: 2px solid red;
       img {
         position: relative;
         width: 100%;

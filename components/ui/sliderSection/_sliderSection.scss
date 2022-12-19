@@ -5,10 +5,22 @@
     position: absolute;
     @include dflex;
     margin: auto;
+    width: 100% !important;
+    // height: 100% !important;
+    min-width: 30em;
     .loadingSpiner {
+      padding: 3em;
+      border-radius: 5px;
+      @include dflex;
+      flex-direction: column;
+      width: 30%;
+      min-width: 20em;
+      height: 100%;
+      background-color: rgba(color(light-2), 0.7);
+      @include blur-3;
       z-index: 10;
       &-text {
-        color: color(light-2);
+        color: color(dark-2);
       }
     }
     .swiper-slider {
@@ -20,21 +32,22 @@
     position: relative;
     @include dflex;
     &-slide {
+      // opacity: 0.1;
       max-width: 20em;
       height: auto;
       // background-color: color(light-1);
       color: color(dark-2);
       @include responsive(xl) {
-        max-width: 17em;
+        max-width: 18em;
       }
       @include responsive(lg) {
-        max-width: 15em;
+        max-width: 17em;
       }
       @include responsive(md) {
-        max-width: 15em;
+        max-width: 16em;
       }
       @include responsive(sm) {
-        max-width: 15em;
+        max-width: 16em;
       }
     }
   }

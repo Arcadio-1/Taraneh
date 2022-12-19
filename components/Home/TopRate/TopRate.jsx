@@ -1,7 +1,7 @@
+import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
 import SliderSection from "../../ui/sliderSection/SliderSection";
-
 const TopRate = () => {
   const products = useSelector((state) => state.getData.products);
   const getProductsStatus = useSelector(
@@ -22,6 +22,14 @@ const TopRate = () => {
     return (
       <section className="topRate">
         <h1 className="topRate-title">محبوب ترین محصولات</h1>
+        <div className="topRate-slidHeader-background">
+          <Image
+            src={"/image/ui/topRateBack.webp"}
+            alt="محبوب ترین ها"
+            width={900}
+            height={500}
+          />
+        </div>
         <SliderSection items={topRateProducts} />
       </section>
     );
