@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../store/ui/uiSlice";
 import CloseIcon from "./Icons/CloseIcon";
-import Modal from "./Modal";
+import Modal from "../Layout/Module/Modal";
 import SuccessIcon from "./Icons/notificationsIcons/SuccessIcon";
 import WarningIcon from "./Icons/notificationsIcons/WarningIcon";
 import ErrorIcon from "./Icons/notificationsIcons/ErrorIcon";

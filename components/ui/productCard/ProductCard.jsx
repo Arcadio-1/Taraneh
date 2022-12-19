@@ -10,8 +10,12 @@ import MinusIcon from "../Icons/Minus";
 
 const ProductCard = (props) => {
   const { id, price, title, sell, statistics, imageLink, status } = props.item;
+
   return (
-    <div className="productCard">
+    <div
+      className={`productCard ${props.listStyle === "1" && "showInRow"}`}
+      onMouseOver={() => {}}
+    >
       <div className="productCard-thumbnail">
         <div className="productCard-thumbnail-tags">
           {price.offPersent > 0 && (
@@ -39,27 +43,28 @@ const ProductCard = (props) => {
         </div>
         <div className="productCard-thumbnail-image">
           <Link href={`products/${id}`}>
-            <Image src={imageLink} alt={title} width={160} height={160} />
+            <Image src={imageLink} alt={title} width={400} height={400} />
           </Link>
         </div>
       </div>
-      <div className="productCard-content">
-        <h3 className="productCard-content-title">{title}</h3>
-        <p
-          className={`productCard-content-availability ${
-            status === "Available" ? "available" : "notAvailable"
-          }`}
-        >
-          {status === "Available" ? "موجود" : "ناموجود"}
-        </p>
-        <ProductRate rate={statistics.rate} />
-        <ProductPrice price={price.value} offPersent={price.offPersent} />
-      </div>
-      <div className="productCard-action">
-        <button className="productCard-action-submitBtn">
-          افزودن به سبد خرید
-        </button>
-        {/* <div className="productCard-action-quantity">
+      <div className="productCard-down">
+        <div className="productCard-content">
+          <h3 className="productCard-content-title">{title}</h3>
+          <p
+            className={`productCard-content-availability ${
+              status === "Available" ? "available" : "notAvailable"
+            }`}
+          >
+            {status === "Available" ? "موجود" : "ناموجود"}
+          </p>
+          <ProductRate rate={statistics.rate} />
+          <ProductPrice price={price.value} offPersent={price.offPersent} />
+        </div>
+        <div className="productCard-action">
+          <button className="productCard-action-submitBtn">
+            افزودن به سبد
+          </button>
+          {/* <div className="productCard-action-quantity">
           <div className="productCard-action-quantity-plus">
             <PlusIcon />
           </div>
@@ -72,6 +77,7 @@ const ProductCard = (props) => {
             <MinusIcon />
           </div>
         </div> */}
+        </div>
       </div>
     </div>
   );

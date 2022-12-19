@@ -7,9 +7,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
-import LoadingSpinner from "../ui/LoadingSpiner/loadingSpiner";
-import ProductCard from "../ui/productCard/ProductCard";
+import LoadingSpinner from "../LoadingSpiner/loadingSpiner";
+import ProductCard from "../productCard/ProductCard";
 import { useSelector } from "react-redux";
+import TopRateHeader from "../../Home/TopRate/TopRateHeader";
 useSelector;
 
 const SliderSection = (props) => {
@@ -24,10 +25,13 @@ const SliderSection = (props) => {
         className="sliderSection-swiper"
         navigation
       >
+        <SwiperSlide>
+          <TopRateHeader />
+        </SwiperSlide>
         {status && status.status === "loading" && (
-          <SwiperSlide>
-            <LoadingSpinner />
-          </SwiperSlide>
+          <div className="sliderSection-loading">
+            <LoadingSpinner text={"در حال بارگزاری محصولات"} />
+          </div>
         )}
         {status &&
           status.status === "success" &&

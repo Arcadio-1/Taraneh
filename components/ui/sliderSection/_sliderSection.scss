@@ -1,0 +1,41 @@
+.sliderSection {
+  // border: 1px solid rgba(color(dark-2), 0.5);
+  padding: 1em;
+  &-loading {
+    position: absolute;
+    @include dflex;
+    margin: auto;
+    .loadingSpiner {
+      z-index: 10;
+      &-text {
+        color: color(light-2);
+      }
+    }
+    .swiper-slider {
+      border: 2px solid red;
+    }
+  }
+  .swiper {
+    gap: 1rem;
+    position: relative;
+    @include dflex;
+    &-slide {
+      max-width: 20em;
+      height: auto;
+      // background-color: color(light-1);
+      color: color(dark-2);
+      @include responsive(xl) {
+        max-width: 17em;
+      }
+      @include responsive(lg) {
+        max-width: 15em;
+      }
+      @include responsive(md) {
+        max-width: 15em;
+      }
+      @include responsive(sm) {
+        max-width: 15em;
+      }
+    }
+  }
+}

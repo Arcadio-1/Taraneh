@@ -1,37 +1,77 @@
 .header {
-  z-index: 10;
-  position: absolute;
-  top: 0;
+  position: relative;
+  z-index: 99990;
+  // position: absolute;
+  // top: 0;
   width: 100%;
   background-color: rgba(color(light-2), 0.75);
-  padding: 1rem;
+  padding: 1rem 1rem;
   @include blur-4;
   &-container {
-    // border: 1px solid red;
     width: 100%;
     max-width: 1200px;
     display: grid;
     grid-template-areas:
-      "logo search search search search search log log log log log basket"
+      "logo search search search search search log log log log log basketandprofile"
       "links links links links links links links links links links links links";
     align-items: center;
     margin: 0 auto;
-    // border: 1px solid red;
-    // justify-content: space-between;
-    padding: 0 2em;
+    padding: 1em 2em 0 2em;
     gap: 1rem;
+    @include responsive(xl) {
+      // border: 2px solid red;
+    }
+    @include responsive(lg) {
+      // border: 2px solid #d113d1;
+    }
+    @include responsive(md) {
+      // border: 2px solid #208ff7;
+      grid-template-areas: "hamberger logo logo search search basketandprofile";
+    }
+    @include responsive(sm) {
+      // border: 2px solid orange;
+      grid-template-areas:
+        "hamberger logo logo logo logo basketandprofile"
+        "search search search search search search";
+    }
+  }
+  &-menu {
+    display: none;
+    grid-area: hamberger;
+    max-width: 5em;
+    .menuIcon {
+      path {
+        stroke-width: 10px;
+        stroke: rgba(color(g3-2), 0.5);
+        fill: color(dark-2);
+      }
+    }
+    @include responsive(md) {
+      @include dflex(flex-start);
+    }
   }
   &-logo {
+    // opacity: 0.7;
     grid-area: logo;
+    @include dflex;
+    .logoIcon {
+      // border: 2px solid red;
+      width: 15rem;
+      height: 2rem;
+      path {
+        fill: rgba(color(g3-4), 1);
+      }
+    }
   }
   &-search {
     grid-area: search;
-    // border: 2px solid color(g0-3);
-    // background-color: rgba(color(g0-4), 0.5);
     background-color: rgba(color(light-1), 0.7);
     position: relative;
     border-radius: 5px;
     max-width: 30em;
+    @include responsive(md) {
+      max-width: 100%;
+    }
     &-searchBtn {
       position: absolute;
       top: 0;
@@ -64,15 +104,18 @@
       width: 100%;
       line-height: 2.5em;
       outline: transparent;
+      @include responsive(md) {
+        line-height: 3em;
+      }
     }
   }
   &-log {
+    transition: all 0.1s ease-out;
     cursor: pointer;
     margin-right: auto;
-    // border: 2px solid rgba(color(dark-2), 0.1);
     background-color: rgba(color(light-1), 0.2);
     padding: 0.5em 1rem;
-    border-radius: 5px; // width: 10rem;
+    border-radius: 5px;
     font-family: iransans;
     grid-area: log;
     line-height: 2rem;
@@ -95,16 +138,13 @@
       }
     }
     &:hover {
-      transition: all 0.1s ease-in-out;
-      background-color: rgba(color(light-1), 0.6);
+      transition: all 0.1s ease-out;
+      background-color: rgba(color(light-1), 0.4);
     }
     &-signin {
       &:hover {
-        transition: all 0.1s ease-in-out;
-        background-color: rgba(color(light-1), 0.6);
         svg {
           path {
-            // fill: color(dark-1);
             fill: color(g1-2);
           }
         }
@@ -116,29 +156,79 @@
       &:hover {
         svg {
           path {
-            fill: color(g1-5);
+            transition: all 0.1s ease-out;
+            fill: color(error);
           }
         }
       }
     }
   }
-  &-basket {
-    grid-area: basket;
-    width: 100%;
-    @include dflex;
+  &-basketAndProfile {
+    grid-area: basketandprofile;
+    @include dflex(flex-end);
+    margin-right: auto;
     gap: 1em;
+    // width: 100%;
+  }
+  &-basket {
     &-container {
       @include dflex;
       width: 5em;
       height: 5em;
       padding: 0.8em;
       border-radius: 50%;
-      // margin: auto;
       background-color: rgba(color(light-2), 0.5);
+      box-shadow: 1px 2px 2px rgba(color(g3-4), 0.5);
+
+      .basketIcon {
+        width: 2.3rem;
+        height: 2.3rem;
+        path {
+          fill: color(dark-2);
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(color(g1-6), 0.2);
+      }
     }
-    svg {
-      path {
-        fill: color(dark-2);
+  }
+  &-profile {
+    position: relative;
+
+    &-iconContainer {
+      margin-right: auto;
+      position: relative;
+      @include dflex(flex-end, flex-end);
+      flex-direction: column;
+      padding: 1.4em;
+      border-radius: 50%;
+      background-color: rgba(color(light-2), 0.5);
+      box-shadow: 1px 2px 2px rgba(color(g3-4), 0.5);
+      cursor: pointer;
+    }
+    .profileMenuIsOpen {
+      // border: 2px solid color(g1-7);
+      // box-shadow: 0px 2px 6px rgba(color(error), 0.5);
+      background-color: rgba(color(g1-6), 0.2);
+    }
+
+    &-icons {
+      @include dflex;
+      margin-right: auto;
+      .userIcon {
+        width: 2.2rem;
+        height: 2.2rem;
+        path {
+          fill: color(dark-2);
+        }
+      }
+      .menuArrowIcon {
+        position: absolute;
+        top: 2.2em;
+        left: 0;
+        width: 1.5rem;
+        height: 1.5rem;
       }
     }
   }
@@ -151,39 +241,43 @@
     grid-area: links;
     list-style: none;
     display: flex;
-    gap: 2em;
-    // border: 2px solid red;
-    &-item {
-      font-size: 1.5rem;
-      cursor: pointer;
+    gap: 0.5em;
+    @include responsive(md) {
+      display: none;
     }
-  }
-  &-profile {
-    margin-right: auto;
-    grid-area: log;
-    // border: 2px solid red;
-    position: relative;
-    @include dflex(flex-end, flex-end);
-    flex-direction: column;
-    &-icons {
-      width: 5em;
-      height: 5em;
-      @include dflex;
-      padding: 0.8em;
-      border-radius: 50%;
-      margin-right: auto;
-      background-color: rgba(color(light-2), 0.5);
-      .profileIcon {
-        path {
-          fill: color(dark-2);
+    &-item {
+      a {
+        @include dflex;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border-radius: 20px;
+        padding: 0.2em 1em;
+        .blogIcon {
+          width: 1.5rem;
+          height: 1.5rem;
+          path {
+            fill: color(dark-4);
+          }
+        }
+        .coffeeMochine {
+          width: 2rem;
+          height: 2rem;
+          path {
+            fill: color(dark-4);
+          }
         }
       }
-      .arrowIcon {
-        position: absolute;
-        top: 1.2em;
-        left: 0;
-        width: 1.5rem;
-        height: 1.5rem;
+      &:hover {
+        a {
+          color: color(g3-4);
+          background-color: rgba(color(g3-1), 0.3);
+          svg {
+            path {
+              fill: color(g3-4);
+            }
+          }
+        }
       }
     }
   }

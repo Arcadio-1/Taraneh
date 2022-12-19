@@ -99,11 +99,13 @@
       cursor: pointer;
       font-family: iransans;
       padding: 0.2em 3em;
-      border-radius: 3px;
+      border-radius: 5px;
       color: color(light-2);
       background-color: color(g1-2);
       border: transparent;
       // font-size: 1.5em;
+      width: 100%;
+      line-height: 2.5rem;
       &:hover {
         background-color: rgba(color(g1-2), 0.9);
       }
@@ -166,5 +168,43 @@
   }
   &-null {
     animation: closeModal 1s ease-out forwards;
+  }
+}
+
+.hideInXL {
+  @include responsive(xl) {
+    display: none;
+  }
+}
+.hideInLG {
+  @include responsive(lg) {
+    display: none;
+  }
+}
+.hideInMD {
+  @include responsive(md) {
+    display: none !important;
+  }
+}
+.hideInSM {
+  @include responsive(sm) {
+    display: none;
+  }
+}
+.showInLG {
+  @include responsive(lg) {
+    display: inline;
+  }
+}
+.showInMD {
+  display: none !important;
+  @include responsive(md) {
+    display: flex !important;
+  }
+}
+.showInSm {
+  display: none !important;
+  @include responsive(sm) {
+    display: flex !important;
   }
 }

@@ -1,0 +1,32 @@
+.productsPage {
+  width: 100%;
+  // border: 2px solid green;
+  padding: 0 1rem;
+  &-breadcrumbs {
+    padding: 0.625rem 0;
+  }
+  &-body {
+    width: 100%;
+    @include dflex(flex-start, flex-start);
+    // border: 2px solid purple;
+  }
+  &-main {
+    // border: 2px solid purple;
+    width: 100%;
+    // max-width: 75%;
+    // flex: 0 0 75%;
+    @include responsive(md) {
+      max-width: 100%;
+      // flex: 0 0 100%;
+    }
+  }
+  &-aside {
+    @include dflex(center, flex-start);
+    flex-direction: column;
+    gap: 1em;
+    // border: 2px solid cyan;
+    max-width: 24em;
+    // flex: 0 0 25%;
+    padding: 0px 1.5em;
+  }
+}

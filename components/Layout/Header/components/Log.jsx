@@ -14,12 +14,12 @@ const Log = () => {
           <Link href="/account">
             <LogIcon />
             <span>ورود</span>
-            <span>/</span>
-            <span>ثبت نام</span>
+            <span className="hideInMD">/</span>
+            <span className="hideInMD">ثبت نام</span>
           </Link>
         </div>
       )}
-      {status === "authenticated" && (
+      {/* {status === "authenticated" && (
         <div
           className="header-log-signout"
           onClick={() => {
@@ -27,9 +27,9 @@ const Log = () => {
           }}
         >
           <LogIcon />
-          <span>خروج</span>
+          <span className="header-log-signout-text">خروج</span>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

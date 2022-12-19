@@ -1,14 +1,27 @@
 import React from "react";
 import Link from "next/link";
+import BlogIcon from "../../../ui/Icons/BlogIcon";
+import CoffeeMachine from "../../../ui/Icons/CoffeeMachine";
 const NavLinks = () => {
   return (
     <ul className="header-navLinks">
       <li className="header-navLinks-item">
         <Link href={"/"}> صفحه نخست</Link>
       </li>
-      <li className="header-navLinks-item">محصولات</li>
-      <li className="header-navLinks-item">اخبار و آموزش</li>
-      <li className="header-navLinks-item">تعمیرات</li>
+      <li className="header-navLinks-item">
+        <Link href={"/products"}> محصولات</Link>
+      </li>
+      <li className="header-navLinks-item">
+        <Link href={"/"}>
+          <BlogIcon />
+          اخبار و آموزش
+        </Link>
+      </li>
+      <li className="header-navLinks-item">
+        <Link href={"/"}>
+          <CoffeeMachine /> تعمیرات
+        </Link>
+      </li>
     </ul>
   );
 };

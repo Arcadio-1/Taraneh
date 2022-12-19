@@ -1,0 +1,72 @@
+.checkBoxList {
+  width: 100%;
+  &-title {
+    margin-bottom: 0.4em;
+  }
+  &-list {
+    width: 100%;
+    list-style: none;
+  }
+  &-item {
+    @include dflex(flex-start);
+    margin-bottom: 0.5em;
+    gap: 1em;
+    border-bottom: 1px solid rgba(color(dark-4), 0.1);
+    width: 100%;
+    &-label {
+      font-size: 1.2em;
+      @include dflex(space-between);
+      width: 100%;
+    }
+    &-input {
+    }
+  }
+}
+.categories {
+  width: 100%;
+}
+.filterByPrice {
+  width: 100%;
+  margin-bottom: 12em;
+  &-title {
+    margin-bottom: 1em;
+  }
+  .rangeSlider {
+    //   border: 2px solid red;
+    @include dflex(flex-start, flex-start);
+    flex-direction: column;
+
+    gap: 0.5em;
+    &-container {
+      position: absolute;
+      top: 40px;
+      right: 0;
+    }
+    &-label {
+      font-size: 1.3em;
+    }
+    &-section {
+      @include dflex;
+      gap: 0.2em;
+      font-size: 1.2em;
+    }
+    &-valueHeader {
+      color: color(dark-4);
+    }
+    &-value {
+      font-family: iransansnum;
+      font-size: 1.3em;
+      color: color(g3-4);
+      letter-spacing: 1px;
+    }
+    &-currency {
+      color: color(dark-4);
+    }
+  }
+}
+.sideAd {
+  border-radius: 10px 10px 0 0;
+  border: 2px solid rgba(color(dark-2), 0.2);
+  // background-color: rgba(color(g3-2), 0.1);
+  width: 100%;
+}

@@ -1,10 +1,32 @@
 .account {
   max-width: 400px;
-  margin: 18rem auto;
+  margin: 3rem auto;
   border-radius: 10px;
-  background-color: rgba(color(light-1), 0.5);
+  background-color: rgba(color(light-2), 0.5);
   @include blur-3;
   padding: 3em;
+  &-nav {
+    @include dflex(space-evenly);
+    list-style: none;
+    margin-bottom: 1em;
+    &-item {
+      border-bottom: 3px solid transparent;
+      a {
+        color: rgba(color(dark-2), 0.5);
+        font-family: iranyekan;
+        font-size: 2em;
+      }
+      &:hover {
+        border-bottom: 3px solid rgba(color(g3-2), 0.5);
+      }
+    }
+    .selectedNavItem {
+      a {
+        color: color(dark-2);
+        border-bottom: color;
+      }
+    }
+  }
   &-login {
     @include dflex;
     flex-direction: column;
@@ -16,10 +38,12 @@
       opacity: 0.7;
     }
     &-forgetPassword {
+      @include dflex(flex-start);
       margin: -1em auto;
-      max-width: 300px;
-      // border: 2px solid red;
+      // max-width: 300px;
+      width: 100%;
       a {
+        font-size: 1.2rem;
         color: color(g1-7);
       }
     }

@@ -1,8 +1,22 @@
 .topRate {
+  margin-bottom: 1em;
+  border-radius: 10px;
+  background-color: rgba(color(g3-5), 1);
   &-title {
-    color: color(g1-2);
-    padding: 0.5em 1em;
-    background-color: rgba(color(light-1), 0.6);
+    display: none;
+    color: color(light-2);
+    padding: 0.5em 0.7em;
   }
-  background-color: rgba(color(g2-4), 0.5);
+  &-slidHeader {
+    @include dflex;
+    // display: grid;
+    flex-direction: column;
+    margin-top: 4em;
+    &-title {
+      font-size: 1.5rem;
+      color: color(light-2);
+    }
+    &-image {
+    }
+  }
 }

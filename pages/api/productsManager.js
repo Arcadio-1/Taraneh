@@ -17,7 +17,11 @@ async function handler(req, res) {
     } catch (error) {
       res
         .status(201)
-        .json({ status: "error", message: error.message, data: undefined });
+        .json({
+          status: error.message,
+          message: error.message,
+          data: undefined,
+        });
     }
   }
   return;

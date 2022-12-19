@@ -341,7 +341,7 @@ const SignupForm = (props) => {
     <Fragment>
       <NotifCard />
       <div className="account-signup">
-        <h1 className="account-signup-title">فرم ثبت نام</h1>
+        {/* <h1 className="account-signup-title">فرم ثبت نام</h1> */}
         <form className="Form account-signup-form">
           <div className="account-signup-form-line">
             <FormItem
@@ -535,25 +535,14 @@ const SignupForm = (props) => {
             )}
           </div>
           <div className="Form-action">
-            <button onClick={cancelHandler} className="Form-action-secondary">
+            {/* <button onClick={cancelHandler} className="Form-action-secondary">
               انصراف
-            </button>
+            </button> */}
             <button onClick={submitHandler} className="Form-action-submit">
-              ثبت
+              ثبت نام
             </button>
           </div>
         </form>
-        <div className=" account-signup-link">
-          <h3
-            className=" account-signup-link-item"
-            onClick={() => {
-              props.onSignup();
-            }}
-          >
-            <LogIcon />
-            ورود
-          </h3>
-        </div>
       </div>
     </Fragment>
   );

@@ -48,7 +48,8 @@ export default NextAuth({
           throw new Error("پسورد وارد شده صحیح نیست");
         }
         client.close();
-        return { email: user.email, name: user.name };
+        console.log(user.family);
+        return { email: user };
       },
     }),
   ],

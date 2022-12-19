@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import UserIcon from "../../../ui/Icons/UserIcon";
-import ProfileIcon from "../../../ui/Icons/ProfileIcon";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
-import ArrowsIcon from "../../../ui/Icons/arrowsIcon";
+import MenuArrowIcon from "../../../ui/Icons/MenuArrowIcon";
+import useToggleMenu from "../../../../Hook/useToggoleMenu";
+import ProfileMenu from "./profileMenu/ProfileMenu";
 
 const Profile = () => {
-  const { data } = useSession();
-  // console.log(data.user);
-  const signoutHandler = () => {
-    signOut();
-  };
+  const { isShowMenu, menuRef, showMenuHandler } = useToggleMenu();
+
   return (
-    <div className="header-profile">
-      <div className="header-profile-icons">
-        <UserIcon />
-        <ArrowsIcon arrowType="down" />
+    <div className="header-profile" ref={menuRef}>
+      <div
+        className={`header-profile-iconContainer ${
+          isShowMenu && "profileMenuIsOpen"
+        }`}
+        onClick={showMenuHandler}
+      >
+        <div className="header-profile-icons">
+          <UserIcon />
+          <MenuArrowIcon type={"down"} />
+        </div>
       </div>
+      {isShowMenu && <ProfileMenu />}
     </div>
   );
 };

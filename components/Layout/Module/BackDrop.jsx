@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { uiAction } from "../../store/ui/uiSlice";
+import { uiAction } from "../../../store/ui/uiSlice";
 
 const BackDrop = () => {
   const CloseBackDropDispatch = useDispatch();

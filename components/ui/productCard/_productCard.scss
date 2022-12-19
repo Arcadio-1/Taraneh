@@ -6,11 +6,10 @@
   border-radius: 4px;
   height: 100%;
   @include blur-3;
-  transition: all 0.5s ease-in-out;
-
+  transition: all 0.2s ease-in-out;
   &:hover {
-    box-shadow: 0px 0px 8px rgba(51, 51, 51, 0.504);
-    // transform: scale(1.01);
+    box-shadow: 0px 0px 8px rgba(color(dark-2), 0.3);
+    transform: scale(1.01);
     .productCard-thumbnail {
       &-icons {
         transition: all 0.2s ease-in-out;
@@ -31,6 +30,7 @@
       @include dflex(flex-start, flex-end);
       flex-direction: column;
       gap: 0.2em;
+      z-index: 2;
       &-offPersent {
         font-family: iransansnum;
         @include dflex;
@@ -56,6 +56,7 @@
       gap: 0.5em;
       transform: translateX(40px);
       opacity: 0;
+      z-index: 2;
       &-expans {
         @include dflex;
         padding: 0.4em;
@@ -95,12 +96,18 @@
       }
     }
     &-image {
-      // border: 2px solid red;
-      width: 100%;
       @include dflex;
       img {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+
+        height: auto;
       }
     }
+  }
+  &-down {
+    width: 100%;
   }
   &-content {
     @include dflex(flex-start, flex-start);
@@ -133,17 +140,14 @@
     }
     &-price {
       &-container {
-        // border: 2px solid red;
         font-family: iransansnum;
         font-size: 1.5em;
         @include dflex;
-        // border: 2px solid red;
-
         width: 100%;
       }
       &-sellingPrice {
-        // border: 2px solid red;
         font-size: 1.1em;
+        color: color(dark-2);
         svg {
           path {
             fill: rgba(color(dark-2), 0.7);
@@ -160,16 +164,26 @@
   &-action {
     @include dflex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     &-submitBtn {
-      color: color(light-2);
+      font-size: 1.3em;
+      font-weight: 400;
+      @include dflex;
+      color: color(g3-2);
       padding: 0.3em 1em;
       width: 100%;
-      background-color: color(g1-2);
-      // border: 2px solid color(g0-3);
+      background-color: transparent;
       border: transparent;
-      border-radius: 3px;
+      border: 2px solid color(g3-2);
+      border-radius: 20px;
+      white-space: nowrap;
       cursor: pointer;
+      &:hover {
+        transition: all 0.2s ease-in-out;
+        color: color(light-2);
+        background-color: color(g3-2);
+      }
     }
     &-quantity {
       @include dflex;
@@ -201,4 +215,7 @@
       }
     }
   }
+}
+.showInRow {
+  flex-direction: row-reverse;
 }

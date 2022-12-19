@@ -4,9 +4,17 @@
     // width: 10em;
     &-item {
       img {
+        object-fit: cover;
         width: 100%;
         height: auto;
+        max-height: 350px;
         background-attachment: fixed;
+        @include responsive(md) {
+          max-height: 300px;
+        }
+        @include responsive(sm) {
+          min-height: 150px;
+        }
       }
     }
   }

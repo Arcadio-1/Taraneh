@@ -8,7 +8,7 @@ const Search = () => {
       </button>
       <input
         className="header-search-input"
-        placeholder="جستجو در کافه ترانه"
+        placeholder="جستجو کالا  "
         type="text"
         id="search"
       />

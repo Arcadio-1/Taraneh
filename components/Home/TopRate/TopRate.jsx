@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import SliderSection from "../../sliderSection/SliderSection";
+import SliderSection from "../../ui/sliderSection/SliderSection";
 
 const TopRate = () => {
   const products = useSelector((state) => state.getData.products);
@@ -17,6 +17,7 @@ const TopRate = () => {
     });
     topRateProducts = topRateProducts.slice(0, 10);
   }
+
   if (getProductsStatus && getProductsStatus.status !== "error")
     return (
       <section className="topRate">
@@ -24,6 +25,7 @@ const TopRate = () => {
         <SliderSection items={topRateProducts} />
       </section>
     );
+
   if (getProductsStatus && getProductsStatus.status === "error")
     return (
       <section className="topRate">

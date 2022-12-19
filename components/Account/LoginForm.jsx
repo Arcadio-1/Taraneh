@@ -12,7 +12,7 @@ import { signIn } from "next-auth/react";
 import ShowIcon from "../ui/Icons/ShowIcon";
 import HideIcon from "../ui/Icons/HideIcon";
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   const router = useRouter();
   const notif = useSelector((state) => state.ui.userActionNotif);
   const dispatchNotif = useDispatch();
@@ -105,7 +105,7 @@ const LoginForm = (props) => {
   };
   return (
     <div className="account-login">
-      <h1 className="account-login-title">مشخصات ورود را وارد کنید</h1>
+      {/* <h1 className="account-login-title">مشخصات ورود را وارد کنید</h1> */}
 
       <form className="Form">
         <FormItem
@@ -162,19 +162,7 @@ const LoginForm = (props) => {
           )}
         </div>
 
-        <div className="account-login-forgetPassword">
-          <Link href="/forgetpass">فراموشی رمز عبور</Link>
-        </div>
         <div className="Form-action">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              props.onSignup();
-            }}
-            className="Form-action-secondary"
-          >
-            عضیویت
-          </button>
           <button onClick={submitHandler} className="Form-action-submit">
             ورود
           </button>
@@ -190,6 +178,9 @@ const LoginForm = (props) => {
       {notif && notif.status === "success" && (
         <LoadingSpinner text={"با موفقیت وارد شدید"} />
       )}
+      <div className="account-login-forgetPassword">
+        <Link href="/forgetpass">فراموشی رمز عبور</Link>
+      </div>
     </div>
   );
 };

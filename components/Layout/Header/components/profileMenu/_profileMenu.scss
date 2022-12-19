@@ -1,0 +1,40 @@
+.profileMenu {
+  position: absolute;
+  width: 20em;
+  padding: 0.5em;
+  border-radius: 5px;
+  left: 0.5em;
+  background-color: rgba(color(light-2), 0.8);
+  @include blur-4;
+  &-list {
+    list-style: none;
+    li {
+      @include dflex(flex-start, flex-start);
+      gap: 0.5em;
+      padding: 0.5em 0px;
+      &:first-child {
+        padding: 1em 0.5em;
+        border-bottom: 1px solid rgba(color(dark-2), 0.2);
+        align-items: center;
+        .profileIcon {
+          opacity: 0.5;
+          width: 2.5em;
+          height: 2.5em;
+        }
+      }
+      img {
+        border-radius: 10px;
+      }
+      &:hover {
+        background-color: rgba(color(light-2), 0.5);
+      }
+      svg {
+        width: 1.7em;
+        height: 1.7em;
+      }
+    }
+    a {
+      font-size: 1.3em;
+    }
+  }
+}

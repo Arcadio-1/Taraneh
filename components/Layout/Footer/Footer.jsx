@@ -62,14 +62,14 @@ const Footer = () => {
     },
   ];
   const uploadHandler = async () => {
-    const data = await getFromJson("cityAndStates/cities.json");
+    const data = await getFromJson("products.json");
     console.log(data);
     const request = await fetch("/api/jsonUploader", {
       method: "POST",
       body: JSON.stringify({
         items: data,
-        serverName: "helper-data",
-        collectionName: "cities",
+        serverName: "products",
+        collectionName: "allProducts",
       }),
       headers: { "Content-Type": "application/json" },
     });
