@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserIcon from "../../../ui/Icons/UserIcon";
 import MenuArrowIcon from "../../../ui/Icons/MenuArrowIcon";
-import useToggleMenu from "../../../../Hook/useToggoleMenu";
+import useToggleMenu from "../../../../Hook/UseToggoleMenu";
 import ProfileMenu from "./profileMenu/ProfileMenu";
 
 const Profile = () => {
