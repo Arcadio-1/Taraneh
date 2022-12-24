@@ -26,6 +26,9 @@ const uiSlice = createSlice({
     setWindowWidth(state, action) {
       state.windowWidth = action.payload;
     },
+    setShowSideMenu(state) {
+      state.isShowMenu = true;
+    },
     toggoleIsShowMenu(state) {
       state.isShowMenu = !state.isShowMenu;
     },
