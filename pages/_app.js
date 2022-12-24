@@ -8,9 +8,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../components/ui/LoadingSpiner/loadingSpiner";
 import "../components/Products/SideMenu/multuRangeSlider/multiRangeSlider.css";
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -31,8 +31,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
-        <div id="overLay"></div>
         <Layout>
+          <div id="overLay"></div>
           {!loading && <Component {...pageProps} />}
           {loading && <LoadingSpinner text={"در حال بارگزاری"} />}
         </Layout>

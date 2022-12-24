@@ -12,7 +12,7 @@
 @import "../components/Home/TopRate/topRate";
 @import "../components/ui/sliderSection/sliderSection";
 @import "../components/ui/productCard/productCard.scss";
-@import "../components/Account/account";
+@import "../components/Auth/account";
 @import "../components/ui/FormItem/formItem";
 @import "../components/Layout/Header/components/profileMenu/profileMenu";
 @import "../components/Products/Main/main";
@@ -20,3 +20,7 @@
 @import "../components/Products/SideMenu/sideMenu";
 @import "../components//ui/ad/sAd";
 @import "../components//ui/ad/bAd";
+@import "../components/Layout/Header/components/sideMenu/sideMenu";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

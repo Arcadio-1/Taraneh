@@ -1,6 +1,7 @@
 {
   "d1": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -49,6 +50,7 @@
   },
   "d10": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -97,6 +99,7 @@
   },
   "d11": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -145,6 +148,7 @@
   },
   "d12": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -193,6 +197,7 @@
   },
   "d13": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -241,6 +246,7 @@
   },
   "d14": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -289,6 +295,7 @@
   },
   "d15": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -337,6 +344,7 @@
   },
   "d16": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -385,6 +393,7 @@
   },
   "d17": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -433,6 +442,7 @@
   },
   "d18": {
     "ageGroup": "adult",
+    "coffeeType": "arabica",
     "isAd": false,
     "brandFn": "فرمند",
     "brandEn": "Farmand",
@@ -481,6 +491,7 @@
   },
   "d19": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -529,6 +540,7 @@
   },
   "d2": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -577,6 +589,7 @@
   },
   "d20": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -625,6 +638,7 @@
   },
   "d21": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -673,6 +687,7 @@
   },
   "d22": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -721,6 +736,7 @@
   },
   "d23": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -769,6 +785,7 @@
   },
   "d24": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -817,6 +834,7 @@
   },
   "d25": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -865,6 +883,7 @@
   },
   "d26": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
     "brandEn": "MultiCafe",
@@ -913,6 +932,7 @@
   },
   "d27": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -962,6 +982,7 @@
   },
   "d28": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -1011,6 +1032,7 @@
   },
   "d29": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -1060,6 +1082,7 @@
   },
   "d3": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -1109,6 +1132,7 @@
   },
   "d30": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -1158,6 +1182,7 @@
   },
   "d31": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -1207,6 +1232,7 @@
   },
   "d32": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -1256,6 +1282,7 @@
   },
   "d33": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "مولتی کافه",
 
@@ -1305,6 +1332,7 @@
   },
   "d34": {
     "ageGroup": "adult",
+    "coffeeType": "robusta",
     "isAd": false,
     "brandFn": "دیسترو",
     "brandEn": "Diestro",
@@ -1353,6 +1381,7 @@
   },
   "d35": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1402,6 +1431,7 @@
   },
   "d36": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1451,6 +1481,7 @@
   },
   "d37": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1500,6 +1531,7 @@
   },
   "d38": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1549,6 +1581,7 @@
   },
   "d39": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1598,6 +1631,7 @@
   },
   "d4": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1612,7 +1646,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 8],
       "availableToOrder": 2,
@@ -1647,6 +1682,7 @@
   },
   "d40": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1661,7 +1697,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 2,
@@ -1696,6 +1733,7 @@
   },
   "d41": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1710,7 +1748,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 0,
@@ -1745,6 +1784,7 @@
   },
   "d42": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1759,7 +1799,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 1,
@@ -1794,6 +1835,7 @@
   },
   "d43": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دیسترو",
 
@@ -1808,7 +1850,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 4,
@@ -1843,6 +1886,7 @@
   },
   "d44": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دونیسی",
 
@@ -1857,7 +1901,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 4,
@@ -1892,6 +1937,7 @@
   },
   "d45": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دونیسی",
     "brandEn": "Donissi",
@@ -1905,7 +1951,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 0,
@@ -1940,6 +1987,7 @@
   },
   "d46": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دونیسی",
     "brandEn": "Donissi",
@@ -1953,7 +2001,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 0,
@@ -1988,6 +2037,7 @@
   },
   "d47": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دونیسی",
     "brandEn": "Donissi",
@@ -2001,7 +2051,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 10,
@@ -2036,6 +2087,7 @@
   },
   "d48": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دونیسی",
     "brandEn": "Donissi",
@@ -2049,7 +2101,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 10,
@@ -2084,6 +2137,7 @@
   },
   "d49": {
     "ageGroup": "adult",
+    "coffeeType": "mix",
     "isAd": false,
     "brandFn": "دونیسی",
     "brandEn": "Donissi",
@@ -2097,7 +2151,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 10,
@@ -2132,6 +2187,7 @@
   },
   "d5": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": false,
     "brandFn": "تلنت",
     "brandEn": "talent",
@@ -2145,7 +2201,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 0,
@@ -2180,6 +2237,7 @@
   },
   "d50": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": false,
     "brandFn": "تلنت",
     "brandEn": "talent",
@@ -2193,7 +2251,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 10,
@@ -2228,6 +2287,7 @@
   },
   "d51": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": false,
     "brandFn": "تلنت",
     "brandEn": "talent",
@@ -2241,7 +2301,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 10,
@@ -2276,6 +2337,7 @@
   },
   "d52": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": false,
     "brandFn": "تلنت",
     "brandEn": "talent",
@@ -2289,7 +2351,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 10,
@@ -2324,6 +2387,7 @@
   },
   "d53": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": false,
     "brandFn": "تلنت",
     "brandEn": "talent",
@@ -2337,7 +2401,8 @@
       "/image/products/small/s3.jpg",
       "/image/products/small/s4.jpg"
     ],
-    "category": "پودر قهوه",
+    "category": "دانه قهوه",
+
     "package": {
       "availableGrind": [1, 2, 3, 4, 5, 6, 7, 8],
       "availableToOrder": 10,
@@ -2372,6 +2437,7 @@
   },
   "d54": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "تلنت",
     "brandEn": "talent",
@@ -2420,6 +2486,7 @@
   },
   "d55": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2468,6 +2535,7 @@
   },
   "d56": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2516,6 +2584,7 @@
   },
   "d57": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2564,6 +2633,7 @@
   },
   "d58": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2612,6 +2682,7 @@
   },
   "d59": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2660,6 +2731,7 @@
   },
   "d6": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2708,6 +2780,7 @@
   },
   "d60": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2756,6 +2829,7 @@
   },
   "d7": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2804,6 +2878,7 @@
   },
   "d8": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",
@@ -2852,6 +2927,7 @@
   },
   "d9": {
     "ageGroup": "adult",
+    "coffeeType": "none",
     "isAd": true,
     "brandFn": "بن مانو",
     "brandEn": "bonmano",

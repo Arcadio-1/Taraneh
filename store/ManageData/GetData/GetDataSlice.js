@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
+  categoryNavLinks: [],
 };
 
 const getDataSlice = createSlice({
@@ -10,6 +11,9 @@ const getDataSlice = createSlice({
     getProducts(state, action) {
       state.products = action.payload;
     },
+    // getcategoryNavLinks(state, action) {
+    //   state.categoryNavLinks = action.payload;
+    // },
   },
 });
 

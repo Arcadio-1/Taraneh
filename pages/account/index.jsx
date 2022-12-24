@@ -1,7 +1,7 @@
 import React from "react";
 import { getSession } from "next-auth/react";
 
-import Account from "../../components/Account/Account";
+import Account from "../../components/Auth/Account";
 const AccountPage = () => {
   return (
     <div>

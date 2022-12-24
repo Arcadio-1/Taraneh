@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  windowWidth: 0,
   isDark: false,
   isShowMenu: false,
   isShowNotif: false,
   getAllproductsStatus: null,
+  getUiStatus: null,
   userActionNotif: {
     status: "null",
     title: "null",
@@ -21,6 +23,9 @@ const uiSlice = createSlice({
   name: "uislice",
   initialState,
   reducers: {
+    setWindowWidth(state, action) {
+      state.windowWidth = action.payload;
+    },
     toggoleIsShowMenu(state) {
       state.isShowMenu = !state.isShowMenu;
     },
@@ -31,11 +36,19 @@ const uiSlice = createSlice({
         message: action.payload.message,
       };
     },
+    setGetUiStatus(state, action) {
+      state.getUiStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
     showNotif(state) {
       state.isShowNotif = true;
     },
     closeModal(state) {
       state.isShowNotif = false;
+      state.isShowMenu = false;
     },
     setNotif(state, action) {
       state.userActionNotif = {

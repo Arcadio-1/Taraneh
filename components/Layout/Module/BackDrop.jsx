@@ -5,7 +5,7 @@ import { uiAction } from "../../../store/ui/uiSlice";
 const BackDrop = () => {
   const CloseBackDropDispatch = useDispatch();
   const closeModalHandler = () => {
-    CloseBackDropDispatch(uiAction.closeBackDrop());
+    CloseBackDropDispatch(uiAction.closeModal());
   };
   return <div onClick={closeModalHandler} className="backDrop"></div>;
 };

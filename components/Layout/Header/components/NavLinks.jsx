@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import BlogIcon from "../../../ui/Icons/BlogIcon";
+import BlogIcon from "../../../ui/Icons/NavIcons/BlogIcon";
 import CoffeeMachine from "../../../ui/Icons/CoffeeMachine";
 const NavLinks = () => {
   return (
