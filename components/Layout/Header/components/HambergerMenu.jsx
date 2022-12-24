@@ -9,6 +9,7 @@ const HambergerMenu = () => {
   const dispatchShowSideMenu = useDispatch();
   // const { menuRef, isShowMenu, showMenuHandler } = useToggleMenu();
   const showSideMenuHandler = () => {
+    console.log("click on hamberger Menu");
     dispatchShowSideMenu(uiAction.setShowSideMenu());
   };
   return (
