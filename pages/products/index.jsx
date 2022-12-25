@@ -13,7 +13,7 @@ import Categories from "../../components/Products/SideMenu/Categories";
 import SideAd from "../../components/Products/SideMenu/SideAd";
 import { curentPageProducts } from "../api/helper";
 import LoadingSpiner from "../../components/ui/LoadingSpiner/loadingSpiner";
-import FilterMenu from "../../components/Products/moduleMenu/filterMenu";
+import FilterMenu from "../../components/Products/ModuleMenu/filterMenu";
 import { useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui/uiSlice";
 
