@@ -10,12 +10,10 @@
   &:hover {
     box-shadow: 0px 0px 8px rgba(color(dark-2), 0.3);
     transform: scale(1.01);
-    .productCard-thumbnail {
-      &-icons {
-        transition: all 0.2s ease-in-out;
-        transform: translateX(1px);
-        opacity: 1;
-      }
+    .productCard-thumbnail-icons {
+      transition: all 0.2s ease-in-out;
+      transform: translateX(-25px);
+      opacity: 1;
     }
   }
   &-thumbnail {
@@ -55,7 +53,9 @@
       @include dflex;
       flex-direction: column;
       gap: 0.5em;
-      transform: translateX(40px);
+      top: 0;
+      right: -25px;
+      // transform: translateX(50px);
       opacity: 0;
       z-index: 2;
       &-expans {
