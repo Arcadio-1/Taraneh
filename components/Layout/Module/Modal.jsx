@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../../store/ui/uiSlice";
 import BackDrop from "./BackDrop";
 const Modal = (props) => {
-  const isShowSideMenu = useSelector((state) => state.ui.isShowMenu);
+  const isShowBackDrop = useSelector((state) => state.ui.isShowBackDrop);
   const [mounted, setMounted] = useState(false);
   let overLay;
   const dispatch = useDispatch();
@@ -23,16 +23,19 @@ const Modal = (props) => {
     setMounted(true);
     return () => setMounted(false);
   }, []);
+
   if (mounted) {
     overLay = document.getElementById("overLay");
   }
+
   if (windowWidth > 768) {
     dispatch(uiAction.closeModal());
   }
+
   return mounted ? (
     <Fragment>
       {ReactDOM.createPortal(props.children, overLay)}
-      {isShowSideMenu && ReactDOM.createPortal(<BackDrop />, overLay)}
+      {isShowBackDrop && ReactDOM.createPortal(<BackDrop />, overLay)}
     </Fragment>
   ) : null;
 };

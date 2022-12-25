@@ -6,6 +6,8 @@ import MenuLabel from "./ListingManageComponents/MenuLabel";
 import ListingIcon from "./ListingManageComponents/ListingIcon";
 import FilterIcon from "../../ui/Icons/FilterIcon";
 import MenuArrowIcon from "../../ui/Icons/MenuArrowIcon";
+import { useDispatch } from "react-redux";
+import { uiAction } from "../../../store/ui/uiSlice";
 const ListingManage = () => {
   const sortingListItems = [
     { id: 1, title: "پرفروش ترین", link: "Max-sell" },
@@ -23,6 +25,11 @@ const ListingManage = () => {
     { id: 5, title: "48", link: "48" },
     { id: 6, title: "64", link: "64" },
   ];
+  const dispatch = useDispatch();
+  const showFiltersMenuHandler = () => {
+    dispatch(uiAction.setShowFilterMenu());
+  };
+
   return (
     <div className="listingManage">
       <div className="listingManage-forms">
@@ -32,7 +39,7 @@ const ListingManage = () => {
           </MenuLabel>
         </div>
 
-        <div className="listingManage-forms-itemContainer hideInMD">
+        <div className="listingManage-forms-itemContainer">
           <MenuLabel
             title=" تعداد محصول هر صفحه"
             type="perPage"
@@ -41,7 +48,10 @@ const ListingManage = () => {
             <PerPageIcon />
           </MenuLabel>
         </div>
-        <div className="listingManage-forms-item showInMD">
+        <div
+          onClick={showFiltersMenuHandler}
+          className="listingManage-forms-item showInMD"
+        >
           <FilterIcon />
           <div className="listingManage-forms-item-btn">
             <span className="listingManage-forms-item-selectedOption">
@@ -54,7 +64,7 @@ const ListingManage = () => {
         </div>
       </div>
 
-      <div className="listingManage-iconsContiner">
+      <div className="listingManage-iconsContiner hideInSM">
         <ListingIcon />
       </div>
     </div>

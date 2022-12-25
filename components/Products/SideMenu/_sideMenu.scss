@@ -1,6 +1,8 @@
 .checkBoxList {
   width: 100%;
+  border-bottom: 1px solid rgba(color(dark-4), 0.2);
   &-title {
+    font-size: 1.3em;
     margin-bottom: 0.4em;
   }
   &-list {
@@ -11,8 +13,9 @@
     @include dflex(flex-start);
     margin-bottom: 0.5em;
     gap: 1em;
-    border-bottom: 1px solid rgba(color(dark-4), 0.1);
     width: 100%;
+    margin-bottom: 1em;
+    padding-right: 1.2em;
     &-label {
       font-size: 1.2em;
       @include dflex(space-between);
@@ -27,8 +30,11 @@
 }
 .filterByPrice {
   width: 100%;
-  margin-bottom: 12em;
+  padding-bottom: 12em;
+  border-bottom: 1px solid rgba(color(dark-4), 0.2);
   &-title {
+    font-size: 1.3em;
+
     margin-bottom: 1em;
   }
   .rangeSlider {

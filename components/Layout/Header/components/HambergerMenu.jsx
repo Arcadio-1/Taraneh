@@ -7,11 +7,11 @@ import SideMenu from "./sideMenu/SideMenu";
 const HambergerMenu = () => {
   const isShowSideMenu = useSelector((state) => state.ui.isShowMenu);
   const dispatchShowSideMenu = useDispatch();
-  // const { menuRef, isShowMenu, showMenuHandler } = useToggleMenu();
+
   const showSideMenuHandler = () => {
-    console.log("click on hamberger Menu");
     dispatchShowSideMenu(uiAction.setShowSideMenu());
   };
+
   return (
     <div className="header-menu">
       <div onClick={showSideMenuHandler}>

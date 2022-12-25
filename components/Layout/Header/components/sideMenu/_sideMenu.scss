@@ -2,7 +2,7 @@
   //   display: none;
   position: fixed;
   top: 0;
-  right: -40rem;
+  right: -450px;
   width: 60%;
   height: 100%;
   max-width: 300px;
@@ -56,6 +56,10 @@
       overflow: hidden;
       transition: all 0.2s ease-in-out;
     }
+    .childContainer {
+      background-color: rgba(color(g3-2), 0.05);
+      // border: 2px solid red;
+    }
     &-wrapper {
       border-bottom: 2px solid rgba(color(dark-2), 0.5);
       @include dflex(flex-start);
@@ -66,10 +70,11 @@
       padding: 0.2em;
       // border: 2px solid red;
       .headList {
-        background-color: rgba(color(light-2), 0.2);
+        background-color: rgba(color(g3-2), 0.1);
         margin-bottom: 1.5em;
         border-radius: 5px;
-        a {
+        a,
+        &-a {
           padding: 0.2em 1em;
           font-size: 1.2em;
           @include dflex(space-between, space-between);
@@ -84,26 +89,22 @@
         }
       }
     }
+
     .childItem {
       margin-bottom: 0.5em;
       a {
-        font-size: 1.1em;
+        display: block;
+        font-size: 1.2em;
         width: 100%;
-        padding-right: 1em;
+        padding: 0.3em 0.5em;
       }
       &:hover {
-        background-color: rgba(color(light-1), 0.2);
+        background-color: rgba(color(light-1), 0.3);
       }
     }
     &-item {
       font-size: 1.1em;
       cursor: pointer;
-      a {
-        // border: 2px solid red;
-      }
-      // &:hover {
-      //   background-color: red;
-      // }
     }
   }
   &-list {
@@ -111,13 +112,18 @@
     list-style: none;
   }
   &-item {
+    // @include dflex;
     font-size: 1.3em;
     border-bottom: 2px solid rgba(color(dark-2), 0.1);
-    margin-top: 0.5em;
-    padding: 1em 0.2em;
     cursor: pointer;
     &:hover {
       background-color: rgba(color(g3-2), 0.1);
+    }
+    a {
+      width: 100%;
+      padding: 1em 0.2em;
+      display: block;
+      // border: 1px solid red;
     }
     svg {
       width: 3rem;

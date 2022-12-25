@@ -3,7 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   windowWidth: 0,
   isDark: false,
+  isShowBackDrop: false,
   isShowMenu: false,
+  isShowFilterMenu: false,
+  isShowSortMenu: false,
+  isShowPerPageMenu: false,
   isShowNotif: false,
   getAllproductsStatus: null,
   getUiStatus: null,
@@ -28,9 +32,11 @@ const uiSlice = createSlice({
     },
     setShowSideMenu(state) {
       state.isShowMenu = true;
+      state.isShowBackDrop = true;
     },
-    toggoleIsShowMenu(state) {
-      state.isShowMenu = !state.isShowMenu;
+    setShowFilterMenu(state) {
+      state.isShowFilterMenu = true;
+      state.isShowBackDrop = true;
     },
     setGetAllProductsStatus(state, action) {
       state.getAllproductsStatus = {
@@ -50,8 +56,12 @@ const uiSlice = createSlice({
       state.isShowNotif = true;
     },
     closeModal(state) {
+      state.isShowBackDrop = false;
       state.isShowNotif = false;
       state.isShowMenu = false;
+      state.isShowFilterMenu = false;
+      state.isShowSortMenu = false;
+      state.isShowPerPageMenu = false;
     },
     setNotif(state, action) {
       state.userActionNotif = {

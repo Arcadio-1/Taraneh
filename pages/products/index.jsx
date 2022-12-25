@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
 
 import ShopHero from "../../components/Products/Main/ShopHero";
@@ -13,6 +13,9 @@ import Categories from "../../components/Products/SideMenu/Categories";
 import SideAd from "../../components/Products/SideMenu/SideAd";
 import { curentPageProducts } from "../api/helper";
 import LoadingSpiner from "../../components/ui/LoadingSpiner/loadingSpiner";
+import FilterMenu from "../../components/Products/moduleMenu/filterMenu";
+import { useDispatch } from "react-redux";
+import { uiAction } from "../../store/ui/uiSlice";
 
 const index = (props) => {
   const address = [
@@ -35,6 +38,7 @@ const index = (props) => {
           <Status />
           <Brands products={props.allProducts} />
           <SideAd products={props.allProducts} />
+          <FilterMenu products={props.allProducts} />
         </aside>
         <main className="productsPage-main">
           <ShopHero />

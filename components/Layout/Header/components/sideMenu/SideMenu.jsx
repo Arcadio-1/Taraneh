@@ -45,7 +45,7 @@ const SideMenu = (props) => {
     <Modal>
       <div
         className="sideMenu"
-        style={{ right: `${props.isShowMenu ? "0" : "-40rem"}` }}
+        style={{ right: `${props.isShowMenu ? "0" : "-450px"}` }}
       >
         <div ref={menuRef} className="sideMenu-container">
           <div className="sideMenu-header">
@@ -96,22 +96,22 @@ const SideMenu = (props) => {
               </div>
             </div>
             <ul className="sideMenu-list">
-              <li className="sideMenu-item">
+              <li onClick={closeSideMenuHandler} className="sideMenu-item">
                 <Link href={"/"}>
                   <span className="sideMenu-title">صفحه نخست</span>
                 </Link>
               </li>
-              <li className="sideMenu-item">
+              <li onClick={closeSideMenuHandler} className="sideMenu-item">
                 <Link href={"/products"}>
                   <span className="sideMenu-title">محصولات</span>
                 </Link>
               </li>
-              <li className="sideMenu-item">
+              <li onClick={closeSideMenuHandler} className="sideMenu-item">
                 <Link href={"/blog"}>
                   <span className="sideMenu-title">اخبار و آموزش</span>
                 </Link>
               </li>
-              <li className="sideMenu-item">
+              <li onClick={closeSideMenuHandler} className="sideMenu-item">
                 <Link href={"/repair"}>
                   <span className="sideMenu-title">تعمیر ابزار</span>
                 </Link>
