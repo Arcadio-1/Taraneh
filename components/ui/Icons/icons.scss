@@ -31,6 +31,7 @@
   width: 1.5rem;
   height: 1.5rem;
   path {
+    stroke: color(dark-1);
     fill: color(dark-1);
   }
 }
@@ -434,4 +435,27 @@
   path {
     fill: #2fa6d1;
   }
+}
+.compareIcon {
+  width: 2rem;
+  height: 2rem;
+}
+.tickIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  path {
+    fill: green;
+  }
+}
+.deliveryIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.moneyIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.guaranteeIcon {
+  width: 2.5rem;
+  height: 2.5rem;
 }

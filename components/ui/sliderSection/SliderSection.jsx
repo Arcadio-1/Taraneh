@@ -19,7 +19,7 @@ const SliderSection = (props) => {
   return (
     <section className="sliderSection">
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+        modules={[Navigation, Pagination, Scrollbar, Autoplay]}
         spaceBetween={10}
         slidesPerView={"auto"}
         className="sliderSection-swiper"

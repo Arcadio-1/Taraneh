@@ -11,6 +11,28 @@ export const getClient = async (databaseName) => {
   }
 };
 
+export const fetchProducts = async () => {
+  try {
+    const client = await getClient("products");
+    if (!client) {
+      throw new Error("خطا در اتصال به سرور");
+    }
+    const db = client.db();
+    const allProducts = await db.collection("allProducts").find().toArray();
+    client.close();
+    if (!allProducts) {
+      throw new Error("خطا در اتصال");
+    }
+    return {
+      status: "success",
+      message: "successfuly",
+      allProducts: allProducts,
+    };
+  } catch (error) {
+    return { status: "error", message: error, allProducts: [] };
+  }
+};
+
 const filtring = (posts, filterType) => {
   if (!filterType || filterType === "all") {
     return posts;
@@ -89,16 +111,11 @@ const PostForPage = (posts, pageNum) => {
 export const curentPageProducts = async (querys) => {
   try {
     const { sort, perPage, page, filterType } = querys;
-
-    const client = await getClient("products");
-    if (!client) {
-      throw new Error("خطا در اتصال به سرور");
+    const productsReq = await fetchProducts();
+    if (!productsReq || productsReq.status === "error") {
+      throw new Error(productsReq.message || "خطا در اتصال به سرور");
     }
-    const db = client.db();
-    const allProducts = await db.collection("allProducts").find().toArray();
-    if (!allProducts) {
-      throw new Error("خطا در اتصال");
-    }
+    const { allProducts } = productsReq;
     const filterdPosts = filtring(allProducts, filterType);
     const sortedPosts = sorting(filterdPosts, sort);
     const { pagenatedPosts, numberOfPages } = pagenation(sortedPosts, perPage);
@@ -120,3 +137,49 @@ export const curentPageProducts = async (querys) => {
     return { status: error.message };
   }
 };
+
+export const getPaths = async () => {
+  try {
+    const getProductsReq = await fetchProducts();
+    if (!getProductsReq || getProductsReq.status === "error") {
+      throw new Error(getProductsReq.message || "خطا در اتصال به سرور");
+    }
+    const { allProducts } = getProductsReq;
+    const paths = allProducts.map((item) => {
+      return { id: item.id };
+    });
+    // console.log(paths);
+    return JSON.stringify({
+      status: "success",
+      message: "successfuly",
+      allPath: paths,
+    });
+  } catch (error) {
+    return { status: "error", message: error, paths };
+  }
+};
+
+export async function getSingleProduct(id) {
+  try {
+    const getProductReq = await fetchProducts();
+    if (!getProductReq || getProductReq.status === "error") {
+      throw new Error(getProductReq.message || "خطا در اتصال");
+    }
+    const product = getProductReq.allProducts.find((item) => item.id === id);
+    // console.log(product);
+    if (!product) {
+      return {
+        status: "notFuond",
+        message: "product is not found",
+        product: {},
+      };
+    }
+    return JSON.stringify({
+      status: "success",
+      message: "successfuly",
+      product: product,
+    });
+  } catch (error) {
+    return JSON.stringify({ status: "error", message: error, product: {} });
+  }
+}

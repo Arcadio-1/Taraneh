@@ -1,0 +1,421 @@
+.productDetails {
+  margin-top: 2em;
+  padding: 2em;
+  &-breadcrumbs {
+    background-color: color(light-1);
+    margin: 0;
+    padding: 1em;
+    .breadcrumbs-list {
+      margin: 0;
+    }
+  }
+  &-card {
+    padding: 2em;
+    width: 100%;
+    background-color: color(light-1);
+  }
+  &-header {
+    &-title {
+      h1 {
+        font-family: iranyekan;
+        font-size: 3em;
+      }
+    }
+    &-meta {
+      font-size: 1.2em;
+      padding: 0.3em 1em;
+      @include dflex(flex-start);
+      gap: 0.5em;
+      > * {
+        label {
+          padding: 0.5em;
+        }
+        &::before {
+          content: "|";
+          font-size: 1.2em;
+          color: rgba(color(dark-2), 0.5);
+        }
+        &:first-child::before {
+          content: "";
+        }
+      }
+      &-brand {
+        label {
+          color: color(dark-4);
+        }
+        a {
+        }
+      }
+      &-rate {
+        @include dflex;
+        gap: 0.5em;
+        &-stars {
+          @include dflex;
+          svg {
+          }
+        }
+        &-details {
+          span {
+            font-family: iransansnum;
+          }
+          label {
+            color: color(dark-4);
+          }
+        }
+      }
+      &-code {
+        @include dflex;
+        label {
+          color: color(dark-4);
+        }
+        span {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+  &-body {
+    // border: 2px solid orange;
+    @include dflex(flex-start, flex-start);
+    gap: 1em;
+    @include responsive(md) {
+      flex-direction: column;
+      @include dflex;
+      width: 100%;
+    }
+    .productDetails-image {
+      position: relative;
+      width: 33%;
+      @include dflex(flex-start);
+      flex-direction: column;
+      // border: 2px solid red;
+      @include responsive(md) {
+        width: 100%;
+      }
+      &-tags {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        &-offPersent {
+          font-family: iransansnum;
+          font-size: 1.4em;
+          border-radius: 3px;
+          @include dflex;
+          color: color(light-2);
+          background-color: color(g3-2);
+        }
+        &-sells {
+          border-radius: 3px;
+          margin-top: 0.5em;
+          color: color(light-2);
+          padding: 0.2em 0.5em;
+          background-color: color(dark-5);
+        }
+      }
+      &-mainImage {
+        max-width: 40rem;
+        .swiper {
+          &-slide {
+            @include dflex;
+          }
+        }
+        img {
+        }
+      }
+      &-subImage {
+        margin-top: 1em;
+        .showMore {
+          li {
+            position: relative;
+            &:last-child {
+              &::before {
+                content: "...";
+                font-size: 4em;
+                position: absolute;
+                text-align: center;
+                @include blur-3;
+                top: 0px;
+                right: 0px;
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+        &-list {
+          @include dflex;
+          flex-wrap: nowrap;
+          gap: 1em;
+        }
+        &-item {
+          border: 2px solid rgba(color(dark-2), 0.1);
+          min-height: 100%;
+          flex-shrink: 1;
+          flex-grow: 1;
+          flex-basis: 1;
+          height: 7rem;
+          width: 7rem;
+          border-radius: 3px;
+          @include dflex;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .productDetails-details {
+      width: 67%;
+      @include dflex(space-between, flex-start);
+      padding: 1em;
+      // border: 2px solid green;
+      @include responsive(lg) {
+        flex-direction: column;
+      }
+      @include responsive(md) {
+        @include dflex;
+        width: 100%;
+      }
+    }
+    .productDetails-content {
+      // border: 2px solid red;
+      width: 60%;
+      @include responsive(lg) {
+        width: 100%;
+      }
+      &-price {
+        &-container {
+          @include dflex(flex-start);
+          gap: 1em;
+          font-family: iransansnum;
+          font-size: 1.5em;
+        }
+        &-off {
+          opacity: 0.6;
+          color: color(dark-4);
+          text-decoration: line-through;
+          svg {
+            path {
+              fill: color(dark-4);
+            }
+          }
+        }
+        &-main {
+          color: red;
+          font-size: 1.5em;
+        }
+      }
+      &-status {
+        display: flex;
+        &-item {
+          padding: 0.3em 0.5em;
+          border-radius: 3px;
+          color: color(light-2);
+        }
+        .available {
+          background-color: color(g1-2);
+        }
+        .notAvailable {
+          background-color: color(error);
+        }
+      }
+      &-shortDescription {
+        margin-top: 2em;
+        &-text {
+          color: color(dark-4);
+        }
+      }
+      &-ordering {
+        margin-top: 3em;
+        &-form {
+          @include dflex(flex-start);
+          gap: 2em;
+        }
+        &-amount {
+          @include dflex(flex-start);
+          gap: 1.5em;
+          &-value {
+            font-size: 1.5em;
+          }
+          &-btn {
+            background-color: rgba(color(dark-2), 0.1);
+            padding: 0.8em;
+            border-radius: 50%;
+            svg {
+              width: 1.5em;
+              height: 1.5em;
+              opacity: 0.7;
+            }
+          }
+        }
+        &-submitBtn {
+          background-color: color(g3-5);
+          color: color(light-2);
+          padding: 0.5em 3em;
+          border-radius: 10px;
+        }
+      }
+      &-actions {
+        margin-top: 2em;
+        @include dflex(flex-start);
+        gap: 1.5em;
+        &-btn {
+          cursor: pointer;
+          padding: 0.3em 1em;
+          border-radius: 10px;
+          font-size: 1.2em;
+          border: 2px solid rgba(color(dark-2), 0.2);
+          @include dflex(flex-start);
+          color: color(dark-4);
+          gap: 0.3em;
+          &:last-child {
+            border: transparent;
+          }
+          svg {
+            path {
+              fill: color(dark-4);
+            }
+          }
+        }
+      }
+      &-checkList {
+        // border: 2px solid red;
+        border-bottom: 2px solid rgba(color(dark-2), 0.1);
+        margin-top: 2em;
+        &-list {
+        }
+        &-item {
+          @include dflex(flex-start);
+          gap: 0.3em;
+          margin-bottom: 0.3em;
+          svg {
+          }
+          label {
+          }
+          span {
+          }
+        }
+      }
+      &-meta {
+        margin-top: 1em;
+        &-list {
+        }
+        &-item {
+          @include dflex(flex-start);
+        }
+        &-tags {
+          @include dflex;
+          &-list {
+            @include dflex;
+          }
+          &-item {
+            a {
+              &::after {
+                content: " , ";
+              }
+            }
+            &:last-child {
+              a::after {
+                content: "";
+              }
+            }
+            &-space {
+            }
+          }
+        }
+      }
+      &-sharing {
+        margin-top: 2em;
+        @include dflex(flex-start, flex-start);
+        flex-direction: column;
+        gap: 0.5em;
+        &-label {
+          @include dflex;
+          svg {
+            width: 1.7em;
+            height: 1.7em;
+            path {
+              fill: color(g3-5);
+            }
+            polyline {
+              fill: color(g3-5);
+            }
+          }
+        }
+        &-title {
+        }
+        &-list {
+          @include dflex;
+          gap: 0.5em;
+        }
+        &-item {
+          a {
+            svg {
+              opacity: 0.6;
+              width: 2.5em;
+              height: 2.5em;
+              path {
+                fill: color(dark-4);
+              }
+              rect {
+                fill: color(dark-4);
+              }
+            }
+            &:hover {
+              svg {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+    .productDetails-message {
+      // border: 2px solid purple;
+      @include dflex(flex-end);
+      width: 40%;
+      @include responsive(lg) {
+        justify-content: flex-start;
+        margin-top: 1em;
+        width: 100%;
+      }
+      &-card {
+        padding: 1.5em;
+        background-color: color(light-2);
+        border-radius: 5px;
+        @include responsive(md) {
+          // @include dflex;
+          width: 100%;
+        }
+      }
+      &-list {
+        @include dflex(flex-start, flex-start);
+        flex-direction: column;
+        gap: 1em;
+      }
+      &-item {
+        @include dflex;
+        flex-wrap: nowrap;
+        gap: 0.5em;
+        svg {
+          fill: color(dark-4);
+          polyline {
+            stroke: color(dark-4);
+          }
+          circle {
+            stroke: color(dark-4);
+          }
+          path {
+            stroke: color(dark-4);
+          }
+          line {
+            stroke: color(dark-4);
+          }
+        }
+        span {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

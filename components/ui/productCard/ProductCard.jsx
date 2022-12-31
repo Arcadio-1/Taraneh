@@ -42,7 +42,7 @@ const ProductCard = (props) => {
           </div>
         </div>
         <div className="productCard-thumbnail-image">
-          <Link href={`products/${id}`}>
+          <Link href={`product/${id}`}>
             <Image src={imageLink} alt={title} width={400} height={400} />
           </Link>
         </div>

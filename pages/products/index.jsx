@@ -18,18 +18,13 @@ import { useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui/uiSlice";
 
 const index = (props) => {
-  const address = [
-    { id: 1, title: "صفحه نخست", link: "/" },
-    { id: 2, title: "محصولات", link: "/products" },
-  ];
-
   if (props.allProducts.length === 0) {
     <LoadingSpiner text={"محصولی یافت نشد"} />;
   }
   return (
     <div className="productsPage">
       <section className="productsPage-breadcrumbs">
-        <Breadcrumbs links={address} />
+        <Breadcrumbs />
       </section>
       <section className="productsPage-body">
         <aside className="productsPage-aside hideInMD">

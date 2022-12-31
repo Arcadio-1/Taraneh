@@ -21,7 +21,7 @@ const SideMenu = (props) => {
   const { isShowMenu, menuRef, showMenuHandler } = useToggleMenu();
   useEffect(() => {
     const getNavLinks = async () => {
-      const categoryNavLinksJson = await fetch("api/helperAPI/getNavLinks", {
+      const categoryNavLinksJson = await fetch("/api/helperAPI/getNavLinks", {
         method: "GET",
       });
       const result = await categoryNavLinksJson.json();
