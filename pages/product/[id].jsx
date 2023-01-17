@@ -17,14 +17,24 @@ export async function getStaticProps(context) {
   console.log(comments);
   if (product.status === "error") {
     return {
-      props: { status: product.status, message: product.message, product: {} },
-      revalidate: 600,
+      props: {
+        status: product.status,
+        message: product.message,
+        product: {},
+        comments: [],
+      },
+      revalidate: 6000,
     };
   }
   if (product.status === "notFound") {
     return {
-      props: { status: product.status, message: product.message, product: {} },
-      revalidate: 600,
+      props: {
+        status: product.status,
+        message: product.message,
+        product: {},
+        comments: [],
+      },
+      revalidate: 6000,
     };
   }
   if (product.status === "success" && comments.status === "notfound") {
@@ -33,7 +43,7 @@ export async function getStaticProps(context) {
         status: product.status,
         message: product.message,
         product: product.product,
-        comments: null,
+        comments: [],
       },
       revalidate: 6000,
     };
@@ -44,7 +54,7 @@ export async function getStaticProps(context) {
         status: product.status,
         message: product.message,
         product: product.product,
-        comments: comments.comments[id],
+        comments: comments.commentsList,
       },
       revalidate: 6000,
     };

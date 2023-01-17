@@ -192,18 +192,23 @@ const fetchComments = async (id) => {
     }
     const db = client.db();
     const comments = await db.collection("comments").findOne({ id: id });
+    console.log(comments);
     if (!comments) {
-      return { status: "notfound", message: "کامنت یافت نشد", comments: null };
+      return {
+        status: "notfound",
+        message: "کامنت یافت نشد",
+        comments: null,
+      };
     }
-    // console.log(comments);
-    if (!comments) {
-      return { status: "success", message: "کامنتی ندارد", comments: null };
-    }
-    return { status: "success", message: "کامنت یافت شد", comments: comments };
+    return {
+      status: "success",
+      message: "کامنت یافت شد",
+      comments: comments,
+    };
   } catch (error) {
     return {
       status: "error",
-      message: error || "خطا در دریافت اطلاعات",
+      message: "خطا در دریافت اطلاعات",
       comments: null,
     };
   }
@@ -216,5 +221,7 @@ export const getComments = async (id) => {
     status: comments.status,
     message: comments.message,
     comments: comments.comments,
+    commentsList: comments.comments[id],
+    // commentsList: comments.commentsList,
   });
 };

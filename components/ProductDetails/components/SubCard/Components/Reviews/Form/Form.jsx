@@ -81,7 +81,7 @@ const Form = () => {
         >
           <UserIcon />
         </FormItem>
-        <di>
+        <div>
           <FormItem
             inputCls={"bg-gray-100  h-12"}
             onBlur={emailBlurHandler}
@@ -97,7 +97,7 @@ const Form = () => {
             <MailIcon />
           </FormItem>
           <p className="text-gray-500">ایمیل شما نمایش داده نمیشود</p>
-        </di>
+        </div>
 
         <div>
           <input type="checkbox" />
