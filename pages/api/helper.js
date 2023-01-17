@@ -183,3 +183,35 @@ export async function getSingleProduct(id) {
     return JSON.stringify({ status: "error", message: error, product: {} });
   }
 }
+
+const fetchComments = async (id) => {
+  try {
+    const client = await getClient("products");
+    if (!client) {
+      throw new Error(client.error || "عدم دسترسی به سرور");
+    }
+    const db = client.db();
+    const comments = await db.collection("comments").findOne({ id: id });
+    if (!comments) {
+      return { status: "notfound", message: "کامنت یافت نشد", comments: null };
+    }
+    // console.log(comments);
+    return { status: "success", message: "کامنت یافت شد", comments: comments };
+  } catch (error) {
+    return {
+      status: "error",
+      message: error || "خطا در دریافت اطلاعات",
+      comments: null,
+    };
+  }
+};
+
+export const getComments = async (id) => {
+  const comments = await fetchComments(id);
+  console.log(comments);
+  return JSON.stringify({
+    status: comments.status,
+    message: comments.message,
+    comments: comments.comments,
+  });
+};

@@ -1,27 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumbs from "../ui/Breadcrumbs/Breadcrumbs";
-import TomanIcon from "../ui/Icons/tomanIcon";
-import PlusIcon from "../ui/Icons/PlusIcon";
-import Minus from "../ui/Icons/Minus";
-import LikeIcon from "../ui/Icons/LikeIcon";
-import CompareIcon from "../ui/Icons/CompareIcon";
-import TickIcon from "../ui/Icons/TickIcon";
-import ShareIcon from "../ui/Icons/ShareIcon";
-import FacebookIcon from "../ui/Icons/socialMediaIcons/FacebookIcon";
-import InstagramIcon from "../ui/Icons/socialMediaIcons/InstagramIcon";
-import LinkedInIcon from "../ui/Icons/socialMediaIcons/LinkedInIcon";
-import TelegramIcon from "../ui/Icons/socialMediaIcons/TelegramIcon";
-import WhatsappIcon from "../ui/Icons/socialMediaIcons/WhatsappIcon";
-import TwitterIcon from "../ui/Icons/socialMediaIcons/TwitterIcon";
-import DeliveryIcon from "../ui/Icons/DeliveryIcon";
-import MoneyIcon from "../ui/Icons/footerIcons/MoneyIcon";
-import GuaranteeIcon from "../ui/Icons/GuaranteeIcon";
 import Header from "./components/Header/Header";
 import Body from "./components/Body/Body";
+import SubCard from "./components/SubCard/SubCard";
 const ProductDetails = (props) => {
+  const { comments, product } = props;
+
   const {
+    packaging,
     category,
     categoryAddress,
     title,
@@ -40,9 +26,10 @@ const ProductDetails = (props) => {
     coffeeType,
     taste,
     tags,
-  } = props.product;
-  console.log(statistics);
+  } = product;
+  // console.log(packaging.value);
   ///////////breadcrumbs
+
   const address = [
     { id: 3, title: category, link: `/pruducts/${categoryAddress}` },
     { id: 4, title: title, link: `/product/${id}/${title}` },
@@ -55,7 +42,7 @@ const ProductDetails = (props) => {
       <div className="productDetails-breadcrumbs">
         <Breadcrumbs links={address} />
       </div>
-      <div className="productDetails-card">
+      <div className="productDetails-mainCard">
         <Header
           brandEn={brandEn}
           brandFn={brandFn}
@@ -80,6 +67,7 @@ const ProductDetails = (props) => {
           category={category}
         />
       </div>
+      <SubCard product={product} comments={comments} />
     </div>
   );
 };

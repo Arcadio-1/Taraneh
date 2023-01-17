@@ -18,7 +18,9 @@
   font-family: iranyekan-bold;
   src: url(./fonts/iranyekan/IRANYekanWeb-Bold.ttf);
 }
-* {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

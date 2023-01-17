@@ -344,196 +344,233 @@ const SignupForm = (props) => {
         {/* <h1 className="account-signup-title">فرم ثبت نام</h1> */}
         <form className="Form account-signup-form">
           <div className="account-signup-form-line">
-            <FormItem
-              onBlur={nameBlurHandler}
-              onChange={nameChangeHandler}
-              value={nameValue}
-              isValid={isNameValid}
-              error={nameError}
-              errorMsg={"نام خود را به زبان فارسی وارد کنید"}
-              label="نام"
-              htmlId="name"
-              inputType="text"
-            >
-              <UserIcon />
-            </FormItem>
-            <FormItem
-              onBlur={familyBlurHandler}
-              onChange={familyChangeHandler}
-              value={familyValue}
-              isValid={isFamilyValid}
-              error={familyError}
-              errorMsg={"نام خانوادگی خود را به زبان فارسی وارد کنید"}
-              label="نام خانوادگی"
-              htmlId="family"
-              inputType="text"
-            >
-              <UserIcon />
-            </FormItem>
-          </div>
-          <FormItem
-            onBlur={mobileBlurHandler}
-            onChange={mobileChangeHandler}
-            value={mobileValue}
-            isValid={isMobileValid}
-            error={mobileError}
-            label="شماره موبایل"
-            htmlId="mobile"
-            inputType="text"
-            errorMsg={"شماره موبایل وارد شده صحیح نمیباشد"}
-          >
-            <MobileIcon />
-          </FormItem>
-          <FormItem
-            onBlur={emailBlurHandler}
-            onChange={emailChangeHandler}
-            value={emailValue}
-            isValid={isEmailValid}
-            error={emailError}
-            label="ایمیل"
-            htmlId="email"
-            inputType="email"
-            errorMsg={" ایمیل وارد شده صحیح نمیباشد"}
-          >
-            <MailIcon />
-          </FormItem>
-          <FormItem
-            onBlur={passwordBlurHandler}
-            onChange={passwordChangeHandler}
-            value={passwordValue}
-            isValid={isPasswordValid}
-            error={passwordError}
-            htmlId="password"
-            errorMsg={"کلمه عبور باید شش رقم شامل حروف و عدد و علائم باشد"}
-            label="رمز عبور"
-            inputType={`${isShowPassword ? "text" : "password"}`}
-          >
-            <KeyIcon />
-          </FormItem>
-          <div className="FormItem-showPassword">
-            <div className="FormItem-showPassword-checker">
-              <label
-                htmlFor="cheaker"
-                className="FormItem-showPassword-checker-label"
+            <div className="Form-item-container">
+              <FormItem
+                onBlur={nameBlurHandler}
+                onChange={nameChangeHandler}
+                value={nameValue}
+                isValid={isNameValid}
+                error={nameError}
+                errorMsg={"نام خود را به زبان فارسی وارد کنید"}
+                label="نام"
+                htmlId="name"
+                inputType="text"
               >
-                <input
-                  onChange={() => {
-                    setIsShowPassword((prev) => (prev = !prev));
-                  }}
-                  id="cheaker"
-                  type="checkbox"
-                />
-                <div className="checker-label-slider round"></div>
-              </label>
+                <UserIcon />
+              </FormItem>
             </div>
-            {!isShowPassword && (
-              <label htmlFor="cheaker">
-                <ShowIcon />
-              </label>
-            )}
-            {isShowPassword && (
-              <label htmlFor="cheaker">
-                <HideIcon />
-              </label>
-            )}
+
+            <div className="Form-item-container">
+              <FormItem
+                onBlur={familyBlurHandler}
+                onChange={familyChangeHandler}
+                value={familyValue}
+                isValid={isFamilyValid}
+                error={familyError}
+                errorMsg={"نام خانوادگی خود را به زبان فارسی وارد کنید"}
+                label="نام خانوادگی"
+                htmlId="family"
+                inputType="text"
+              >
+                <UserIcon />
+              </FormItem>
+            </div>
           </div>
-          <FormItem
-            onBlur={cPasswordBlurHandler}
-            onChange={cPasswordChangeHandler}
-            value={cPasswordValue}
-            isValid={isCPasswordValid}
-            error={cPasswordError}
-            errorMsg={"کلمه عبور وارد شده مطابقت ندارد"}
-            htmlId="cPassword"
-            label="تکرار رمز عبور"
-            inputType={`${isShowPassword ? "text" : "password"}`}
-          >
-            <KeyIcon />
-          </FormItem>
-          <div className="FormItem">
-            <select
-              onChange={stateChangeHandler}
-              required
-              disabled={getStatesStatus === "loading" ? true : false}
-              className="FormItem-select"
-              ref={stateRef}
+          <div className="Form-item-container">
+            <FormItem
+              onBlur={mobileBlurHandler}
+              onChange={mobileChangeHandler}
+              value={mobileValue}
+              isValid={isMobileValid}
+              error={mobileError}
+              label="شماره موبایل"
+              htmlId="mobile"
+              inputType="text"
+              errorMsg={"شماره موبایل وارد شده صحیح نمیباشد"}
             >
-              {getStatesStatus === "success" && (
-                <option value={false}>انتخاب استان...</option>
-              )}
-              {getStatesStatus === "loading" && (
-                <option>درحال دریافت...</option>
-              )}
-              {states &&
-                states.map((state) => {
-                  return (
-                    <option value={state._id} key={state._id}>
-                      {state.state}
-                    </option>
-                  );
-                })}
-            </select>
-            {stateError && (
-              <p className="FormItem-errorMsg">لطفا استان خود را انتخاب کنید</p>
-            )}
+              <MobileIcon />
+            </FormItem>
           </div>
-          {isShowCities && (
+
+          <div className="Form-item-container">
+            <FormItem
+              onBlur={emailBlurHandler}
+              onChange={emailChangeHandler}
+              value={emailValue}
+              isValid={isEmailValid}
+              error={emailError}
+              label="ایمیل"
+              htmlId="email"
+              inputType="email"
+              errorMsg={" ایمیل وارد شده صحیح نمیباشد"}
+            >
+              <MailIcon />
+            </FormItem>
+          </div>
+
+          <div className="Form-item-container">
+            <FormItem
+              onBlur={passwordBlurHandler}
+              onChange={passwordChangeHandler}
+              value={passwordValue}
+              isValid={isPasswordValid}
+              error={passwordError}
+              htmlId="password"
+              errorMsg={"کلمه عبور باید شش رقم شامل حروف و عدد و علائم باشد"}
+              label="رمز عبور"
+              inputType={`${isShowPassword ? "text" : "password"}`}
+            >
+              <KeyIcon />
+            </FormItem>
+          </div>
+
+          <div className="Form-item-container">
+            <div className="FormItem-showPassword">
+              <div className="FormItem-showPassword-checker">
+                <label
+                  htmlFor="cheaker"
+                  className="FormItem-showPassword-checker-label"
+                >
+                  <input
+                    onChange={() => {
+                      setIsShowPassword((prev) => (prev = !prev));
+                    }}
+                    id="cheaker"
+                    type="checkbox"
+                  />
+                  <div className="checker-label-slider round"></div>
+                </label>
+              </div>
+              {!isShowPassword && (
+                <label htmlFor="cheaker">
+                  <ShowIcon />
+                </label>
+              )}
+              {isShowPassword && (
+                <label htmlFor="cheaker">
+                  <HideIcon />
+                </label>
+              )}
+            </div>
+          </div>
+
+          <div className="Form-item-container">
+            <FormItem
+              onBlur={cPasswordBlurHandler}
+              onChange={cPasswordChangeHandler}
+              value={cPasswordValue}
+              isValid={isCPasswordValid}
+              error={cPasswordError}
+              errorMsg={"کلمه عبور وارد شده مطابقت ندارد"}
+              htmlId="cPassword"
+              label="تکرار رمز عبور"
+              inputType={`${isShowPassword ? "text" : "password"}`}
+            >
+              <KeyIcon />
+              <div className="Form-item-container"></div>
+            </FormItem>
+          </div>
+
+          <div className="Form-item-container">
+            {" "}
             <div className="FormItem">
               <select
-                disabled={getCitiesStatus === "loading" ? true : false}
-                onChange={cityChangeHandler}
-                ref={cityRef}
+                onChange={stateChangeHandler}
                 required
+                disabled={getStatesStatus === "loading" ? true : false}
                 className="FormItem-select"
+                ref={stateRef}
               >
-                {getCitiesStatus === "loading" && (
-                  <option>درحال دریافت ...</option>
+                {getStatesStatus === "success" && (
+                  <option value={false}>انتخاب استان...</option>
                 )}
-                {getCitiesStatus === "success" && (
-                  <option value={false}>انتخاب شهر...</option>
+                {getStatesStatus === "loading" && (
+                  <option>درحال دریافت...</option>
                 )}
-                {getCitiesStatus === "success" &&
-                  cities.map((city) => {
+                {states &&
+                  states.map((state) => {
                     return (
-                      <option value={city._id} key={city._id}>
-                        {city.city}
+                      <option value={state._id} key={state._id}>
+                        {state.state}
                       </option>
                     );
                   })}
               </select>
-              {cityError && (
-                <p className="FormItem-errorMsg">لطفا شهر خود راانتخاب کنید</p>
+              {stateError && (
+                <p className="FormItem-errorMsg">
+                  لطفا استان خود را انتخاب کنید
+                </p>
               )}
             </div>
-          )}
-          <FormItem
-            onBlur={zipCodeBlurHandler}
-            onChange={zipCodeChangeHandler}
-            value={zipCodeValue}
-            isValid={isZipCodeValid}
-            error={zipCodeError}
-            errorMsg={"کد پستی وارد شده صحیح نیست"}
-            label="کد پستی"
-            htmlId="zipCode"
-            inputType="text"
-          >
-            <AddressIcon />
-          </FormItem>
-          <div className="FormItem">
-            <textarea
-              onChange={addressChangeHandler}
-              onBlur={addressBlurHandler}
-              value={addressValue}
-              required
-              placeholder="آدرس (بلوار پیروزی,خیابان 26 شرقی مجتمع بهار,بلوک اول,طبقه دوم,واحد سوم)"
-              className="FormItem-textArea"
-            />
-            {addressError && (
-              <p className="FormItem-errorMsg">
-                لطفا آدرس خود را به زبان فارسی وارد کنید
-              </p>
-            )}
           </div>
+
+          {isShowCities && (
+            <div className="Form-item-container">
+              <div className="FormItem">
+                <select
+                  disabled={getCitiesStatus === "loading" ? true : false}
+                  onChange={cityChangeHandler}
+                  ref={cityRef}
+                  required
+                  className="FormItem-select"
+                >
+                  {getCitiesStatus === "loading" && (
+                    <option>درحال دریافت ...</option>
+                  )}
+                  {getCitiesStatus === "success" && (
+                    <option value={false}>انتخاب شهر...</option>
+                  )}
+                  {getCitiesStatus === "success" &&
+                    cities.map((city) => {
+                      return (
+                        <option value={city._id} key={city._id}>
+                          {city.city}
+                        </option>
+                      );
+                    })}
+                </select>
+                {cityError && (
+                  <p className="FormItem-errorMsg">
+                    لطفا شهر خود راانتخاب کنید
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+          <div className="Form-item-container">
+            <FormItem
+              onBlur={zipCodeBlurHandler}
+              onChange={zipCodeChangeHandler}
+              value={zipCodeValue}
+              isValid={isZipCodeValid}
+              error={zipCodeError}
+              errorMsg={"کد پستی وارد شده صحیح نیست"}
+              label="کد پستی"
+              htmlId="zipCode"
+              inputType="text"
+            >
+              <AddressIcon />
+            </FormItem>
+          </div>
+
+          <div className="Form-item-container">
+            <div className="FormItem">
+              <textarea
+                onChange={addressChangeHandler}
+                onBlur={addressBlurHandler}
+                value={addressValue}
+                required
+                placeholder="آدرس (بلوار پیروزی,خیابان 26 شرقی مجتمع بهار,بلوک اول,طبقه دوم,واحد سوم)"
+                className="FormItem-textArea"
+              />
+              {addressError && (
+                <p className="FormItem-errorMsg">
+                  لطفا آدرس خود را به زبان فارسی وارد کنید
+                </p>
+              )}
+            </div>
+          </div>
+
           <div className="Form-action">
             {/* <button onClick={cancelHandler} className="Form-action-secondary">
               انصراف

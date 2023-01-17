@@ -2,7 +2,6 @@ import React from "react";
 
 const TagsImage = (props) => {
   const { sell, offPersent } = props;
-  console.log(props);
   return (
     <div className="productDetails-image-tags">
       {offPersent > 0 && (

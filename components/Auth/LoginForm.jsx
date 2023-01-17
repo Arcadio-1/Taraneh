@@ -108,32 +108,37 @@ const LoginForm = () => {
       {/* <h1 className="account-login-title">مشخصات ورود را وارد کنید</h1> */}
 
       <form className="Form">
-        <FormItem
-          onBlur={emailBlurHandler}
-          onChange={emailChangeHandler}
-          value={emailValue}
-          isValid={isEmailValid}
-          error={emailError}
-          label="ایمیل"
-          htmlId="email"
-          inputType="email"
-          errorMsg={" ایمیل وارد شده صحیح نمیباشد"}
-        >
-          <MailIcon />
-        </FormItem>
-        <FormItem
-          onChange={passwordChangeHandler}
-          value={passwordValue}
-          onBlur={passwordBlurHandler}
-          isValid={isPasswordValid}
-          error={passwordError}
-          errorMsg={" پسورد وارد شده صحیح نمیباشد"}
-          label="رمز عبور"
-          inputType={`${isShowPassword ? "text" : "password"}`}
-          htmlId="password"
-        >
-          <KeyIcon />
-        </FormItem>
+        <div className="Form-item-container">
+          <FormItem
+            onBlur={emailBlurHandler}
+            onChange={emailChangeHandler}
+            value={emailValue}
+            isValid={isEmailValid}
+            error={emailError}
+            label="ایمیل"
+            htmlId="email"
+            inputType="email"
+            errorMsg={" ایمیل وارد شده صحیح نمیباشد"}
+          >
+            <MailIcon />
+          </FormItem>
+        </div>
+        <div className="Form-item-container">
+          <FormItem
+            onChange={passwordChangeHandler}
+            value={passwordValue}
+            onBlur={passwordBlurHandler}
+            isValid={isPasswordValid}
+            error={passwordError}
+            errorMsg={" پسورد وارد شده صحیح نمیباشد"}
+            label="رمز عبور"
+            inputType={`${isShowPassword ? "text" : "password"}`}
+            htmlId="password"
+          >
+            <KeyIcon />
+          </FormItem>
+        </div>
+
         <div className="FormItem-showPassword">
           <div className="FormItem-showPassword-checker">
             <label

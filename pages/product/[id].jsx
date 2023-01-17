@@ -1,17 +1,23 @@
+import { Router } from "next/router";
 import React from "react";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
-import { getPaths, getSingleProduct } from "../api/helper";
+import { getComments, getPaths, getSingleProduct } from "../api/helper";
 
 const ProductDetailsPage = (props) => {
-  const { status, message, product } = props;
-  return <ProductDetails product={product} />;
+  // console.log(props);
+  const { status, message, product, comments } = props;
+  // const
+  // console.log(comments);
+  return <ProductDetails product={product} comments={comments} />;
 };
 
 export async function getStaticProps(context) {
   const id = context.params.id;
   const productJson = await getSingleProduct(id);
+  const commentsJson = await getComments(id);
   const product = JSON.parse(productJson);
-  console.log(productJson);
+  const comments = JSON.parse(commentsJson);
+  // console.log(productJson);
   if (product.status === "error") {
     return {
       props: { status: product.status, message: product.message, product: {} },
@@ -30,6 +36,7 @@ export async function getStaticProps(context) {
         status: product.status,
         message: product.message,
         product: product.product,
+        comments: comments.comments[id],
       },
       revalidate: 6000,
     };

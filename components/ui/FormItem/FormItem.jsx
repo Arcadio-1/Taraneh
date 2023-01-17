@@ -1,7 +1,7 @@
 import React from "react";
 
 const FormItem = (props) => {
-  const { label, clsName, htmlId, inputType } = props;
+  const { label, clsName, htmlId, inputType, inputCls } = props;
   // let clsStatus;
   // if (status === "error") {
   //   clsStatus = "FormItem-error";
@@ -29,7 +29,7 @@ const FormItem = (props) => {
           value={props.value}
           onBlur={props.onBlur}
           onChange={props.onChange}
-          className="FormItem-input"
+          className={`FormItem-input ${inputCls}`}
           id={htmlId}
           type={inputType}
         />

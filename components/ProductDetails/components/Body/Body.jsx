@@ -1,10 +1,6 @@
 import Image from "next/image";
 import React from "react";
 
-import DeliveryIcon from "../../../ui/Icons/DeliveryIcon";
-import MoneyIcon from "../../../ui/Icons/footerIcons/MoneyIcon";
-import GuaranteeIcon from "../../../ui/Icons/GuaranteeIcon";
-import Link from "next/link";
 import TagsImage from "./Components/Image/TagsImage";
 import MainImage from "./Components/Image/MainImage";
 import SubImage from "./Components/Image/SubImage";

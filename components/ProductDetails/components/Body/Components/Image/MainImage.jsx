@@ -34,7 +34,6 @@ const MainImage = (props) => {
       height: 1500,
     };
   });
-  console.log(images);
   return (
     <div className="productDetails-image-mainImage">
       <Swiper

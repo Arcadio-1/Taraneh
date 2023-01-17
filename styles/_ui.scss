@@ -91,12 +91,18 @@
 .Form {
   width: 100%;
   // border: 2px solid red;
+  &-item {
+    &-container {
+      margin-bottom: 1.5em;
+    }
+  }
   &-action {
     // border: 2px solid red;
     // max-width: 300px;
     margin: 2em auto;
     @include dflex;
     gap: 1em;
+
     &-submit {
       cursor: pointer;
       font-family: iransans;

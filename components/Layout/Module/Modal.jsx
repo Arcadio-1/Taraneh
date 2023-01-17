@@ -28,9 +28,9 @@ const Modal = (props) => {
     overLay = document.getElementById("overLay");
   }
 
-  if (windowWidth > 768) {
-    dispatch(uiAction.closeModal());
-  }
+  // if (windowWidth > 768) {
+  //   dispatch(uiAction.closeModal());
+  // }
 
   return mounted ? (
     <Fragment>
