@@ -196,6 +196,9 @@ const fetchComments = async (id) => {
       return { status: "notfound", message: "کامنت یافت نشد", comments: null };
     }
     // console.log(comments);
+    if (!comments) {
+      return { status: "success", message: "کامنتی ندارد", comments: null };
+    }
     return { status: "success", message: "کامنت یافت شد", comments: comments };
   } catch (error) {
     return {

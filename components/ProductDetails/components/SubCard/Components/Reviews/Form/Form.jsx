@@ -103,7 +103,14 @@ const Form = () => {
           <input type="checkbox" />
           <label>ذخیره مشخصات وارد شده</label>
         </div>
-        <button>ثبت دیدگاه</button>
+        <div className="flex gap-5 transition-all duration-500">
+          <button className="bg-cyan-500 text-white py-2 rounded-lg w-40 hover:bg-cyan-600 ">
+            ثبت دیدگاه
+          </button>
+          <button className="bg-gray-400 text-white py-2 rounded-lg w-40 hover:bg-gray-500">
+            انصراف
+          </button>
+        </div>
       </form>
     </div>
   );
