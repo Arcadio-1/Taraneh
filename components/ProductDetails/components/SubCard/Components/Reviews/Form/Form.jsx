@@ -1,49 +1,60 @@
-import React from "react";
+import { useSession } from "next-auth/react";
+import React, { useRef, useState } from "react";
+// import { getUserInfo } from "../../../../../../../pages/api/helper";
 import useInputValidation from "../../../../../../Auth/validation/UseInputValidation";
 import Rate from "./Rate";
-import FormItem from "../../../../../../ui/FormItem/FormItem";
-import UserIcon from "../../../../../../ui/Icons/UserIcon";
-import MailIcon from "../../../../../../ui/Icons/MailIcon";
+const Form = ({ postId }) => {
+  const [rate, setRate] = useState();
+  const [showRateIsNullMassage, setShowRateIsNullMassage] = useState(false);
+  const checkboxRef = useRef();
+  const { data: session } = useSession();
+  // const showRateIsNullMassage = false;
 
-const Form = () => {
-  const {
-    value: emailValue,
-    isValid: isEmailValid,
-    errorStatus: emailError,
-    inputBlurHandler: emailBlurHandler,
-    inputChangeHandler: emailChangeHandler,
-    reset: emailResetHandler,
-  } = useInputValidation((value) => {
-    const emailString = String(value).toLowerCase();
-    const regex = RegExp(
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-    const isValid = regex.test(emailString);
-    return isValid;
-  });
+  const selectRateHandler = (e) => {
+    // rate = e.target.value;
+    setRate((prev) => {
+      return (prev = e.target.value);
+    });
+    console.log(rate);
+
+    setShowRateIsNullMassage(false);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    // const providers = getUserInfo();
+    // console.log(providers);
+    if (!rate) {
+      setShowRateIsNullMassage(true);
+    }
+    if (isTextValid) {
+      console.log(session.user.email._id);
+      console.log(textValue, rate, checkboxRef.current.checked);
+      const request = await fetch("/api/helperAPI/addReviwe", {
+        method: "POST",
+        body: JSON.stringify({
+          postId: postId,
+          text: textValue,
+          rate: rate,
+          anonimus: checkboxRef.current.checked,
+          parent: [],
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const response = await request.json();
+      console.log(response);
+    }
+  };
 
   const {
-    value: addressValue,
-    isValid: isAddressValid,
-    errorStatus: addressError,
-    inputBlurHandler: addressBlurHandler,
-    inputChangeHandler: addressChangeHandler,
-    reset: addressResetHandler,
+    value: textValue,
+    isValid: isTextValid,
+    errorStatus: textError,
+    inputBlurHandler: textBlurHandler,
+    inputChangeHandler: textChangeHandler,
+    reset: textResetHandler,
   } = useInputValidation((value) => {
     const regex = RegExp(/^\s*\S/);
-    const isValid = regex.test(value);
-    return isValid;
-  });
-
-  const {
-    value: nameValue,
-    isValid: isNameValid,
-    errorStatus: nameError,
-    inputBlurHandler: nameBlurHandler,
-    inputChangeHandler: nameChangeHandler,
-    reset: nameResetHandler,
-  } = useInputValidation((value) => {
-    const regex = RegExp(/^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی]+$/);
     const isValid = regex.test(value);
     return isValid;
   });
@@ -51,60 +62,35 @@ const Form = () => {
     <div className="">
       <p className="text-xl">دیدگاه شما</p>
       <form className="flex flex-col gap-3 mt-3">
-        <Rate />
+        <Rate
+          onSelectRate={selectRateHandler}
+          isShowNotif={showRateIsNullMassage}
+        />
         <div className="FormItem">
           <textarea
-            onChange={addressChangeHandler}
-            onBlur={addressBlurHandler}
-            value={addressValue}
+            onChange={textChangeHandler}
+            onBlur={textBlurHandler}
+            value={textValue}
             required
             placeholder="دیدگاه خود را در این قسمت وارد کنید"
             className="FormItem-textArea bg-gray-100"
           />
-          {addressError && (
+          {textError && (
             <p className="FormItem-errorMsg">
               لطفا دیدگاه خود را به زبان فارسی وارد کنید
             </p>
           )}
         </div>
-        <FormItem
-          inputCls={"bg-gray-100 h-12"}
-          onBlur={nameBlurHandler}
-          onChange={nameChangeHandler}
-          value={nameValue}
-          isValid={isNameValid}
-          error={nameError}
-          errorMsg={"نام خود را به زبان فارسی وارد کنید"}
-          label="نام"
-          htmlId="name"
-          inputType="text"
-        >
-          <UserIcon />
-        </FormItem>
-        <div>
-          <FormItem
-            inputCls={"bg-gray-100  h-12"}
-            onBlur={emailBlurHandler}
-            onChange={emailChangeHandler}
-            value={emailValue}
-            isValid={isEmailValid}
-            error={emailError}
-            label="ایمیل"
-            htmlId="email"
-            inputType="email"
-            errorMsg={" ایمیل وارد شده صحیح نمیباشد"}
-          >
-            <MailIcon />
-          </FormItem>
-          <p className="text-gray-500">ایمیل شما نمایش داده نمیشود</p>
-        </div>
 
-        <div>
-          <input type="checkbox" />
-          <label>ذخیره مشخصات وارد شده</label>
+        <div className="flex gap-3">
+          <input type="checkbox" ref={checkboxRef} />
+          <label>ارسال ناشناس</label>
         </div>
         <div className="flex gap-5 transition-all duration-500">
-          <button className="bg-cyan-500 text-white py-2 rounded-lg w-40 hover:bg-cyan-600 ">
+          <button
+            className="bg-cyan-500 text-white py-2 rounded-lg w-40 hover:bg-cyan-600 "
+            onClick={submitHandler}
+          >
             ثبت دیدگاه
           </button>
           <button className="bg-gray-400 text-white py-2 rounded-lg w-40 hover:bg-gray-500">

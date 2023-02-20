@@ -171,6 +171,7 @@
     // width: 100%;
   }
   &-basket {
+    position: relative;
     &-container {
       @include dflex;
       width: 5em;
@@ -191,6 +192,14 @@
         cursor: pointer;
         background-color: rgba(color(g1-6), 0.2);
       }
+    }
+    &-amount {
+      font-family: iransansnum;
+      color: color(error);
+      position: absolute;
+      top: 2.5rem;
+      left: 3.5rem;
+      font-size: 1.7rem;
     }
   }
   &-profile {

@@ -5,11 +5,14 @@ const initialState = {
   isDark: false,
   isShowBackDrop: false,
   isShowMenu: false,
+  // isShowCart: false,
   isShowFilterMenu: false,
   isShowSortMenu: false,
   isShowPerPageMenu: false,
   isShowNotif: false,
   getAllproductsStatus: null,
+  getCartItemsStatus: null,
+  getCartItemsDataStatus: null,
   getUiStatus: null,
   userActionNotif: {
     status: "null",
@@ -34,12 +37,29 @@ const uiSlice = createSlice({
       state.isShowMenu = true;
       state.isShowBackDrop = true;
     },
+    // setShowCart(state) {
+    //   state.isShowCart = true;
+    // },
     setShowFilterMenu(state) {
       state.isShowFilterMenu = true;
       state.isShowBackDrop = true;
     },
     setGetAllProductsStatus(state, action) {
       state.getAllproductsStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
+    setGetCartItemsStatus(state, action) {
+      state.getCartItemsStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
+    setGetCartItemsDataStatus(state, action) {
+      state.getCartItemsDataStatus = {
         status: action.payload.status,
         title: action.payload.title,
         message: action.payload.message,
@@ -59,6 +79,7 @@ const uiSlice = createSlice({
       state.isShowBackDrop = false;
       state.isShowNotif = false;
       state.isShowMenu = false;
+      // state.isShowCart = false;
       state.isShowFilterMenu = false;
       state.isShowSortMenu = false;
       state.isShowPerPageMenu = false;

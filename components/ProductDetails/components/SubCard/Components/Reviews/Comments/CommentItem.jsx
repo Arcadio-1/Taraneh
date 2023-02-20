@@ -1,13 +1,22 @@
 import Image from "next/image";
 import React from "react";
 import StarIcon from "../../../../../../ui/Icons/StarIcon";
-const CommentItem = ({ comment }) => {
-  const nestedComments = (comment.children || []).map((item) => {
-    return <CommentItem key={item.id} comment={item} type="child" />;
+const CommentItem = ({ comment, comments }) => {
+  const nestedComments = (comments || []).map((item) => {
+    if (item.parent === comment.id) {
+      return (
+        <CommentItem
+          key={item.id}
+          comment={item}
+          type="child"
+          comments={comments}
+        />
+      );
+    }
   });
   return (
-    <div className="">
-      <div className="reviwe-item flex gap-5">
+    <div className=" reviwe-item-container border-r-2 border-gray-100">
+      <div className="reviwe-item flex gap-5 mr-2 ">
         <div className="reviwe-item-profile">
           <Image
             src={"/image/ui/nika.jpg"}

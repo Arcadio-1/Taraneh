@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
+  cartItems: [],
+  cartItemsData: [],
   categoryNavLinks: [],
 };
 
@@ -14,6 +16,14 @@ const getDataSlice = createSlice({
     // getcategoryNavLinks(state, action) {
     //   state.categoryNavLinks = action.payload;
     // },
+    getCardItems(state, action) {
+      console.log(action.payload);
+      state.cartItems = action.payload;
+    },
+    getCardItemsData(state, action) {
+      // console.log(action.payload);
+      state.cartItemsData = action.payload;
+    },
   },
 });
 

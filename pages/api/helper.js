@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+// import { getProviders } from "next-auth/react";
 
 export const getClient = async (databaseName) => {
   try {
@@ -32,6 +33,10 @@ export const fetchProducts = async () => {
     return { status: "error", message: error, allProducts: [] };
   }
 };
+// export const getUserInfo = () => {
+//   const providers = getProviders();
+//   console.log(providers);
+// };
 
 const filtring = (posts, filterType) => {
   if (!filterType || filterType === "all") {
@@ -191,8 +196,8 @@ const fetchComments = async (id) => {
       throw new Error(client.error || "عدم دسترسی به سرور");
     }
     const db = client.db();
-    const comments = await db.collection("comments").findOne({ id: id });
-    console.log(comments);
+    const comments = await db.collection("comments-2").findOne({ _id: id });
+    // console.log(comments);
     if (!comments) {
       return {
         status: "notfound",
@@ -216,12 +221,22 @@ const fetchComments = async (id) => {
 
 export const getComments = async (id) => {
   const comments = await fetchComments(id);
-  console.log(comments);
+  // console.log(comments);
+  if (!comments.comments) {
+    return JSON.stringify({
+      status: comments.status,
+      message: comments.message,
+      comments: null,
+      commentsList: null,
+      // commentsList: comments.commentsList,
+    });
+  }
+
   return JSON.stringify({
     status: comments.status,
     message: comments.message,
     comments: comments.comments,
-    commentsList: comments.comments[id],
+    commentsList: comments.comments.comments,
     // commentsList: comments.commentsList,
   });
 };

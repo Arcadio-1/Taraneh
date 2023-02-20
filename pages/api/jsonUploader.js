@@ -8,7 +8,7 @@ async function handler(req, res) {
   try {
     const client = await getClient(serverName);
     if (!client) {
-      throw new Error("fild at get client");
+      throw new Error("field at get client");
     }
     const db = client.db();
     const options = { ordered: true };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Breadcrumbs from "../ui/Breadcrumbs/Breadcrumbs";
 import Header from "./components/Header/Header";
 import Body from "./components/Body/Body";
@@ -27,15 +27,11 @@ const ProductDetails = (props) => {
     taste,
     tags,
   } = product;
-  // console.log(packaging.value);
-  ///////////breadcrumbs
 
   const address = [
     { id: 3, title: category, link: `/pruducts/${categoryAddress}` },
     { id: 4, title: title, link: `/product/${id}/${title}` },
   ];
-
-  //////amount
 
   return (
     <div className="productDetails">
@@ -51,6 +47,7 @@ const ProductDetails = (props) => {
           id={id}
         />
         <Body
+          id={id}
           title={title}
           offPersent={price.offPersent}
           mainImage={imageLink}
@@ -65,6 +62,7 @@ const ProductDetails = (props) => {
           tags={tags}
           coffeeType={coffeeType}
           category={category}
+          packaging={packaging}
         />
       </div>
       <SubCard product={product} comments={comments} />

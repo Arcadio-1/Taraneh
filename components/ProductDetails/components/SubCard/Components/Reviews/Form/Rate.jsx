@@ -1,14 +1,15 @@
 import React from "react";
 import StarIcon from "../../../../../../ui/Icons/StarIcon";
 
-const Rate = () => {
+const Rate = (props) => {
+  const { onSelectRate, isShowNotif } = props;
   const onChangeHandler = (event) => {
     console.log(event.target.value);
   };
   return (
     <div className=" form-rate mb-3">
       <label className="text-lg">امتیاز شما به محصول</label>
-      <div className="flex gap-5 mt-2" onChange={onChangeHandler}>
+      <div className="flex gap-5 mt-2" onChange={onSelectRate}>
         <div className="flex form-rate-starG">
           <label htmlFor="radio1" className="flex">
             <input
@@ -80,6 +81,11 @@ const Rate = () => {
           </label>
         </div>
       </div>
+      {isShowNotif && (
+        <p className="mt-2" style={{ color: "#e76f51" }}>
+          لطفا امتیازتان به محصول را وارد کنید
+        </p>
+      )}
     </div>
   );
 };

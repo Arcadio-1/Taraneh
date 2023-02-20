@@ -35,10 +35,12 @@ const SubCard = (props) => {
   } = product;
   return (
     <div className="mt-3 bg-white p-4 rounded-lg ">
-      <Header changeTabHandler={changeTabHandler} />
+      <Header tab={tab} changeTabHandler={changeTabHandler} />
       {tab === "description" && <Description description={description} />}
       {tab === "infomation" && <Information productDetails={product} />}
-      {tab === "reviwe" && <Reviws comments={comments} title={title} />}
+      {tab === "reviwe" && (
+        <Reviws comments={comments} title={title} postId={id} />
+      )}
     </div>
   );
 };

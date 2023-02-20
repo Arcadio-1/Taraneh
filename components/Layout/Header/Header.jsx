@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "./components/Logo";
 import Search from "./components/Search";
 import Log from "./components/Log";
-import Basket from "./components/Basket";
+import Basket from "./components/Basket/Basket";
 import NavLinks from "./components/NavLinks";
 import { useSession } from "next-auth/react";
 import Profile from "./components/Profile";

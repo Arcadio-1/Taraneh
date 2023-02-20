@@ -1,10 +1,7 @@
-import Image from "next/image";
 import React from "react";
-
 import TagsImage from "./Components/Image/TagsImage";
 import MainImage from "./Components/Image/MainImage";
 import SubImage from "./Components/Image/SubImage";
-import Price from "./Components/Content/Price";
 import Status from "./Components/Content/Status";
 import ShortDescription from "./Components/Content/ShortDescription";
 import OrderForm from "./Components/Content/OrderForm/OrderForm";
@@ -15,6 +12,7 @@ import Sharing from "./Components/Content/Sharing";
 import Message from "./Components/Message/Message";
 const Body = (props) => {
   const {
+    id,
     price,
     mainImage,
     subImages,
@@ -28,6 +26,7 @@ const Body = (props) => {
     tags,
     taste,
     category,
+    packaging,
   } = props;
 
   return (
@@ -36,14 +35,13 @@ const Body = (props) => {
         <TagsImage offPersent={price.offPersent} sell={sell} />
         <MainImage subImages={subImages} mainImage={mainImage} title={title} />
         <SubImage title={title} subImages={subImages} />
+        <Actions />
       </div>
       <div className="productDetails-details">
         <div className="productDetails-content">
-          <Price price={price} />
+          {/* <Price price={price} /> */}
           <Status status={status} />
           <ShortDescription description={description} />
-          <OrderForm />
-          <Actions />
           <CheckList
             packingCountry={packingCountry}
             producingCountry={producingCountry}
@@ -54,6 +52,7 @@ const Body = (props) => {
           <Sharing />
         </div>
         <div className="productDetails-message">
+          <OrderForm price={price} packaging={packaging} id={id} />
           <Message />
         </div>
       </div>

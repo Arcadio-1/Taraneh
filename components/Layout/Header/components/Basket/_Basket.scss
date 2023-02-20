@@ -1,0 +1,237 @@
+.CartModal {
+  top: 20px;
+  left: 20px;
+  min-width: 270px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 8px;
+  opacity: 1;
+  border: 2px solid rgba(color(dark-2), 0.1);
+  &-header {
+    padding: 0.2rem 1rem;
+    border-radius: 8px 8px 0 0;
+    @include dflex(space-between);
+    background-color: color(g1-1);
+    &-content {
+      @include dflex;
+      gap: 0.5rem;
+    }
+    &-label {
+      color: color(light-1);
+    }
+    &-amount {
+      font-family: iransansnum;
+      font-size: 1.2rem;
+      color: color(light-2);
+    }
+    &-linkToBasket {
+      text-decoration: none;
+      color: color(light-2);
+    }
+  }
+  &-list {
+    background-color: color(light-2);
+    opacity: 1;
+    width: 100&;
+    @include dflex;
+    padding: 0.5rem 1rem;
+    flex-direction: column;
+    &-title {
+      width: 100%;
+      text-align: right;
+      color: color(dark-2);
+      font-size: 1.3rem;
+      margin-bottom: 0.7rem;
+      // border: 1px solid red;
+    }
+    &-item {
+      @include dflex(space-between);
+      width: 100%;
+      margin-bottom: 1em;
+      background-color: color(light-1);
+      padding: 0.5rem;
+      border-radius: 5px;
+      &-colom1 {
+        @include dflex;
+        flex-direction: column;
+        &-image {
+          width: 50px;
+          img {
+            width: 100%;
+          }
+        }
+        &-sellType {
+          font-family: iransansnum;
+          width: 15px;
+          img {
+            width: 100%;
+          }
+        }
+        &-quant {
+          &-quantBox {
+            border: 2px solid rgba(color(dark-2), 0.1);
+            border-radius: 5px;
+            @include dflex;
+            &-plusBtn {
+              opacity: 0.7;
+              background-color: transparent;
+              border: transparent;
+              @include dflex;
+              width: 1.2rem;
+              height: 1.2rem;
+              margin: 0.5rem;
+              cursor: pointer;
+            }
+            &-number {
+              color: color(dark-2);
+              @include dflex;
+              flex-direction: column;
+              font-family: iransansnum;
+              font-size: 1.5rem;
+              width: 2rem;
+              &-max {
+                font-size: 1rem;
+              }
+            }
+            &-minusBtn {
+              opacity: 0.7;
+              background-color: transparent;
+              border: transparent;
+              @include dflex;
+              width: 1.2rem;
+              height: 1.2rem;
+              margin: 0.5rem;
+              fill: red;
+              cursor: pointer;
+              .trashIcon {
+                overflow: visible;
+                width: 1.7rem;
+                height: 1.7rem;
+              }
+            }
+          }
+        }
+      }
+      &-colom2 {
+        color: color(dark-2);
+        width: 100%;
+        margin-right: 1rem;
+        &-title {
+          font-size: 1.2rem;
+          // border: 2px solid red;
+          width: 100%;
+        }
+        &-specificationlist {
+          list-style: none;
+          margin: 1rem 0;
+          li {
+            @include dflex(flex-start);
+            margin-top: 0.2rem;
+            background-color: rgba(color(dark-5), 0.1);
+            color: color(dark-1);
+            font-weight: 500;
+            padding: 0.1rem 0.5rem;
+            border-radius: 5px;
+            width: 18rem;
+            label {
+              @include dflex;
+              display: inline-flex;
+              margin-left: 0.2rem;
+            }
+            span {
+              color: color(g1-2);
+            }
+          }
+          &-weight {
+          }
+          &-grind {
+          }
+        }
+        &-discount {
+          @include dflex(flex-start);
+          margin-right: 1rem;
+          &-price {
+            color: color(error);
+            font-size: 1.2rem;
+            font-family: iransansnum;
+            margin-left: 0.5rem;
+          }
+          &-text {
+            color: color(g1-2);
+          }
+        }
+        &-priceAndRemove {
+          @include dflex(space-between);
+          &-price {
+            @include dflex(flex-start);
+            font-size: 1.5rem;
+            font-family: iransansnum;
+            path {
+              fill: color(dark-5);
+            }
+          }
+          &-remove {
+            cursor: pointer;
+            margin: 1rem;
+            background-color: transparent;
+            border: transparent;
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+  &-footer {
+    @include dflex(space-between);
+    background-color: color(light-3);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-family: iransansnum;
+    &-profit {
+      @include dflex;
+      gap: 5px;
+      &-label {
+        font-size: 1.1rem;
+      }
+      &-price {
+        // @include dflex;
+        font-size: 1.5rem;
+        font-family: iransansnum;
+        color: color(error);
+        path {
+          fill: color(error);
+        }
+      }
+    }
+    &-price {
+      text-align: center;
+      color: color(dark-2);
+      @include dflex;
+      &-label {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      &-price {
+        @include dflex;
+        font-size: 1.5rem;
+        font-family: iransansnum;
+        color: color(g1-2);
+        path {
+          fill: color(g1-2);
+        }
+      }
+    }
+    &-action {
+      // @include dflex;
+      // border: 2px solid red;
+      &-submitBtn {
+        font-size: 1.3rem;
+        border: transparent;
+        background-color: color(g1-2);
+        color: color(light-2);
+        padding: 0.3rem 1rem;
+        border-radius: 5px;
+      }
+    }
+  }
+}
