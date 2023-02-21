@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { sendDataAction } from "../../../../../../../../store/ManageData/SendData/SendDataSlice";
 import WeightIcon from "../../../../../../../ui/Icons/weight";
 
-const Weight = ({ availableWeights, weightAlert, onSetWeight, setAlert }) => {
+const Weight = ({ availableWeights, weightAlert, setAlert }) => {
+  const dispatchWeight = useDispatch();
   return (
     <div className="productDetails-form-weight">
       <div className="productDetails-form-weight-container">
@@ -18,8 +21,12 @@ const Weight = ({ availableWeights, weightAlert, onSetWeight, setAlert }) => {
                     value={item}
                     onChange={(e) => {
                       const value = +e.target.value;
-                      onSetWeight({ weight: value, type: "setWeight" });
-                      console.log;
+                      dispatchWeight(
+                        sendDataAction.setProduct({
+                          weight: value,
+                          type: "setWeight",
+                        })
+                      );
                       setAlert(false);
                     }}
                     type="radio"

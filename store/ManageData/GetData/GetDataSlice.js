@@ -17,7 +17,7 @@ const getDataSlice = createSlice({
     //   state.categoryNavLinks = action.payload;
     // },
     getCardItems(state, action) {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.cartItems = action.payload;
     },
     getCardItemsData(state, action) {

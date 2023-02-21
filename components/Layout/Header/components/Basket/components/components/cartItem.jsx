@@ -15,6 +15,7 @@ import {
   priceFormat,
 } from "../../../../../../../lib/utilFunctions";
 import Image from "next/image";
+import Amount from "../../../../../../ProductDetails/components/Body/Components/Content/OrderForm/Components/Amount";
 
 const CartItem = ({ item }) => {
   const {
@@ -30,7 +31,7 @@ const CartItem = ({ item }) => {
     weight,
     ProductId,
   } = item;
-
+  console.log(item.id);
   const { value, offPersent } = price;
   const offPrice = offPriceCalculator(value, offPersent);
 
@@ -67,7 +68,8 @@ const CartItem = ({ item }) => {
         <div className="CartModal-list-item-colom1-sellType">
           <span>%{offPersent}-</span>
         </div>
-        <Quantity item={item} />
+        {/* <Quantity item={item} /> */}
+        <Amount selectedItem={item.id} />
       </div>
       <div className="CartModal-list-item-colom2">
         <p className="CartModal-list-item-colom2-title">{title}</p>

@@ -1,38 +1,50 @@
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocalStoageCartItems } from "../../../../../../../../store/ManageData/GetData/GetDataAction";
+import {
+  removeCartItemFromLocalStorage,
+  setLocalStorageAmount,
+} from "../../../../../../../../store/ManageData/GetData/GetDataAction";
+import { sendDataAction } from "../../../../../../../../store/ManageData/SendData/SendDataSlice";
 import Minus from "../../../../../../../ui/Icons/Minus";
 import PlusIcon from "../../../../../../../ui/Icons/PlusIcon";
 import TrashIcon from "../../../../../../../ui/Icons/TrashIcon";
 
-const Amount = ({ onSetAmount, amount, selectedItem, cartItems }) => {
+const Amount = ({ selectedItem }) => {
   const { status: login } = useSession();
   const dispatch = useDispatch();
   const localstorageCartItems = useSelector((state) => state.getData.cartItems);
+  const [itemAmount, setItemAmount] = useState(1);
+
+  useEffect(() => {
+    setItemAmount((prev) => {
+      const amount = localstorageCartItems.filter((item) => {
+        if (item.id === selectedItem) {
+          return item.amount;
+        }
+      });
+      if (amount.length > 0) {
+        return (prev = amount[0].amount);
+      }
+
+      return (prev = prev);
+    });
+  }, [localstorageCartItems, selectedItem]);
 
   const amountHandler = (type) => {
     if (type === "plus") {
-      onSetAmount({ amount: amount + 1, type: "setAmount" });
+      dispatch(setLocalStorageAmount(selectedItem, { amount: itemAmount + 1 }));
     }
     if (type === "minus") {
-      if (amount === 1) {
+      if (itemAmount === 1) {
         if (login === "unauthenticated") {
-          console.log(cartItems);
-          const newItems = cartItems.filter((item) => {
-            if (item.id !== selectedItem) {
-              return item;
-            }
-          });
-          const jsonFile = JSON.stringify(newItems);
-          console.log(newItems);
-          localStorage.setItem("cartItems", jsonFile);
-          dispatch(getLocalStoageCartItems());
-          console.log(localstorageCartItems);
+          dispatch(
+            removeCartItemFromLocalStorage(localstorageCartItems, selectedItem)
+          );
         }
         return;
       }
-      // onSetAmount({ amount: amount - 1, type: "setAmount" });
+      dispatch(setLocalStorageAmount(selectedItem, { amount: itemAmount - 1 }));
     }
   };
 
@@ -47,8 +59,8 @@ const Amount = ({ onSetAmount, amount, selectedItem, cartItems }) => {
       >
         <PlusIcon />
       </button>
-      <label className="productDetails-form-amount-value">{amount}</label>
-      {amount > 1 && (
+      <label className="productDetails-form-amount-value">{itemAmount}</label>
+      {itemAmount > 1 && (
         <button
           className="productDetails-form-amount-btn"
           onClick={(e) => {
@@ -59,7 +71,7 @@ const Amount = ({ onSetAmount, amount, selectedItem, cartItems }) => {
           <Minus />
         </button>
       )}
-      {amount === 1 && (
+      {itemAmount === 1 && (
         <button
           className="productDetails-form-amount-remove"
           onClick={(e) => {

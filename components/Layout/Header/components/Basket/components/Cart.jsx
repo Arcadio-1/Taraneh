@@ -79,8 +79,8 @@ const Cart = () => {
         {cartitemssData.length > 0 && <CartList cartItems={cartitemssData} />}
       </section>
       <footer className="CartModal-footer">
-        <div className="flex justify-between w-full items-end">
-          <div className="flex flex-col">
+        <div className="flex flex-col w-full items-end">
+          <div className="flex flex-col items-start w-full">
             <div className="CartModal-footer-profit">
               <label className="CartModal-footer-profit-label">
                 سود شما از خرید:
@@ -92,7 +92,7 @@ const Cart = () => {
               </span>
             </div>
             <div className="CartModal-footer-price">
-              <p className="CartModal-footer-price-label">مبلغ قابل پرداخت </p>
+              <p className="CartModal-footer-price-label">مبلغ قابل پرداخت:</p>
               <p className="CartModal-footer-price-price">
                 {cartitemssData || cartitemssData.length > 0
                   ? priceFormat(totalPrice())

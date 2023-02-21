@@ -1,7 +1,7 @@
 .CartModal {
   top: 20px;
   left: 20px;
-  min-width: 270px;
+  min-width: 300px;
   position: absolute;
   background-color: #fff;
   border-radius: 8px;
@@ -67,50 +67,50 @@
             width: 100%;
           }
         }
-        &-quant {
-          &-quantBox {
-            border: 2px solid rgba(color(dark-2), 0.1);
-            border-radius: 5px;
-            @include dflex;
-            &-plusBtn {
-              opacity: 0.7;
-              background-color: transparent;
-              border: transparent;
-              @include dflex;
-              width: 1.2rem;
-              height: 1.2rem;
-              margin: 0.5rem;
-              cursor: pointer;
-            }
-            &-number {
-              color: color(dark-2);
-              @include dflex;
-              flex-direction: column;
-              font-family: iransansnum;
-              font-size: 1.5rem;
-              width: 2rem;
-              &-max {
-                font-size: 1rem;
-              }
-            }
-            &-minusBtn {
-              opacity: 0.7;
-              background-color: transparent;
-              border: transparent;
-              @include dflex;
-              width: 1.2rem;
-              height: 1.2rem;
-              margin: 0.5rem;
-              fill: red;
-              cursor: pointer;
-              .trashIcon {
-                overflow: visible;
-                width: 1.7rem;
-                height: 1.7rem;
-              }
-            }
-          }
-        }
+        // &-quant {
+        //   &-quantBox {
+        //     border: 2px solid rgba(color(dark-2), 0.1);
+        //     border-radius: 5px;
+        //     @include dflex;
+        //     &-plusBtn {
+        //       opacity: 0.7;
+        //       background-color: transparent;
+        //       border: transparent;
+        //       @include dflex;
+        //       width: 1.2rem;
+        //       height: 1.2rem;
+        //       margin: 0.5rem;
+        //       cursor: pointer;
+        //     }
+        //     &-number {
+        //       color: color(dark-2);
+        //       @include dflex;
+        //       flex-direction: column;
+        //       font-family: iransansnum;
+        //       font-size: 1.5rem;
+        //       width: 2rem;
+        //       &-max {
+        //         font-size: 1rem;
+        //       }
+        //     }
+        //     &-minusBtn {
+        //       opacity: 0.7;
+        //       background-color: transparent;
+        //       border: transparent;
+        //       @include dflex;
+        //       width: 1.2rem;
+        //       height: 1.2rem;
+        //       margin: 0.5rem;
+        //       fill: red;
+        //       cursor: pointer;
+        //       .trashIcon {
+        //         overflow: visible;
+        //         width: 1.7rem;
+        //         height: 1.7rem;
+        //       }
+        //     }
+        //   }
+        // }
       }
       &-colom2 {
         color: color(dark-2);
@@ -179,6 +179,44 @@
           }
         }
       }
+      .productDetails-form {
+        &-amount {
+          @include dflex(flex-start);
+          gap: 1em;
+          border: 2px solid rgba(color(g1-2), 0.4);
+          border-radius: 20px;
+          &-value {
+            font-family: iransansnum;
+            color: rgba(color(g1-2), 1);
+            font-size: 1.5em;
+          }
+          &-btn {
+            background-color: rgba(color(dark-2), 0.1);
+            // border: 2px solid rgba(color(g3-2), 0.3);
+            padding: 0.5em;
+            border-radius: 50%;
+            svg {
+              width: 1.3em;
+              height: 1.3em;
+              opacity: 0.9;
+              path {
+                fill: rgba(color(g1-2), 1);
+              }
+            }
+          }
+          &-remove {
+            background-color: rgba(color(dark-2), 0.1);
+            // border: 2px solid rgba(color(g3-2), 0.3);
+            padding: 0.6em;
+            border-radius: 50%;
+            svg {
+              width: 1.3em;
+              height: 1.3em;
+              opacity: 0.7;
+            }
+          }
+        }
+      }
     }
   }
   &-footer {
@@ -190,6 +228,7 @@
     &-profit {
       @include dflex;
       gap: 5px;
+      margin-bottom: 0.5rem;
       &-label {
         font-size: 1.1rem;
       }
@@ -207,6 +246,7 @@
       text-align: center;
       color: color(dark-2);
       @include dflex;
+      gap: 0.5em;
       &-label {
         font-size: 1.3rem;
         margin-bottom: 0.5rem;
@@ -224,13 +264,16 @@
     &-action {
       // @include dflex;
       // border: 2px solid red;
+      width: 100%;
+      margin-top: 1.5rem;
       &-submitBtn {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         border: transparent;
         background-color: color(g1-2);
         color: color(light-2);
         padding: 0.3rem 1rem;
         border-radius: 5px;
+        width: 100%;
       }
     }
   }

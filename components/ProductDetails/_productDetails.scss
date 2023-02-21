@@ -214,225 +214,6 @@
         border: 2px solid rgba(color(dark-2), 0.1);
         border-radius: 5px;
         padding: 1rem 0.5rem;
-        .productDetails-form {
-          @include dflex(flex-start, flex-start);
-          flex-direction: column;
-          gap: 2em;
-          &-alert {
-            color: color(error);
-            margin-top: 0.5rem;
-          }
-          &-weight {
-            border-bottom: 2px solid rgba(color(g3-2), 0.3);
-            padding-bottom: 0.5rem;
-            &-container {
-              @include dflex(flex-start, center);
-              gap: 1rem;
-              @include responsive(sm) {
-                align-items: flex-start;
-                flex-direction: column;
-              }
-            }
-            &-title {
-              @include dflex;
-              svg {
-                path {
-                  fill: color(g3-1);
-                }
-              }
-            }
-            &-list {
-              @include dflex;
-              gap: 1rem;
-            }
-            &-item {
-              label {
-                p {
-                  cursor: pointer;
-                  font-size: 1rem;
-                  border-radius: 5px;
-                  font-family: iransansnum;
-                  color: color(dark-2);
-                  padding: 0.3rem 1rem;
-                  background-color: rgba(color(light-2), 1);
-                }
-                input {
-                  display: none;
-                  &:checked ~ p {
-                    border: 2px solid rgba(color(g3-2), 1);
-                    background-color: rgba(color(light-1), 1);
-                  }
-                }
-              }
-              &-weight {
-                color: color(g3-3);
-              }
-            }
-          }
-          &-grind {
-            border-bottom: 2px solid rgba(color(g3-2), 0.3);
-            padding-bottom: 0.5rem;
-            &-container {
-              @include dflex(flex-start, flex-start);
-              gap: 1rem;
-              @include responsive(sm) {
-                align-items: flex-start;
-                flex-direction: column;
-              }
-            }
-            .title {
-              @include dflex;
-              svg {
-                path {
-                  fill: color(g3-1);
-                }
-              }
-            }
-            .list {
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              gap: 1rem;
-              .item {
-                margin-left: auto;
-                label {
-                  @include dflex;
-                  img {
-                    width: 1.5rem;
-                    height: 2rem;
-                    opacity: 0.7;
-                  }
-                  input {
-                    display: none;
-                    &:checked ~ .button {
-                      // background-color: rgba(color(g3-4), 1);
-                      background-color: rgba(color(light-1), 1);
-
-                      border: 2px solid rgba(color(g3-2), 1);
-                    }
-                    &:checked ~ img {
-                      // display: none;
-                      padding: -2rem;
-                      border: 2px solid red;
-                    }
-                  }
-                  span {
-                    color: color(dark-2);
-                  }
-                  .button {
-                    cursor: pointer;
-                    border-radius: 5px;
-                    @include dflex;
-                    gap: 1rem;
-                    padding: 0.3rem 1rem;
-                    // background-color: rgba(color(g3-3), 1);
-                    border: 2px solid rgba(color(g3-2), 0);
-                    background-color: rgba(color(light-2), 1);
-                  }
-                }
-              }
-            }
-          }
-          &-sub {
-            width: 100%;
-            @include dflex;
-            gap: 1rem;
-            flex-direction: column;
-            &-actions {
-              width: 100%;
-              // @include dflex;
-              @include dflex(flex-end, flex-end);
-              gap: 2rem;
-              margin-right: auto;
-            }
-            &-price {
-              @include dflex;
-              gap: 0.5rem;
-              margin-left: auto;
-              &-title {
-                font-size: 1.3rem;
-              }
-              &-container {
-                @include dflex();
-                gap: 1em;
-                font-family: iransansnum;
-                font-size: 1.5em;
-              }
-              &-off {
-                &-price {
-                  opacity: 0.6;
-                  color: color(dark-4);
-                  text-decoration: line-through;
-                }
-                &-persent {
-                  font-size: 1.3rem;
-                  margin-right: 0.5em;
-                  opacity: 1;
-                  color: color(light-2);
-                  background-color: color(error);
-                  padding: 0.1rem 0.3rem;
-                  border-radius: 5px;
-                }
-                svg {
-                  opacity: 0.6;
-                  path {
-                    fill: color(dark-4);
-                  }
-                }
-              }
-              &-main {
-                color: rgba(color(g3-5), 1);
-                font-size: 1.5em;
-                svg {
-                  path {
-                    fill: color(g3-5);
-                  }
-                }
-              }
-            }
-          }
-          &-amount {
-            @include dflex(flex-start);
-            gap: 1.5em;
-            border: 2px solid rgba(color(g3-2), 0.4);
-            border-radius: 20px;
-            &-value {
-              font-family: iransansnum;
-              color: rgba(color(g3-2), 1);
-              font-size: 2em;
-            }
-            &-btn {
-              background-color: rgba(color(dark-2), 0.1);
-              // border: 2px solid rgba(color(g3-2), 0.3);
-              padding: 0.8em;
-              border-radius: 50%;
-              svg {
-                width: 1.5em;
-                height: 1.5em;
-                opacity: 0.7;
-                path {
-                  fill: rgba(color(g3-2), 1);
-                }
-              }
-            }
-            &-remove {
-              background-color: rgba(color(dark-2), 0.1);
-              // border: 2px solid rgba(color(g3-2), 0.3);
-              padding: 0.8em;
-              border-radius: 50%;
-              svg {
-                width: 1.5em;
-                height: 1.5em;
-                opacity: 0.7;
-              }
-            }
-          }
-          &-submitBtn {
-            background-color: color(g3-5);
-            color: color(light-2);
-            padding: 0.5em 3em;
-            border-radius: 10px;
-          }
-        }
       }
       &-actions {
         margin-top: 2em;
@@ -722,5 +503,224 @@
         }
       }
     }
+  }
+}
+.productDetails-form {
+  @include dflex(flex-start, flex-start);
+  flex-direction: column;
+  gap: 2em;
+  &-alert {
+    color: color(error);
+    margin-top: 0.5rem;
+  }
+  &-weight {
+    border-bottom: 2px solid rgba(color(g3-2), 0.3);
+    padding-bottom: 0.5rem;
+    &-container {
+      @include dflex(flex-start, center);
+      gap: 1rem;
+      @include responsive(sm) {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+    &-title {
+      @include dflex;
+      svg {
+        path {
+          fill: color(g3-1);
+        }
+      }
+    }
+    &-list {
+      @include dflex;
+      gap: 1rem;
+    }
+    &-item {
+      label {
+        p {
+          cursor: pointer;
+          font-size: 1rem;
+          border-radius: 5px;
+          font-family: iransansnum;
+          color: color(dark-2);
+          padding: 0.3rem 1rem;
+          background-color: rgba(color(light-2), 1);
+        }
+        input {
+          display: none;
+          &:checked ~ p {
+            border: 2px solid rgba(color(g3-2), 1);
+            background-color: rgba(color(light-1), 1);
+          }
+        }
+      }
+      &-weight {
+        color: color(g3-3);
+      }
+    }
+  }
+  &-grind {
+    border-bottom: 2px solid rgba(color(g3-2), 0.3);
+    padding-bottom: 0.5rem;
+    &-container {
+      @include dflex(flex-start, flex-start);
+      gap: 1rem;
+      @include responsive(sm) {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+    .title {
+      @include dflex;
+      svg {
+        path {
+          fill: color(g3-1);
+        }
+      }
+    }
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      .item {
+        margin-left: auto;
+        label {
+          @include dflex;
+          img {
+            width: 1.5rem;
+            height: 2rem;
+            opacity: 0.7;
+          }
+          input {
+            display: none;
+            &:checked ~ .button {
+              // background-color: rgba(color(g3-4), 1);
+              background-color: rgba(color(light-1), 1);
+
+              border: 2px solid rgba(color(g3-2), 1);
+            }
+            &:checked ~ img {
+              // display: none;
+              padding: -2rem;
+              border: 2px solid red;
+            }
+          }
+          span {
+            color: color(dark-2);
+          }
+          .button {
+            cursor: pointer;
+            border-radius: 5px;
+            @include dflex;
+            gap: 1rem;
+            padding: 0.3rem 1rem;
+            // background-color: rgba(color(g3-3), 1);
+            border: 2px solid rgba(color(g3-2), 0);
+            background-color: rgba(color(light-2), 1);
+          }
+        }
+      }
+    }
+  }
+  &-sub {
+    width: 100%;
+    @include dflex;
+    gap: 1rem;
+    flex-direction: column;
+    &-actions {
+      width: 100%;
+      // @include dflex;
+      @include dflex(flex-end, flex-end);
+      gap: 2rem;
+      margin-right: auto;
+    }
+    &-price {
+      @include dflex;
+      gap: 0.5rem;
+      margin-left: auto;
+      &-title {
+        font-size: 1.3rem;
+      }
+      &-container {
+        @include dflex();
+        gap: 1em;
+        font-family: iransansnum;
+        font-size: 1.5em;
+      }
+      &-off {
+        &-price {
+          opacity: 0.6;
+          color: color(dark-4);
+          text-decoration: line-through;
+        }
+        &-persent {
+          font-size: 1.3rem;
+          margin-right: 0.5em;
+          opacity: 1;
+          color: color(light-2);
+          background-color: color(error);
+          padding: 0.1rem 0.3rem;
+          border-radius: 5px;
+        }
+        svg {
+          opacity: 0.6;
+          path {
+            fill: color(dark-4);
+          }
+        }
+      }
+      &-main {
+        color: rgba(color(g3-5), 1);
+        font-size: 1.5em;
+        svg {
+          path {
+            fill: color(g3-5);
+          }
+        }
+      }
+    }
+  }
+  &-amount {
+    @include dflex(flex-start);
+    gap: 1.5em;
+    border: 2px solid rgba(color(g3-2), 0.4);
+    border-radius: 20px;
+    &-value {
+      font-family: iransansnum;
+      color: rgba(color(g3-2), 1);
+      font-size: 2em;
+    }
+    &-btn {
+      background-color: rgba(color(dark-2), 0.1);
+      // border: 2px solid rgba(color(g3-2), 0.3);
+      padding: 0.8em;
+      border-radius: 50%;
+      svg {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.7;
+        path {
+          fill: rgba(color(g3-2), 1);
+        }
+      }
+    }
+    &-remove {
+      background-color: rgba(color(dark-2), 0.1);
+      // border: 2px solid rgba(color(g3-2), 0.3);
+      padding: 0.8em;
+      border-radius: 50%;
+      svg {
+        width: 1.5em;
+        height: 1.5em;
+        opacity: 0.7;
+      }
+    }
+  }
+  &-submitBtn {
+    background-color: color(g3-5);
+    color: color(light-2);
+    padding: 0.5em 3em;
+    border-radius: 10px;
   }
 }

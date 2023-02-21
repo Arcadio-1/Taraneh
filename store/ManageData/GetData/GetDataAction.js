@@ -1,4 +1,5 @@
 // import { dataGeter } from "../../../pages/api/helper";
+import { getLocalStorageCartItems } from "../../../lib/utilFunctions";
 import { uiAction } from "../../ui/uiSlice";
 import { getDataSliceActions } from "./GetDataSlice";
 
@@ -95,28 +96,7 @@ export const getLocalStoageCartItems = () => {
           message: "trying to get cart items",
         })
       );
-      const localStorageCartItemsJson = localStorage.getItem("cartItems");
-      const cartItemsArray = [];
-      if (localStorageCartItemsJson === "[null]") {
-        console.log("fuckyes");
-        dispatch(getDataSliceActions.getCardItems([]));
-        dispatch(
-          uiAction.setGetCartItemsStatus({
-            status: "success",
-            title: "Sucsessfuly",
-            message: "get Cart Items sucsessfuly",
-          })
-        );
-        return;
-      }
-      if (localStorageCartItemsJson) {
-        const localStorageItems = JSON.parse(localStorageCartItemsJson);
-        console.log(localStorageCartItemsJson);
-        Object.keys(localStorageItems).forEach((key, index) => {
-          cartItemsArray.push(localStorageItems[key]);
-        });
-      }
-
+      const cartItemsArray = getLocalStorageCartItems();
       dispatch(getDataSliceActions.getCardItems(cartItemsArray));
 
       dispatch(
@@ -168,6 +148,89 @@ export const getCartItemsData = (items) => {
 
       dispatch(
         uiAction.setGetCartItemsDataStatus({
+          status: "success",
+          title: "Sucsessfuly",
+          message: "get Cart Items sucsessfuly",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "error",
+          title: "Error",
+          message: error || "we have  problem in geting cart items",
+        })
+      );
+    }
+  };
+};
+
+export const removeCartItemFromLocalStorage = (cartItems, id) => {
+  return async (dispatch) => {
+    try {
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "loading",
+          title: "Loading...",
+          message: "trying to get cart items",
+        })
+      );
+
+      const newItems = cartItems.filter((item) => {
+        if (item.id !== id) {
+          return item;
+        }
+      });
+
+      const jsonFile = JSON.stringify(newItems);
+      localStorage.setItem("cartItems", jsonFile);
+      console.log(newItems);
+      dispatch(getDataSliceActions.getCardItems(newItems));
+
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "success",
+          title: "Sucsessfuly",
+          message: "get Cart Items sucsessfuly",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "error",
+          title: "Error",
+          message: error || "we have  problem in geting cart items",
+        })
+      );
+    }
+  };
+};
+
+export const setLocalStorageAmount = (selectedItem, amountVal) => {
+  return async (dispatch) => {
+    try {
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "loading",
+          title: "Loading...",
+          message: "trying to get cart items",
+        })
+      );
+
+      const cartItems = getLocalStorageCartItems();
+      const { amount } = amountVal;
+      const changedArray = cartItems.map((item) => {
+        if (item.id === selectedItem) {
+          return { ...item, amount: amount };
+        }
+        return item;
+      });
+      const jsonFile = JSON.stringify(changedArray);
+      localStorage.setItem("cartItems", jsonFile);
+
+      dispatch(getDataSliceActions.getCardItems(changedArray));
+      dispatch(
+        uiAction.setGetCartItemsStatus({
           status: "success",
           title: "Sucsessfuly",
           message: "get Cart Items sucsessfuly",
