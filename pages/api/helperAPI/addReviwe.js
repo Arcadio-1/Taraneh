@@ -31,7 +31,7 @@ async function handler(req, res) {
     console.log(comment);
     const client = await getClient("products");
     if (!client) {
-      throw new Error("field at get client");
+      throw new Error("field in get client");
     }
     const db = client.db();
     const request = await db

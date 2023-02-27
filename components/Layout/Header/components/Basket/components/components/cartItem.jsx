@@ -1,15 +1,7 @@
-// import GrindIcon from "../../../ui/Icons/GrindIcon";
-// import TomanIcon from "../../../ui/Icons/tomanIcon";
-// import Trash from "../../../ui/Icons/Trash";
-// import WeightIcon from "../../../ui/Icons/weight";
-import Quantity from "./quantity";
-import LoadingSpinner from "../../../../../../ui/LoadingSpiner/loadingSpiner";
 import GrindIcon from "../../../../../../ui/Icons/GrindIcon";
 import TomanIcon from "../../../../../../ui/Icons/tomanIcon";
 import WeightIcon from "../../../../../../ui/Icons/weight";
-import TrashIcon from "../../../../../../ui/Icons/TrashIcon";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import {
   offPriceCalculator,
   priceFormat,
@@ -18,20 +10,7 @@ import Image from "next/image";
 import Amount from "../../../../../../ProductDetails/components/Body/Components/Content/OrderForm/Components/Amount";
 
 const CartItem = ({ item }) => {
-  const {
-    id,
-    title,
-    imageLink,
-    price,
-    amount,
-    sell,
-    link,
-    availableToOrder,
-    grind,
-    weight,
-    ProductId,
-  } = item;
-  console.log(item.id);
+  const { title, imageLink, price, grind, weight, ProductId } = item;
   const { value, offPersent } = price;
   const offPrice = offPriceCalculator(value, offPersent);
 
@@ -66,10 +45,9 @@ const CartItem = ({ item }) => {
           </Link>
         </div>
         <div className="CartModal-list-item-colom1-sellType">
-          <span>%{offPersent}-</span>
+          {offPersent > 0 && <span>%{offPersent}-</span>}
         </div>
-        {/* <Quantity item={item} /> */}
-        <Amount selectedItem={item.id} />
+        <Amount selectedItem={item._id} />
       </div>
       <div className="CartModal-list-item-colom2">
         <p className="CartModal-list-item-colom2-title">{title}</p>
@@ -90,14 +68,16 @@ const CartItem = ({ item }) => {
           </li>
         </ul>
         <div className="flex justify-evenly">
-          <div className="CartModal-list-item-colom2-discount">
-            <span className="CartModal-list-item-colom2-discount-price">
-              {priceFormat(value - offPrice)}
-            </span>
-            <span className="CartModal-list-item-colom2-discount-text">
-              تخفیف
-            </span>
-          </div>
+          {offPersent > 0 && (
+            <div className="CartModal-list-item-colom2-discount">
+              <span className="CartModal-list-item-colom2-discount-price">
+                {priceFormat(value - offPrice)}
+              </span>
+              <span className="CartModal-list-item-colom2-discount-text">
+                تخفیف
+              </span>
+            </div>
+          )}
           <div className="CartModal-list-item-colom2-priceAndRemove">
             <p className="CartModal-list-item-colom2-priceAndRemove-price">
               {priceFormat(offPrice)} <TomanIcon />

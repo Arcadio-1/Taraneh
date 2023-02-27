@@ -240,3 +240,25 @@ export const getComments = async (id) => {
     // commentsList: comments.commentsList,
   });
 };
+
+export const fetchCartItems = async (id) => {
+  try {
+    const client = await getClient("helper-data");
+    if (!client) {
+      throw new Error("faild in get Client");
+    }
+    const db = client.db();
+    const orders = await db.collection("orders").findOne({ _id: id });
+    // console.log(orders);
+    if (!orders) {
+      return { status: "success", message: "سفارشی یافت نشد", orders: null };
+    }
+    return { status: "success", message: "سفارشات دریافت شد", orders: orders };
+  } catch (error) {
+    return {
+      status: "error",
+      message: error || "خطا در دریافت لیست سفارشات",
+      orders: null,
+    };
+  }
+};

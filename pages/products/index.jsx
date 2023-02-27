@@ -24,7 +24,7 @@ const index = (props) => {
   return (
     <div className="productsPage">
       <section className="productsPage-breadcrumbs">
-        <Breadcrumbs />
+        <Breadcrumbs links={[{ link: "/products", title: "محصولات" }]} />
       </section>
       <section className="productsPage-body">
         <aside className="productsPage-aside hideInMD">

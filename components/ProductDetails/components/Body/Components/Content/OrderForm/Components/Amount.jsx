@@ -2,24 +2,25 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getOrederList,
   removeCartItemFromLocalStorage,
   setLocalStorageAmount,
 } from "../../../../../../../../store/ManageData/GetData/GetDataAction";
-import { sendDataAction } from "../../../../../../../../store/ManageData/SendData/SendDataSlice";
 import Minus from "../../../../../../../ui/Icons/Minus";
 import PlusIcon from "../../../../../../../ui/Icons/PlusIcon";
 import TrashIcon from "../../../../../../../ui/Icons/TrashIcon";
 
 const Amount = ({ selectedItem }) => {
-  const { status: login } = useSession();
+  const { data, status: login } = useSession();
   const dispatch = useDispatch();
-  const localstorageCartItems = useSelector((state) => state.getData.cartItems);
+  // const cartItemsData = useSelector((state) => state.getData.cartItemsData);
+  const cartItems = useSelector((state) => state.getData.cartItems);
   const [itemAmount, setItemAmount] = useState(1);
 
   useEffect(() => {
     setItemAmount((prev) => {
-      const amount = localstorageCartItems.filter((item) => {
-        if (item.id === selectedItem) {
+      const amount = cartItems.filter((item) => {
+        if (item._id === selectedItem) {
           return item.amount;
         }
       });
@@ -29,22 +30,66 @@ const Amount = ({ selectedItem }) => {
 
       return (prev = prev);
     });
-  }, [localstorageCartItems, selectedItem]);
+  }, [cartItems, selectedItem]);
 
-  const amountHandler = (type) => {
-    if (type === "plus") {
-      dispatch(setLocalStorageAmount(selectedItem, { amount: itemAmount + 1 }));
-    }
-    if (type === "minus") {
-      if (itemAmount === 1) {
-        if (login === "unauthenticated") {
+  const amountHandler = async (type) => {
+    if (login === "unauthenticated") {
+      if (type === "plus") {
+        dispatch(
+          setLocalStorageAmount(selectedItem, {
+            amount: itemAmount + 1,
+          })
+        );
+      }
+      if (type === "minus") {
+        if (itemAmount === 1) {
+          dispatch(removeCartItemFromLocalStorage(cartItems, selectedItem));
+        }
+        if (itemAmount > 1) {
           dispatch(
-            removeCartItemFromLocalStorage(localstorageCartItems, selectedItem)
+            setLocalStorageAmount(selectedItem, {
+              amount: itemAmount - 1,
+            })
           );
         }
-        return;
       }
-      dispatch(setLocalStorageAmount(selectedItem, { amount: itemAmount - 1 }));
+    }
+    if (login === "authenticated") {
+      let newCartList = [];
+      if (type === "remove") {
+        newCartList = cartItems.filter((item) => {
+          if (item._id !== selectedItem) {
+            return item;
+          }
+        });
+      }
+      if (type === "plus") {
+        newCartList = cartItems.map((item) => {
+          if (item._id === selectedItem) {
+            return { ...item, amount: itemAmount + 1 };
+          }
+          return item;
+        });
+      }
+      if (type === "minus") {
+        newCartList = cartItems.map((item) => {
+          if (item._id === selectedItem) {
+            return { ...item, amount: itemAmount - 1 };
+          }
+          return item;
+        });
+      }
+      const request = await fetch("/api/helperAPI/addOrder", {
+        method: "POST",
+        body: JSON.stringify({
+          isInsert: false,
+          userId: data.user.email._id,
+          cartItems: newCartList,
+        }),
+      });
+      const response = await request.json();
+      dispatch(getOrederList(data.user.email._id));
+      console.log(response);
     }
   };
 
@@ -76,7 +121,7 @@ const Amount = ({ selectedItem }) => {
           className="productDetails-form-amount-remove"
           onClick={(e) => {
             e.preventDefault();
-            amountHandler("minus");
+            amountHandler("remove");
           }}
         >
           <TrashIcon />

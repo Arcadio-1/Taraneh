@@ -4,7 +4,7 @@ import ArrowIcon from "../Icons/arrowsIcon";
 const Breadcrumbs = ({ links }) => {
   const address = [
     { id: 1, title: "صفحه نخست", link: "/" },
-    { id: 2, title: "محصولات", link: "/products" },
+    // { id: 2, title: "محصولات", link: "/products" },
   ];
   if (links) {
     address.push(...links);
@@ -12,9 +12,9 @@ const Breadcrumbs = ({ links }) => {
   return (
     <nav className="breadcrumbs">
       <ul className="breadcrumbs-list">
-        {address.map((link) => {
+        {address.map((link, index) => {
           return (
-            <li className="breadcrumbs-item" key={link.id}>
+            <li className="breadcrumbs-item" key={index}>
               <Link href={link.link}>{link.title}</Link>
               <ArrowIcon arrowType="left" />
             </li>

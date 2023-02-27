@@ -12,7 +12,11 @@ const initialState = {
   isShowNotif: false,
   getAllproductsStatus: null,
   getCartItemsStatus: null,
-  getCartItemsDataStatus: null,
+  getCartItemsDataStatus: {
+    status: "loading",
+    title: "Loading...",
+    message: "در حال دریافت لیست محصولات",
+  },
   getUiStatus: null,
   userActionNotif: {
     status: "null",

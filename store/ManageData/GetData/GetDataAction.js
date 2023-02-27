@@ -117,6 +117,46 @@ export const getLocalStoageCartItems = () => {
     }
   };
 };
+export const getOrederList = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "loading",
+          title: "Loading...",
+          message: "trying to get cart items",
+        })
+      );
+
+      const orders = await fetch(`/api/helperAPI/getOrderList/${id}`, {
+        method: "GET",
+      });
+      // console.log(orders);
+      const response = await orders.json();
+      // console.log(response);
+      if (response.orders) {
+        dispatch(getDataSliceActions.getCardItems(response.orders.orders));
+      }
+      // dispatch(getDataSliceActions.getCardItems([]));
+
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "success",
+          title: "Sucsessfuly",
+          message: "get Cart Items sucsessfuly",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiAction.setGetCartItemsStatus({
+          status: "error",
+          title: "Error",
+          message: error || "we have  problem in geting cart items",
+        })
+      );
+    }
+  };
+};
 
 export const getCartItemsData = (items) => {
   return async (dispatch) => {
@@ -129,6 +169,7 @@ export const getCartItemsData = (items) => {
         })
       );
       const mylist = [];
+      // console.log(items);
       const cartListArray = await items.map(async (item) => {
         const request = await fetch(
           `/api/helperAPI/getSingleProduct/${item.ProductId}`,
@@ -184,7 +225,7 @@ export const removeCartItemFromLocalStorage = (cartItems, id) => {
 
       const jsonFile = JSON.stringify(newItems);
       localStorage.setItem("cartItems", jsonFile);
-      console.log(newItems);
+      // console.log(newItems);
       dispatch(getDataSliceActions.getCardItems(newItems));
 
       dispatch(
@@ -245,5 +286,20 @@ export const setLocalStorageAmount = (selectedItem, amountVal) => {
         })
       );
     }
+  };
+};
+
+export const setordersAmount = (selectedItem, amountValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(
+        uiAction.setGetCartItemsDataStatus({
+          status: "loading",
+          title: "loading",
+          message: "try to change amount",
+        })
+      );
+      // const newList =
+    } catch (error) {}
   };
 };

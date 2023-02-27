@@ -14,7 +14,7 @@ export async function getStaticProps(context) {
   const commentsJson = await getComments(id);
   const product = JSON.parse(productJson);
   const comments = JSON.parse(commentsJson);
-  console.log(comments);
+  // console.log(comments);
   if (product.status === "error") {
     return {
       props: {

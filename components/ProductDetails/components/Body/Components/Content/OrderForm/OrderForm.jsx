@@ -4,20 +4,23 @@ import Amount from "./Components/Amount";
 import Grind from "./Components/Grind";
 import Weight from "./Components/Weight";
 import { useSession } from "next-auth/react";
-import { getLocalStoageCartItems } from "../../../../../../../store/ManageData/GetData/GetDataAction";
+import {
+  getLocalStoageCartItems,
+  getOrederList,
+} from "../../../../../../../store/ManageData/GetData/GetDataAction";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToLocalStorageCart } from "../../../../../../../lib/utilFunctions";
 
 const OrderForm = (props) => {
   const { status, packaging, price, id } = props;
-  const { status: login } = useSession();
+  const { data, status: login } = useSession();
 
   const { value: availableWeights, availableGrind } = packaging;
 
   const dispatch = useDispatch();
   const orderData = useSelector((state) => state.sendData.product);
   const localstorageCartItems = useSelector((state) => state.getData.cartItems);
-
+  const cartItemsData = useSelector((state) => state.getData.cartItemsData);
   const [haveIt, setHaveIt] = useState(false);
   const [weightAlert, setWeightAlert] = useState(false);
   const [grindAlert, setGrindAlert] = useState(false);
@@ -25,33 +28,31 @@ const OrderForm = (props) => {
   const { grind, weight, amount } = orderData;
   const selectedItem = `${id}${grind}${weight}`;
 
-  useEffect(() => {
-    console.log(orderData);
-  }, [orderData]);
+  // useEffect(() => {
+  //   console.log(orderData);
+  // }, [orderData]);
 
-  useEffect(() => {
-    dispatch(getLocalStoageCartItems());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getLocalStoageCartItems());
+  // }, [dispatch]);
 
   useEffect(() => {
     if (grind && weight) {
-      if (login === "unauthenticated") {
-        if (localstorageCartItems && localstorageCartItems.length === 0) {
-          setHaveIt(false);
-        }
-        if (localstorageCartItems && localstorageCartItems.length > 0) {
-          setHaveIt(false);
-          localstorageCartItems.map((item) => {
-            if (item.id === selectedItem) {
-              return setHaveIt(true);
-            }
-          });
-        }
+      if (cartItemsData && cartItemsData.length === 0) {
+        setHaveIt(false);
+      }
+      if (cartItemsData && cartItemsData.length > 0) {
+        setHaveIt(false);
+        cartItemsData.map((item) => {
+          if (item._id === selectedItem) {
+            return setHaveIt(true);
+          }
+        });
       }
     }
-  }, [grind, weight, selectedItem, localstorageCartItems, login]);
+  }, [grind, weight, selectedItem, cartItemsData, login]);
 
-  const AddToCardHandler = () => {
+  const AddToCardHandler = async () => {
     if (!weight) {
       setWeightAlert((prev) => (prev = true));
       return;
@@ -63,6 +64,25 @@ const OrderForm = (props) => {
     setHaveIt(true);
     if (login === "unauthenticated") {
       addProductToLocalStorageCart(id, orderData);
+      dispatch(getLocalStoageCartItems());
+    }
+    if (login === "authenticated") {
+      // console.log(cartItemsData);
+      const methodFlag =
+        cartItemsData && cartItemsData.length > 0 ? "PUT" : "POST";
+      console.log(selectedItem);
+      const request = await fetch("/api/helperAPI/addOrder", {
+        method: methodFlag,
+        body: JSON.stringify({
+          isInsert: true,
+          userId: data.user.email._id,
+          orders: { ...orderData, ProductId: id, _id: selectedItem },
+        }),
+      });
+      const response = await request.json();
+      console.log(response);
+      const userId = data.user.email._id;
+      dispatch(getOrederList(userId));
     }
   };
 
