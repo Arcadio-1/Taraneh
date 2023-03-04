@@ -1,52 +1,146 @@
 .checkout {
-  .setup {
-    @include dflex(space-evenly);
-    gap: 2rem;
-    &-item {
-      // border: 2px solid red;
-      width: 100%;
-      @include dflex;
-      .container {
-        width: 100%;
-        @include dflex;
-        // flex-direction: column-reverse;
-        .title {
-          white-space: nowrap;
-          font-size: 1.5rem;
-        }
-        .basketIcon {
-          path {
-            fill: color(dark-2);
-          }
-        }
-        .deliveryIcon {
-          stroke: color(dark-2);
-          width: 3rem;
-          height: 3rem;
-        }
-      }
-      .selectedItem {
+  .freeShoping {
+    margin-top: 2rem;
+    .leftPrice {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      // font-family: iransandnum;
+      .price {
+        font-family: iransansnum;
         color: color(g3-3);
-        .basketIcon {
-          path {
-            fill: color(g3-3);
+      }
+      .free {
+        color: color(g3-3);
+      }
+    }
+    .priceBar {
+      width: 100%;
+      border: 1px solid rgba(color(g3-3), 0.3);
+      border-radius: 10px;
+      height: 1rem;
+      &-inner {
+        background-color: color(g3-2);
+      }
+    }
+  }
+  .list {
+    margin-top: 2rem;
+    background-color: color(light-1);
+    border-radius: 10px;
+    .table {
+      width: 100%;
+      tr {
+        border-bottom: 2px solid rgba(color(dark-2), 0.1);
+        // border: 2px solid red;
+        th {
+          // border: 2px solid green;
+          border-bottom: 2px solid rgba(color(dark-2), 0.2);
+          padding: 1rem 0rem;
+        }
+        td {
+          // border: 2px solid yellow;
+          text-align: center;
+          font-family: iransansnum;
+          padding-bottom: 1rem;
+          img {
+            margin: auto;
+          }
+          .productDetails-form-amount {
+            @include dflex(space-between);
+            gap: 1em;
+            max-width: 8rem;
+            margin: auto;
+            &-value {
+              font-size: 1.5em;
+            }
+            &-btn {
+              padding: 0.5em;
+              svg {
+                width: 1.2em;
+                height: 1.2em;
+              }
+            }
+            &-remove {
+              padding: 0.5em;
+            }
           }
         }
       }
-      &:last-child {
-        &::after {
-          content: "";
-          border: transparent;
-        }
+    }
+  }
+  .coupon {
+    @include dflex(flex-end);
+    gap: 1rem;
+    // margin-right: auto;
+    display: inline-flex;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background-color: rgba(color(g3-3), 0.5);
+    input {
+      // background-color: color(g3-2);
+      background-color: rgba(color(g3-2), 0.1);
+      color: color(light-1);
+      width: 100%;
+      height: 2.5rem;
+      padding: 0.1rem 2rem;
+      &::placeholder {
+        color: color(light-2);
       }
-      &::after {
-        content: "";
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: 1px solid color(g3-3);
-        border-radius: 10px;
+    }
+    button {
+      background-color: color(g3-3);
+      color: color(light-2);
+      padding: 0.4rem 2rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      &:hover {
+        background-color: rgba(color(light-2), 0.6);
+        color: color(dark-2);
+      }
+    }
+  }
+  .actions {
+    button {
+      background-color: color(error);
+      color: color(light-2);
+      padding: 0.5rem 2rem;
+      border-radius: 5px;
+    }
+  }
+  .totalCard {
+    border: 2px solid rgba(color(g3-2), 0.2);
+    background-color: color(light-1);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    .table {
+      width: 100%;
+      // border: 2px solid red;
+      tr {
+        line-height: 3rem;
+        border-bottom: 1px solid rgba(color(g3-2), 0.2);
+      }
+      th {
+        text-align: right;
+        // border: 2px solid peru;
+      }
+      td {
+        // border: 2px solid palegreen;
+        font-family: iransansnum;
+        font-size: 1.5rem;
+        text-align: left;
+        padding-right: 2rem;
+      }
+    }
+    &-actions {
+      @include dflex;
+      button {
+        margin-top: 1.5rem;
+        margin-right: auto;
+        background-color: color(g3-2);
+        color: color(light-2);
+        padding: 0.5rem 2rem;
+        font-size: 1.3rem;
+        border-radius: 2px;
       }
     }
   }

@@ -16,7 +16,7 @@ import NotifCard from "../ui/NotifCard";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import LogIcon from "../ui/Icons/LogIcon";
-const SignupForm = (props) => {
+const SignupForm = ({ currentPage }) => {
   const stateRef = useRef();
   const cityRef = useRef();
   const router = useRouter();
@@ -210,7 +210,12 @@ const SignupForm = (props) => {
       );
       if (!request.error) {
         setTimeout(() => {
-          router.push("/");
+          if (currentPage) {
+            router.push(currentPage);
+          }
+          if (!currentPage) {
+            router.push("/");
+          }
         }, 1000);
       }
     } catch (error) {

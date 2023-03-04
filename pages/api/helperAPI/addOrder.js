@@ -3,6 +3,8 @@ import { getClient } from "../helper";
 async function handler(req, res) {
   try {
     const orderBody = JSON.parse(req.body);
+    // console.log(orderBody);
+    // console.log(req.method);
     const { userId, orders, isInsert } = orderBody;
     // console.log(orderBody);
     // const order = {
@@ -18,7 +20,8 @@ async function handler(req, res) {
     const db = client.db();
     if (req.method === "POST") {
       if (isInsert) {
-        // console.log(userId);
+        console.log(orders);
+        console.log(userId);
         request = await db.collection("orders").insertOne({
           _id: userId,
           orders: [orders],
@@ -39,14 +42,9 @@ async function handler(req, res) {
         .collection("orders")
         .updateOne({ _id: userId }, { $push: { orders: orders } });
     }
-    // if (req.method === "UPDATE") {
-    //   request = await db
-    //     .collection("orders")
-    //     .updateOne(
-    //       { _id: userId, orders: { id: orderBody.selectedItem } },
-    //       { $push: { amount: orderBody.amount } }
-    //     );
-    // }
+    if (req.method === "DELETE") {
+      request = await db.collection("orders").findOneAndDelete({ _id: userId });
+    }
 
     if (!request) {
       throw new Error("insert faild");

@@ -1,0 +1,173 @@
+.shiping {
+  //   margin: 1rem;
+  // @include dflex();
+  // flex-direction: column;
+  &-buyerDataAndTotalCard {
+    @include dflex(space-between, flex-start);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    @include responsive(lg) {
+      flex-direction: column;
+    }
+  }
+  &-buyerData {
+    width: 75%;
+    border-radius: 5px;
+    background-color: color(light-1);
+    padding: 1rem 2rem;
+    @include responsive(lg) {
+      width: 100%;
+    }
+    .title {
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      border-bottom: 2px solid rgba(color(g3-4), 0.1);
+    }
+    .fullname {
+      @include dflex(flex-start, flex-start);
+      gap: 0.3rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .table {
+      width: 100%;
+      border: 2px solid rgba(color(g3-5), 0.2);
+      border-radius: 5px;
+      display: none;
+      @include responsive(md) {
+        // display: flex;
+        // @include dflex(flex-start);
+      }
+      th {
+        line-height: 3rem;
+        font-size: 1.1rem;
+        padding: 0.5rem;
+        border-left: 2px solid rgba(color(g3-5), 0.1);
+        border-bottom: 2px solid rgba(color(g3-5), 0.1);
+        &:last-child {
+          border-left: transparent;
+        }
+        @include responsive(md) {
+          display: flex;
+          &:last-child {
+            border-left: 2px solid rgba(color(g3-5), 0.1);
+          }
+        }
+      }
+      td {
+        line-height: 3rem;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        text-align: center;
+        border-left: 2px solid rgba(color(g3-5), 0.1);
+        &:last-child {
+          border-left: transparent;
+        }
+        @include responsive(md) {
+          display: flex;
+          border-bottom: 2px solid rgba(color(g3-5), 0.1);
+          &:last-child {
+            border-left: 2px solid rgba(color(g3-5), 0.1);
+          }
+        }
+      }
+    }
+    .mdTable {
+      width: 100%;
+      tr {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 5em;
+        // &:nth-child(odd) {
+        //   background-color: #f2f2f2;
+        // }
+        border-bottom: 2px solid rgba(color(g3-5), 0.1);
+      }
+      th {
+        // max-width: 6rem;
+        padding: 1em;
+        // width: 30%;
+        // border: 2px solid red;
+        // margin-top: 2em;
+        @include dflex(flex-start, flex-start);
+      }
+      td {
+      }
+    }
+  }
+  &-totalCard {
+    margin-left: auto;
+    width: 20%;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: color(light-1);
+    @include responsive(lg) {
+      width: auto;
+      width: 100%;
+    }
+    .table {
+      width: 100%;
+      //   border: 2px solid green;
+      th {
+        border-bottom: 2px solid rgba(color(g3-3), 0.1);
+        padding: 1rem 0.2rem;
+        text-align: right;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      td {
+        border-bottom: 2px solid rgba(color(g3-3), 0.1);
+        padding: 1rem 0.2rem;
+        padding-right: 3rem;
+        font-family: iransansnum;
+        text-align: left;
+        font-size: 1.3rem;
+      }
+    }
+    &-actions {
+      margin-top: 2rem;
+      @include dflex;
+      button {
+        font-size: 1.3rem;
+        border-radius: 5px;
+        margin-right: auto;
+        color: color(light-1);
+        padding: 0.2rem 3rem;
+        background-color: rgba(color(g1-2), 1);
+      }
+    }
+  }
+  &-boxContentContainer {
+    // @include dflex;
+    // border: 2px solid red;
+    // width: min-content;
+  }
+  &-boxContent {
+    background-color: color(light-1);
+    border-radius: 10px;
+    padding: 1rem;
+    // width: auto;
+    // width: fit-content;
+    width: auto;
+    .title {
+      font-size: 1.2rem;
+    }
+    .container {
+    }
+    .list {
+      //   border: 2px solid red;
+      width: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 270px));
+      gap: 0.5em;
+      padding: 0.5rem;
+    }
+    .item {
+      border-radius: 5px;
+      @include dflex;
+      //   flex-direction: column;
+      border: 2px solid rgba(color(g3-5), 0.2);
+    }
+  }
+}

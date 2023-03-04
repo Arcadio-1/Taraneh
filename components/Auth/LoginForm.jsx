@@ -12,7 +12,7 @@ import { signIn } from "next-auth/react";
 import ShowIcon from "../ui/Icons/ShowIcon";
 import HideIcon from "../ui/Icons/HideIcon";
 
-const LoginForm = () => {
+const LoginForm = ({ currentPage }) => {
   const router = useRouter();
   const notif = useSelector((state) => state.ui.userActionNotif);
   const dispatchNotif = useDispatch();
@@ -84,7 +84,12 @@ const LoginForm = () => {
         throw new Error(request.error);
       }
       if (!request.error) {
-        router.push("/");
+        if (currentPage) {
+          router.push(currentPage);
+        }
+        if (!currentPage) {
+          router.push("/");
+        }
       }
       dispatchNotif(
         uiAction.setNotif({

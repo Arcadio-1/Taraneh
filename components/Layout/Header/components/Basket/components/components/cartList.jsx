@@ -10,18 +10,13 @@ const CartList = () => {
   const localStorageCartItems = useSelector(
     (state) => state.getData.cartItemsData
   );
-  // useEffect(() => {
-  //   console.log(localStorageCartItems);
-  //   console.log(getItemsStatus);
-  // }, [localStorageCartItems, getItemsStatus]);
   return (
     <Fragment>
-      {/* <h5 className="CartModal-list-title">لیستت سفارشات</h5> */}
       {getItemsStatus.status === "success" &&
         localStorageCartItems.map((item, index) => {
           {
             {
-              return <CartItem key={item.id} item={item} />;
+              return <CartItem key={item._id} item={item} />;
             }
           }
         })}

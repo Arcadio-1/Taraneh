@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { offPriceCalculator } from "../../lib/utilFunctions";
+import { offPriceCalculator, priceFormat } from "../../../lib/utilFunctions";
 
 const FreeShoping = () => {
   const cartItemsData = useSelector((state) => state.getData.cartItemsData);
   const [persent, setPersent] = useState(0);
+  const [priceToFree, setPriceToFree] = useState(300000);
   useEffect(() => {
     // console.log(cartItemsData);
     let totalPrice = 0;
@@ -22,13 +23,19 @@ const FreeShoping = () => {
       }
     });
     const presentt = totalPrice / 3000;
-    console.log(presentt);
+    // console.log(presentt);
     if (presentt < 100) {
+      setPriceToFree((prev) => {
+        return (prev = 300000 - totalPrice);
+      });
       setPersent((prev) => {
         return (prev = presentt);
       });
     }
     if (presentt > 100) {
+      setPriceToFree((prev) => {
+        return (prev = 0);
+      });
       setPersent((prev) => {
         return (prev = 100);
       });
@@ -36,10 +43,26 @@ const FreeShoping = () => {
   }, [cartItemsData]);
 
   return (
-    <div className="freeShoping">
-      <div className="w-full border-2 border-red-900 h-2 mt-3 rounded-lg">
+    <div className="freeShoping mt-3 ">
+      <div className="leftPrice">
+        {priceToFree > 0 && (
+          <p>
+            برای ارسال رایگان
+            <span className="price"> {priceFormat(priceToFree)} </span>
+            تومان به سبد خرید خود اضافه کنید!
+          </p>
+        )}
+        {!priceToFree && (
+          <p>
+            هزینه ارسال
+            <span className="free"> رایگان </span>
+            می باشد
+          </p>
+        )}
+      </div>
+      <div className="priceBar">
         <div
-          className="bg-black"
+          className="priceBar-inner"
           style={{ height: "100%", width: `${persent}%` }}
         ></div>
       </div>

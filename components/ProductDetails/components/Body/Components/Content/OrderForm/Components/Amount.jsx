@@ -62,6 +62,18 @@ const Amount = ({ selectedItem }) => {
             return item;
           }
         });
+        if (newCartList.length < 1) {
+          const request = await fetch("/api/helperAPI/addOrder", {
+            method: "DELETE",
+            body: JSON.stringify({
+              userId: data.user.email._id,
+            }),
+          });
+          const response = await request.json();
+          dispatch(getOrederList(data.user.email._id));
+          console.log(response);
+          return;
+        }
       }
       if (type === "plus") {
         newCartList = cartItems.map((item) => {

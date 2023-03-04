@@ -3,7 +3,7 @@ import Link from "next/link";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import { useRouter } from "next/router";
-const Account = () => {
+const Account = ({ currentPage }) => {
   const router = useRouter();
   const { query } = router;
   const currentForm = query.form;
@@ -25,8 +25,10 @@ const Account = () => {
           <Link href={"?form=login"}>ورود</Link>
         </li>
       </ul>
-      {(!currentForm || currentForm === "login") && <LoginForm />}
-      {currentForm === "signup" && <SignupForm />}
+      {(!currentForm || currentForm === "login") && (
+        <LoginForm currentPage={currentPage} />
+      )}
+      {currentForm === "signup" && <SignupForm currentPage={currentPage} />}
     </div>
   );
 };

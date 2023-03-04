@@ -131,14 +131,14 @@ export const getOrederList = (id) => {
       const orders = await fetch(`/api/helperAPI/getOrderList/${id}`, {
         method: "GET",
       });
-      // console.log(orders);
       const response = await orders.json();
       // console.log(response);
       if (response.orders) {
         dispatch(getDataSliceActions.getCardItems(response.orders.orders));
       }
-      // dispatch(getDataSliceActions.getCardItems([]));
-
+      if (!response.orders) {
+        dispatch(getDataSliceActions.getCardItems([]));
+      }
       dispatch(
         uiAction.setGetCartItemsStatus({
           status: "success",

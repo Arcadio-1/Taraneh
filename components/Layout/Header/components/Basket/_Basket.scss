@@ -32,17 +32,14 @@
   &-list {
     background-color: color(light-2);
     opacity: 1;
-    width: 100&;
+    width: 100%;
     @include dflex;
     padding: 0.5rem 1rem;
     flex-direction: column;
-    &-title {
+    &-container {
+      max-height: 30rem;
+      overflow: scroll;
       width: 100%;
-      text-align: right;
-      color: color(dark-2);
-      font-size: 1.3rem;
-      margin-bottom: 0.7rem;
-      // border: 1px solid red;
     }
     &-item {
       @include dflex(space-between);

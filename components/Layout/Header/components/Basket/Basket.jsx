@@ -41,6 +41,10 @@ const Basket = () => {
       // console.log(cartItems);
       dispatch(getCartItemsData(cartItems));
     }
+    if (cartItems && cartItems.length === 0) {
+      // console.log(cartItems);
+      dispatch(getCartItemsData([]));
+    }
   }, [cartItems, dispatch]);
 
   useEffect(() => {

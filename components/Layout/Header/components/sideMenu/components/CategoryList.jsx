@@ -8,6 +8,7 @@ import CategoryItem from "./CategoryItem";
 
 const CategoryList = (props) => {
   const { links, status } = props;
+  // console.log(links);
   // const categories = [
   //   { id: 1, title: "قهوه شرکتی", link: "packaged" },
   //   { id: 2, title: "قهوه قله", link: "bulk" },
@@ -17,7 +18,7 @@ const CategoryList = (props) => {
   // ];
   return (
     <Fragment>
-      {status === "success" && (
+      {links.status === "success" && (
         <ul className="sideMenu-category-list">
           {links.data.map((item) => {
             return <CategoryItem child={false} key={item.id} item={item} />;

@@ -68,7 +68,9 @@ const Cart = ({ showMenuHandler }) => {
       </header>
       {cartitemss && cartitemss.length > 0 && (
         <section className="CartModal-list">
-          <CartList />
+          <div className="CartModal-list-container">
+            <CartList />
+          </div>
         </section>
       )}
       {cartitemss && cartitemss.length === 0 && (
