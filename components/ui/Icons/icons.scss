@@ -1,14 +1,6 @@
 .closeIcon {
-  cursor: pointer;
-  opacity: 0.65;
-  display: inline-flex;
   width: 2.5rem;
   height: 2.5rem;
-  margin: 0.5rem;
-  &-svg {
-    height: 100%;
-    width: 100%;
-  }
 }
 .arrowIcon {
   display: inline-flex;
@@ -28,8 +20,8 @@
   height: 1.5rem;
 }
 .likeIcon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   path {
     stroke: color(dark-1);
     fill: color(dark-1);
@@ -183,7 +175,7 @@
   height: 2rem;
   path {
     fill: none;
-    //   stroke: "#000000";
+    stroke: "#000000";
   }
 }
 .newsIcon {
@@ -285,11 +277,8 @@
   }
 }
 .viewsIcon {
-  width: 3rem;
-  height: 3rem;
-  .st0 {
-    fill: #134563;
-  }
+  width: 2rem;
+  height: 2rem;
 }
 .mailIcon {
   width: 2rem;
@@ -319,8 +308,6 @@
   path:nth-child(1) {
     fill: color(dark-2);
   }
-  path {
-  }
 }
 .replayIcon {
   width: 2rem;
@@ -330,10 +317,10 @@
   }
 }
 .basketIcon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   path {
-    fill: color(light-2);
+    fill: color(color(dark-2));
   }
 }
 .shareIcon {
@@ -385,6 +372,8 @@
 }
 
 .exitIcon {
+  width: 2rem;
+  height: 2rem;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -462,4 +451,24 @@
 .epmtyIcon {
   width: 8rem;
   height: 8rem;
+}
+.editIcon {
+  width: 2rem;
+  height: 2rem;
+}
+.commentIcon {
+  width: 2rem;
+  height: 2rem;
+}
+.addressIcon {
+  width: 2rem;
+  height: 2rem;
+}
+.giftIcon {
+  width: 2rem;
+  height: 2rem;
+}
+.notifIcon {
+  width: 2rem;
+  height: 2rem;
 }

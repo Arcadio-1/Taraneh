@@ -1,13 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../../store/ui/uiSlice";
 
-const BackDrop = () => {
-  const CloseBackDropDispatch = useDispatch();
-  const closeModalHandler = () => {
-    CloseBackDropDispatch(uiAction.closeModal());
-  };
-  return <div onClick={closeModalHandler} className="backDrop"></div>;
+const BackDrop = ({ closeFn }) => {
+  const isShow = useSelector((state) => state.ui.isShowBackDrop);
+
+  return (
+    <div
+      onClick={closeFn}
+      className={`backDrop transition-all ease-in-out duration-500 ${
+        isShow ? "opacity-100 visible" : "opacity-0 invisible "
+      }`}
+    ></div>
+  );
 };
 
 export default BackDrop;

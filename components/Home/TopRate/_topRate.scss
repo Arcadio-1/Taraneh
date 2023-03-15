@@ -17,14 +17,6 @@
     background-color: rgba(color(light-2), 0.6);
     @include blur-3;
     height: 100%;
-    &-title {
-      // border: 2px solid red;
-      text-align: center;
-      font-size: 2rem;
-      color: color(dark-2);
-      text-shadow: 2px 2px 2px #fff;
-      margin-bottom: 2em;
-    }
     &-background {
       position: absolute;
       width: 100%;

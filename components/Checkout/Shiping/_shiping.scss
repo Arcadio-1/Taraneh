@@ -1,0 +1,158 @@
+.shiping {
+  //   margin: 1rem;
+  // @include dflex();
+  // flex-direction: column;
+  &-buyerDataAndTotalCard {
+    @include dflex(space-between, flex-start);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    @include responsive(lg) {
+      flex-direction: column;
+    }
+  }
+  &-totalCard {
+    width: 25%;
+    @include responsive(lg) {
+      width: 100%;
+    }
+  }
+  &-buyerData {
+    width: 75%;
+    border-radius: 5px;
+    background-color: color(light-1);
+    padding: 1rem 2rem;
+    @include responsive(lg) {
+      width: 100%;
+    }
+    .title {
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      border-bottom: 2px solid rgba(color(g3-4), 0.1);
+    }
+    .fullname {
+      @include dflex(flex-start, flex-start);
+      gap: 0.3rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .table {
+      width: 100%;
+      border: 2px solid rgba(color(g3-5), 0.2);
+      border-radius: 5px;
+      display: none;
+      @include responsive(md) {
+        // display: flex;
+        // @include dflex(flex-start);
+      }
+      th {
+        line-height: 3rem;
+        font-size: 1.1rem;
+        padding: 0.5rem;
+        border-left: 2px solid rgba(color(g3-5), 0.1);
+        border-bottom: 2px solid rgba(color(g3-5), 0.1);
+        &:last-child {
+          border-left: transparent;
+        }
+        @include responsive(md) {
+          display: flex;
+          &:last-child {
+            border-left: 2px solid rgba(color(g3-5), 0.1);
+          }
+        }
+      }
+      td {
+        line-height: 3rem;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        text-align: center;
+        border-left: 2px solid rgba(color(g3-5), 0.1);
+        &:last-child {
+          border-left: transparent;
+        }
+        @include responsive(md) {
+          display: flex;
+          border-bottom: 2px solid rgba(color(g3-5), 0.1);
+          &:last-child {
+            border-left: 2px solid rgba(color(g3-5), 0.1);
+          }
+        }
+      }
+    }
+    .mdTable {
+      width: 100%;
+      tr {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 5em;
+        // &:nth-child(odd) {
+        //   background-color: #f2f2f2;
+        // }
+        border-bottom: 2px solid rgba(color(g3-5), 0.1);
+      }
+      th {
+        // max-width: 6rem;
+        padding: 1em;
+        // width: 30%;
+        // border: 2px solid red;
+        // margin-top: 2em;
+        @include dflex(flex-start, flex-start);
+      }
+      td {
+      }
+    }
+    &-actions {
+      margin-top: 2rem;
+      @include dflex;
+      button {
+        margin-right: auto;
+        background-color: rgba(color(g3-2), 1);
+        color: color(light-2);
+        padding: 0.3rem 2rem;
+        border-radius: 3px;
+      }
+    }
+  }
+  &-boxContent {
+    background-color: color(light-1);
+    border-radius: 10px;
+    padding: 1rem;
+    // width: auto;
+    // width: fit-content;
+    width: auto;
+    .title {
+      font-size: 1.2rem;
+    }
+    .container {
+    }
+    .list {
+      //   border: 2px solid red;
+      width: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 270px));
+      gap: 0.5em;
+      padding: 0.5rem;
+    }
+    .item {
+      border-radius: 5px;
+      @include dflex(flex-start);
+      //   flex-direction: column;
+      position: relative;
+      border: 2px solid rgba(color(g3-5), 0.2);
+      &-amount {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        @include dflex;
+        font-size: 1.4rem;
+        color: color(light-2);
+        // padding: 1rem;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: color(g1-2);
+        font-family: iransansnum;
+      }
+    }
+  }
+}

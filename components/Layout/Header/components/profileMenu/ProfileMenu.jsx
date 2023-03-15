@@ -8,37 +8,41 @@ import LikeIcon from "../../../../ui/Icons/LikeIcon";
 import ExitIcon from "../../../../ui/Icons/ExitIcon";
 import { signOut } from "next-auth/react";
 
-const ProfileMenu = () => {
+const ProfileMenu = ({ closeMenu }) => {
   const { data: session, status } = useSession();
-  console.log(session);
   const name = `${session.user.email.name} ${session.user.email.family}`;
   return (
     <div className="profileMenu">
       <ul className="profileMenu-list">
-        <li className="profileMenu-item">
-          <Image
-            src={"/image/ui/profile.png"}
-            height={30}
-            width={30}
-            alt="profile"
-          />
-          <Link href={"/profile"}>{name}</Link>
+        <li className="profileMenu-item" onClick={closeMenu}>
+          <Link href={"/profile"}>
+            <div className="flex items-center gap-2">
+              <Image
+                src={"/image/ui/profile.png"}
+                height={30}
+                width={30}
+                alt="profile"
+              />
+              {name}
+            </div>
+          </Link>
         </li>
-        <li className="profileMenu-item">
+        <li className="profileMenu-item" onClick={closeMenu}>
           <ProductsIcon />
           <Link href={"/profile"}>سفارش ها</Link>
         </li>
-        <li className="profileMenu-item">
+        <li className="profileMenu-item" onClick={closeMenu}>
           <LikeIcon />
           <Link href={"/profile"}>لیست ها</Link>
         </li>
-        <li className="profileMenu-item">
+        <li className="profileMenu-item" onClick={closeMenu}>
           <CommentIcon />
           <Link href={"/profile"}>دیدگاه ها</Link>
         </li>
         <li
           className="profileMenu-item"
           onClick={() => {
+            closeMenu();
             signOut();
           }}
         >

@@ -10,12 +10,10 @@ import "swiper/css/autoplay";
 import LoadingSpinner from "../LoadingSpiner/loadingSpiner";
 import ProductCard from "../productCard/ProductCard";
 import { useSelector } from "react-redux";
-import TopRateHeader from "../../Home/TopRate/TopRateHeader";
+import Image from "next/image";
 useSelector;
 
-const SliderSection = (props) => {
-  const status = useSelector((state) => state.ui.getAllproductsStatus);
-  const { items } = props;
+const SliderSection = ({ items, header }) => {
   return (
     <section className="sliderSection">
       <Swiper
@@ -25,16 +23,28 @@ const SliderSection = (props) => {
         className="sliderSection-swiper"
         navigation
       >
-        <SwiperSlide>
-          <TopRateHeader />
-        </SwiperSlide>
-        {status && status.status === "loading" && (
+        {header && (
+          <SwiperSlide>
+            <div className="slidHeader">
+              <p className="slidHeader-title">{header.title}</p>
+
+              <div className="slidHeader-image">
+                <Image
+                  src={header.imgLink}
+                  alt="محبوب ترین ها"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+        )}
+        {!items && (
           <div className="sliderSection-loading">
             <LoadingSpinner text={"در حال بارگزاری محصولات"} />
           </div>
         )}
-        {status &&
-          status.status === "success" &&
+        {items &&
           items.map((item) => {
             return (
               <SwiperSlide
@@ -46,11 +56,6 @@ const SliderSection = (props) => {
               </SwiperSlide>
             );
           })}
-        {status && status.status === "error" && (
-          <SwiperSlide>
-            <p>cant get Data</p>
-          </SwiperSlide>
-        )}
       </Swiper>
     </section>
   );

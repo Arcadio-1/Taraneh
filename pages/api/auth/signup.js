@@ -2,14 +2,13 @@ import { getHashedPassword } from "../../../lib/hashHelper";
 import { getClient } from "../helper";
 
 async function handler(req, res) {
-  // console.log(req.body);
   if (req.method !== "POST") {
     return;
   }
   try {
-    const { state, city, password, email, mobile } = req.body;
+    const { state, city, password, email, mobile, codeMeli } = req.body;
 
-    const useExist = await existCheak(email, mobile);
+    const useExist = await existCheak(email, mobile, codeMeli);
     if (useExist) {
       throw new Error(useExist);
     }
@@ -48,7 +47,7 @@ async function handler(req, res) {
 }
 export default handler;
 
-const existCheak = async (email, mobile) => {
+const existCheak = async (email, mobile, codeMeli) => {
   const client = await getClient("users");
   const db = client.db();
 
@@ -58,12 +57,18 @@ const existCheak = async (email, mobile) => {
   const isThisMobileExist = await db
     .collection("userList")
     .findOne({ mobile: mobile });
+  const isThisCodeMeliExist = await db
+    .collection("userList")
+    .findOne({ codeMeli: codeMeli });
 
   if (isThisEmailExist) {
     return "ایمیل شما ثبت شده است لطفا از قسمت ورود وارد شوید";
   }
   if (isThisMobileExist) {
     return "شماره موبایل شما ثبت شده است لطفا از قسمت ورود وارد شوید";
+  }
+  if (isThisCodeMeliExist) {
+    return "کد ملی شما ثبت شده است لطفا از قسمت ورود وارد شوید";
   }
   return null;
 };

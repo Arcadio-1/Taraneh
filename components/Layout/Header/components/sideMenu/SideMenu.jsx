@@ -42,7 +42,7 @@ const SideMenu = (props) => {
     dispatchSideMenu(uiAction.closeModal());
   };
   return (
-    <Modal>
+    <Modal closeFn={closeSideMenuHandler}>
       <div
         className="sideMenu"
         style={{ right: `${props.isShowMenu ? "0" : "-450px"}` }}

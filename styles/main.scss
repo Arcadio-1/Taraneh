@@ -27,6 +27,8 @@
 @import "../components/Layout/Header/components/sideMenu/sideMenu";
 @import "../components/Products/ModuleMenu/moduleMenu";
 @import "../components/ProductDetails/productDetails";
-@import "../components/ui/Setup/setup";
-@import "../components/checkout/Checkout";
-@import "../components/Shiping/shiping";
+@import "../components/Checkout/Cart/Cart";
+@import "../components/Checkout/Shiping/shiping";
+@import "../components/Checkout/payment/payment";
+@import "../components/Checkout/Components/components";
+@import "../components/Profile/profile";

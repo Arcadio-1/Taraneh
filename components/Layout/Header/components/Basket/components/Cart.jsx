@@ -107,7 +107,7 @@ const Cart = ({ showMenuHandler }) => {
           </div>
 
           <div className="CartModal-footer-action">
-            <Link href={"/chekout"}>
+            <Link href={"/checkout/cart"}>
               <button
                 onClick={showMenuHandler}
                 className="CartModal-footer-action-submitBtn"

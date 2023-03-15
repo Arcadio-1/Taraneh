@@ -1,0 +1,254 @@
+.profile {
+  font-family: iranyekan;
+  width: 100%;
+  margin-top: 2rem;
+  &-container {
+    @include dflex(space-between, flex-start);
+    gap: 1rem;
+  }
+  &-content {
+    width: 80%;
+    .myOrders {
+      border: 1px solid rgba(color(dark-2), 0.1);
+      border-radius: 10px;
+      padding: 2rem 1rem;
+      .title {
+        display: inline;
+        font-size: 1.2rem;
+        color: color(dark-3);
+        font-weight: 600;
+        border-bottom: 2px solid;
+        border-image: linear-gradient(to left, color(g1-5) 60%, transparent 60%)
+          100% 1;
+        padding-bottom: 0.5rem;
+      }
+      .list {
+        @include dflex(space-between);
+        width: 100%;
+        padding: 1rem 1rem;
+        margin-top: 2rem;
+      }
+      .item {
+        width: 33.3%;
+        border-left: 2px solid rgba(color(dark-2), 0.05);
+        @include dflex(flex-start);
+        gap: 1rem;
+        // flex: 1 1;
+        &:last-child {
+          border: transparent;
+        }
+        .content {
+          .data {
+            font-family: iransansnum;
+            margin-bottom: 0.5rem;
+          }
+          .status {
+          }
+        }
+      }
+    }
+    .frequentPurchases {
+      border: 1px solid rgba(color(dark-2), 0.1);
+      border-radius: 10px;
+      padding: 2rem 1rem;
+      margin-top: 1rem;
+      .title {
+        font-size: 1.5em;
+      }
+    }
+    .personalInfo {
+      .container {
+        .col {
+          .item {
+            @include dflex(space-between);
+            padding: 2em;
+            font-family: iranyekan;
+            .head {
+              .title {
+                margin-bottom: 1em;
+                color: rgba(color(dark-2), 0.5);
+              }
+              .content {
+                color: rgba(color(dark-3), 1);
+                font-size: 1.1rem;
+                font-weight: 600;
+              }
+            }
+            .action {
+              .editIcon {
+                path {
+                  fill: rgba(color(dark-2), 0.6);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &-sideMenu {
+    width: 20%;
+    border: 1px solid rgba(color(dark-2), 0.1);
+    padding: 2rem 0.5rem;
+    border-radius: 10px;
+    min-width: 20rem;
+    .profile-profileCard {
+      border-bottom: 1px solid rgba(color(dark-4), 0.1);
+      margin-bottom: 1em;
+      .head {
+        @include dflex(space-between);
+        gap: 0.5rem;
+        position: relative;
+        &::before {
+          content: "";
+          top: 2.9rem;
+          right: 1.4rem;
+          height: 7rem;
+          position: absolute;
+          border-right: 2px solid rgba(color(dark-2), 0.1);
+        }
+        &-image {
+          img {
+            border-radius: 50%;
+          }
+        }
+        &-data {
+          margin-left: auto;
+          .fullname {
+            font-family: iranyekan;
+            font-weight: 600;
+          }
+          .mobile {
+            color: color(dark-5);
+            font-family: iransansnum;
+          }
+        }
+        &-edit {
+          .editIcon {
+            width: 1.7rem;
+            height: 1.7rem;
+            opacity: 0.7;
+            path {
+              fill: color(g3-2);
+            }
+          }
+        }
+      }
+      .subs {
+        margin-top: 1.5rem;
+        &-list {
+          padding-right: 2.3rem;
+        }
+        &-item {
+          position: relative;
+          @include dflex(space-between);
+          margin-bottom: 1rem;
+          &::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            right: -1.2rem;
+            background-color: rgba(color(dark-2), 0.5);
+            border-radius: 50%;
+          }
+          &-head {
+            a {
+              font-size: 0.9rem;
+              color: color(g3-3);
+              @include dflex(flex-start);
+              margin-top: 0.3rem;
+              .arrowIcon {
+                path {
+                  fill: color(g3-3);
+                }
+              }
+            }
+          }
+          &-data {
+            font-family: iransansnum;
+            .tomanIcon {
+              width: 1.5rem;
+              height: 1.5rem;
+              path {
+                fill: color(dark-3);
+              }
+            }
+          }
+        }
+      }
+    }
+    .profile-menuList {
+      .list {
+      }
+      .item {
+        margin-bottom: 1em;
+        border-bottom: 1px solid rgba(color(dark-4), 0.1);
+        padding-bottom: 1em;
+        a {
+          padding-right: 1em;
+          @include dflex(flex-start);
+          gap: 0.5em;
+        }
+        .title {
+        }
+      }
+      .selectedItem {
+        // border-right: 3px solid color(g1-5);
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: -3px;
+          height: 2.5em;
+          width: 3px;
+          background-color: color(g1-5);
+        }
+        .title {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+.personalInfo-popupWindow {
+  position: absolute;
+  max-width: 35rem;
+  z-index: 100;
+  background-color: color(light-2);
+  padding: 1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  &-header {
+    @include dflex(space-between);
+    border-bottom: 1px solid rgba(color(dark-2), 0.2);
+    padding-bottom: 1rem;
+    &-title {
+      color: color(dark-1);
+      font-size: 1.2rem;
+    }
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      path {
+        fill: rgba(color(dark-2), 0.8);
+      }
+    }
+  }
+  &-container {
+    padding: 1rem 0rem;
+  }
+  &-action {
+    @include dflex(flex-end);
+    button {
+      border-radius: 3px;
+      padding: 0.9rem 1rem;
+      font-size: 1.1rem;
+      // background-color: rgba(color(g1-5), 1);
+      color: color(light-1);
+    }
+  }
+}

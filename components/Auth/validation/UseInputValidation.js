@@ -25,7 +25,6 @@ const useInputValidation = (validation) => {
   const errorStatus = !isValid && inputState.isTuched;
 
   const inputChangeHandler = (e) => {
-    // console.log(e.target.value);
     dispatchInputState({ type: "INPUT", inputValue: e.target.value });
   };
 

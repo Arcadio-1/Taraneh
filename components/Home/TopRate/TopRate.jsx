@@ -21,7 +21,6 @@ const TopRate = () => {
   if (getProductsStatus && getProductsStatus.status !== "error")
     return (
       <section className="topRate">
-        <h1 className="topRate-title">محبوب ترین محصولات</h1>
         <div className="topRate-slidHeader-background">
           <Image
             src={"/image/ui/topRateBack.webp"}
@@ -30,7 +29,13 @@ const TopRate = () => {
             height={500}
           />
         </div>
-        <SliderSection items={topRateProducts} />
+        <SliderSection
+          items={topRateProducts}
+          header={{
+            title: "محبوب ترین ها",
+            imgLink: "/image/ui/toprateVector.png",
+          }}
+        />
       </section>
     );
 

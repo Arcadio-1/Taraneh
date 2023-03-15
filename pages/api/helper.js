@@ -164,6 +164,33 @@ export const getPaths = async () => {
   }
 };
 
+export const getAdProducts = async () => {
+  try {
+    const getProductReq = await fetchProducts();
+    if (!getProductReq || getProductReq.status === "error") {
+      throw new Error(getProductReq.message || "خطا در اتصال");
+    }
+    const products = getProductReq.allProducts.filter(
+      (item) => item.isAd === true
+    );
+    // console.log(product);
+    if (!products) {
+      return {
+        status: "notFuond",
+        message: "product is not found",
+        products: [],
+      };
+    }
+    return JSON.stringify({
+      status: "success",
+      message: "successfuly",
+      products: products,
+    });
+  } catch (error) {
+    return JSON.stringify({ status: "error", message: error, products: [] });
+  }
+};
+
 export async function getSingleProduct(id) {
   try {
     const getProductReq = await fetchProducts();

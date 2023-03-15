@@ -1,0 +1,98 @@
+.cart {
+  .freeShoping {
+    margin-top: 2rem;
+    .leftPrice {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      // font-family: iransandnum;
+      .price {
+        font-family: iransansnum;
+        color: color(g3-3);
+      }
+      .free {
+        color: color(g3-3);
+      }
+    }
+    .priceBar {
+      width: 100%;
+      border: 1px solid rgba(color(g3-3), 0.3);
+      border-radius: 10px;
+      height: 1rem;
+      &-inner {
+        background-color: color(g3-2);
+      }
+    }
+  }
+  .list {
+    margin-top: 2rem;
+    background-color: color(light-1);
+    border-radius: 10px;
+    .table {
+      width: 100%;
+      tr {
+        border-bottom: 2px solid rgba(color(dark-2), 0.1);
+        // border: 2px solid red;
+        th {
+          // border: 2px solid green;
+          border-bottom: 2px solid rgba(color(dark-2), 0.2);
+          padding: 1rem 0rem;
+        }
+        td {
+          // border: 2px solid yellow;
+          text-align: center;
+          font-family: iransansnum;
+          padding-bottom: 1rem;
+          img {
+            margin: auto;
+          }
+          .productDetails-form-amount {
+            @include dflex(space-between);
+            gap: 1em;
+            max-width: 8rem;
+            margin: auto;
+            &-value {
+              font-size: 1.5em;
+            }
+            &-btn {
+              padding: 0.5em;
+              svg {
+                width: 1.2em;
+                height: 1.2em;
+              }
+            }
+            &-remove {
+              padding: 0.5em;
+            }
+          }
+        }
+      }
+      .item {
+        .closeIcon {
+          path {
+            fill: rgba(color(g1-5), 1);
+          }
+        }
+      }
+    }
+  }
+  .actions {
+    @include dflex(space-between);
+    padding: 2rem 0.5rem;
+    background-color: color(light-1);
+    button {
+      border-radius: 5px;
+    }
+    .clearBtn {
+      background-color: rgba(color(g1-5), 1);
+      color: color(light-2);
+      padding: 0.2rem 3rem;
+      font-size: 1.3rem;
+    }
+    .continueBtn {
+      background-color: rgba(color(g1-2), 1);
+      color: color(light-2);
+      padding: 0.4rem 5rem;
+      font-size: 1.4rem;
+    }
+  }
+}

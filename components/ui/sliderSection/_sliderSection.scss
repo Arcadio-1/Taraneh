@@ -1,6 +1,21 @@
 .sliderSection {
   // border: 1px solid rgba(color(dark-2), 0.5);
   padding: 1em;
+  .slidHeader {
+    position: relative;
+    @include dflex;
+    flex-direction: column;
+    background-color: rgba(color(light-2), 0.6);
+    @include blur-3;
+    height: 100%;
+    &-title {
+      text-align: center;
+      font-size: 2rem;
+      color: color(dark-2);
+      text-shadow: 2px 2px 2px #fff;
+      margin-bottom: 2em;
+    }
+  }
   &-loading {
     position: absolute;
     @include dflex;

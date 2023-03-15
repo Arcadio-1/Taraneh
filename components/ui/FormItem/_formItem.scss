@@ -44,7 +44,8 @@
     border: transparent;
     // height: 1.9em;
     width: 100%;
-    font-family: iransans;
+    // font-family: iransans;
+    font-family: iransansnum;
     line-height: 2.5em;
     &:focus {
       outline: 1px solid blue;
@@ -74,12 +75,16 @@
     padding-left: 5em;
   }
   .labelUper {
+    margin-top: 0.5rem;
     transition: all 0.3s ease-in-out;
-    // color: green;
+    color: rgba(color(g3-3), 0.7);
     top: -20px;
     opacity: 1;
   }
   &-errorMsg {
+    white-space: nowrap;
+    overflow: visible;
+
     color: color(g1-5);
   }
   &-showPassword {

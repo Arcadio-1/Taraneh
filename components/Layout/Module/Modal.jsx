@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../../store/ui/uiSlice";
 import BackDrop from "./BackDrop";
-const Modal = (props) => {
+const Modal = ({ closeFn, children }) => {
   const isShowBackDrop = useSelector((state) => state.ui.isShowBackDrop);
   const [mounted, setMounted] = useState(false);
   let overLay;
@@ -34,8 +34,8 @@ const Modal = (props) => {
 
   return mounted ? (
     <Fragment>
-      {ReactDOM.createPortal(props.children, overLay)}
-      {isShowBackDrop && ReactDOM.createPortal(<BackDrop />, overLay)}
+      {ReactDOM.createPortal(children, overLay)}
+      {ReactDOM.createPortal(<BackDrop closeFn={closeFn} />, overLay)}
     </Fragment>
   ) : null;
 };

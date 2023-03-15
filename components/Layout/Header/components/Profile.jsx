@@ -20,7 +20,7 @@ const Profile = () => {
           <MenuArrowIcon type={"down"} />
         </div>
       </div>
-      {isShowMenu && <ProfileMenu />}
+      {isShowMenu && <ProfileMenu closeMenu={showMenuHandler} />}
     </div>
   );
 };

@@ -39,14 +39,18 @@ const uiSlice = createSlice({
     },
     setShowSideMenu(state) {
       state.isShowMenu = true;
+    },
+    showBackDrop(state) {
       state.isShowBackDrop = true;
+    },
+    hideBackDrop(state) {
+      state.isShowBackDrop = false;
     },
     // setShowCart(state) {
     //   state.isShowCart = true;
     // },
     setShowFilterMenu(state) {
       state.isShowFilterMenu = true;
-      state.isShowBackDrop = true;
     },
     setGetAllProductsStatus(state, action) {
       state.getAllproductsStatus = {
@@ -80,10 +84,8 @@ const uiSlice = createSlice({
       state.isShowNotif = true;
     },
     closeModal(state) {
-      state.isShowBackDrop = false;
       state.isShowNotif = false;
       state.isShowMenu = false;
-      // state.isShowCart = false;
       state.isShowFilterMenu = false;
       state.isShowSortMenu = false;
       state.isShowPerPageMenu = false;

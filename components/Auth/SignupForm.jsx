@@ -15,7 +15,8 @@ import "react-toastify/dist/ReactToastify.css";
 import NotifCard from "../ui/NotifCard";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import LogIcon from "../ui/Icons/LogIcon";
+import CalenderIcon from "../ui/Icons/CalenderIcon";
+
 const SignupForm = ({ currentPage }) => {
   const stateRef = useRef();
   const cityRef = useRef();
@@ -30,6 +31,7 @@ const SignupForm = ({ currentPage }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const dispatchNotif = useDispatch();
   const { data: session } = useSession();
+
   const {
     value: mobileValue,
     isValid: isMobileValid,
@@ -47,6 +49,80 @@ const SignupForm = ({ currentPage }) => {
     const isValid = isValidEn || isValidFa;
     return isValid;
   });
+
+  const {
+    value: meliValue,
+    isValid: isMeliValid,
+    errorStatus: meliError,
+    inputBlurHandler: meliBlurHandler,
+    inputChangeHandler: meliChangeHandler,
+    reset: meliResetHandler,
+  } = useInputValidation((value) => {
+    const regexEn = RegExp(/^\d{10}$/);
+    const regexFa = RegExp(/^\[۰۱۲۳۴۵۶۷۸۹]{10}$/);
+
+    const check = +value[9];
+    const sum =
+      value
+        .split("")
+        .slice(0, 9)
+        .reduce((acc, x, i) => acc + +x * (10 - i), 0) % 11;
+    const isChecked = sum < 2 ? check === sum : check + sum === 11;
+
+    const isValidEn = regexEn.test(value);
+    const isValidFa = regexFa.test(value);
+    const isValid = (isValidEn || isValidFa) && isChecked;
+    return isValid;
+  });
+
+  const {
+    value: yearValue,
+    isValid: isYearValid,
+    errorStatus: yearError,
+    inputBlurHandler: yearBlurHandler,
+    inputChangeHandler: yearChangeHandler,
+    reset: yearResetHandler,
+  } = useInputValidation((value) => {
+    const regexEn = RegExp(/^(13|14)\d{2}$/);
+    const regexFa = RegExp(/^(۱۳|۱۴)\[۰۱۲۳۴۵۶۷۸۹]{2}$/);
+    const isValidEn = regexEn.test(value);
+    const isValidFa = regexFa.test(value);
+    const isValid = isValidEn || isValidFa;
+    return isValid;
+  });
+
+  const {
+    value: monthValue,
+    isValid: isMonthValid,
+    errorStatus: monthError,
+    inputBlurHandler: monthBlurHandler,
+    inputChangeHandler: monthChangeHandler,
+    reset: monthResetHandler,
+  } = useInputValidation((value) => {
+    const regexEn = RegExp(/^(0?[1-9]|1[012])$/);
+    const regexFa = RegExp(/^(۰?[۱۲۳۴۵۶۷۸۹]|1[۰۱۲])$/);
+    const isValidEn = regexEn.test(value);
+    const isValidFa = regexFa.test(value);
+    const isValid = isValidEn || isValidFa;
+    return isValid;
+  });
+
+  const {
+    value: dayValue,
+    isValid: isDayValid,
+    errorStatus: dayError,
+    inputBlurHandler: dayBlurHandler,
+    inputChangeHandler: dayChangeHandler,
+    reset: dayResetHandler,
+  } = useInputValidation((value) => {
+    const regexEn = RegExp(/^([0-2]?[1-9]|3[01]|10|20)$/);
+    const regexFa = RegExp(/^([۰۱۲]?[۱۲۳۴۵۶۷۸۹]|۳[۰۱]|۱۰|۲۰)$/);
+    const isValidEn = regexEn.test(value);
+    const isValidFa = regexFa.test(value);
+    const isValid = isValidEn || isValidFa;
+    return isValid;
+  });
+
   const {
     value: emailValue,
     isValid: isEmailValid,
@@ -62,6 +138,7 @@ const SignupForm = ({ currentPage }) => {
     const isValid = regex.test(emailString);
     return isValid;
   });
+
   const {
     value: passwordValue,
     isValid: isPasswordValid,
@@ -71,11 +148,12 @@ const SignupForm = ({ currentPage }) => {
     reset: passwordResetHandler,
   } = useInputValidation((value) => {
     const regex = RegExp(
-      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,24}$/
     );
     const isValid = regex.test(value);
     return isValid;
   });
+
   const {
     value: nameValue,
     isValid: isNameValid,
@@ -88,6 +166,7 @@ const SignupForm = ({ currentPage }) => {
     const isValid = regex.test(value);
     return isValid;
   });
+
   const {
     value: familyValue,
     isValid: isFamilyValid,
@@ -100,6 +179,7 @@ const SignupForm = ({ currentPage }) => {
     const isValid = regex.test(value);
     return isValid;
   });
+
   const {
     value: zipCodeValue,
     isValid: isZipCodeValid,
@@ -115,6 +195,7 @@ const SignupForm = ({ currentPage }) => {
     const isValid = isValidEn || isValidFa;
     return isValid;
   });
+
   const {
     value: addressValue,
     isValid: isAddressValid,
@@ -127,6 +208,7 @@ const SignupForm = ({ currentPage }) => {
     const isValid = regex.test(value);
     return isValid;
   });
+
   const {
     value: cPasswordValue,
     isValid: isCPasswordValid,
@@ -189,7 +271,7 @@ const SignupForm = ({ currentPage }) => {
         uiAction.setSideNotif({
           status: "loading",
           title: "Loading",
-          message: "لطفا صبر کنید",
+          message: "در حال ورود لطفا صبر کنید",
         })
       );
       const request = await signIn("credentials", {
@@ -205,7 +287,7 @@ const SignupForm = ({ currentPage }) => {
         uiAction.setSideNotif({
           status: "success",
           title: "Success",
-          message: "ثبت نام شما با موفقیت انجام شد",
+          message: "ورود با موفقیت انجام شد",
         })
       );
       if (!request.error) {
@@ -276,7 +358,11 @@ const SignupForm = ({ currentPage }) => {
     nameBlurHandler();
     familyBlurHandler();
     mobileBlurHandler();
+    meliBlurHandler();
     emailBlurHandler();
+    yearBlurHandler();
+    monthBlurHandler();
+    dayBlurHandler();
     passwordBlurHandler();
     cPasswordBlurHandler();
     zipCodeBlurHandler();
@@ -295,7 +381,11 @@ const SignupForm = ({ currentPage }) => {
       isNameValid &&
       isFamilyValid &&
       isMobileValid &&
+      isMeliValid &&
       isEmailValid &&
+      isYearValid &&
+      isMonthValid &&
+      isDayValid &&
       isPasswordValid &&
       isCPasswordValid &&
       isZipCodeValid &&
@@ -303,9 +393,82 @@ const SignupForm = ({ currentPage }) => {
       state !== "false" &&
       city !== "false"
     ) {
+      const JalaliDate = {
+        g_days_in_month: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+        j_days_in_month: [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29],
+      };
+
+      JalaliDate.jalaliToGregorian = (j_y, j_m, j_d) => {
+        j_y = parseInt(j_y);
+        j_m = parseInt(j_m);
+        j_d = parseInt(j_d);
+        const jy = j_y - 979;
+        const jm = j_m - 1;
+        const jd = j_d - 1;
+
+        let j_day_no =
+          365 * jy + parseInt(jy / 33) * 8 + parseInt(((jy % 33) + 3) / 4);
+        for (let i = 0; i < jm; ++i) j_day_no += JalaliDate.j_days_in_month[i];
+
+        j_day_no += jd;
+
+        let g_day_no = j_day_no + 79;
+
+        let gy =
+          1600 +
+          400 *
+            parseInt(
+              g_day_no / 146097
+            ); /* 146097 = 365*400 + 400/4 - 400/100 + 400/400 */
+        g_day_no = g_day_no % 146097;
+
+        let leap = true;
+        if (g_day_no >= 36525) {
+          /* 36525 = 365*100 + 100/4 */
+          g_day_no--;
+          gy +=
+            100 *
+            parseInt(g_day_no / 36524); /* 36524 = 365*100 + 100/4 - 100/100 */
+          g_day_no = g_day_no % 36524;
+
+          if (g_day_no >= 365) g_day_no++;
+          else leap = false;
+        }
+
+        gy += 4 * parseInt(g_day_no / 1461); /* 1461 = 365*4 + 4/4 */
+        g_day_no %= 1461;
+
+        if (g_day_no >= 366) {
+          leap = false;
+
+          g_day_no--;
+          gy += parseInt(g_day_no / 365);
+          g_day_no = g_day_no % 365;
+        }
+
+        for (
+          var i = 0;
+          g_day_no >= JalaliDate.g_days_in_month[i] + (i == 1 && leap);
+          i++
+        ) {
+          g_day_no -= JalaliDate.g_days_in_month[i] + (i == 1 && leap);
+        }
+        let gm = i + 1;
+        let gd = g_day_no + 1;
+
+        gm = gm < 10 ? "0" + gm : gm;
+        gd = gd < 10 ? "0" + gd : gd;
+        return [gy, gm, gd];
+      };
+      const jD = JalaliDate.jalaliToGregorian(yearValue, monthValue, dayValue);
+      const birthdate = new Date(jD[0], jD[1] - 1, jD[2]).toLocaleDateString(
+        "en-US"
+      );
       const person = {
         name: nameValue,
         family: familyValue,
+        birthdate: birthdate,
+        codeMeli: meliValue,
         mobile: mobileValue,
         email: emailValue,
         password: passwordValue,
@@ -314,6 +477,7 @@ const SignupForm = ({ currentPage }) => {
         zipCode: zipCodeValue,
         address: addressValue,
       };
+
       signupHandler(person);
     }
   };
@@ -383,6 +547,21 @@ const SignupForm = ({ currentPage }) => {
           </div>
           <div className="Form-item-container">
             <FormItem
+              onBlur={meliBlurHandler}
+              onChange={meliChangeHandler}
+              value={meliValue}
+              isValid={isMeliValid}
+              error={meliError}
+              label="کد ملی"
+              htmlId="meli"
+              inputType="text"
+              errorMsg={"کد ملی وارد شده صحیح نمیباشد"}
+            >
+              <UserIcon />
+            </FormItem>
+          </div>
+          <div className="Form-item-container">
+            <FormItem
               onBlur={mobileBlurHandler}
               onChange={mobileChangeHandler}
               value={mobileValue}
@@ -395,6 +574,56 @@ const SignupForm = ({ currentPage }) => {
             >
               <MobileIcon />
             </FormItem>
+          </div>
+          <div className="Form-item-container">
+            <h2 className="text-gray-500 mb-5">تاریخ تولد :</h2>
+            <div className="flex justify-evenly">
+              <div className="w-28">
+                <FormItem
+                  onBlur={yearBlurHandler}
+                  onChange={yearChangeHandler}
+                  value={yearValue}
+                  isValid={isYearValid}
+                  error={yearError}
+                  label="سال"
+                  htmlId="year"
+                  inputType="text"
+                  errorMsg={" خطا! مثال: 1378"}
+                >
+                  <CalenderIcon />
+                </FormItem>
+              </div>
+              <div className="w-20">
+                <FormItem
+                  onBlur={monthBlurHandler}
+                  onChange={monthChangeHandler}
+                  value={monthValue}
+                  isValid={isMonthValid}
+                  error={monthError}
+                  label="ماه"
+                  htmlId="month"
+                  inputType="text"
+                  errorMsg={" خطا! مثال: 8"}
+                >
+                  <CalenderIcon />
+                </FormItem>
+              </div>
+              <div className="w-20">
+                <FormItem
+                  onBlur={dayBlurHandler}
+                  onChange={dayChangeHandler}
+                  value={dayValue}
+                  isValid={isDayValid}
+                  error={dayError}
+                  label="روز"
+                  htmlId="day"
+                  inputType="text"
+                  errorMsg={" خطا! مثال: 16"}
+                >
+                  <CalenderIcon />
+                </FormItem>
+              </div>
+            </div>
           </div>
 
           <div className="Form-item-container">
@@ -477,7 +706,6 @@ const SignupForm = ({ currentPage }) => {
           </div>
 
           <div className="Form-item-container">
-            {" "}
             <div className="FormItem">
               <select
                 onChange={stateChangeHandler}

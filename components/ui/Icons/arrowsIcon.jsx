@@ -1,5 +1,4 @@
-const ArrowsIcon = (props) => {
-  const arrowType = props.arrowType;
+const ArrowsIcon = ({ arrowType }) => {
   let arrowIcon;
 
   switch (arrowType) {

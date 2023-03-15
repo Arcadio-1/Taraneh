@@ -1,7 +1,20 @@
 import React from "react";
 
-const FormItem = (props) => {
-  const { label, clsName, htmlId, inputType, inputCls } = props;
+const FormItem = ({
+  label,
+  clsName,
+  htmlId,
+  inputType,
+  inputCls,
+  isValid,
+  children,
+  value,
+  onBlur,
+  onChange,
+  errorMsg,
+  error,
+}) => {
+  // const { label, clsName, htmlId, inputType, inputCls } = props;
   // let clsStatus;
   // if (status === "error") {
   //   clsStatus = "FormItem-error";
@@ -13,30 +26,36 @@ const FormItem = (props) => {
   //   clsStatus = "FormItem-pending";
   // }
   return (
-    <div className={`FormItem ${clsName ? clsName : ""}`}>
+    <div className={`FormItem ${clsName ? clsName : ""} ${value && "mt-5"}`}>
       <div className="FormItem-container">
-        <div className={`FormItem-icon ${props.isValid ? "validIcons" : ""}`}>
-          {props.children}
-        </div>
         <label
           htmlFor={htmlId}
-          className={`FormItem-label  ${props.value && "labelUper"}`}
+          className={`FormItem-icon ${isValid ? "validIcons" : ""}`}
+        >
+          {children}
+        </label>
+        <label
+          htmlFor={htmlId}
+          className={`FormItem-label  ${value && "labelUper"}`}
         >
           {label}
         </label>
         <input
           required
-          value={props.value}
-          onBlur={props.onBlur}
-          onChange={props.onChange}
+          value={value}
+          onBlur={onBlur}
+          onChange={onChange}
           className={`FormItem-input ${inputCls}`}
           id={htmlId}
           type={inputType}
         />
       </div>
 
-      {props.error && (
-        <p className="FormItem-errorMsg">{`${props.errorMsg}`}</p>
+      {error && (
+        <label
+          htmlFor={htmlId}
+          className="FormItem-errorMsg"
+        >{`${errorMsg}`}</label>
       )}
     </div>
   );

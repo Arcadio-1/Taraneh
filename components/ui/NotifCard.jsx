@@ -18,6 +18,7 @@ const NotifCard = (props) => {
       notifState.status === "error" ||
       notifState.status === "warning"
     ) {
+      console.log(notifState.status);
       const clearnotif = setTimeout(() => {
         dispatchNotif(
           uiAction.setSideNotif({
@@ -26,7 +27,7 @@ const NotifCard = (props) => {
             message: "null",
           })
         );
-      }, 300000);
+      }, 5000);
       return () => {
         clearTimeout(clearnotif);
       };
@@ -38,14 +39,20 @@ const NotifCard = (props) => {
       <Modal>
         <div className={`sideNotif sideNotif-${notifState.status}`}>
           <div className="sideNotif-header">
-            <CloseIcon />
-            {notifState.status === "success" && <SuccessIcon />}
-            {notifState.status === "warning" && <WarningIcon />}
-            {notifState.status === "error" && <ErrorIcon />}
-            {notifState.status === "loading" && <InfoIcon />}
+            {notifState.message !== "null" && (
+              <Fragment>
+                <CloseIcon />
+                {notifState.status === "success" && <SuccessIcon />}
+                {notifState.status === "warning" && <WarningIcon />}
+                {notifState.status === "error" && <ErrorIcon />}
+                {notifState.status === "loading" && <InfoIcon />}
+              </Fragment>
+            )}
           </div>
           <div className="sideNotif-container">
-            <p className="sideNotif-message">{notifState.message}</p>
+            {notifState.message !== "null" && (
+              <p className="sideNotif-message">{notifState.message}</p>
+            )}
           </div>
         </div>
       </Modal>
