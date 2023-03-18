@@ -28,13 +28,23 @@ function MyApp({ Component, pageProps }) {
     };
   });
 
+  // return (
+  //   <Provider store={store}>
+  //     <SessionProvider session={pageProps.session}>
+  //       <Layout>
+  //         <div id="overLay"></div>
+  //         {!loading && <Component {...pageProps} />}
+  //         {loading && <LoadingSpinner text={"در حال بارگزاری"} />}
+  //       </Layout>
+  //     </SessionProvider>
+  //   </Provider>
+  // );
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
         <Layout>
           <div id="overLay"></div>
-          {!loading && <Component {...pageProps} />}
-          {loading && <LoadingSpinner text={"در حال بارگزاری"} />}
+          <Component {...pageProps} />
         </Layout>
       </SessionProvider>
     </Provider>

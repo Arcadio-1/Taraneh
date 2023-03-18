@@ -24,7 +24,9 @@ const ProfileCard = ({ name, family, mobile }) => {
           <p className="mobile">{mobile}</p>
         </div>
         <div className="head-edit">
-          <EditIcon />
+          <Link href={"/profile/personal-info"}>
+            <EditIcon />
+          </Link>
         </div>
       </div>
       <div className="subs">

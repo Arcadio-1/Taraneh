@@ -16,11 +16,20 @@
   &-container {
     @include dflex(center, flex-start);
     flex-direction: column;
+    padding-top: 1rem;
   }
   &-header {
     width: 100%;
     // border: 2px solid red;
     @include dflex(space-between);
+    &-closeBtn {
+      padding: 0 1rem;
+      svg {
+        path {
+          fill: rgba(color(g1-5), 0.8);
+        }
+      }
+    }
   }
   &-body {
     padding: 1rem 2em;

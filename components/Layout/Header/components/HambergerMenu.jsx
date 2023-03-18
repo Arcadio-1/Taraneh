@@ -6,10 +6,11 @@ import MenuIcon from "../../../ui/Icons/MenuIcon";
 import SideMenu from "./sideMenu/SideMenu";
 const HambergerMenu = () => {
   const isShowSideMenu = useSelector((state) => state.ui.isShowMenu);
-  const dispatchShowSideMenu = useDispatch();
+  const dispatch = useDispatch();
 
   const showSideMenuHandler = () => {
-    dispatchShowSideMenu(uiAction.setShowSideMenu());
+    dispatch(uiAction.showBackDrop());
+    dispatch(uiAction.setShowSideMenu());
   };
 
   return (

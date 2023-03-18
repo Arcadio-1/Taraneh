@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import LoadingSpinner from "../../ui/LoadingSpiner/loadingSpiner";
-import SliderSection from "../../ui/sliderSection/SliderSection";
+import LoadingSpinner from "../../../ui/LoadingSpiner/loadingSpiner";
+import SliderSection from "../../../ui/sliderSection/SliderSection";
 
 const FrequentPurchases = () => {
   const [products, setProducts] = useState();

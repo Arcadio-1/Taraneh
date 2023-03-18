@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Modal from "../../../Module/Modal";
 import Logo from "../Logo";
 import CloseIcon from "../../../../ui/Icons/CloseIcon";
@@ -7,11 +7,12 @@ import Link from "next/link";
 import LoadingSpiner from "../../../../ui/LoadingSpiner/loadingSpiner";
 import ArrowIcon from "../../../../ui/Icons/arrowsIcon";
 import useToggleMenu from "../../../../../Hook/UseToggoleMenu";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../../../../store/ui/uiSlice";
 
 const SideMenu = (props) => {
-  const dispatchSideMenu = useDispatch();
+  const isBackdropShowen = useSelector((state) => state.ui.isShowBackDrop);
+  const dispatch = useDispatch();
   const categoryListRef = useRef();
   const [categoryNavLinks, setCategoryNavLinks] = useState();
   const [ctegoryNavLinksStatus, setCategoryNavLinksStatus] =
@@ -19,6 +20,18 @@ const SideMenu = (props) => {
   const [categoryHeight, setCategoryHeight] = useState(0);
 
   const { isShowMenu, menuRef, showMenuHandler } = useToggleMenu();
+
+  const closeSideMenuHandler = useCallback(() => {
+    dispatch(uiAction.hideBackDrop());
+    dispatch(uiAction.closeModal());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!isBackdropShowen) {
+      closeSideMenuHandler();
+    }
+  }, [isBackdropShowen, closeSideMenuHandler]);
+
   useEffect(() => {
     const getNavLinks = async () => {
       const categoryNavLinksJson = await fetch("/api/helperAPI/getNavLinks", {
@@ -38,11 +51,9 @@ const SideMenu = (props) => {
     const listHeight = categoryListRef.current.clientHeight;
     setCategoryHeight(`${listHeight + 120}px`);
   };
-  const closeSideMenuHandler = () => {
-    dispatchSideMenu(uiAction.closeModal());
-  };
+
   return (
-    <Modal closeFn={closeSideMenuHandler}>
+    <Modal>
       <div
         className="sideMenu"
         style={{ right: `${props.isShowMenu ? "0" : "-450px"}` }}

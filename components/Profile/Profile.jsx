@@ -1,8 +1,8 @@
 import React from "react";
-import FrequentPurchases from "./Components/FrequentPurchases";
+import FrequentPurchases from "./Components/ActivitiesSummary/FrequentPurchases";
 import Orders from "./Components/orders/orders";
 import MenuList from "./Components/MenuList";
-import MyOrders from "./Components/MyOrders";
+import MyOrders from "./Components/ActivitiesSummary/MyOrders";
 import ProfileCard from "./Components/ProfileCard";
 import Breadcrumbs from "../ui/Breadcrumbs/Breadcrumbs";
 import { useSession } from "next-auth/react";
