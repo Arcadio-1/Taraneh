@@ -131,7 +131,7 @@ const ChangePassword = ({ password, id, onClose, effectBool }) => {
     }
   };
   return (
-    <Modal closeFn={onClose}>
+    <Modal>
       <div
         className={` transition-all duration-200 ease-in ${
           effectBool ? "opacity-100 w-0" : "opacity-0 w-0"
@@ -148,9 +148,9 @@ const ChangePassword = ({ password, id, onClose, effectBool }) => {
           <div>
             <div className="flex flex-col">
               <div className="flex flex-col mb-10">
-                <label>
-                  رمز عبور فعلی
-                  <span>*</span>
+                <label className="text-lg mb-2">
+                  رمز عبور فعلی:
+                  <span className="text-red-700">*</span>
                 </label>
                 <input
                   className="border bg-transparent border-gray-300 rounded-lg p-3"
@@ -158,51 +158,66 @@ const ChangePassword = ({ password, id, onClose, effectBool }) => {
                   ref={oldPasswordRef}
                 />
                 <Link href={"/recoverPassword"}>
-                  <div className="flex items-center text-cyan-500">
+                  <div className="flex items-center text-blue-600">
                     <span>بازیابی رمز عبور</span>
                     <ArrowsIcon arrowType={"left"} />
                   </div>
                 </Link>
               </div>
-              <input
-                id="name"
-                className="border bg-transparent border-gray-300 rounded-lg p-3"
-                style={{ width: "250px" }}
-                type={"text"}
-                required
-                onChange={localPasswordChangeHandler}
-                // value={passwordValue}
-              />
-              <ul>
+              <div>
+                <p className="mb-2 text-lg">رمز عبور جدید</p>
+                <input
+                  id="name"
+                  className="border bg-transparent border-gray-300 rounded-lg p-3"
+                  style={{ width: "250px" }}
+                  type={"text"}
+                  required
+                  onChange={localPasswordChangeHandler}
+                  // value={passwordValue}
+                />
+              </div>
+              <ul className="mt-5">
                 <li
-                  className={`${
-                    haveNumber ? "text-green-600" : "text-gray-400"
+                  className={`text-lg mb-2 p-2 rounded-lg ${
+                    haveNumber
+                      ? "text-gray-200 bg-green-600"
+                      : "text-gray-100 bg-orange-600"
                   }`}
                 >
                   شامل عدد
                 </li>
                 <li
-                  className={`${
-                    haveLowecase ? "text-green-600" : "text-gray-400"
+                  className={` text-lg mb-2 p-2 rounded-lg ${
+                    haveLowecase
+                      ? "text-gray-200 bg-green-600"
+                      : "text-gray-100 bg-orange-600"
                   }`}
                 >
                   شامل حرف کوچک
                 </li>
                 <li
-                  className={`${
-                    haveCapital ? "text-green-600" : "text-gray-400"
+                  className={` text-lg mb-2 p-2 rounded-lg ${
+                    haveCapital
+                      ? "text-gray-200 bg-green-600"
+                      : "text-gray-100 bg-orange-600"
                   }`}
                 >
                   شامل حرف بزرگ
                 </li>
                 <li
-                  className={`${haveSign ? "text-green-600" : "text-gray-400"}`}
+                  className={`text-lg mb-2 p-2 rounded-lg ${
+                    haveSign
+                      ? "text-gray-200 bg-green-600"
+                      : "text-gray-100 bg-orange-600"
+                  }`}
                 >
                   <span>(!@#$%^&*) شامل علائم</span>
                 </li>
                 <li
-                  className={`${
-                    haveLength ? "text-green-600" : "text-gray-400"
+                  className={`text-lg mb-2 p-2 rounded-lg ${
+                    haveLength
+                      ? "text-gray-200 bg-green-600"
+                      : "text-gray-100 bg-orange-600"
                   }`}
                 >
                   شامل 6 الی 24 رقم

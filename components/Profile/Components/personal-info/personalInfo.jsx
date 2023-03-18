@@ -3,6 +3,8 @@ import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { uiAction } from "../../../../store/ui/uiSlice";
 import EditIcon from "../../../ui/Icons/EditIcon";
+import NotifCard from "../../../ui/NotifCard";
+import ChangeBirthdate from "./Components/ChangeBirthdate";
 import ChangeEmail from "./Components/ChangeEmail";
 import ChangeMobileNumber from "./Components/ChangeMobileNumber";
 import ChangePassword from "./Components/ChangePassword";
@@ -35,6 +37,13 @@ const PersonalInfo = () => {
   const [
     isShowPasswordEditWindowAnimation,
     setIsShowPasswordEditWindowAnimation,
+  ] = useState(false);
+
+  const [isShowBirthdateEditWindow, setIsShowBirthdateEditWindow] =
+    useState(false);
+  const [
+    isShowBirthdateEditWindowAnimation,
+    setIsShowBirthdateEditWindowAnimation,
   ] = useState(false);
 
   const toggolIsShowEditpersonalInfoWindow = () => {
@@ -148,6 +157,34 @@ const PersonalInfo = () => {
     }
   };
 
+  const toggolIsShowEditBirthdateWindow = () => {
+    if (isShowBirthdateEditWindow) {
+      setIsShowBirthdateEditWindowAnimation((prev) => {
+        return (prev = false);
+      });
+
+      setTimeout(() => {
+        setIsShowBirthdateEditWindow((prev) => {
+          return (prev = false);
+        });
+      }, 1000);
+      dispatch(uiAction.hideBackDrop());
+    }
+
+    if (!isShowBirthdateEditWindow) {
+      setIsShowBirthdateEditWindow((prev) => {
+        return (prev = true);
+      });
+      setTimeout(() => {
+        setIsShowBirthdateEditWindowAnimation((prev) => {
+          return (prev = true);
+        });
+      }, 10);
+
+      dispatch(uiAction.showBackDrop());
+    }
+  };
+
   const {
     _id,
     name,
@@ -163,6 +200,7 @@ const PersonalInfo = () => {
   const new_birthdate = date.toLocaleDateString("fa-IR");
   return (
     <div className="personalInfo">
+      <NotifCard />
       {isShowPersonalInfoEditWindow && (
         <ChangePersonalInfo
           effectBool={isShowPersonalInfoEditWindowAnimation}
@@ -195,6 +233,14 @@ const PersonalInfo = () => {
           password={password}
           id={_id}
           onClose={toggolIsShowEditPasswordWindow}
+        />
+      )}
+      {isShowBirthdateEditWindow && (
+        <ChangeBirthdate
+          effectBool={isShowBirthdateEditWindowAnimation}
+          birthdate={birthdate}
+          id={_id}
+          onClose={toggolIsShowEditBirthdateWindow}
         />
       )}
 
@@ -239,7 +285,7 @@ const PersonalInfo = () => {
               <p className="content">{`${new_birthdate}`}</p>
             </div>
             <div className="action">
-              <button>
+              <button onClick={toggolIsShowEditBirthdateWindow}>
                 <EditIcon />
               </button>
             </div>

@@ -2,9 +2,7 @@ import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../../store/ui/uiSlice";
-import BackDrop from "./BackDrop";
-const Modal = ({ closeFn, children }) => {
-  const isShowBackDrop = useSelector((state) => state.ui.isShowBackDrop);
+const Modal = ({ children }) => {
   const [mounted, setMounted] = useState(false);
   let overLay;
   const dispatch = useDispatch();
@@ -33,10 +31,7 @@ const Modal = ({ closeFn, children }) => {
   // }
 
   return mounted ? (
-    <Fragment>
-      {ReactDOM.createPortal(children, overLay)}
-      {ReactDOM.createPortal(<BackDrop closeFn={closeFn} />, overLay)}
-    </Fragment>
+    <Fragment>{ReactDOM.createPortal(children, overLay)}</Fragment>
   ) : null;
 };
 

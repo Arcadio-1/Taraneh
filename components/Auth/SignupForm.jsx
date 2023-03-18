@@ -16,6 +16,7 @@ import NotifCard from "../ui/NotifCard";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import CalenderIcon from "../ui/Icons/CalenderIcon";
+import { jalaliToGregorian } from "../../lib/utilFunctions";
 
 const SignupForm = ({ currentPage }) => {
   const stateRef = useRef();
@@ -40,9 +41,9 @@ const SignupForm = ({ currentPage }) => {
     inputChangeHandler: mobileChangeHandler,
     reset: mobileResetHandler,
   } = useInputValidation((value) => {
-    const regexEn = RegExp(/09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}/);
+    const regexEn = RegExp(/09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}$/);
     const regexFa = RegExp(
-      /۰۹(۱[۰۱۲۳۴۵۶۷۸۹]|۳[۱۲۳۴۵۶۷۸۹]|۰[۱۲۳۴۵۶۷۸۹]|۲[۱۲۳۴۵۶۷۸۹])-?[۰۱۲۳۴۵۶۷۸۹]{3}-?[۰۱۲۳۴۵۶۷۸۹]{4}/
+      /۰۹(۱[۰۱۲۳۴۵۶۷۸۹]|۳[۱۲۳۴۵۶۷۸۹]|۰[۱۲۳۴۵۶۷۸۹]|۲[۱۲۳۴۵۶۷۸۹])-?[۰۱۲۳۴۵۶۷۸۹]{3}-?[۰۱۲۳۴۵۶۷۸۹]{4}$/
     );
     const isValidEn = regexEn.test(value);
     const isValidFa = regexFa.test(value);
@@ -393,74 +394,8 @@ const SignupForm = ({ currentPage }) => {
       state !== "false" &&
       city !== "false"
     ) {
-      const JalaliDate = {
-        g_days_in_month: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-        j_days_in_month: [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29],
-      };
-
-      JalaliDate.jalaliToGregorian = (j_y, j_m, j_d) => {
-        j_y = parseInt(j_y);
-        j_m = parseInt(j_m);
-        j_d = parseInt(j_d);
-        const jy = j_y - 979;
-        const jm = j_m - 1;
-        const jd = j_d - 1;
-
-        let j_day_no =
-          365 * jy + parseInt(jy / 33) * 8 + parseInt(((jy % 33) + 3) / 4);
-        for (let i = 0; i < jm; ++i) j_day_no += JalaliDate.j_days_in_month[i];
-
-        j_day_no += jd;
-
-        let g_day_no = j_day_no + 79;
-
-        let gy =
-          1600 +
-          400 *
-            parseInt(
-              g_day_no / 146097
-            ); /* 146097 = 365*400 + 400/4 - 400/100 + 400/400 */
-        g_day_no = g_day_no % 146097;
-
-        let leap = true;
-        if (g_day_no >= 36525) {
-          /* 36525 = 365*100 + 100/4 */
-          g_day_no--;
-          gy +=
-            100 *
-            parseInt(g_day_no / 36524); /* 36524 = 365*100 + 100/4 - 100/100 */
-          g_day_no = g_day_no % 36524;
-
-          if (g_day_no >= 365) g_day_no++;
-          else leap = false;
-        }
-
-        gy += 4 * parseInt(g_day_no / 1461); /* 1461 = 365*4 + 4/4 */
-        g_day_no %= 1461;
-
-        if (g_day_no >= 366) {
-          leap = false;
-
-          g_day_no--;
-          gy += parseInt(g_day_no / 365);
-          g_day_no = g_day_no % 365;
-        }
-
-        for (
-          var i = 0;
-          g_day_no >= JalaliDate.g_days_in_month[i] + (i == 1 && leap);
-          i++
-        ) {
-          g_day_no -= JalaliDate.g_days_in_month[i] + (i == 1 && leap);
-        }
-        let gm = i + 1;
-        let gd = g_day_no + 1;
-
-        gm = gm < 10 ? "0" + gm : gm;
-        gd = gd < 10 ? "0" + gd : gd;
-        return [gy, gm, gd];
-      };
-      const jD = JalaliDate.jalaliToGregorian(yearValue, monthValue, dayValue);
+      const dateString = `${yearValue}/${monthValue}/${dayValue}`;
+      const jD = jalaliToGregorian(dateString);
       const birthdate = new Date(jD[0], jD[1] - 1, jD[2]).toLocaleDateString(
         "en-US"
       );

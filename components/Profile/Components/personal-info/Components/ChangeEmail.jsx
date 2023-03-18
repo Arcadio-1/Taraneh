@@ -1,9 +1,14 @@
+import { signOut } from "next-auth/react";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { uiAction } from "../../../../../store/ui/uiSlice";
 import Modal from "../../../../Layout/Module/Modal";
+import NotifCard from "../../../../ui/NotifCard";
 import useEditInfo from "../Hook/useEditInfo";
 import PopUpWindow from "./PopUpWindow";
 
 const ChangeEmail = ({ email, id, onClose, effectBool }) => {
+  const dispatch = useDispatch();
   const {
     value: emailValue,
     isValid: isEmailValid,
@@ -19,6 +24,13 @@ const ChangeEmail = ({ email, id, onClose, effectBool }) => {
   }, email);
 
   const submitEditHandler = async () => {
+    dispatch(
+      uiAction.setSideNotif({
+        status: "loading",
+        title: "Loading",
+        message: "لطفا صبر کنید",
+      })
+    );
     if (isEmailValid) {
       const request = await fetch("/api/auth/edit", {
         method: "POST",
@@ -32,16 +44,48 @@ const ChangeEmail = ({ email, id, onClose, effectBool }) => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await request.json();
+      if (data.status === "error") {
+        dispatch(
+          uiAction.setSideNotif({
+            status: "error",
+            title: "Error",
+            message: data.message,
+          })
+        );
+      }
+      if (data.status === "success") {
+        dispatch(
+          uiAction.setSideNotif({
+            status: "success",
+            title: "Success",
+            message:
+              "پست الکترونیکی با موفقیت تغییر یافت در حال خروج جهت ورود مجدد",
+          })
+        );
+        setTimeout(() => {
+          signOut();
+        }, 3000);
+      }
       console.log(data);
+    }
+    if (!isEmailValid) {
+      dispatch(
+        uiAction.setSideNotif({
+          status: "error",
+          title: "Error",
+          message: "اطلاعات وارد شده صحیح نیست",
+        })
+      );
     }
   };
   return (
-    <Modal closeFn={onClose}>
+    <Modal>
       <div
         className={` transition-all duration-200 ease-in ${
           effectBool ? "opacity-100 w-0" : "opacity-0 w-0"
         }`}
       >
+        <NotifCard />
         <PopUpWindow
           title={"ویرایش پست الکترونیکی"}
           actionTitle={"ویرایش"}

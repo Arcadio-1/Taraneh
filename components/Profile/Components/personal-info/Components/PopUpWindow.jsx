@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import CloseIcon from "../../../../ui/Icons/CloseIcon";
 const PopUpWindow = ({
   title,
@@ -8,6 +9,13 @@ const PopUpWindow = ({
   closeWindow,
   isValid,
 }) => {
+  const isBackdropShowen = useSelector((state) => state.ui.isShowBackDrop);
+
+  useEffect(() => {
+    if (!isBackdropShowen) {
+      closeWindow();
+    }
+  }, [isBackdropShowen, closeWindow]);
   return (
     <div className="personalInfo-popupWindow">
       <div className="personalInfo-popupWindow-header">

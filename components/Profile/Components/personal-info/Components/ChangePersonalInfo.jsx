@@ -1,4 +1,7 @@
+import { signOut } from "next-auth/react";
 import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { uiAction } from "../../../../../store/ui/uiSlice";
 import Modal from "../../../../Layout/Module/Modal";
 import useEditInfo from "../Hook/useEditInfo";
 import PopUpWindow from "./PopUpWindow";
@@ -11,6 +14,7 @@ export const ChangePersonalInfo = ({
   onClose,
   effectBool,
 }) => {
+  const dispatch = useDispatch();
   const {
     value: nameValue,
     isValid: isNameValid,
@@ -55,7 +59,15 @@ export const ChangePersonalInfo = ({
     const isValid = regex.test(value);
     return isValid;
   }, family);
+
   const submitEditHandler = async () => {
+    dispatch(
+      uiAction.setSideNotif({
+        status: "loading",
+        title: "Loading",
+        message: "لطفا صبر کنید",
+      })
+    );
     if (isMeliValid && isFamilyValid && isNameValid) {
       const request = await fetch("/api/auth/edit", {
         method: "POST",
@@ -71,13 +83,44 @@ export const ChangePersonalInfo = ({
         headers: { "Content-Type": "application/json" },
       });
       const data = await request.json();
+      if (data.status === "error") {
+        dispatch(
+          uiAction.setSideNotif({
+            status: "error",
+            title: "Error",
+            message: data.message,
+          })
+        );
+      }
+      if (data.status === "success") {
+        dispatch(
+          uiAction.setSideNotif({
+            status: "success",
+            title: "Success",
+            message:
+              "پست الکترونیکی با موفقیت تغییر یافت در حال خروج جهت ورود مجدد",
+          })
+        );
+        setTimeout(() => {
+          signOut();
+        }, 3000);
+      }
       console.log(data);
+    }
+    if (isMeliValid || !isFamilyValid || !isNameValid) {
+      dispatch(
+        uiAction.setSideNotif({
+          status: "error",
+          title: "Error",
+          message: "اطلاعات وارد شده صحیح نیست",
+        })
+      );
     }
   };
 
   return (
     <div>
-      <Modal closeFn={onClose}>
+      <Modal>
         <div
           className={` transition-all duration-200 ease-in ${
             effectBool ? "opacity-100 w-0" : "opacity-0 w-0"

@@ -30,6 +30,11 @@ async function handler(req, res) {
               },
             }
           );
+          res.status(201).json({
+            status: "success",
+            message: "تغییر مشخصات با موفقیت انجام شد",
+            request: request,
+          });
           break;
         case "mobile":
           request = await db.collection("userList").findOneAndUpdate(
@@ -40,6 +45,11 @@ async function handler(req, res) {
               },
             }
           );
+          res.status(201).json({
+            status: "success",
+            message: "تغییر شماره موبایل با موفقیت انجام شد",
+            request: request,
+          });
           break;
         case "email":
           request = await db.collection("userList").findOneAndUpdate(
@@ -50,6 +60,11 @@ async function handler(req, res) {
               },
             }
           );
+          res.status(201).json({
+            status: "success",
+            message: "تغییر ایمیل با موفقیت انجام شد",
+            request: request,
+          });
           break;
         case "password":
           const newPassword = await getHashedPassword(newData.newPassword);
@@ -68,6 +83,26 @@ async function handler(req, res) {
               },
             }
           );
+          res.status(201).json({
+            status: "success",
+            message: "تغییر کلمه با موفقیت انجام شد",
+            request: request,
+          });
+          break;
+        case "birthdate":
+          request = await db.collection("userList").findOneAndUpdate(
+            { _id: o_id },
+            {
+              $set: {
+                birthdate: newData.birthdate,
+              },
+            }
+          );
+          res.status(201).json({
+            status: "success",
+            message: "تغییر تاریخ تولد با موفقیت انجام شد",
+            request: request,
+          });
           break;
         default:
           request = null;
@@ -76,19 +111,13 @@ async function handler(req, res) {
       if (!request) {
         throw new Error("Edit is Faild");
       }
-
-      res
-        .status(201)
-        .json({
-          status: "success",
-          message: "تغییر کلمه با موفقیت انجام شد",
-          request: request,
-        });
     }
   } catch (error) {
-    res
-      .status(203)
-      .json({ status: "error", message: error.message, request: null });
+    res.status(203).json({
+      status: "error",
+      message: error.message || "خطا در ثبت اطلاعات",
+      request: null,
+    });
   }
 }
 
