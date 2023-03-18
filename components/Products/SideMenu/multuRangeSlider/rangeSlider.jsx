@@ -79,7 +79,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         // style={{ zIndex: min > max - 100 && "5" }}
       />
 
-      <div className="slider">
+      <div className="slider relative">
         <div className="slider__track" />
         <div ref={range} className="slider__range" />
         <div className="slider__right-value">

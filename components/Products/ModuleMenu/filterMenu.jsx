@@ -13,6 +13,7 @@ const FilterMenu = ({ products }) => {
   const dispatch = useDispatch();
   const isShowFilterMenu = useSelector((state) => state.ui.isShowFilterMenu);
   const closeMenuHandler = () => {
+    dispatch(uiAction.hideBackDrop());
     dispatch(uiAction.closeModal());
   };
   return (

@@ -27,6 +27,7 @@ const ListingManage = () => {
   ];
   const dispatch = useDispatch();
   const showFiltersMenuHandler = () => {
+    dispatch(uiAction.showBackDrop());
     dispatch(uiAction.setShowFilterMenu());
   };
 
