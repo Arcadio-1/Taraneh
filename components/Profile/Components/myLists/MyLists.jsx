@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import SearchIcon from "../../../ui/Icons/SearchIcon";
 
-const Orders = () => {
+const MyList = () => {
   const router = useRouter();
   const [routerContent, setRouterContent] = useState("in-porocess");
   useEffect(() => {
@@ -21,10 +21,10 @@ const Orders = () => {
   return (
     <div className="profile-orders border rounded-xl">
       <div className="flex justify-between py-8 px-5 w-full">
-        <h1 className="text-xl">تاریخچه سفارش ها</h1>
-        <div>
+        <h1 className="text-xl">لیست ها</h1>
+        {/* <div>
           <SearchIcon />
-        </div>
+        </div> */}
       </div>
       <div className="">
         <ul className=" border-b border-gray-200 pb-1 flex gap-1 text-lg ">
@@ -38,7 +38,7 @@ const Orders = () => {
           >
             <Link href={"?activeTab=in-porocess"} as={"?activeTab=in-porocess"}>
               <div>
-                <span>جاری</span>
+                <span>لیست علاقه مندی</span>
               </div>
               <div
                 className={`ui-tabUnderline bottom-[calc(-2px)] ${
@@ -54,7 +54,7 @@ const Orders = () => {
           >
             <Link href={"?activeTab=sent"}>
               <div className={`flex gap-1 `}>
-                <span>تحویل شده</span>
+                <span>لیست عمومی</span>
                 <p
                   className={`fnNum text-white py-[1px] px-2 rounded-md ${
                     routerContent === "sent" ? "bg-red-500" : "bg-gray-400"
@@ -77,7 +77,7 @@ const Orders = () => {
           >
             <Link href={"?activeTab=returned"}>
               <div className={`flex gap-1 `}>
-                <span>مرجوع شده</span>
+                <span>اطلاع رسانی</span>
                 <p
                   className={`fnNum text-white py-[1px] px-2 rounded-md ${
                     routerContent === "returned" ? "bg-red-500" : "bg-gray-400"
@@ -93,44 +93,19 @@ const Orders = () => {
               ></div>
             </Link>
           </li>
-          <li
-            className={`relative py-2 px-6 ${
-              routerContent === "cancle" ? "text-red-600" : ""
-            }`}
-          >
-            <Link href={"?activeTab=cancle"}>
-              <div className={`flex gap-1 `}>
-                <span>لغو شده</span>
-                <p
-                  className={`fnNum text-white py-[1px] px-2 rounded-md ${
-                    routerContent === "cancle" ? "bg-red-500" : "bg-gray-400"
-                  }`}
-                >
-                  10
-                </p>
-              </div>
-              <div
-                className={`ui-tabUnderline bottom-[calc(-2px)] ${
-                  routerContent === "cancle" ? "opacity-100" : "opacity-0"
-                }`}
-              ></div>
-            </Link>
-          </li>
         </ul>
-        <section className="py-24 flex items-center justify-center">
-          <div>
-            <Image
-              src={"/image/ui/profile/order-empty.svg"}
-              height={100}
-              width={100}
-              alt="empty"
-            />
-            <p>هنوز هیچ سفارشی ندارید</p>
-          </div>
+        <section className="py-24 flex items-center justify-center flex-col">
+          <Image
+            src={"/image/ui/profile/favorites-list-empty.svg"}
+            height={150}
+            width={150}
+            alt="empty"
+          />
+          <p className="text-xl">لیست علاقه مندی های شما خالی است.</p>
         </section>
       </div>
     </div>
   );
 };
 
-export default Orders;
+export default MyList;

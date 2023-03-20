@@ -8,6 +8,7 @@ import Breadcrumbs from "../ui/Breadcrumbs/Breadcrumbs";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import PersonalInfo from "./Components/personal-info/personalInfo";
+import MyList from "./Components/myLists/MyLists";
 
 const Profile = () => {
   const router = useRouter();
@@ -43,6 +44,11 @@ const Profile = () => {
           {pathname === "/profile/personal-info" && (
             <section>
               <PersonalInfo />
+            </section>
+          )}
+          {pathname === "/profile/lists" && (
+            <section>
+              <MyList />
             </section>
           )}
         </div>

@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 const MenuList = () => {
   const router = useRouter();
   const { pathname } = router;
-  console.log(pathname);
+  // console.log(pathname);
   return (
     <div className="profile-menuList">
       <ul className="list">
