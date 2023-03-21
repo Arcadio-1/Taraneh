@@ -8,15 +8,16 @@ import { uiAction } from "../../store/ui/uiSlice";
 import LoadingSpinner from "../ui/LoadingSpiner/loadingSpiner";
 import useInputValidation from "./validation/UseInputValidation";
 import MailIcon from "../ui/Icons/MailIcon";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import ShowIcon from "../ui/Icons/ShowIcon";
 import HideIcon from "../ui/Icons/HideIcon";
 
 const LoginForm = ({ currentPage }) => {
   const router = useRouter();
   const notif = useSelector((state) => state.ui.userActionNotif);
-  const dispatchNotif = useDispatch();
+  const dispatch = useDispatch();
   const [isShowPassword, setIsShowPassword] = useState(false);
+
   const {
     value: emailValue,
     isValid: isEmailValid,
@@ -44,10 +45,11 @@ const LoginForm = ({ currentPage }) => {
     const isValid = regex.test(value);
     return isValid;
   });
+
   useEffect(() => {
     if (notif.status === "success" || notif.status === "error") {
       const notifReset = setTimeout(() => {
-        dispatchNotif(
+        dispatch(
           uiAction.setNotif({
             status: "null",
             title: "null",
@@ -59,7 +61,8 @@ const LoginForm = ({ currentPage }) => {
         clearTimeout(notifReset);
       };
     }
-  }, [notif, dispatchNotif]);
+  }, [notif, dispatch]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -68,7 +71,7 @@ const LoginForm = ({ currentPage }) => {
       if (!isPasswordValid || !isEmailValid) {
         throw new Error("مشخصات وارد شده صحیح نیست");
       }
-      dispatchNotif(
+      dispatch(
         uiAction.setNotif({
           status: "loading",
           title: "Loading",
@@ -91,7 +94,7 @@ const LoginForm = ({ currentPage }) => {
           router.push("/");
         }
       }
-      dispatchNotif(
+      dispatch(
         uiAction.setNotif({
           status: "success",
           title: "Success",
@@ -99,7 +102,7 @@ const LoginForm = ({ currentPage }) => {
         })
       );
     } catch (error) {
-      dispatchNotif(
+      dispatch(
         uiAction.setNotif({
           status: "error",
           title: "Error",
@@ -110,8 +113,6 @@ const LoginForm = ({ currentPage }) => {
   };
   return (
     <div className="account-login">
-      {/* <h1 className="account-login-title">مشخصات ورود را وارد کنید</h1> */}
-
       <form className="Form">
         <div className="Form-item-container">
           <FormItem

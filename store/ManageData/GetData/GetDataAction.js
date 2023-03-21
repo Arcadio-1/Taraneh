@@ -97,7 +97,7 @@ export const getLocalStoageCartItems = () => {
         })
       );
       const cartItemsArray = getLocalStorageCartItems();
-      dispatch(getDataSliceActions.getCardItems(cartItemsArray));
+      dispatch(getDataSliceActions.setCardItems(cartItemsArray));
 
       dispatch(
         uiAction.setGetCartItemsStatus({
@@ -134,10 +134,10 @@ export const getOrederList = (id) => {
       const response = await orders.json();
       // console.log(response);
       if (response.orders) {
-        dispatch(getDataSliceActions.getCardItems(response.orders.orders));
+        dispatch(getDataSliceActions.setCardItems(response.orders.orders));
       }
       if (!response.orders) {
-        dispatch(getDataSliceActions.getCardItems([]));
+        dispatch(getDataSliceActions.setCardItems([]));
       }
       dispatch(
         uiAction.setGetCartItemsStatus({
@@ -185,7 +185,7 @@ export const getCartItemsData = (items) => {
       });
       mylist.push({ ...cartListArray });
       var arrayOfValues = await Promise.all(cartListArray);
-      dispatch(getDataSliceActions.getCardItemsData(arrayOfValues));
+      dispatch(getDataSliceActions.setCardItemsData(arrayOfValues));
 
       dispatch(
         uiAction.setGetCartItemsDataStatus({
@@ -207,6 +207,7 @@ export const getCartItemsData = (items) => {
 };
 
 export const removeCartItemFromLocalStorage = (cartItems, id) => {
+  console.log(cartItems);
   return async (dispatch) => {
     try {
       dispatch(
@@ -216,9 +217,8 @@ export const removeCartItemFromLocalStorage = (cartItems, id) => {
           message: "trying to get cart items",
         })
       );
-
       const newItems = cartItems.filter((item) => {
-        if (item.id !== id) {
+        if (item._id !== id) {
           return item;
         }
       });
@@ -226,7 +226,7 @@ export const removeCartItemFromLocalStorage = (cartItems, id) => {
       const jsonFile = JSON.stringify(newItems);
       localStorage.setItem("cartItems", jsonFile);
       // console.log(newItems);
-      dispatch(getDataSliceActions.getCardItems(newItems));
+      dispatch(getDataSliceActions.setCardItems(newItems));
 
       dispatch(
         uiAction.setGetCartItemsStatus({
@@ -259,9 +259,10 @@ export const setLocalStorageAmount = (selectedItem, amountVal) => {
       );
 
       const cartItems = getLocalStorageCartItems();
+      console.log(cartItems);
       const { amount } = amountVal;
       const changedArray = cartItems.map((item) => {
-        if (item.id === selectedItem) {
+        if (item._id === selectedItem) {
           return { ...item, amount: amount };
         }
         return item;
@@ -269,7 +270,7 @@ export const setLocalStorageAmount = (selectedItem, amountVal) => {
       const jsonFile = JSON.stringify(changedArray);
       localStorage.setItem("cartItems", jsonFile);
 
-      dispatch(getDataSliceActions.getCardItems(changedArray));
+      dispatch(getDataSliceActions.setCardItems(changedArray));
       dispatch(
         uiAction.setGetCartItemsStatus({
           status: "success",
@@ -286,20 +287,5 @@ export const setLocalStorageAmount = (selectedItem, amountVal) => {
         })
       );
     }
-  };
-};
-
-export const setordersAmount = (selectedItem, amountValue) => {
-  return async (dispatch) => {
-    try {
-      dispatch(
-        uiAction.setGetCartItemsDataStatus({
-          status: "loading",
-          title: "loading",
-          message: "try to change amount",
-        })
-      );
-      // const newList =
-    } catch (error) {}
   };
 };

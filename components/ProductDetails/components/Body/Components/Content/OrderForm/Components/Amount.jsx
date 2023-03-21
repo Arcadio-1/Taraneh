@@ -41,17 +41,15 @@ const Amount = ({ selectedItem }) => {
           })
         );
       }
+      if (type === "remove") {
+        dispatch(removeCartItemFromLocalStorage(cartItems, selectedItem));
+      }
       if (type === "minus") {
-        if (itemAmount === 1) {
-          dispatch(removeCartItemFromLocalStorage(cartItems, selectedItem));
-        }
-        if (itemAmount > 1) {
-          dispatch(
-            setLocalStorageAmount(selectedItem, {
-              amount: itemAmount - 1,
-            })
-          );
-        }
+        dispatch(
+          setLocalStorageAmount(selectedItem, {
+            amount: itemAmount - 1,
+          })
+        );
       }
     }
     if (login === "authenticated") {

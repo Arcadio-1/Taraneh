@@ -16,11 +16,11 @@ const getDataSlice = createSlice({
     // getcategoryNavLinks(state, action) {
     //   state.categoryNavLinks = action.payload;
     // },
-    getCardItems(state, action) {
+    setCardItems(state, action) {
       // console.log(action.payload);
       state.cartItems = action.payload;
     },
-    getCardItemsData(state, action) {
+    setCardItemsData(state, action) {
       // console.log(action.payload);
       state.cartItemsData = action.payload;
     },

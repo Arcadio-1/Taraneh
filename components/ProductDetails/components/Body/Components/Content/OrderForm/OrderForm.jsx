@@ -29,8 +29,8 @@ const OrderForm = (props) => {
   const selectedItem = `${id}${grind}${weight}`;
 
   // useEffect(() => {
-  //   console.log(orderData);
-  // }, [orderData]);
+  //   console.log(cartItemsData);
+  // }, [cartItemsData]);
 
   // useEffect(() => {
   //   dispatch(getLocalStoageCartItems());
@@ -70,7 +70,7 @@ const OrderForm = (props) => {
       // console.log(cartItemsData);
       const methodFlag =
         cartItemsData && cartItemsData.length > 0 ? "PUT" : "POST";
-      console.log(selectedItem);
+      // console.log(selectedItem);
       const request = await fetch("/api/helperAPI/addOrder", {
         method: methodFlag,
         body: JSON.stringify({
@@ -80,7 +80,7 @@ const OrderForm = (props) => {
         }),
       });
       const response = await request.json();
-      console.log(response);
+      // console.log(response);
       const userId = data.user.email._id;
       dispatch(getOrederList(userId));
     }
@@ -106,13 +106,7 @@ const OrderForm = (props) => {
         <div className="productDetails-form-sub">
           <Price price={price} />
           <div className="productDetails-form-sub-actions">
-            {haveIt && (
-              <Amount
-                selectedItem={selectedItem}
-                status={status}
-                amount={amount}
-              />
-            )}
+            {haveIt && <Amount selectedItem={selectedItem} />}
             {!haveIt && (
               <button
                 onClick={(e) => {

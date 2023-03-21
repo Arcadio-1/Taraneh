@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import SearchIcon from "../../../ui/Icons/SearchIcon";
 
 const MyList = () => {
   const router = useRouter();
-  const [routerContent, setRouterContent] = useState("in-porocess");
+  const [routerContent, setRouterContent] = useState("favorites");
   useEffect(() => {
     if (router.query.activeTab) {
       setRouterContent((prev) => {
@@ -30,34 +29,34 @@ const MyList = () => {
         <ul className=" border-b border-gray-200 pb-1 flex gap-1 text-lg ">
           <li
             className={`relative py-2 px-6 ${
-              routerContent === "in-porocess" ? "text-red-600" : ""
+              routerContent === "favorites" ? "text-red-600" : ""
             }`}
             onClick={() => {
-              routepuser("?activeTab=in-porocess");
+              routepuser("?activeTab=favorites");
             }}
           >
-            <Link href={"?activeTab=in-porocess"} as={"?activeTab=in-porocess"}>
+            <Link href={"?activeTab=favorites"} as={"?activeTab=favorites"}>
               <div>
                 <span>لیست علاقه مندی</span>
               </div>
               <div
                 className={`ui-tabUnderline bottom-[calc(-2px)] ${
-                  routerContent === "in-porocess" ? "opacity-100" : "opacity-0"
+                  routerContent === "favorites" ? "opacity-100" : "opacity-0"
                 }`}
               ></div>
             </Link>
           </li>
           <li
             className={`relative py-2 px-6 ${
-              routerContent === "sent" ? "text-red-600" : ""
+              routerContent === "public" ? "text-red-600" : ""
             }`}
           >
-            <Link href={"?activeTab=sent"}>
+            <Link href={"?activeTab=public"}>
               <div className={`flex gap-1 `}>
                 <span>لیست عمومی</span>
                 <p
                   className={`fnNum text-white py-[1px] px-2 rounded-md ${
-                    routerContent === "sent" ? "bg-red-500" : "bg-gray-400"
+                    routerContent === "public" ? "bg-red-500" : "bg-gray-400"
                   }`}
                 >
                   28
@@ -65,22 +64,24 @@ const MyList = () => {
               </div>
               <div
                 className={`ui-tabUnderline bottom-[calc(-2px)] ${
-                  routerContent === "sent" ? "opacity-100" : "opacity-0"
+                  routerContent === "public" ? "opacity-100" : "opacity-0"
                 }`}
               ></div>
             </Link>
           </li>
           <li
             className={`relative py-2 px-6 ${
-              routerContent === "returned" ? "text-red-600" : ""
+              routerContent === "announcements" ? "text-red-600" : ""
             }`}
           >
-            <Link href={"?activeTab=returned"}>
+            <Link href={"?activeTab=announcements"}>
               <div className={`flex gap-1 `}>
                 <span>اطلاع رسانی</span>
                 <p
                   className={`fnNum text-white py-[1px] px-2 rounded-md ${
-                    routerContent === "returned" ? "bg-red-500" : "bg-gray-400"
+                    routerContent === "announcements"
+                      ? "bg-red-500"
+                      : "bg-gray-400"
                   }`}
                 >
                   7
@@ -88,7 +89,9 @@ const MyList = () => {
               </div>
               <div
                 className={`ui-tabUnderline bottom-[calc(-2px)] ${
-                  routerContent === "returned" ? "opacity-100" : "opacity-0"
+                  routerContent === "announcements"
+                    ? "opacity-100"
+                    : "opacity-0"
                 }`}
               ></div>
             </Link>
