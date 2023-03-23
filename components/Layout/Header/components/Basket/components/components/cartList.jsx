@@ -4,9 +4,7 @@ import LoadingSpinner from "../../../../../../ui/LoadingSpiner/loadingSpiner";
 import CartItem from "./cartItem";
 
 const CartList = () => {
-  const getItemsStatus = useSelector(
-    (state) => state.ui.getCartItemsDataStatus
-  );
+  const getItemsStatus = useSelector((state) => state.ui.getCartListDataStatus);
   const localStorageCartItems = useSelector(
     (state) => state.getData.cartItemsData
   );

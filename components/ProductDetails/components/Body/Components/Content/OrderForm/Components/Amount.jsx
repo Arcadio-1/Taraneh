@@ -2,25 +2,26 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getOrederList,
-  removeCartItemFromLocalStorage,
-  setLocalStorageAmount,
-} from "../../../../../../../../store/ManageData/GetData/GetDataAction";
+  changeLocalStorageCartItemAmount,
+  getLocalStorageCartItems,
+  removeItemFromLocalStorageCartList,
+} from "../../../../../../../../lib/utilFunctions";
+import { getOrederList } from "../../../../../../../../store/ManageData/GetData/GetDataAction";
+import { getDataSliceActions } from "../../../../../../../../store/ManageData/GetData/GetDataSlice";
 import Minus from "../../../../../../../ui/Icons/Minus";
 import PlusIcon from "../../../../../../../ui/Icons/PlusIcon";
 import TrashIcon from "../../../../../../../ui/Icons/TrashIcon";
 
-const Amount = ({ selectedItem }) => {
+const Amount = ({ selectedItem: id }) => {
   const { data, status: login } = useSession();
   const dispatch = useDispatch();
-  // const cartItemsData = useSelector((state) => state.getData.cartItemsData);
   const cartItems = useSelector((state) => state.getData.cartItems);
   const [itemAmount, setItemAmount] = useState(1);
 
   useEffect(() => {
     setItemAmount((prev) => {
       const amount = cartItems.filter((item) => {
-        if (item._id === selectedItem) {
+        if (item._id === id) {
           return item.amount;
         }
       });
@@ -30,33 +31,27 @@ const Amount = ({ selectedItem }) => {
 
       return (prev = prev);
     });
-  }, [cartItems, selectedItem]);
+  }, [cartItems, id]);
 
   const amountHandler = async (type) => {
     if (login === "unauthenticated") {
       if (type === "plus") {
-        dispatch(
-          setLocalStorageAmount(selectedItem, {
-            amount: itemAmount + 1,
-          })
-        );
-      }
-      if (type === "remove") {
-        dispatch(removeCartItemFromLocalStorage(cartItems, selectedItem));
+        changeLocalStorageCartItemAmount(id, itemAmount + 1);
       }
       if (type === "minus") {
-        dispatch(
-          setLocalStorageAmount(selectedItem, {
-            amount: itemAmount - 1,
-          })
-        );
+        changeLocalStorageCartItemAmount(id, itemAmount - 1);
       }
+      if (type === "remove") {
+        removeItemFromLocalStorageCartList(id);
+      }
+      const localStorageCartList = getLocalStorageCartItems();
+      dispatch(getDataSliceActions.setCardItems(localStorageCartList));
     }
     if (login === "authenticated") {
       let newCartList = [];
       if (type === "remove") {
         newCartList = cartItems.filter((item) => {
-          if (item._id !== selectedItem) {
+          if (item._id !== id) {
             return item;
           }
         });
@@ -75,7 +70,7 @@ const Amount = ({ selectedItem }) => {
       }
       if (type === "plus") {
         newCartList = cartItems.map((item) => {
-          if (item._id === selectedItem) {
+          if (item._id === id) {
             return { ...item, amount: itemAmount + 1 };
           }
           return item;
@@ -83,7 +78,7 @@ const Amount = ({ selectedItem }) => {
       }
       if (type === "minus") {
         newCartList = cartItems.map((item) => {
-          if (item._id === selectedItem) {
+          if (item._id === id) {
             return { ...item, amount: itemAmount - 1 };
           }
           return item;

@@ -11,12 +11,19 @@ const initialState = {
   isShowPerPageMenu: false,
   isShowNotif: false,
   getAllproductsStatus: null,
-  getCartItemsStatus: null,
-  getCartItemsDataStatus: {
+
+  getServerCartList: {
     status: "loading",
     title: "Loading...",
     message: "در حال دریافت لیست محصولات",
   },
+
+  getCartListDataStatus: {
+    status: "loading",
+    title: "Loading...",
+    message: "در حال دریافت لیست محصولات",
+  },
+
   getUiStatus: null,
   userActionNotif: {
     status: "null",
@@ -59,15 +66,15 @@ const uiSlice = createSlice({
         message: action.payload.message,
       };
     },
-    setGetCartItemsStatus(state, action) {
-      state.getCartItemsStatus = {
+    setGetServerCartListStatus(state, action) {
+      state.getServerCartList = {
         status: action.payload.status,
         title: action.payload.title,
         message: action.payload.message,
       };
     },
-    setGetCartItemsDataStatus(state, action) {
-      state.getCartItemsDataStatus = {
+    setGetCartListDataStatus(state, action) {
+      state.getCartListDataStatus = {
         status: action.payload.status,
         title: action.payload.title,
         message: action.payload.message,

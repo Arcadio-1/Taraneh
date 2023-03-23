@@ -3,14 +3,7 @@ import { getClient } from "../helper";
 async function handler(req, res) {
   try {
     const orderBody = JSON.parse(req.body);
-    // console.log(orderBody);
-    // console.log(req.method);
     const { userId, orders, isInsert } = orderBody;
-    // console.log(orderBody);
-    // const order = {
-    //   _id: userId,
-    //   orders: orders,
-    // };
 
     const client = await getClient("helper-data");
     if (!client) {
@@ -21,7 +14,6 @@ async function handler(req, res) {
     if (req.method === "POST") {
       if (isInsert) {
         console.log(orders);
-        console.log(userId);
         request = await db.collection("orders").insertOne({
           _id: userId,
           orders: [orders],
@@ -29,6 +21,7 @@ async function handler(req, res) {
         console.log(request);
       }
       if (!isInsert) {
+        // console.log(orderBody.cartItems);
         request = await db
           .collection("orders")
           .findOneAndUpdate(
@@ -51,7 +44,7 @@ async function handler(req, res) {
     }
     res.status(201).json({ message: "success", request: request });
   } catch (error) {
-    res.status(204).json({ message: error.message, request: null });
+    res.status(404).json({ message: error.message, request: null });
   }
 }
 

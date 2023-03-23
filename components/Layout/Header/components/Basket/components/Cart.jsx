@@ -21,6 +21,18 @@ const Cart = ({ showMenuHandler }) => {
     totalDiscount: 0,
   });
 
+  const fibo = (index) => {
+    let result = [1, 1];
+    if (index === 1 || index === 2) {
+      return 1;
+    }
+    for (let i = 1; i < index; i++) {
+      result.push(result[i - 1] + result[i]);
+    }
+    console.log(result);
+    console.log(result[index]);
+  };
+
   // useEffect(() => {
   //   if (cartitemss && cartitemss.length > 0) {
   //     console.log(cartitemss);
@@ -57,7 +69,14 @@ const Cart = ({ showMenuHandler }) => {
     <div className="CartModal">
       <header className="CartModal-header">
         <p className="CartModal-header-content">
-          <span className="CartModal-header-label">کالا</span>
+          <span
+            className="CartModal-header-label"
+            onClick={() => {
+              fibo(3);
+            }}
+          >
+            کالا
+          </span>
           <span className="CartModal-header-amount">
             {cartModalData.amount}
           </span>

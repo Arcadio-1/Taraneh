@@ -1,15 +1,16 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Price from "./Components/Price";
 import Amount from "./Components/Amount";
 import Grind from "./Components/Grind";
 import Weight from "./Components/Weight";
 import { useSession } from "next-auth/react";
-import {
-  getLocalStoageCartItems,
-  getOrederList,
-} from "../../../../../../../store/ManageData/GetData/GetDataAction";
+import { getOrederList } from "../../../../../../../store/ManageData/GetData/GetDataAction";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToLocalStorageCart } from "../../../../../../../lib/utilFunctions";
+import {
+  addProductToLocalStorageCart,
+  getLocalStorageCartItems,
+} from "../../../../../../../lib/utilFunctions";
+import { getDataSliceActions } from "../../../../../../../store/ManageData/GetData/GetDataSlice";
 
 const OrderForm = (props) => {
   const { status, packaging, price, id } = props;
@@ -64,13 +65,12 @@ const OrderForm = (props) => {
     setHaveIt(true);
     if (login === "unauthenticated") {
       addProductToLocalStorageCart(id, orderData);
-      dispatch(getLocalStoageCartItems());
+      const localStorageCartList = getLocalStorageCartItems();
+      dispatch(getDataSliceActions.setCardItems(localStorageCartList));
     }
     if (login === "authenticated") {
-      // console.log(cartItemsData);
       const methodFlag =
         cartItemsData && cartItemsData.length > 0 ? "PUT" : "POST";
-      // console.log(selectedItem);
       const request = await fetch("/api/helperAPI/addOrder", {
         method: methodFlag,
         body: JSON.stringify({
@@ -80,7 +80,6 @@ const OrderForm = (props) => {
         }),
       });
       const response = await request.json();
-      // console.log(response);
       const userId = data.user.email._id;
       dispatch(getOrederList(userId));
     }
