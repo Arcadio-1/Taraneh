@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useToggleMenu from "../../../../../Hook/UseToggoleMenu";
 import { getLocalStorageCartItems } from "../../../../../lib/utilFunctions";
@@ -20,25 +20,7 @@ const Basket = () => {
   const getCartItemsStatus = useSelector((state) => state.ui.getServerCartList);
   const { data, status } = useSession();
 
-  // useEffect(() => {
-  //   console.log(getCartItemsStatus);
-  // }, [getCartItemsStatus]);
-
-  const sendMergedCartList = useCallback(() => {
-    async (cartList, id) => {
-      const methodFlag = cartItems.length > 0 ? "PUT" : "POST";
-      const request = await fetch("/api/helperAPI/mergeCartItems", {
-        method: methodFlag,
-        body: JSON.stringify({
-          userId: id,
-          orders: cartList,
-        }),
-      });
-      const response = await request.json();
-      console.log(response);
-    };
-  }, [cartItems]);
-
+  //merge localStoreage Cartlist with server CartList
   useEffect(() => {
     if (status === "authenticated") {
       console.log("merge localStorage CartList with server CartList ");
@@ -79,34 +61,22 @@ const Basket = () => {
         sendMergedCartList(result, id);
       }
     }
-  }, [
-    cartItems,
-    status,
-    data,
-    sendMergedCartList,
-    getCartItemsStatus,
-    dispatch,
-  ]);
+  }, [cartItems, status, data, getCartItemsStatus, dispatch]);
 
+  //set CartList
   useEffect(() => {
-    // console.log("get CartList");
-
-    // const localStorageCartList = getLocalStorageCartItems();
     if (status === "unauthenticated") {
       const localStorageCartList = getLocalStorageCartItems();
       dispatch(getDataSliceActions.setCardItems(localStorageCartList));
-      // dispatch(getLocalStoageCartItems());
     }
-    // if (!localStorageCartList || localStorageCartList.length < 0)
     if (status === "authenticated") {
       const id = data.user.email._id;
       dispatch(getOrederList(id));
     }
   }, [status, dispatch, data]);
 
+  //set CartList Data
   useEffect(() => {
-    // console.log("get CartList Data");
-
     if (cartItems && cartItems.length > 0) {
       dispatch(getCartItemsData(cartItems));
     }
@@ -115,8 +85,8 @@ const Basket = () => {
     }
   }, [cartItems, dispatch]);
 
+  // set number of cartList Items
   useEffect(() => {
-    // console.log("get amount of items in cartList");
     if (cartItems) {
       setNumberOfOrders((prev) => {
         let amount = 0;
