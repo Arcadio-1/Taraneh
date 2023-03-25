@@ -62,7 +62,7 @@ export const getOrederList = (id) => {
         })
       );
 
-      const orders = await fetch(`/api/helperAPI/getOrderList/${id}`, {
+      const orders = await fetch(`/api/ordring/getOrderList/${id}`, {
         method: "GET",
       });
       const response = await orders.json();

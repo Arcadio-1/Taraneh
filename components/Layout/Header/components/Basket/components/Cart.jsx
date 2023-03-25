@@ -5,7 +5,7 @@ import {
   offPriceCalculator,
   priceFormat,
 } from "../../../../../../lib/utilFunctions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // import { getCartItemsData } from "../../../../../../store/ManageData/GetData/GetDataAction";
 import TomanIcon from "../../../../../ui/Icons/tomanIcon";
 
@@ -13,32 +13,25 @@ const Cart = ({ showMenuHandler }) => {
   const cartitemss = useSelector((state) => state.getData.cartItems);
   const cartitemssData = useSelector((state) => state.getData.cartItemsData);
 
-  // const dispatch = useDispatch();
-
   const [cartModalData, setCartModalData] = useState({
     amount: 0,
     totalPrice: 0,
     totalDiscount: 0,
   });
 
-  const fibo = (index) => {
-    let result = [1, 1];
-    if (index === 1 || index === 2) {
-      return 1;
+  const numbers = [
+    5, 78, 54, 768, 78, 68687, 6787, 7636, 47, 7, 7, 8, 8, 8, 4, 4, 4, 7, 9, 74,
+    2, 4, 7, 778, 87,
+  ];
+  const getSmallestNumber = (num) => {
+    let smalest = +num[0];
+    for (const item of num) {
+      if (item < +smalest) {
+        smalest = item;
+      }
     }
-    for (let i = 1; i < index; i++) {
-      result.push(result[i - 1] + result[i]);
-    }
-    console.log(result);
-    console.log(result[index]);
+    console.log(smalest);
   };
-
-  // useEffect(() => {
-  //   if (cartitemss && cartitemss.length > 0) {
-  //     console.log(cartitemss);
-  //     dispatch(getCartItemsData(cartitemss));
-  //   }
-  // }, [cartitemss, dispatch]);
 
   useEffect(() => {
     const cartData = {
@@ -71,9 +64,7 @@ const Cart = ({ showMenuHandler }) => {
         <p className="CartModal-header-content">
           <span
             className="CartModal-header-label"
-            onClick={() => {
-              fibo(3);
-            }}
+            onClick={() => getSmallestNumber(numbers)}
           >
             کالا
           </span>

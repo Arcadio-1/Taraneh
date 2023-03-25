@@ -52,7 +52,12 @@ const Body = (props) => {
           <Sharing />
         </div>
         <div className="productDetails-message">
-          <OrderForm price={price} packaging={packaging} id={id} />
+          <OrderForm
+            availableWeights={packaging.value}
+            availableGrind={packaging.availableGrind}
+            price={price}
+            id={id}
+          />
           <Message />
         </div>
       </div>

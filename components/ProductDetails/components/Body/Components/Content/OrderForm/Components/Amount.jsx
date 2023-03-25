@@ -56,7 +56,7 @@ const Amount = ({ selectedItem: id }) => {
           }
         });
         if (newCartList.length < 1) {
-          const request = await fetch("/api/helperAPI/addOrder", {
+          const request = await fetch("/api/ordring/addOrder", {
             method: "DELETE",
             body: JSON.stringify({
               userId: data.user.email._id,
@@ -84,7 +84,7 @@ const Amount = ({ selectedItem: id }) => {
           return item;
         });
       }
-      const request = await fetch("/api/helperAPI/addOrder", {
+      const request = await fetch("/api/ordring/addOrder", {
         method: "POST",
         body: JSON.stringify({
           isInsert: false,

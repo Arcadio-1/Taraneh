@@ -1,10 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { sendDataAction } from "../../../../../../../../store/ManageData/SendData/SendDataSlice";
 import GrindIcon from "../../../../../../../ui/Icons/GrindIcon";
-const Grind = ({ availableGrind, grindAlert, setAlert }) => {
-  const dispatchGrind = useDispatch();
+const Grind = ({ availableGrind, grindAlert, dispatchGrind }) => {
   return (
     <div className="productDetails-form-grind">
       <div className="productDetails-form-grind-container">
@@ -23,13 +20,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                grind: value,
-                                type: "setGrind",
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"
@@ -55,13 +46,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                grind: value,
-                                type: "setGrind",
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"
@@ -87,13 +72,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                grind: value,
-                                type: "setGrind",
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"
@@ -119,13 +98,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                grind: value,
-                                type: "setGrind",
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"
@@ -151,13 +124,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                grind: value,
-                                type: "setGrind",
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"
@@ -183,13 +150,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                grind: value,
-                                type: "setGrind",
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"
@@ -215,13 +176,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                type: "setGrind",
-                                grind: value,
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"
@@ -247,13 +202,7 @@ const Grind = ({ availableGrind, grindAlert, setAlert }) => {
                         <input
                           onChange={(e) => {
                             const value = e.target.value;
-                            dispatchGrind(
-                              sendDataAction.setProduct({
-                                type: "setGrind",
-                                grind: value,
-                              })
-                            );
-                            setAlert(false);
+                            dispatchGrind({ type: "grind", grind: value });
                           }}
                           type="radio"
                           name="grind"

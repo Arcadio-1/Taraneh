@@ -8,7 +8,7 @@ const Actions = () => {
   const { data, status } = useSession();
   const dispatch = useDispatch();
   const clearListHandler = async () => {
-    const request = await fetch("/api/helperAPI/addOrder", {
+    const request = await fetch("/api/ordring/addOrder", {
       method: "DELETE",
       body: JSON.stringify({
         userId: data.user.email._id,

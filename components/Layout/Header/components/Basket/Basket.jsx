@@ -23,14 +23,12 @@ const Basket = () => {
   //merge localStoreage Cartlist with server CartList
   useEffect(() => {
     if (status === "authenticated") {
-      console.log("merge localStorage CartList with server CartList ");
       const localStorageCartList = getLocalStorageCartItems();
       if (
         getCartItemsStatus &&
         getCartItemsStatus.status === "success" &&
         localStorageCartList.length > 0
       ) {
-        console.log("merge localStorage CartList with server CartList ");
         const id = data.user.email._id;
         const mixed = [...cartItems, ...localStorageCartList];
         const result = Object.values(
@@ -43,7 +41,7 @@ const Basket = () => {
         console.log(result);
         const sendMergedCartList = async (cartList, id) => {
           const methodFlag = cartItems.length > 0 ? "PUT" : "POST";
-          const request = await fetch("/api/helperAPI/mergeCartItems", {
+          const request = await fetch("/api/ordring/mergeCartItems", {
             method: methodFlag,
             body: JSON.stringify({
               userId: id,

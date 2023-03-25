@@ -21,7 +21,6 @@ async function handler(req, res) {
         console.log(request);
       }
       if (!isInsert) {
-        // console.log(orderBody.cartItems);
         request = await db
           .collection("orders")
           .findOneAndUpdate(

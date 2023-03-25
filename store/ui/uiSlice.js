@@ -15,13 +15,19 @@ const initialState = {
   getServerCartList: {
     status: "loading",
     title: "Loading...",
-    message: "در حال دریافت لیست محصولات",
+    message: "در حال دریافت لیست سفارشات",
   },
 
   getCartListDataStatus: {
     status: "loading",
     title: "Loading...",
-    message: "در حال دریافت لیست محصولات",
+    message: "در حال دریافت اطلاعات لیست سفارشات",
+  },
+
+  getAmountManageStatus: {
+    status: "loading",
+    title: "Loading...",
+    message: "در حال ویرایش لیست محصولات",
   },
 
   getUiStatus: null,

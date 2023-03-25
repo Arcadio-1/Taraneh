@@ -11,31 +11,24 @@ import {
   getLocalStorageCartItems,
 } from "../../../../../../../lib/utilFunctions";
 import { getDataSliceActions } from "../../../../../../../store/ManageData/GetData/GetDataSlice";
+import useOrderDetails from "../../../../../../../Hook/UseOrderDetails";
 
-const OrderForm = (props) => {
-  const { status, packaging, price, id } = props;
-  const { data, status: login } = useSession();
-
-  const { value: availableWeights, availableGrind } = packaging;
-
-  const dispatch = useDispatch();
-  const orderData = useSelector((state) => state.sendData.product);
-  const localstorageCartItems = useSelector((state) => state.getData.cartItems);
+const OrderForm = ({ price, id, availableWeights, availableGrind }) => {
   const cartItemsData = useSelector((state) => state.getData.cartItemsData);
+  const { data, status: login } = useSession();
+  const dispatch = useDispatch();
+
+  const {
+    grind,
+    grindAlert,
+    weight,
+    weightAlert,
+    dispatch: dispatchOrderDetils,
+  } = useOrderDetails();
+
   const [haveIt, setHaveIt] = useState(false);
-  const [weightAlert, setWeightAlert] = useState(false);
-  const [grindAlert, setGrindAlert] = useState(false);
 
-  const { grind, weight, amount } = orderData;
   const selectedItem = `${id}${grind}${weight}`;
-
-  // useEffect(() => {
-  //   console.log(cartItemsData);
-  // }, [cartItemsData]);
-
-  // useEffect(() => {
-  //   dispatch(getLocalStoageCartItems());
-  // }, [dispatch]);
 
   useEffect(() => {
     if (grind && weight) {
@@ -55,33 +48,40 @@ const OrderForm = (props) => {
 
   const AddToCardHandler = async () => {
     if (!weight) {
-      setWeightAlert((prev) => (prev = true));
+      dispatchOrderDetils({ type: "weightAlert" });
       return;
     }
     if (!grind) {
-      setGrindAlert(true);
+      dispatchOrderDetils({ type: "grindAlert" });
       return;
     }
     setHaveIt(true);
     if (login === "unauthenticated") {
-      addProductToLocalStorageCart(id, orderData);
+      addProductToLocalStorageCart(id, { grind, weight, amount: 1 });
       const localStorageCartList = getLocalStorageCartItems();
       dispatch(getDataSliceActions.setCardItems(localStorageCartList));
     }
     if (login === "authenticated") {
       const methodFlag =
         cartItemsData && cartItemsData.length > 0 ? "PUT" : "POST";
-      const request = await fetch("/api/helperAPI/addOrder", {
+      const request = await fetch("/api/ordring/addOrder", {
         method: methodFlag,
         body: JSON.stringify({
           isInsert: true,
           userId: data.user.email._id,
-          orders: { ...orderData, ProductId: id, _id: selectedItem },
+          orders: {
+            _id: selectedItem,
+            ProductId: id,
+            amount: 1,
+            weight: weight,
+            grind: grind,
+          },
         }),
       });
       const response = await request.json();
       const userId = data.user.email._id;
       dispatch(getOrederList(userId));
+      setHaveIt(true);
     }
   };
 
@@ -92,14 +92,14 @@ const OrderForm = (props) => {
           <Weight
             availableWeights={availableWeights}
             weightAlert={weightAlert}
-            setAlert={setWeightAlert}
+            dispatchWeight={dispatchOrderDetils}
           />
         )}
         {availableGrind && (
           <Grind
             availableGrind={availableGrind}
             grindAlert={grindAlert}
-            setAlert={setGrindAlert}
+            dispatchGrind={dispatchOrderDetils}
           />
         )}
         <div className="productDetails-form-sub">
