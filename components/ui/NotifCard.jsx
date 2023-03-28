@@ -27,7 +27,7 @@ const NotifCard = (props) => {
             message: "null",
           })
         );
-      }, 5000);
+      }, 3000);
       return () => {
         clearTimeout(clearnotif);
       };

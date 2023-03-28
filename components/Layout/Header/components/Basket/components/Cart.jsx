@@ -6,57 +6,52 @@ import {
   priceFormat,
 } from "../../../../../../lib/utilFunctions";
 import { useSelector } from "react-redux";
-// import { getCartItemsData } from "../../../../../../store/ManageData/GetData/GetDataAction";
 import TomanIcon from "../../../../../ui/Icons/tomanIcon";
+import Image from "next/image";
+import LoadingSpinner from "../../../../../ui/LoadingSpiner/loadingSpiner";
 
 const Cart = ({ showMenuHandler }) => {
-  const cartitemss = useSelector((state) => state.getData.cartItems);
-  const cartitemssData = useSelector((state) => state.getData.cartItemsData);
-
+  const cartListData = useSelector((state) => state.getData.cartItemsData);
+  const cartListDataStatus = useSelector(
+    (state) => state.ui.cartListDataStatus
+  );
   const [cartModalData, setCartModalData] = useState({
     amount: 0,
     totalPrice: 0,
     totalDiscount: 0,
   });
 
-  const numbers = [
-    5, 78, 54, 768, 78, 68687, 6787, 7636, 47, 7, 7, 8, 8, 8, 4, 4, 4, 7, 9, 74,
-    2, 4, 7, 778, 87,
-  ];
-  const getSmallestNumber = (num) => {
-    let smalest = +num[0];
-    for (const item of num) {
-      if (item < +smalest) {
-        smalest = item;
-      }
-    }
-    console.log(smalest);
-  };
+  useEffect(() => {
+    console.log(cartListDataStatus);
+  }, [cartListDataStatus]);
 
   useEffect(() => {
-    const cartData = {
-      amount: 0,
-      totalPrice: 0,
-      totalDiscount: 0,
-    };
-    cartitemssData.map((item) => {
-      cartData.amount = item.amount + cartData.amount;
-      if (item.price.offPersent) {
-        const offPrice = offPriceCalculator(
-          item.price.value,
-          item.price.offPersent
-        );
-        cartData.totalPrice += item.amount * offPrice;
-        cartData.totalDiscount += item.amount * (item.price.value - offPrice);
-      }
-      if (!item.price.offPersent) {
-        cartData.totalPrice += item.amount * item.price.value;
-      }
-    });
-    setCartModalData((prev) => {
-      return (prev = cartData);
-    });
-  }, [cartitemssData]);
+    if (cartListData && cartListData.length > 0) {
+      const cartData = {
+        amount: 0,
+        totalPrice: 0,
+        totalDiscount: 0,
+      };
+      cartListData.map((item) => {
+        cartData.amount = item.amount + cartData.amount;
+        if (item.price.offPersent) {
+          const offedPrice = offPriceCalculator(
+            item.price.value,
+            item.price.offPersent
+          );
+          cartData.totalPrice += item.amount * offedPrice;
+          cartData.totalDiscount +=
+            item.amount * (item.price.value - offedPrice);
+        }
+        if (!item.price.offPersent) {
+          cartData.totalPrice += item.amount * item.price.value;
+        }
+      });
+      setCartModalData((prev) => {
+        return (prev = cartData);
+      });
+    }
+  }, [cartListData]);
 
   return (
     <div className="CartModal">
@@ -76,58 +71,70 @@ const Cart = ({ showMenuHandler }) => {
           مشاهده سبد خرید
         </Link>
       </header>
-      {cartitemss && cartitemss.length > 0 && (
+      {cartListData.length > 0 && (
         <section className="CartModal-list">
           <div className="CartModal-list-container">
             <CartList />
           </div>
         </section>
       )}
-      {cartitemss && cartitemss.length === 0 && (
-        <section className="flex items-center w-full">
-          <span className="text-center w-full text-lg m-3">
-            سفارشی ثبت نشده است!
-          </span>
+      {cartListDataStatus.status !== "success" && (
+        <div className="w-full h-36 border pt-6">
+          <LoadingSpinner text={"در حال دریافت لیست سفارشات"} />
+        </div>
+      )}
+      {cartListData.length === 0 && cartListDataStatus.status === "success" && (
+        <section className="flex items-center w-full flex-col py-5">
+          <Image
+            src={"/image/ui/profile/order-empty.svg"}
+            width={120}
+            height={120}
+            alt="emapty"
+          />
+          <span className="text-xl text-g1_1">سفارشی ثبت نشده است!</span>
         </section>
       )}
 
-      <footer className="CartModal-footer">
-        <div className="flex flex-col w-full items-end">
-          <div className="flex flex-col items-start w-full">
-            {cartModalData.totalDiscount > 0 && (
-              <div className="CartModal-footer-profit">
-                <label className="CartModal-footer-profit-label">
-                  سود شما از خرید:
-                </label>
-                <span className="CartModal-footer-profit-price">
-                  {priceFormat(cartModalData.totalDiscount)}
+      {cartListData.length > 0 && (
+        <footer className="CartModal-footer">
+          <div className="flex flex-col w-full items-end">
+            <div className="flex flex-col items-start w-full">
+              {cartModalData.totalDiscount > 0 && (
+                <div className="CartModal-footer-profit">
+                  <label className="CartModal-footer-profit-label">
+                    سود شما از خرید:
+                  </label>
+                  <span className="CartModal-footer-profit-price">
+                    {priceFormat(cartModalData.totalDiscount)}
 
+                    <TomanIcon />
+                  </span>
+                </div>
+              )}
+
+              <div className="CartModal-footer-price">
+                <p className="CartModal-footer-price-label">
+                  مبلغ قابل پرداخت:
+                </p>
+                <p className="CartModal-footer-price-price">
+                  {priceFormat(cartModalData.totalPrice)}
                   <TomanIcon />
-                </span>
+                </p>
               </div>
-            )}
-
-            <div className="CartModal-footer-price">
-              <p className="CartModal-footer-price-label">مبلغ قابل پرداخت:</p>
-              <p className="CartModal-footer-price-price">
-                {priceFormat(cartModalData.totalPrice)}
-                <TomanIcon />
-              </p>
+            </div>
+            <div className="CartModal-footer-action">
+              <Link href={"/checkout/cart"}>
+                <button
+                  onClick={showMenuHandler}
+                  className="CartModal-footer-action-submitBtn"
+                >
+                  تکمیل سفارش
+                </button>
+              </Link>
             </div>
           </div>
-
-          <div className="CartModal-footer-action">
-            <Link href={"/checkout/cart"}>
-              <button
-                onClick={showMenuHandler}
-                className="CartModal-footer-action-submitBtn"
-              >
-                تکمیل سفارش
-              </button>
-            </Link>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 };

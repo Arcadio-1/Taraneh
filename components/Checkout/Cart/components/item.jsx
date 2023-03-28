@@ -125,9 +125,7 @@ const Item = ({ item }) => {
         <div className="hidden max-sm:inline mb-5">
           <Amount selectedItem={item._id} />
         </div>
-        <button className="max-sm:hidden">
-          <CloseIcon />
-        </button>
+        <Amount selectedItem={item._id} remove={true} />
       </td>
     </tr>
   );

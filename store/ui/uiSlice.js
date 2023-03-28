@@ -11,25 +11,52 @@ const initialState = {
   isShowPerPageMenu: false,
   isShowNotif: false,
   getAllproductsStatus: null,
-
-  getServerCartList: {
+  cartListStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
+  getClientStatus: {
     status: "loading",
     title: "Loading...",
     message: "در حال دریافت لیست سفارشات",
   },
-
-  getCartListDataStatus: {
-    status: "loading",
-    title: "Loading...",
-    message: "در حال دریافت اطلاعات لیست سفارشات",
+  cartListDataStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
+  changeAmountStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
+  syncCartListStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
+  clearListStatus: {
+    status: null,
+    title: null,
+    message: null,
   },
 
-  getAmountManageStatus: {
+  addOrderStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
+  removeOrderStatus: {
     status: "loading",
     title: "Loading...",
-    message: "در حال ویرایش لیست محصولات",
+    message: "در حال افزودن به لیست سفارشات",
   },
-
+  cartListSyncingStatus: {
+    status: "loading",
+    title: "Loading...",
+    message: "در حال افزودن سفارشات",
+  },
   getUiStatus: null,
   userActionNotif: {
     status: "null",
@@ -72,20 +99,49 @@ const uiSlice = createSlice({
         message: action.payload.message,
       };
     },
-    setGetServerCartListStatus(state, action) {
-      state.getServerCartList = {
+    setCartListStatus(state, action) {
+      state.cartListStatus = {
         status: action.payload.status,
         title: action.payload.title,
         message: action.payload.message,
       };
     },
-    setGetCartListDataStatus(state, action) {
-      state.getCartListDataStatus = {
+    setCartListDataStatus(state, action) {
+      state.cartListDataStatus = {
         status: action.payload.status,
         title: action.payload.title,
         message: action.payload.message,
       };
     },
+    setSyncCartListStatus(state, action) {
+      state.syncCartListStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
+    setChangeAmountStatus(state, action) {
+      state.changeAmountStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
+    setAddOrderStatus(state, action) {
+      state.addOrderStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
+    setClearListStatus(state, action) {
+      state.clearListStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
+
     setGetUiStatus(state, action) {
       state.getUiStatus = {
         status: action.payload.status,

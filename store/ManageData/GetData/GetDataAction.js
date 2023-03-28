@@ -1,5 +1,3 @@
-// import { dataGeter } from "../../../pages/api/helper";
-import { getLocalStorageCartItems } from "../../../lib/utilFunctions";
 import { uiAction } from "../../ui/uiSlice";
 import { getDataSliceActions } from "./GetDataSlice";
 
@@ -52,20 +50,25 @@ export const getAllProducts = () => {
 
 export const getOrederList = (id) => {
   return async (dispatch) => {
-    // console.log("getOrederList");
     try {
       dispatch(
-        uiAction.setGetServerCartListStatus({
+        uiAction.setCartListStatus({
           status: "loading",
-          title: "Loading...",
-          message: "trying to get cart items",
+          title: "در حال دریافت لیست خرید",
+          message: "در حال دریافت لیست خرید از سرور",
         })
       );
 
       const orders = await fetch(`/api/ordring/getOrderList/${id}`, {
         method: "GET",
       });
+      if (!orders) {
+        throw new Error("خطا در دریافت اطلاعات لیست خرید از سرور");
+      }
       const response = await orders.json();
+      if (response.status !== "success") {
+        throw new Error("خطا در دریافت لیست خرید");
+      }
       if (response.orders) {
         dispatch(getDataSliceActions.setCardItems(response.orders.orders));
       }
@@ -73,18 +76,18 @@ export const getOrederList = (id) => {
         dispatch(getDataSliceActions.setCardItems([]));
       }
       dispatch(
-        uiAction.setGetServerCartListStatus({
+        uiAction.setCartListStatus({
           status: "success",
-          title: "Sucsessfuly",
-          message: "get Cart Items sucsessfuly",
+          title: "با موفقیت انجام شد",
+          message: "لیست خرید با موفقیت دریافت شد",
         })
       );
     } catch (error) {
       dispatch(
-        uiAction.setGetServerCartListStatus({
+        uiAction.setCartListStatus({
           status: "error",
-          title: "Error",
-          message: error || "we have  problem in geting cart items",
+          title: "خطا در دریافت لیست خرید",
+          message: error.message || "خطا در دریافت لیست خرید",
         })
       );
     }
@@ -95,10 +98,10 @@ export const getCartItemsData = (items) => {
   return async (dispatch) => {
     try {
       dispatch(
-        uiAction.setGetCartListDataStatus({
+        uiAction.setCartListDataStatus({
           status: "loading",
-          title: "Loading...",
-          message: "trying to get cart items",
+          title: "در حال بررسی",
+          message: "در حال دریافت اطلاعات لیست سفارشات",
         })
       );
       const mylist = [];
@@ -110,182 +113,33 @@ export const getCartItemsData = (items) => {
           }
         );
         if (!request) {
-          throw new Error("request fucked");
+          throw new Error("خطا در دریافت اطلاعات لیست سفارشات");
         }
         const data = await request.json();
+        if (data.status !== "success") {
+          throw new Error("خطا در دریافت اطلاعات لیست سفارشات");
+        }
         return await { ...data.product, ...item };
       });
       mylist.push({ ...cartListArray });
       var arrayOfValues = await Promise.all(cartListArray);
       dispatch(getDataSliceActions.setCardItemsData(arrayOfValues));
-
+      console.log(arrayOfValues);
       dispatch(
-        uiAction.setGetCartListDataStatus({
+        uiAction.setCartListDataStatus({
           status: "success",
-          title: "Sucsessfuly",
-          message: "get Cart Items sucsessfuly",
+          title: "با موفقیت دریافت شد",
+          message: "اطلاعات لیست سفارشات با موفقیت دریافت شد",
         })
       );
     } catch (error) {
       dispatch(
-        uiAction.setGetCartListDataStatus({
+        uiAction.setCartListDataStatus({
           status: "error",
           title: "Error",
-          message: error || "we have  problem in geting cart items",
+          message: error.message || "خطا در دریافت اطلاعات لیست سفارشات",
         })
       );
     }
   };
 };
-// export const getCategoryNavLinks = () => {
-//   console.log("test");
-//   return async (dispatch) => {
-//     try {
-//       dispatch(
-//         uiAction.setGetUiStatus({
-//           status: "loading",
-//           title: "Loading...",
-//           message: "در حال دریافت لیست محصولات",
-//         })
-//       );
-//       // const data = await dataGeter("categoryNavLinks");
-//       // console.log(data);
-//       if (data.status === "error" || !data) {
-//         throw new Error("خطا در دریافت اطلاعات لیست محصولات");
-//       }
-//       console.log(data);
-//       dispatch(getDataSliceActions.getcategoryNavLinks(data));
-
-//       dispatch(
-//         uiAction.setGetUiStatus({
-//           status: "success",
-//           title: "Successfuly...",
-//           message: "لیست محصولات با موفقیت دریافت شد",
-//         })
-//       );
-//     } catch (error) {
-//       uiAction.setGetUiStatus({
-//         status: "error",
-//         title: "Error...",
-//         message: error.message,
-//       });
-//     }
-//   };
-// };
-
-// export const getLocalStoageCartItems = () => {
-//   return async (dispatch) => {
-//     try {
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "loading",
-//           title: "Loading...",
-//           message: "trying to get cart items",
-//         })
-//       );
-//       const cartItemsArray = getLocalStorageCartItems();
-//       dispatch(getDataSliceActions.setCardItems(cartItemsArray));
-
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "success",
-//           title: "Sucsessfuly",
-//           message: "get Cart Items sucsessfuly",
-//         })
-//       );
-//     } catch (error) {
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "error",
-//           title: "Error",
-//           message: error || "we have  problem in geting cart items",
-//         })
-//       );
-//     }
-//   };
-// };
-
-// export const removeCartItemFromLocalStorage = (cartItems, id) => {
-//   console.log(cartItems);
-//   const localStorageCartList = getLocalStorageCartItems;
-//   const localStorageCartListt = getLocalStoageCartItems;
-//   return async (dispatch) => {
-//     try {
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "loading",
-//           title: "Loading...",
-//           message: "trying to get cart items",
-//         })
-//       );
-//       const newItems = cartItems.filter((item) => {
-//         if (item._id !== id) {
-//           return item;
-//         }
-//       });
-
-//       const jsonFile = JSON.stringify(newItems);
-//       localStorage.setItem("cartItems", jsonFile);
-//       // console.log(newItems);
-//       dispatch(getDataSliceActions.setCardItems(newItems));
-
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "success",
-//           title: "Sucsessfuly",
-//           message: "get Cart Items sucsessfuly",
-//         })
-//       );
-//     } catch (error) {
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "error",
-//           title: "Error",
-//           message: error || "we have  problem in geting cart items",
-//         })
-//       );
-//     }
-//   };
-// };
-
-// export const setLocalStorageAmount = (selectedItem, amountVal) => {
-//   return async (dispatch) => {
-//     try {
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "loading",
-//           title: "Loading...",
-//           message: "trying to get cart items",
-//         })
-//       );
-
-//       const cartItems = getLocalStorageCartItems();
-//       const { amount } = amountVal;
-//       const changedArray = cartItems.map((item) => {
-//         if (item._id === selectedItem) {
-//           return { ...item, amount: amount };
-//         }
-//         return item;
-//       });
-//       const jsonFile = JSON.stringify(changedArray);
-//       localStorage.setItem("cartItems", jsonFile);
-
-//       dispatch(getDataSliceActions.setCardItems(changedArray));
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "success",
-//           title: "Sucsessfuly",
-//           message: "get Cart Items sucsessfuly",
-//         })
-//       );
-//     } catch (error) {
-//       dispatch(
-//         uiAction.setGetServerCartListStatus({
-//           status: "error",
-//           title: "Error",
-//           message: error || "we have  problem in geting cart items",
-//         })
-//       );
-//     }
-//   };
-// };

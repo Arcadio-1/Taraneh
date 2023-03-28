@@ -6,7 +6,7 @@ const handler = async (req, res) => {
     const { userId, orders } = orderBody;
     const client = await getClient("helper-data");
     if (!client) {
-      throw new Error("can't get client");
+      throw new Error("(همگام سازی)خطا در اتصال به سرور");
     }
     const db = client.db();
     let request;
@@ -15,18 +15,28 @@ const handler = async (req, res) => {
         _id: userId,
         orders: orders,
       });
+      if (!request) {
+        throw new Error("(همگام سازی)خطا در ساخت لیست خرید");
+      }
+      res.status(201).json({
+        status: "success",
+        message: "(همگام سازی)لیست خرید ساخته شد",
+        response: request,
+      });
     }
     if (req.method === "PUT") {
       request = await db
         .collection("orders")
         .findOneAndUpdate({ _id: userId }, { $set: { orders: orders } });
+      if (!request) {
+        throw new Error("(همگام سازی)خطا در افزودن سفارشات به لیست خرید");
+      }
+      res.status(201).json({
+        status: "success",
+        message: "(همگام سازی)سفارشات به لیست خرید اضافه شد",
+        response: request,
+      });
     }
-    if (!request) {
-      throw new Error("can't send Request");
-    }
-    res
-      .status(201)
-      .json({ status: "success", message: "request is sented to server" });
   } catch (error) {
     res
       .status(404)
