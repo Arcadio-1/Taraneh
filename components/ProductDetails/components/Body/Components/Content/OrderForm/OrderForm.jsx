@@ -34,9 +34,9 @@ const OrderForm = ({ price, id, availableWeights, availableGrind }) => {
 
   const selectedItem = `${id}${grind}${weight}`;
 
-  useEffect(() => {
-    console.log(addOrderStatus);
-  }, [addOrderStatus]);
+  // useEffect(() => {
+  //   console.log(addOrderStatus);
+  // }, [addOrderStatus]);
 
   useEffect(() => {
     if (grind && weight) {

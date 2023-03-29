@@ -25,6 +25,17 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
     (state) => state.ui.changeAmountStatus
   );
 
+  const [changeAmountStatusX, setChangeAmountStatus] = useState({
+    status: null,
+    title: null,
+    message: null,
+  });
+  const [clearListStatusX, setClearListStatus] = useState({
+    status: null,
+    title: null,
+    message: null,
+  });
+
   useEffect(() => {
     setItemAmount((prev) => {
       const amount = cartItems.filter((item) => {
@@ -44,9 +55,9 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
   //   console.log(clearListStatus);
   // }, [clearListStatus]);
 
-  // useEffect(() => {
-  //   console.log(changeAmountStatus);
-  // }, [changeAmountStatus]);
+  useEffect(() => {
+    console.log(changeAmountStatus);
+  }, [changeAmountStatus]);
 
   const amountHandler = async (type) => {
     if (login === "unauthenticated") {
@@ -63,205 +74,199 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
       dispatch(getDataSliceActions.setCardItems(localStorageCartList));
     }
     if (login === "authenticated") {
-      let newCartList = [];
-      if (type === "clearList") {
-        dispatch(
-          uiAction.setClearListStatus({
-            status: "loading",
-            title: "در حال بررسی",
-            message: "در حال پاکسازی سبد خرید",
-          })
-        );
-        const request = await fetch("/api/ordring", {
-          method: "DELETE",
+      try {
+        if (type === "clearList") {
+          setClearListStatus((prev) => {
+            return (prev = {
+              status: "loading",
+              title: "در حال بررسی",
+              message: "در حال پاکسازی سبد خرید",
+            });
+          });
+          const request = await fetch("/api/ordring", {
+            method: "DELETE",
+            body: JSON.stringify({
+              userId: data.user.email._id,
+            }),
+          });
+          if (!request) {
+            throw new Error("خطا در اتصال به سرور");
+          }
+          const response = await request.json();
+          if (response.status !== "success") {
+            throw new Error("خطا در پاکسازی سبد خرید");
+          }
+          if (response.status === "success") {
+            setClearListStatus((prev) => {
+              return (prev = {
+                status: "success",
+                title: "پاکسازی موفقیت انجام شد",
+                message: "پاکسازی سبد خرید با موفقیت انجام شد",
+              });
+            });
+            dispatch(getOrederList(data.user.email._id));
+          }
+        }
+      } catch (error) {
+        setClearListStatus((prev) => {
+          return (prev = {
+            status: "error",
+            title: "خطا در پاکسازی",
+            message: error.message || "خطا در پاکسازی سفارشاتلیست خرید",
+          });
+        });
+      }
+
+      try {
+        let newCartList = [];
+
+        if (type === "remove") {
+          setChangeAmountStatus((prev) => {
+            return (prev = {
+              status: "loading",
+              title: "در حال بررسی",
+              message: "در حال بررسی حذف سفارش",
+            });
+          });
+          newCartList = cartItems.filter((item) => {
+            if (item._id !== id) {
+              return item;
+            }
+          });
+          if (newCartList.length === 0) {
+            setChangeAmountStatus((prev) => {
+              return (prev = {
+                status: "success",
+                title: "در حال پاکسازی سبد خرید",
+                message: "محصول مورد نظر عضو شد در حال پاکسازی سبد خرید",
+              });
+            });
+            amountHandler("clearList");
+          }
+        }
+        if (type === "plus") {
+          setChangeAmountStatus((prev) => {
+            return (prev = {
+              status: "loading",
+              title: "در حال بررسی",
+              message: "در حال بررسی افزایش تعداد سفارشات",
+            });
+          });
+          newCartList = cartItems.map((item) => {
+            if (item._id === id) {
+              return { ...item, amount: itemAmount + 1 };
+            }
+            return item;
+          });
+        }
+        if (type === "minus") {
+          setChangeAmountStatus((prev) => {
+            return (prev = {
+              status: "loading",
+              title: "در حال بررسی",
+              message: "در حال بررسی کاهش تعداد سفارشات",
+            });
+          });
+          newCartList = cartItems.map((item) => {
+            if (item._id === id) {
+              return { ...item, amount: itemAmount - 1 };
+            }
+            return item;
+          });
+        }
+        const request = await fetch("/api/ordring/amountManaging", {
+          method: "POST",
           body: JSON.stringify({
             userId: data.user.email._id,
+            orders: newCartList,
           }),
         });
         if (!request) {
-          dispatch(
-            uiAction.setClearListStatus({
-              status: "error",
-              title: "خطا در اتصال",
-              message: "خطا در اتصال به سرور",
-            })
-          );
+          throw new Error("خطا در اتصال به سرور جهت ویرایش تعداد سفارش");
         }
         const response = await request.json();
         if (response.status !== "success") {
-          dispatch(
-            uiAction.setClearListStatus({
-              status: "error",
-              title: "خطا در پاکسازی",
-              message: "خطا در پاکسازی سبد خرید",
-            })
-          );
+          throw new Error("ویرایش تعداد سفارشات با خطا مواجه شد");
         }
         if (response.status === "success") {
-          dispatch(
-            uiAction.setClearListStatus({
+          setChangeAmountStatus((prev) => {
+            return (prev = {
               status: "success",
-              title: "پاکسازی موفقیت انجام شد",
-              message: "پاکسازی سبد خرید با موفقیت انجام شد",
-            })
-          );
+              title: "با موفقیت انجام شد",
+              message: "کاهش تعداد با موفقیت انجام شد",
+            });
+          });
           dispatch(getOrederList(data.user.email._id));
         }
-        console.log(response);
-        return;
-      }
-      if (type === "remove") {
-        dispatch(
-          uiAction.setChangeAmountStatus({
-            status: "loading",
-            title: "در حال بررسی",
-            message: "در حال بررسی کاهش تعداد سفارشات",
-          })
-        );
-        newCartList = cartItems.filter((item) => {
-          if (item._id !== id) {
-            return item;
-          }
-        });
-        if (newCartList.length < 1) {
-          try {
-            amountHandler("clearList");
-            dispatch(
-              uiAction.setChangeAmountStatus({
-                status: "success",
-                title: "با موفقیت انجام شد",
-                message: "پاکسازی لیست سفارشات با موفقیت انجام شد",
-              })
-            );
-          } catch (error) {
-            dispatch(
-              uiAction.setChangeAmountStatus({
-                status: "error",
-                title: "خطا در انجام عملیات",
-                message: "پاکسازی لیست سفارشات با خطا مواجه شد",
-              })
-            );
-          }
-          return;
-        }
-      }
-      if (type === "plus") {
-        dispatch(
-          uiAction.setChangeAmountStatus({
-            status: "loading",
-            title: "در حال بررسی",
-            message: "در حال بررسی افزایش تعداد سفارشات",
-          })
-        );
-        newCartList = cartItems.map((item) => {
-          if (item._id === id) {
-            return { ...item, amount: itemAmount + 1 };
-          }
-          return item;
-        });
-      }
-      if (type === "minus") {
-        dispatch(
-          uiAction.setChangeAmountStatus({
-            status: "loading",
-            title: "در حال بررسی",
-            message: "در حال بررسی کاهش تعداد سفارشات",
-          })
-        );
-        newCartList = cartItems.map((item) => {
-          if (item._id === id) {
-            return { ...item, amount: itemAmount - 1 };
-          }
-          return item;
-        });
-      }
-      const request = await fetch("/api/ordring/amountManaging", {
-        method: "POST",
-        body: JSON.stringify({
-          userId: data.user.email._id,
-          orders: newCartList,
-        }),
-      });
-      if (!request) {
-        dispatch(
-          uiAction.setChangeAmountStatus({
+      } catch (error) {
+        setChangeAmountStatus((prev) => {
+          return (prev = {
             status: "error",
-            title: "خطا در اتصال به سرور",
-            message: "خطا در اتصال به سرور جهت ویرایش تعداد سفارش",
-          })
-        );
+            title: "خطا در تغییر تعداد",
+            message: error.message || "خطا در تغیر تعداد سفارشات لیست خرید",
+          });
+        });
       }
-      const response = await request.json();
-      console.log(response.status === "success");
-      if (response.status !== "success") {
-        dispatch(
-          uiAction.setChangeAmountStatus({
-            status: "error",
-            title: "خطا در ویرایش تعداد",
-            message: "ویرایش تعداد سفارشات با خطا مواجه شد",
-          })
-        );
-      }
-      if (response.status === "success") {
-        dispatch(getOrederList(data.user.email._id));
-        console.log(response.status);
-        dispatch(
-          uiAction.setChangeAmountStatus({
-            status: "success",
-            title: "با موفقیت انجام شد",
-            message: "کاهش تعداد با موفقیت انجام شد",
-          })
-        );
-      }
-      console.log(response);
     }
   };
   if (!remove && !clearList) {
     return (
-      <Fragment>
-        {changeAmountStatus.status === "loading" ? (
-          <div className="w-16 h-16">
-            <LoadingSpinner />
-          </div>
-        ) : (
-          <div className="productDetails-form-amount">
+      <div className="relative">
+        <div
+          className={`productDetails-form-amount ${
+            changeAmountStatusX.status === "loading" ? "opacity-0" : ""
+          }`}
+        >
+          <button
+            className="productDetails-form-amount-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              amountHandler("plus");
+            }}
+          >
+            <PlusIcon />
+          </button>
+          <label className="productDetails-form-amount-value">
+            {itemAmount}
+          </label>
+          {itemAmount > 1 && (
             <button
               className="productDetails-form-amount-btn"
               onClick={(e) => {
                 e.preventDefault();
-                amountHandler("plus");
+                amountHandler("minus");
               }}
             >
-              <PlusIcon />
+              <Minus />
             </button>
-            <label className="productDetails-form-amount-value">
-              {itemAmount}
-            </label>
-            {itemAmount > 1 && (
-              <button
-                className="productDetails-form-amount-btn"
-                onClick={(e) => {
-                  e.preventDefault();
-                  amountHandler("minus");
-                }}
-              >
-                <Minus />
-              </button>
-            )}
-            {itemAmount === 1 && (
-              <button
-                className="productDetails-form-amount-remove"
-                onClick={(e) => {
-                  e.preventDefault();
-                  amountHandler("remove");
-                }}
-              >
-                <TrashIcon />
-              </button>
-            )}
+          )}
+          {itemAmount === 1 && (
+            <button
+              className="productDetails-form-amount-remove"
+              onClick={(e) => {
+                e.preventDefault();
+                amountHandler("remove");
+              }}
+            >
+              <TrashIcon />
+            </button>
+          )}
+        </div>
+        <div
+          className={`${
+            changeAmountStatusX.status === "loading"
+              ? "opacity-100"
+              : "opacity-0"
+          }`}
+        >
+          <div
+            className="w-12 h-12 absolute top-0 left-1/2 -translate-x-1/2
+          "
+          >
+            <LoadingSpinner />
           </div>
-        )}
-      </Fragment>
+        </div>
+      </div>
     );
   }
   if (remove) {

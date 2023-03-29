@@ -21,9 +21,9 @@ const Cart = ({ showMenuHandler }) => {
     totalDiscount: 0,
   });
 
-  useEffect(() => {
-    console.log(cartListDataStatus);
-  }, [cartListDataStatus]);
+  // useEffect(() => {
+  //   console.log(cartListDataStatus);
+  // }, [cartListDataStatus]);
 
   useEffect(() => {
     if (cartListData && cartListData.length > 0) {
@@ -71,7 +71,7 @@ const Cart = ({ showMenuHandler }) => {
           مشاهده سبد خرید
         </Link>
       </header>
-      {cartListData.length > 0 && (
+      {cartListData.length > 0 && cartListDataStatus.status === "success" && (
         <section className="CartModal-list">
           <div className="CartModal-list-container">
             <CartList />

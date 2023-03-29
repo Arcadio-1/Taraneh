@@ -124,7 +124,7 @@ export const getCartItemsData = (items) => {
       mylist.push({ ...cartListArray });
       var arrayOfValues = await Promise.all(cartListArray);
       dispatch(getDataSliceActions.setCardItemsData(arrayOfValues));
-      console.log(arrayOfValues);
+      // console.log(arrayOfValues);
       dispatch(
         uiAction.setCartListDataStatus({
           status: "success",
