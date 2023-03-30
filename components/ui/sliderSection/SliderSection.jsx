@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,9 +11,15 @@ import LoadingSpinner from "../LoadingSpiner/loadingSpiner";
 import ProductCard from "../productCard/ProductCard";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import ProductCardSkeleton from "../productCard/ProductCardSkeleton";
 useSelector;
 
 const SliderSection = ({ items, header }) => {
+  const list = [1, 2, 3, 4];
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
+
   return (
     <section className="sliderSection">
       <Swiper
@@ -31,7 +37,7 @@ const SliderSection = ({ items, header }) => {
               <div className="slidHeader-image">
                 <Image
                   src={header.imgLink}
-                  alt="محبوب ترین ها"
+                  alt="header.title"
                   width={200}
                   height={200}
                 />
@@ -39,12 +45,18 @@ const SliderSection = ({ items, header }) => {
             </div>
           </SwiperSlide>
         )}
-        {!items && (
+        {items.length === 0 && (
           <div className="sliderSection-loading">
-            <LoadingSpinner text={"در حال بارگزاری محصولات"} />
+            {list.map((item) => {
+              return (
+                <SwiperSlide key={item}>
+                  <ProductCardSkeleton />
+                </SwiperSlide>
+              );
+            })}
           </div>
         )}
-        {items &&
+        {items.length > 0 &&
           items.map((item) => {
             return (
               <SwiperSlide

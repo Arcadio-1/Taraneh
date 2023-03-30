@@ -61,9 +61,9 @@ const ProductCard = (props) => {
           <ProductPrice price={price.value} offPersent={price.offPersent} />
         </div>
         <div className="productCard-action">
-          <button className="productCard-action-submitBtn">
+          {/* <button className="productCard-action-submitBtn">
             افزودن به سبد
-          </button>
+          </button> */}
           {/* <div className="productCard-action-quantity">
           <div className="productCard-action-quantity-plus">
             <PlusIcon />

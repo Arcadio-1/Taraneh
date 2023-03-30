@@ -28,27 +28,31 @@ function MyApp({ Component, pageProps }) {
     };
   });
 
-  // return (
-  //   <Provider store={store}>
-  //     <SessionProvider session={pageProps.session}>
-  //       <Layout>
-  //         <div id="overLay"></div>
-  //         {!loading && <Component {...pageProps} />}
-  //         {loading && <LoadingSpinner text={"در حال بارگزاری"} />}
-  //       </Layout>
-  //     </SessionProvider>
-  //   </Provider>
-  // );
+  useEffect(() => {
+    console.log(loading);
+  }, [loading]);
+
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
         <Layout>
           <div id="overLay"></div>
-          <Component {...pageProps} />
+          {!loading && <Component {...pageProps} />}
+          {loading && <LoadingSpinner text={"در حال بارگزاری"} />}
         </Layout>
       </SessionProvider>
     </Provider>
   );
+  // return (
+  //   <Provider store={store}>
+  //     <SessionProvider session={pageProps.session}>
+  //       <Layout>
+  //         <div id="overLay"></div>
+  //         <Component {...pageProps} />
+  //       </Layout>
+  //     </SessionProvider>
+  //   </Provider>
+  // );
 }
 
 export default MyApp;

@@ -10,7 +10,11 @@ const initialState = {
   isShowSortMenu: false,
   isShowPerPageMenu: false,
   isShowNotif: false,
-  getAllproductsStatus: null,
+  getAllproductsStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
   cartListStatus: {
     status: null,
     title: null,

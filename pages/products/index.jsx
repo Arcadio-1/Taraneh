@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
 
 import ShopHero from "../../components/Products/Main/ShopHero";
@@ -16,8 +16,10 @@ import LoadingSpiner from "../../components/ui/LoadingSpiner/loadingSpiner";
 import FilterMenu from "../../components/Products/ModuleMenu/filterMenu";
 import { useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui/uiSlice";
+import { useRouter } from "next/router";
 
 const index = (props) => {
+  // console.log(props);
   if (props.allProducts.length === 0) {
     <LoadingSpiner text={"محصولی یافت نشد"} />;
   }
@@ -50,6 +52,7 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const request = await curentPageProducts(query);
   const response = JSON.parse(request);
+  // console.log(response);
   return { props: response };
 }
 
