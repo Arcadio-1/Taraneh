@@ -28,9 +28,9 @@ function MyApp({ Component, pageProps }) {
     };
   });
 
-  useEffect(() => {
-    console.log(loading);
-  }, [loading]);
+  // useEffect(() => {
+  //   console.log(loading);
+  // }, [loading]);
 
   return (
     <Provider store={store}>

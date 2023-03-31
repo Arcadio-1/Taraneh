@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import LoadingSpinner from "../../ui/LoadingSpiner/loadingSpiner";
 import SliderSection from "../../ui/sliderSection/SliderSection";
 const TopRate = () => {
   const products = useSelector((state) => state.getData.products);
@@ -10,10 +9,6 @@ const TopRate = () => {
   );
 
   const [topRateProducts, setTopRateProducts] = useState([]);
-
-  useEffect(() => {
-    console.log(getProductsStatus);
-  }, [getProductsStatus]);
 
   // useEffect(() => {
   //   console.log(topRateProducts);

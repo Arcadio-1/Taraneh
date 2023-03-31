@@ -4,8 +4,7 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 
 const Log = () => {
-  const { data: session, status } = useSession();
-  // status === "unauthenticated" && <Log />;
+  const { status } = useSession();
 
   return (
     <div className="header-log">
@@ -19,7 +18,7 @@ const Log = () => {
           </Link>
         </div>
       )}
-      {/* {status === "authenticated" && (
+      {status === "authenticated" && (
         <div
           className="header-log-signout"
           onClick={() => {
@@ -29,7 +28,7 @@ const Log = () => {
           <LogIcon />
           <span className="header-log-signout-text">خروج</span>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

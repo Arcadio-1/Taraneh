@@ -12,7 +12,7 @@ const NavLinks = () => {
         <Link href={"/products"}> محصولات</Link>
       </li>
       <li className="header-navLinks-item">
-        <Link href={"/"}>
+        <Link href={"/blog"}>
           <BlogIcon />
           اخبار و آموزش
         </Link>

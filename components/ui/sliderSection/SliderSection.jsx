@@ -16,9 +16,9 @@ useSelector;
 
 const SliderSection = ({ items, header }) => {
   const list = [1, 2, 3, 4];
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
+  // useEffect(() => {
+  //   console.log(items);
+  // }, [items]);
 
   return (
     <section className="sliderSection">

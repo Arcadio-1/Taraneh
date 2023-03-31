@@ -1,11 +1,23 @@
+import Head from "next/head";
 import { Router } from "next/router";
-import React from "react";
+import React, { Fragment } from "react";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import { getComments, getPaths, getSingleProduct } from "../api/helper";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
-  return <ProductDetails product={product} comments={comments} />;
+  console.log(product);
+  return (
+    <Fragment>
+      <Head>
+        <title>{`فروشگاه ایرنترنتی کافه ترانه | ${product.title}`}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content={`${product.description}`} />
+      </Head>
+      <ProductDetails product={product} comments={comments} />
+    </Fragment>
+  );
 };
 
 export async function getStaticProps(context) {

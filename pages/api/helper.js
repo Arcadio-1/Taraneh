@@ -134,12 +134,13 @@ export const curentPageProducts = async (querys) => {
     }
     return JSON.stringify({
       status: "successful",
+      message: "اطلاعات با موفقیت دریافت شد",
       products: prodPerPage,
       allProducts,
       numberOfPages,
     });
   } catch (error) {
-    return { status: error.message };
+    return { status: "error", message: error.message };
   }
 };
 

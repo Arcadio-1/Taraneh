@@ -1,0 +1,1073 @@
+.Bmenu {
+  z-index: 100;
+  position: fixed;
+  top: 42.5px;
+  right: 0;
+  background-color: color(light-op85);
+  // width: 70%;
+  width: 0px;
+  overflow: hidden;
+  height: 100vh;
+  transition: all 0.3s ease-in-out;
+
+  &-list {
+    padding: 2rem;
+    @include dflex(flex-start, flex-start);
+    flex-direction: column;
+    list-style: none;
+    gap: 0.5rem;
+    &-item {
+      @include dflex(flex-start, flex-start);
+      flex-direction: column;
+      width: 100%;
+      a {
+        @include dflex(flex-start);
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        font-size: 1.3rem;
+        color: color(dark-2);
+        font-family: iranyekan;
+        text-decoration: none;
+        width: 100%;
+        padding: 0.7rem 0.5rem;
+        border-radius: 5px;
+        &:hover {
+          background-color: color(light-1);
+          padding-right: 1rem;
+        }
+        svg {
+          margin-left: 0.5rem;
+        }
+      }
+      &-cat {
+        cursor: pointer;
+        @include dflex(flex-start);
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        font-size: 1.3rem;
+        color: color(dark-2);
+        font-family: iranyekan;
+        text-decoration: none;
+        width: 100%;
+        padding: 0.7rem 0.5rem;
+        border-radius: 5px;
+        &:hover {
+          background-color: color(light-1);
+          padding-right: 1rem;
+        }
+        svg {
+          margin-left: 0.5rem;
+        }
+        .arrowIcon {
+          margin-right: 0.5rem;
+          width: 1.7rem;
+          height: 1.7rem;
+        }
+      }
+      &-inner {
+        @include dflex(flex-start, flex-start);
+        flex-direction: column;
+        background-color: color(light-op80);
+        width: 100%;
+        padding: 1rem;
+        border-radius: 5px;
+        list-style: none;
+        &-item {
+          width: 100%;
+          margin-top: 0.5rem;
+          padding: 0.3rem;
+          padding-right: 0.5rem;
+          border-radius: 5px;
+          a {
+            &:hover {
+              background-color: color(light-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.showBmenu {
+  transition: all 0.3s ease-in-out;
+  width: 70%;
+}
+.BHeader {
+  width: 100%;
+  background-color: color(light-op90);
+  box-shadow: 0px 0px 7px color(dark-op25);
+  position: fixed;
+  transform: translateX(-50%);
+  top: 0;
+  left: 50%;
+  z-index: 10;
+  width: 100%;
+  &-container {
+    font-family: iransans;
+    display: grid;
+    grid-template-areas: "navLinks navLinks navLinks search search search themSwitch log";
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0rem auto;
+    max-width: 1676px;
+    @include blogResponsive(md) {
+      row-gap: 2rem;
+      grid-template-areas:
+        "search search search search search search log log"
+        "navLinks navLinks navLinks navLinks navLinks navLinks themSwitch themSwitch";
+    }
+    @include blogResponsive(sm) {
+      grid-template-areas: "navLinks navLinks navLinks navLinks navLinks navLinks navLinks navLinks navLinks navLinks themSwitch search log ";
+    }
+  }
+  .gridWithSearch {
+    grid-template-areas:
+      "navLinks navLinks navLinks navLinks navLinks navLinks navLinks navLinks navLinks navLinks themSwitch themSwitch log "
+      " smInput smInput smInput smInput smInput smInput smInput smInput smInput smInput smInput smInput smInput";
+  }
+
+  .checker {
+    height: 3rem;
+    width: 8rem;
+    grid-area: themSwitch;
+    margin-top: 3px;
+    display: inline-block;
+    position: relative;
+    margin: 0 auto;
+    .checker-label-slider.round {
+      border-radius: 50px;
+    }
+    .checker-label-slider {
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include dflex(space-evenly);
+      background-color: color(dark-op25);
+      transition: 0.2s;
+      cursor: pointer;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0.1rem;
+        bottom: 0.1rem;
+        width: 3.5rem;
+        height: 3.3rem;
+        border-radius: 1.8rem 0px 0px 1.8rem;
+        background-color: color(light-1);
+        transition: 0.2s;
+      }
+    }
+    input {
+      display: none;
+    }
+    input:checked + .checker-label-slider {
+      background-color: color(light-op75);
+    }
+
+    input:checked + .checker-label-slider:before {
+      background-color: color(dark-3);
+      border-radius: 0px 1.8rem 1.8rem 0px;
+      transform: translateX(3.3rem);
+    }
+    .moonIcon {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    .sunIcon {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+  .BNavLinks {
+    grid-area: navLinks;
+    @include dflex(flex-start);
+    &-list {
+      @include dflex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      &-item {
+        white-space: nowrap;
+        position: relative;
+        a {
+          @include dflex;
+          gap: 0.5rem;
+          font-size: 1.5rem;
+          color: color(dark-2);
+          text-decoration: none;
+        }
+      }
+      .catLink {
+        a {
+          @include dflex;
+          gap: 0.5rem;
+        }
+        .Bmenu-list-item-inner {
+          transition: all 0.2s ease-in-out;
+          height: 0px;
+          padding: 0px;
+          overflow: hidden;
+          background-color: color(light-op90);
+          width: auto;
+          position: absolute;
+          top: 27px;
+          right: 10px;
+          &-item {
+            margin-top: 0.7rem;
+            @include dflex(flex-start);
+            width: 100%;
+            a {
+              background-color: transparent;
+            }
+            &:hover {
+              background-color: color(light-1);
+            }
+          }
+        }
+        &:hover {
+          .Bmenu-list-item-inner {
+            padding-top: 0.5rem;
+            padding-left: 4rem;
+            height: 160px;
+          }
+        }
+      }
+    }
+  }
+  .BSearch {
+    &-smInput {
+      background-color: color(light-op90);
+      @include dflex;
+      border-radius: 2px;
+      width: 100%;
+      grid-area: smInput;
+      &-input {
+        line-height: 3rem;
+        border: transparent;
+        width: 100%;
+        font-size: 1.2rem;
+        padding-right: 1rem;
+      }
+      &-closeBtn {
+        background-color: transparent;
+        border: transparent;
+      }
+      &-searchBtn {
+        padding: 0.3rem 1.5rem;
+        border: transparent;
+        background-color: color(g1-7);
+        color: color(light-1);
+        margin: 0.5rem;
+        border-radius: 2px;
+      }
+      .backIcon {
+        background-color: color(light-2);
+        padding: 0;
+        width: 5rem;
+        height: 3rem;
+      }
+    }
+    grid-area: search;
+    width: 100%;
+    max-width: 600px;
+    min-width: 200px;
+    @include dflex(flex-start);
+    border-radius: 7px;
+    background-color: color(light-1);
+    @include blogResponsive(sm) {
+      width: auto;
+      max-width: none;
+      min-width: 1px;
+      background-color: transparent;
+      margin-right: auto;
+    }
+    &-label {
+      margin-right: 0.5rem;
+    }
+    &-input {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      height: 2.5rem;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0);
+      outline: transparent;
+      border: transparent;
+      &:focus {
+        background-color: color(light-2);
+      }
+    }
+    @include blogResponsive(sm) {
+      .searchIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        path {
+          fill: color(dark-2);
+        }
+      }
+    }
+  }
+  .BLog {
+    margin: auto auto auto 2rem;
+    width: 120px;
+    font-size: 1.5rem;
+    grid-area: log;
+    text-align: center;
+    svg {
+      width: 3rem;
+      height: 3rem;
+      padding: 0.2rem;
+      margin-left: 0.3rem;
+    }
+    a {
+      color: color(dark-2);
+      @include navLink;
+    }
+    @include blogResponsive(sm) {
+      width: auto;
+      margin: 0;
+    }
+  }
+}
+.BHeaderVisible {
+  /* display: flex; */
+  top: 0;
+  transition: top 0.4s ease-out;
+}
+
+.BHeaderHidden {
+  /* display: none; */
+  top: -100px;
+  transition: top 0.4s ease-out;
+}
+.dark.BHeader {
+  background-color: color(dark-op80);
+  box-shadow: 0px 0px 7px color(light-op25);
+}
+.dark.Bmenu {
+  background-color: color(dark-op85);
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: color(dark-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: color(dark-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: color(dark-op80);
+        &-item {
+          a {
+            &:hover {
+              background-color: color(dark-1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.dark {
+  .BNavLinks {
+    &-list {
+      &-item {
+        a {
+          color: color(light-2);
+          text-shadow: 0 0 5px color(dark-op50);
+        }
+      }
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: color(dark-op90);
+          box-shadow: 0px 0px 5px #ffffff25;
+          &-item {
+            &:hover {
+              background-color: color(dark-1);
+            }
+          }
+        }
+      }
+    }
+    svg {
+      path {
+        fill: color(light-2);
+      }
+    }
+  }
+  .BSearch {
+    background-color: color(light-op50);
+    color: color(dark-1);
+    path {
+      fill: color(light-1);
+    }
+    @include blogResponsive(sm) {
+      background-color: transparent;
+      .searchIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        path {
+          fill: color(light-2);
+        }
+      }
+    }
+  }
+  .BLog {
+    color: color(light-2);
+    a {
+      color: color(light-2);
+      &:hover {
+        color: color(light-2);
+        background-color: color(dark-2);
+      }
+    }
+  }
+  .profileIcon {
+    &-st1 {
+      stroke: #fff;
+    }
+  }
+}
+//////////
+.drink.BHeader {
+  background-color: rgba(color(drink-1), 0.7);
+  @include blur-5;
+}
+.drink {
+  .BNavLinks {
+    &-list {
+      &-item {
+        a {
+          color: color(light-2);
+          text-shadow: 0 0 5px color(dark-op50);
+        }
+      }
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(drink-1), 0.7);
+          box-shadow: 0px 0px 5px #ffffff25;
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: rgba(color(drink-1), 0.6);
+            }
+          }
+        }
+      }
+    }
+    svg {
+      path {
+        fill: color(light-2);
+      }
+    }
+  }
+  .BSearch {
+    background-color: color(light-op50);
+    color: color(dark-1);
+    path {
+      fill: color(dark-op75);
+    }
+    @include blogResponsive(sm) {
+      background-color: transparent;
+      .searchIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        path {
+          fill: color(light-2);
+        }
+      }
+    }
+  }
+  .BLog {
+    color: color(light-2);
+    a {
+      color: color(light-2);
+      &:hover {
+        color: color(light-2);
+        background-color: color(dark-2);
+      }
+    }
+  }
+  .profileIcon {
+    &-st1 {
+      stroke: #fff;
+    }
+  }
+}
+.drink.Bmenu {
+  background-color: rgba(color(drink-1), 0.5);
+  @include blur-3;
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: rgba(color(drink-1), 0.5);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: rgba(color(drink-1), 0.5);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: rgba(color(drink-1), 0.5);
+        &-item {
+          a {
+            &:hover {
+              background-color: rgba(color(drink-1), 0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Ddrink.BHeader {
+  background: rgba(color(drink-d5), 0.75);
+}
+.Ddrink {
+  .BNavLinks {
+    &-list {
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(drink-d5), 0.5);
+          box-shadow: 0px 0px 5px #0b6a8925;
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: color(drink-d3);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+////
+.coffee.BHeader {
+  background-color: rgba(color(coffee-1), 0.6);
+  @include blur-5;
+}
+.coffee {
+  .BNavLinks {
+    &-list {
+      &-item {
+        a {
+          color: color(light-2);
+          text-shadow: 0 0 5px color(dark-op50);
+        }
+      }
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(coffee-1), 0.5);
+          box-shadow: 0px 0px 5px color(light-op15);
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: color(coffee-1);
+            }
+          }
+        }
+      }
+    }
+    svg {
+      path {
+        fill: color(light-2);
+      }
+    }
+  }
+  .BSearch {
+    background-color: color(light-op50);
+    color: color(dark-1);
+    path {
+      fill: color(dark-op75);
+    }
+    @include blogResponsive(sm) {
+      background-color: transparent;
+      .searchIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        path {
+          fill: color(light-2);
+        }
+      }
+    }
+  }
+  .BLog {
+    color: color(light-2);
+    a {
+      color: color(light-2);
+      &:hover {
+        color: color(light-2);
+        background-color: color(dark-2);
+      }
+    }
+  }
+  .profileIcon {
+    &-st1 {
+      stroke: #fff;
+    }
+  }
+}
+.coffee.Bmenu {
+  background-color: rgba(color(coffee-1), 0.6);
+  @include blur-3;
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: color(coffee-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: color(coffee-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: rgba(color(coffee-1), 0.6);
+        &-item {
+          a {
+            &:hover {
+              background-color: color(coffee-1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Dcoffee.BHeader {
+  background: rgba(color(coffee-d1), 0.75);
+}
+.Dcoffee {
+  .BNavLinks {
+    &-list {
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(coffee-d1), 0.85);
+          box-shadow: 0px 0px 5px rgba(color(coffee-d3), 0.15);
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: rgba(color(coffee-d2), 0.85);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Dcoffee.Bmenu {
+  background-color: rgba(color(coffee-d1), 0.75);
+  @include blur-3;
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: rgba(color(coffee-d1), 0.75);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: rgba(color(coffee-d1), 0.75);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: rgba(color(coffee-d1), 0.75);
+        &-item {
+          a {
+            &:hover {
+              background-color: rgba(color(coffee-d1), 0.75);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+////
+.tools.BHeader {
+  background-color: rgba(color(tools-1), 0.6);
+  @include blur-5;
+}
+.tools {
+  .BNavLinks {
+    &-list {
+      &-item {
+        a {
+          color: color(light-2);
+          text-shadow: 0 0 5px color(dark-op50);
+        }
+      }
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(tools-1), 0.5);
+          box-shadow: 0px 0px 5px color(light-op25);
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: color(tools-1);
+            }
+          }
+        }
+      }
+    }
+    svg {
+      path {
+        fill: color(light-2);
+      }
+    }
+  }
+  .BSearch {
+    background-color: color(light-op50);
+    color: color(dark-1);
+    path {
+      fill: color(dark-op75);
+    }
+    @include blogResponsive(sm) {
+      background-color: transparent;
+      .searchIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        path {
+          fill: color(light-2);
+        }
+      }
+    }
+  }
+  .BLog {
+    color: color(light-2);
+    a {
+      color: color(light-2);
+      &:hover {
+        color: color(light-2);
+        background-color: color(dark-2);
+      }
+    }
+  }
+  .profileIcon {
+    &-st1 {
+      stroke: #fff;
+    }
+  }
+}
+.tools.Bmenu {
+  background-color: rgba(color(tools-1), 0.6);
+  @include blur-3;
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: color(tools-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: color(tools-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: rgba(color(tools-1), 0.6);
+        &-item {
+          a {
+            &:hover {
+              background-color: color(tools-1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Dtools.BHeader {
+  background: rgba(color(tools-d1), 0.5);
+}
+.Dtools {
+  .BNavLinks {
+    &-list {
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(tools-d1), 0.5);
+          box-shadow: 0px 0px 5px rgba(color(tools-d3), 0.15);
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: color(tools-d1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Dtools.Bmenu {
+  background-color: rgba(color(tools-d1), 0.5);
+  @include blur-3;
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: color(tools-d1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: color(tools-d1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: rgba(color(tools-d1), 0.5);
+        &-item {
+          a {
+            &:hover {
+              background-color: color(tools-d1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//////////////
+.news.BHeader {
+  background-color: rgba(color(news-1), 0.6);
+}
+.news {
+  .BNavLinks {
+    &-list {
+      &-item {
+        a {
+          color: color(light-2);
+        }
+      }
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(news-1), 0.7);
+          box-shadow: 0px 0px 5px color(light-op15);
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: color(news-1);
+            }
+          }
+        }
+      }
+    }
+    svg {
+      path {
+        fill: color(light-2);
+      }
+    }
+  }
+  .BSearch {
+    background-color: color(light-op50);
+    color: color(dark-1);
+    path {
+      fill: color(dark-op75);
+    }
+    @include blogResponsive(sm) {
+      background-color: transparent;
+      .searchIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        path {
+          fill: color(light-2);
+        }
+      }
+    }
+  }
+  .BLog {
+    color: color(light-2);
+    a {
+      color: color(light-2);
+      &:hover {
+        color: color(light-2);
+        background-color: color(dark-2);
+      }
+    }
+  }
+  .profileIcon {
+    &-st1 {
+      stroke: #fff;
+    }
+  }
+}
+.news.Bmenu {
+  background-color: rgba(color(news-1), 0.6);
+  @include blur-3;
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: color(news-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: color(news-1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: rgba(color(news-1), 0.6);
+        &-item {
+          a {
+            &:hover {
+              background-color: color(news-1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.news.BHeader {
+  background: rgba(color(news-d1), 0.7);
+  @include blur-4;
+}
+.Dnews {
+  .BNavLinks {
+    &-list {
+      .catLink {
+        .Bmenu-list-item-inner {
+          background-color: rgba(color(news-d1), 0.5);
+          box-shadow: 0px 0px 5px rgba(color(news-d1), 0.15);
+          @include blur-3;
+          &-item {
+            &:hover {
+              background-color: color(news-d1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Dnews.Bmenu {
+  background-color: rgba(color(news-d1), 0.5);
+  @include blur-3;
+  .Bmenu-list {
+    &-item {
+      a {
+        color: color(light-2);
+        &:hover {
+          background-color: color(news-d1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-cat {
+        color: color(light-2);
+        &:hover {
+          background-color: color(news-d1);
+        }
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-inner {
+        background-color: rgba(color(news-d1), 0.5);
+        &-item {
+          a {
+            &:hover {
+              background-color: color(news-d1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

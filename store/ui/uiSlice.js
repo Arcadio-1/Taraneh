@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   windowWidth: 0,
-  isDark: false,
+  isBlog: false,
   isShowBackDrop: false,
   isShowMenu: false,
   // isShowCart: false,
@@ -30,21 +30,21 @@ const initialState = {
     title: null,
     message: null,
   },
-  changeAmountStatus: {
-    status: null,
-    title: null,
-    message: null,
-  },
+  // changeAmountStatus: {
+  //   status: null,
+  //   title: null,
+  //   message: null,
+  // },
   syncCartListStatus: {
     status: null,
     title: null,
     message: null,
   },
-  clearListStatus: {
-    status: null,
-    title: null,
-    message: null,
-  },
+  // clearListStatus: {
+  //   status: null,
+  //   title: null,
+  //   message: null,
+  // },
 
   addOrderStatus: {
     status: null,
@@ -124,13 +124,6 @@ const uiSlice = createSlice({
         message: action.payload.message,
       };
     },
-    setChangeAmountStatus(state, action) {
-      state.changeAmountStatus = {
-        status: action.payload.status,
-        title: action.payload.title,
-        message: action.payload.message,
-      };
-    },
     setAddOrderStatus(state, action) {
       state.addOrderStatus = {
         status: action.payload.status,
@@ -145,7 +138,6 @@ const uiSlice = createSlice({
         message: action.payload.message,
       };
     },
-
     setGetUiStatus(state, action) {
       state.getUiStatus = {
         status: action.payload.status,
@@ -176,6 +168,9 @@ const uiSlice = createSlice({
         title: action.payload.title,
         message: action.payload.message,
       };
+    },
+    setIsBlog(state, action) {
+      state.isBlog = action.payload;
     },
   },
 });

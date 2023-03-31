@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
 
 import ShopHero from "../../components/Products/Main/ShopHero";
@@ -14,9 +14,7 @@ import SideAd from "../../components/Products/SideMenu/SideAd";
 import { curentPageProducts } from "../api/helper";
 import LoadingSpiner from "../../components/ui/LoadingSpiner/loadingSpiner";
 import FilterMenu from "../../components/Products/ModuleMenu/filterMenu";
-import { useDispatch } from "react-redux";
-import { uiAction } from "../../store/ui/uiSlice";
-import { useRouter } from "next/router";
+import Head from "next/head";
 
 const index = (props) => {
   // console.log(props);
@@ -24,27 +22,33 @@ const index = (props) => {
     <LoadingSpiner text={"محصولی یافت نشد"} />;
   }
   return (
-    <div className="productsPage">
-      <section className="productsPage-breadcrumbs">
-        <Breadcrumbs links={[{ link: "/products", title: "محصولات" }]} />
-      </section>
-      <section className="productsPage-body">
-        <aside className="productsPage-aside hideInMD">
-          <Categories products={props.allProducts} />
-          <FilterByPrice products={props.allProducts} />
-          <Status />
-          <Brands products={props.allProducts} />
-          <SideAd products={props.allProducts} />
-          <FilterMenu products={props.allProducts} />
-        </aside>
-        <main className="productsPage-main">
-          <ShopHero />
-          <ListingManage />
-          <ProductsList products={props.products} />
-          <PaginationNav numberOfPages={props.numberOfPages} />
-        </main>
-      </section>
-    </div>
+    <Fragment>
+      <Head>
+        <title>فروشگاه ایرنترنتی کافه ترانه | لیست محصولات</title>
+        <meta name="description" content="لیست محصولات کافه ترانه" />
+      </Head>
+      <div className="productsPage">
+        <section className="productsPage-breadcrumbs">
+          <Breadcrumbs links={[{ link: "/products", title: "محصولات" }]} />
+        </section>
+        <section className="productsPage-body">
+          <aside className="productsPage-aside hideInMD">
+            <Categories products={props.allProducts} />
+            <FilterByPrice products={props.allProducts} />
+            <Status />
+            <Brands products={props.allProducts} />
+            <SideAd products={props.allProducts} />
+            <FilterMenu products={props.allProducts} />
+          </aside>
+          <main className="productsPage-main">
+            <ShopHero />
+            <ListingManage />
+            <ProductsList products={props.products} />
+            <PaginationNav numberOfPages={props.numberOfPages} />
+          </main>
+        </section>
+      </div>
+    </Fragment>
   );
 };
 
