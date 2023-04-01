@@ -7,7 +7,7 @@ import { blogGetBlogNavLinks } from "../../../../../store/Blog/getData/BlogGetDa
 import { useDispatch, useSelector } from "react-redux";
 // import useToggleMenu from "../../../../../Hook/UseToggoleMenu";
 import { blogUiAction } from "../../../../../store/Blog/ui/blogUislice";
-import { uiAction } from "../../../../../Store/ui/uiSlice";
+import { uiAction } from "../../../../../store/ui/uiSlice";
 
 const BNavLinks = (props) => {
   const dispatchNavLinks = useDispatch();
