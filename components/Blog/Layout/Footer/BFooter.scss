@@ -1,0 +1,693 @@
+.BFooter {
+  background-color: color(light-2);
+  width: 100%;
+
+  &-container {
+    font-family: iransans;
+    max-width: 1676px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: grid;
+    grid-template-areas:
+      "social social leter leter"
+      ". . leter leter"
+      "FNav FNav FNav FNav"
+      "copyright copyright copyright copyright";
+    row-gap: 1.5rem;
+    @include blogResponsive(md) {
+      grid-template-areas:
+        "social social social social"
+        "leter leter leter leter"
+        "FNav FNav FNav FNav"
+        "copyright copyright copyright copyright";
+    }
+  }
+  &-socilMediaIcons {
+    max-width: 30rem;
+    grid-area: social;
+    @include dflex;
+    flex-direction: column;
+    // border: 2px solid green;
+    padding: 1rem;
+    border-radius: 10px;
+    @include blogResponsive(sm) {
+      margin: 0 auto;
+    }
+    &-title {
+      font-size: 1.3rem;
+    }
+    &-list {
+      @include dflex(flex-start);
+      gap: 1rem;
+      &-item {
+        list-style: none;
+        margin-left: 0.5rem;
+        &:hover {
+          transform: scale(1.1);
+        }
+        &-svg {
+          width: 3rem;
+        }
+      }
+    }
+  }
+
+  &-newsLeter {
+    grid-area: leter;
+    // border: 2px solid red;
+    @include dflex;
+    width: 100%;
+    @include blogResponsive(sm) {
+      margin: 0 auto;
+    }
+    &-form {
+      @include dflex(flex-end);
+      width: 100%;
+      &-input {
+        background-color: color(light-1);
+        border: transparent;
+        max-width: 30rem;
+        line-height: 3rem;
+        // height: 100%;
+        width: 100%;
+        border-radius: 0 5px 5px 0px;
+        padding-right: 0.5rem;
+      }
+      &-button {
+        font-size: 1.3rem;
+        background-color: color(g1-7);
+        color: color(light-1);
+        border: transparent;
+        border-radius: 5px 0 0 0;
+        padding: 0.5rem 2rem;
+      }
+    }
+  }
+
+  &-NavLinks {
+    grid-area: FNav;
+    &-list {
+      display: inline-flex;
+      list-style: none;
+      padding-bottom: 1rem;
+      margin: 0px;
+      padding-left: 0px;
+      @include blogResponsive(lg) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 1rem;
+      }
+      @include blogResponsive(sm) {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 1rem;
+      }
+      &-item {
+        border-radius: 2px;
+        padding: 0.3rem 1rem;
+        margin-left: 1rem;
+        &:hover {
+          background-color: color(light-1);
+        }
+        a {
+          font-family: iranyekan;
+          color: color(dark-2);
+          text-decoration: none;
+          font-size: 1.2rem;
+          &:hover {
+            color: color(dark-2);
+          }
+        }
+      }
+    }
+  }
+  &-copyright {
+    grid-area: copyright;
+    @include dflex(flex-start);
+    // border: 2px solid pink;
+    svg {
+      width: 1rem;
+      height: 1rem;
+      path {
+        fill: rgb(89, 89, 89);
+      }
+    }
+    &-text {
+      margin-right: 1rem;
+      font-size: 1rem;
+      color: color(dark-op75);
+    }
+  }
+}
+.dark.BFooter {
+  background-color: color(dark-5);
+  .BFooter {
+    &-socilMediaIcons {
+      &-title {
+        color: color(light-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(light-5);
+            }
+            rect {
+              fill: color(light-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(light-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        border-bottom: 2px solid color(light-op25);
+        &-item {
+          a {
+            color: color(light-2);
+          }
+          &:hover {
+            background-color: color(dark-op25);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(light-op75);
+        }
+      }
+      &-text {
+        color: color(light-op75);
+      }
+    }
+  }
+}
+.drink.BFooter {
+  background-color: color(dark-5);
+  background: linear-gradient(#20dcfd, #f3f3f3);
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: rgba(182, 244, 251, 0.588);
+      &-title {
+        color: color(dark-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(dark-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: #c5f6ff51;
+        padding-top: 1rem;
+        border-bottom: 2px solid color(dark-op25);
+        border-radius: 5px;
+        padding: 1rem 3rem;
+        &-item {
+          a {
+            color: color(dark-2);
+          }
+          &:hover {
+            background-color: color(drink-op15);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(dark-op75);
+        }
+      }
+      &-text {
+        color: color(dark-op75);
+      }
+    }
+  }
+}
+.Ddrink.BFooter {
+  background-color: color(dark-5);
+  background: linear-gradient(color(drink-d2), rgba(color(drink-d5), 0.6));
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: color(drink-d5);
+      &-title {
+        color: color(light-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(dark-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: rgba(color(drink-d5), 0.7);
+        border-bottom: 2px solid color(light-op25);
+        &-item {
+          a {
+            color: color(light-2);
+          }
+          &:hover {
+            background-color: color(drink-d5);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(light-op75);
+        }
+      }
+      &-text {
+        color: color(light-op75);
+      }
+    }
+  }
+}
+.coffee.BFooter {
+  // background-color: color(dark-5);
+  background: linear-gradient(
+    rgba(color(coffee-1), 1),
+    rgba(color(coffee-l1), 0.5)
+  );
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: color(light-op25);
+      &-title {
+        color: color(dark-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(dark-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: color(light-op25);
+        padding-top: 1rem;
+        border-radius: 5px;
+        padding: 1rem 3rem;
+        &-item {
+          a {
+            color: color(dark-2);
+          }
+          &:hover {
+            background-color: color(drink-op15);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(dark-op75);
+        }
+      }
+      &-text {
+        color: color(dark-op75);
+      }
+    }
+  }
+}
+.Dcoffee.BFooter {
+  background-color: color(dark-5);
+  background: linear-gradient(color(coffee-d3), rgba(color(coffee-d1), 0.9));
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: rgba(color(coffee-d1), 0.95);
+      &-title {
+        color: color(light-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(dark-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: rgba(color(coffee-d1), 0.95);
+        &-item {
+          a {
+            color: color(light-2);
+          }
+          &:hover {
+            background-color: color(drink-d5);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(light-op75);
+        }
+      }
+      &-text {
+        color: color(light-op75);
+      }
+    }
+  }
+}
+.tools.BFooter {
+  background: linear-gradient(color(tools-1), color(tools-l1));
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: color(light-op25);
+      &-title {
+        color: color(dark-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(dark-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: color(light-op25);
+        padding-top: 1rem;
+        border-radius: 5px;
+        padding: 1rem 3rem;
+        &-item {
+          a {
+            color: color(dark-2);
+          }
+          &:hover {
+            background-color: color(drink-op15);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(dark-op75);
+        }
+      }
+      &-text {
+        color: color(dark-op75);
+      }
+    }
+  }
+}
+.Dtools.BFooter {
+  background-color: color(dark-5);
+  background: linear-gradient(color(tools-d3), rgba(color(tools-d2), 1));
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: rgba(color(tools-d1), 0.5);
+      &-title {
+        color: color(light-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(light-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: rgba(color(tools-d1), 0.5);
+        &-item {
+          a {
+            color: color(light-2);
+          }
+          &:hover {
+            background-color: color(tools-d1);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(light-op75);
+        }
+      }
+      &-text {
+        color: color(light-op75);
+      }
+    }
+  }
+}
+.news.BFooter {
+  background: linear-gradient(color(news-1), color(news-l1));
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: color(light-op25);
+      &-title {
+        color: color(dark-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(dark-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: color(light-op25);
+        padding-top: 1rem;
+        border-radius: 5px;
+        padding: 1rem 3rem;
+        &-item {
+          a {
+            color: color(dark-2);
+          }
+          &:hover {
+            background-color: color(drink-op15);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(dark-op75);
+        }
+      }
+      &-text {
+        color: color(dark-op75);
+      }
+    }
+  }
+}
+.Dnews.BFooter {
+  background-color: color(dark-5);
+  background: linear-gradient(color(news-d3), rgba(color(news-d2), 1));
+  .BFooter {
+    &-socilMediaIcons {
+      background-color: rgba(color(news-d1), 0.5);
+      &-title {
+        color: color(light-2);
+      }
+      &-list {
+        &-item {
+          svg {
+            path {
+              fill: color(dark-5);
+            }
+            rect {
+              fill: color(dark-5);
+            }
+          }
+        }
+      }
+    }
+    &-newsLeter {
+      &-form {
+        &-input {
+          color: color(light-2);
+          background-color: color(light-op25);
+          outline: transparent;
+        }
+        &-button {
+          background-color: color(g1-7);
+          color: color(light-1);
+        }
+      }
+    }
+    &-NavLinks {
+      &-list {
+        background-color: rgba(color(news-d1), 0.5);
+        &-item {
+          a {
+            color: color(light-2);
+          }
+          &:hover {
+            background-color: color(news-d1);
+          }
+        }
+      }
+    }
+    &-copyright {
+      svg {
+        path {
+          fill: color(light-op75);
+        }
+      }
+      &-text {
+        color: color(light-op75);
+      }
+    }
+  }
+}
