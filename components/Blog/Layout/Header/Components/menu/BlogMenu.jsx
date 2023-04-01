@@ -4,7 +4,7 @@ import CategoriesIcon from "../../../../../ui/Icons/CategoriesIcon";
 import ArrowsIcon from "../../../../../ui/Icons/arrowsIcon";
 import NewsIcon from "../../../../../ui/Icons/NewsIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { uiAction } from "../../../../../../Store/ui/uiSlice";
+import { uiAction } from "../../../../../../store/ui/uiSlice";
 import CatSubLinks from "./CatSubLinks";
 import Link from "next/link";
 import Modal from "../../../../../Layout/Module/Modal";
