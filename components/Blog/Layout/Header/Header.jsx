@@ -1,7 +1,7 @@
 import BSearch from "./Components/BSearch";
 import BNavLinks from "./Components/BNavLinks";
 import BThemSwitch from "./Components/BThemSwitch";
-import Log from "../../../layout/Header/components/Log";
+import Log from "../../../Layout/Header/components/Log";
 import BlogMenu from "./Components/menu/BlogMenu";
 import BsmSearch from "./Components/BsmSearch";
 import { useEffect, useState } from "react";
