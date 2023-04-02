@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import TomanIcon from "../../../ui/Icons/tomanIcon";
 
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
@@ -10,6 +9,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
+import Link from "next/link";
+import Image from "next/image";
 
 const SAd = (props) => {
   const adProducts = useSelector((state) => state.getData.adProducts);
@@ -43,9 +44,11 @@ const SAd = (props) => {
                 id={item.id}
                 className="sAd-list-slide"
               >
-                <Link to={`/products/${item.id}`} key={item.id}>
+                <Link href={`/products/${item.id}`} key={item.id}>
                   <div className="sAd-list-item" key={item.id}>
-                    <img
+                    <Image
+                      height={70}
+                      width={70}
                       className="sAd-list-item-image"
                       src={item.imageLink}
                       alt={item.title}

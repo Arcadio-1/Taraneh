@@ -1,14 +1,21 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { Link } from "react-router-dom";
 import TomanIcon from "../../../ui/Icons/tomanIcon";
 const BAdItem = (props) => {
   const { id, title, imageLink, statistics, taste, price } = props.item;
   return (
     <div className="bAd-list-item">
-      <Link to={`/products/${id}`}>
+      <Link href={`/products/${id}`}>
         <h3 className="bAd-list-item-title">{title}</h3>
         <div className="bAd-list-item-down">
-          <img className="bAd-list-item-image" src={imageLink} alt={title} />
+          <Image
+            className="bAd-list-item-image"
+            src={imageLink}
+            alt={title}
+            width={100}
+            height={100}
+          />
           <div className="bAd-list-item-details">
             <div className="bAd-list-item-details-line">
               <div className="bAd-list-item-details-line-item">
