@@ -20,7 +20,6 @@ const BFooterNavLinks = () => {
         if (response.status !== "success") {
           throw new Error("خطا در دریافت اطلاعات");
         }
-        console.log(response.data);
         setNavLinks((prev) => {
           return (prev = response.data);
         });

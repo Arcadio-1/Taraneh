@@ -1,0 +1,99 @@
+.selectedPostsSlider {
+  font-family: iransans;
+  padding: 2rem 0rem;
+  background-color: color(light-2);
+  border-radius: 10px;
+  color: color(dark-3);
+  width: 100%;
+  margin: 2rem auto;
+  &-container {
+    max-width: 1676px;
+    margin: 0 auto;
+  }
+  &-title {
+    margin-right: 2rem;
+  }
+  .swiper {
+    padding: 1rem;
+    border-radius: 10px;
+    &-slide {
+      border-radius: 10px;
+      width: 29rem;
+      height: 40rem;
+      max-width: 29rem;
+      @include blogResponsive(lg) {
+        width: 25rem;
+        height: 32rem;
+        max-width: 25rem;
+      }
+      @include blogResponsive(md) {
+        width: 18rem;
+        height: 28rem;
+        max-width: 18rem;
+      }
+      @include blogResponsive(sm) {
+        width: 18rem;
+        height: 24rem;
+        max-width: 18rem;
+      }
+    }
+  }
+  .swiper-button-disabled {
+    display: none;
+  }
+  &-swiper {
+    &-post {
+      // border-radius: 10px;
+      position: relative;
+      height: 100%;
+      &-img {
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px color(light-1);
+        width: 100%;
+        height: 100%;
+      }
+      &-title {
+        @include dflex;
+        text-align: center;
+        background-color: color(light-op75);
+        backdrop-filter: blur(6px);
+        position: absolute;
+        bottom: -5px;
+        border-radius: 0px 0px 10px 10px;
+        height: 6.5rem;
+        width: 100%;
+        padding: 0rem 0.5rem;
+        color: color(dark-2);
+        font-size: 1.5rem;
+        line-height: 2rem;
+        @include blogResponsive(sm) {
+          font-size: 1.3rem;
+          line-height: 1.8rem;
+        }
+      }
+    }
+  }
+}
+.dark {
+  .selectedPostsSlider {
+    background-color: color(dark-2);
+    &-title {
+      color: color(light-2);
+      margin-right: 2rem;
+    }
+    &-swiper {
+      &-slide {
+        background-color: color(g2-1);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(light-op25);
+        }
+        &-title {
+          background-color: color(dark-op75);
+          color: color(light-2);
+        }
+      }
+    }
+  }
+}

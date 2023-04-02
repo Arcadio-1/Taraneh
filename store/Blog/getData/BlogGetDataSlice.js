@@ -1,22 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  blogNavLinks: [],
   blogPosts: [],
-  blogFooterNavLinks: [],
+  blogAdProducts: [],
 };
 
 const blogGetDataSlice = createSlice({
   name: "BlogGetDataSlice",
   initialState,
   reducers: {
-    blogGetNavLinks(state, action) {
-      state.blogNavLinks = action.payload;
-    },
-    blogGetPosts(state, action) {
+    setBlogPosts(state, action) {
       state.blogPosts = action.payload;
     },
-    blogGetFooterNavLinks(state, action) {
-      state.blogFooterNavLinks = action.payload;
+    setBlogAdProducts(state, action) {
+      state.blogAdProducts = action.payload;
     },
   },
 });

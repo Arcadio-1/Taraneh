@@ -5,6 +5,16 @@ const initialState = {
   blogSub: null,
   subsClass: "",
   isShowBlogMenu: false,
+  blogPostsStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
+  blogAdProductsStatus: {
+    status: null,
+    title: null,
+    message: null,
+  },
 };
 
 const blogUiSlice = createSlice({
@@ -22,6 +32,20 @@ const blogUiSlice = createSlice({
     },
     setIsShowBlogMenu(state, action) {
       state.isShowBlogMenu = action.payload;
+    },
+    setBlogPostsStatus(state, action) {
+      state.blogPostsStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
+    setBlogAdProductsStatus(state, action) {
+      state.blogAdProductsStatus = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
     },
   },
 });

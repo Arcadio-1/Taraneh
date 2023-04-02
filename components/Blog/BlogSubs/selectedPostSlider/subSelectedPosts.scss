@@ -1,0 +1,551 @@
+.SubSelectedSlider {
+  font-family: iransans;
+  padding: 2rem 0rem;
+  background-color: transparent;
+  border-radius: 10px;
+  color: color(dark-3);
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  &-container {
+    max-width: 1676px;
+    margin: 0 auto;
+    background-image: url(./subSelectedSlider.png);
+    background-size: cover;
+    &-swiper {
+      padding: 1.5rem;
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        rgba(color(drink-1), 1),
+        70deg,
+        rgba(color(drink-1), 0.8),
+        300deg,
+        rgba(color(drink-1), 0.25)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          rgba(color(drink-1), 1),
+          30deg,
+          rgba(color(drink-1), 0.8),
+          350deg,
+          #ebf8e153
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          rgba(color(drink-1), 1),
+          30deg,
+          rgba(color(drink-1), 0.8),
+          350deg,
+          #ebf8e153
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          rgba(color(drink-1), 1),
+          30deg,
+          rgba(color(drink-1), 0.8),
+          350deg,
+          #ebf8e153
+        );
+      }
+    }
+  }
+  &-title {
+    color: color(light-2);
+    margin-right: 2rem;
+    font-size: 2rem;
+    // @include blogResponsive(lg) {
+    //   font-size: 1.5rem;
+    // }
+  }
+  .swiper {
+    padding: 1rem;
+    border-radius: 10px;
+    &-slide {
+      border-radius: 10px;
+      width: 22rem;
+      height: 30rem;
+      max-width: 22rem;
+      border: 5px solid color(drink-1);
+      @include blogResponsive(lg) {
+        width: 22rem;
+        height: 30rem;
+        max-width: 22rem;
+      }
+      @include blogResponsive(md) {
+        width: 18rem;
+        height: 25rem;
+        max-width: 18rem;
+      }
+      // @include blogResponsive(sm) {
+      //   width: 13rem;
+      //   height: 17rem;
+      //   max-width: 13rem;
+      // }
+    }
+  }
+  .swiper-button-disabled {
+    display: none;
+  }
+  &-swiper {
+    &-post {
+      position: relative;
+      height: 100%;
+      &:hover {
+        transform: scale(1.02);
+      }
+      &-img {
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px color(light-1);
+        width: 100%;
+        height: 100%;
+      }
+      &-title {
+        @include dflex;
+        text-align: center;
+        background-color: rgba(color(drink-l1), 0.75);
+        backdrop-filter: blur(3px);
+        position: absolute;
+        bottom: -5px;
+        border-radius: 0px 0px 10px 10px;
+        height: 6.5rem;
+        width: 100%;
+        padding: 0rem 0.5rem;
+        color: color(dark-2);
+        font-size: 1.5rem;
+        line-height: 2rem;
+        @include blogResponsive(sm) {
+          font-size: 1.3rem;
+          line-height: 1.8rem;
+        }
+      }
+    }
+  }
+}
+.Ddrink {
+  .SubSelectedSlider {
+    &-container-swiper {
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        color(drink-d5),
+        70deg,
+        rgba(color(drink-d1), 0.8),
+        300deg,
+        rgba(color(drink-d1), 0.25)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          color(drink-d2),
+          30deg,
+          rgba(color(drink-d1), 0.8),
+          350deg,
+          rgba(color(drink-d1), 0.25)
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          color(drink-dark5),
+          30deg,
+          rgba(color(drink-d1), 0.8),
+          350deg,
+          rgba(color(drink-d1), 0.25)
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          color(drink-dark5),
+          30deg,
+          rgba(color(drink-d1), 0.8),
+          350deg,
+          rgba(color(drink-d1), 0.25)
+        );
+      }
+    }
+
+    &-title {
+      color: color(light-2);
+      margin-right: 2rem;
+    }
+    &-swiper {
+      &-slide {
+        border: 2px solid color(drin-d1);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(light-op25);
+        }
+        &-title {
+          background-color: rgba(color(drink-d5), 0.65);
+          color: color(light-2);
+        }
+      }
+    }
+  }
+}
+.coffee {
+  .SubSelectedSlider {
+    &-container-swiper {
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        color(coffee-1),
+        70deg,
+        color(coffee-1),
+        300deg,
+        rgba(color(coffee-1), 0.25)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          color(coffee-1),
+          30deg,
+          color(coffee-1),
+          350deg,
+          rgba(color(coffee-1), 0.25)
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          color(coffee-1),
+          30deg,
+          color(coffee-1),
+          350deg,
+          rgba(color(coffee-1), 0.25)
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          color(coffee-1),
+          30deg,
+          color(coffee-1),
+          350deg,
+          rgba(color(coffee-1), 0.25)
+        );
+      }
+    }
+
+    &-swiper {
+      &-slide {
+        border: 2px solid color(coffee-1);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(light-op25);
+        }
+        &-title {
+          background-color: rgba(color(coffee-l1), 0.75);
+        }
+      }
+    }
+  }
+}
+.Dcoffee {
+  .SubSelectedSlider {
+    &-container-swiper {
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        color(coffee-d2),
+        70deg,
+        rgba(color(coffee-d1), 0.8) 300deg,
+        rgba(color(coffee-d1), 0.5)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          color(coffee-dark4),
+          30deg,
+          rgba(color(coffee-d1), 0.8),
+          350deg,
+          rgba(color(coffee-d1), 0.5)
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          color(coffee-dark4),
+          30deg,
+          rgba(color(coffee-d1), 0.8),
+          350deg,
+          rgba(color(coffee-d1), 0.5)
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          color(coffee-dark4),
+          30deg,
+          rgba(color(coffee-d1), 0.8),
+          350deg,
+          rgba(color(coffee-d1), 0.5)
+        );
+      }
+    }
+
+    &-title {
+      color: color(light-2);
+      margin-right: 2rem;
+    }
+    &-swiper {
+      &-slide {
+        border: 2px solid color(coffee-d4);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(light-op25);
+        }
+        &-title {
+          background-color: rgba(color(coffee-d2), 0.65);
+          color: color(light-2);
+        }
+      }
+    }
+  }
+}
+.tools {
+  .SubSelectedSlider {
+    &-container-swiper {
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        color(tools-1),
+        70deg,
+        rgba(color(tools-2), 0.7),
+        300deg,
+        rgba(color(tools-1), 0.2)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          color(tools-1),
+          30deg,
+          rgba(color(tools-2), 0.7),
+          350deg,
+          rgba(color(tools-1), 0.2)
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          color(tools-1),
+          30deg,
+          rgba(color(tools-2), 0.7),
+          350deg,
+          rgba(color(tools-1), 0.2)
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          color(tools-1),
+          30deg,
+          rgba(color(tools-2), 0.7),
+          350deg,
+          rgba(color(tools-1), 0.2)
+        );
+      }
+    }
+
+    &-swiper {
+      &-slide {
+        border: 2px solid color(tools-1);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(dark-op25);
+        }
+        &-title {
+          background-color: rgba(color(tools-l1), 0.7);
+        }
+      }
+    }
+  }
+}
+.Dtools {
+  .SubSelectedSlider {
+    &-container-swiper {
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        color(tools-d1),
+        70deg,
+        color(tools-d4) 300deg,
+        color(tools-l2)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          color(tools-d1),
+          30deg,
+          color(tools-d4),
+          350deg,
+          color(tools-l2)
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          color(tools-d1),
+          30deg,
+          color(tools-d4),
+          350deg,
+          color(tools-l2)
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          color(tools-d1),
+          30deg,
+          color(tools-d4),
+          350deg,
+          color(tools-l2)
+        );
+      }
+    }
+
+    &-title {
+      color: color(light-2);
+      margin-right: 2rem;
+    }
+    &-swiper {
+      &-slide {
+        border: 2px solid color(tools-d1);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(light-op25);
+        }
+        &-title {
+          background-color: rgba(color(tools-d1), 0.7);
+          color: color(light-2);
+        }
+      }
+    }
+  }
+}
+.news {
+  .SubSelectedSlider {
+    &-container-swiper {
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        color(news-1),
+        70deg,
+        rgba(color(news-2), 0.7),
+        300deg,
+        rgba(color(news-1), 0.2)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          color(news-1),
+          30deg,
+          rgba(color(news-2), 0.7),
+          350deg,
+          rgba(color(news-1), 0.2)
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          color(news-1),
+          30deg,
+          rgba(color(news-2), 0.7),
+          350deg,
+          rgba(color(news-1), 0.2)
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          color(news-1),
+          30deg,
+          rgba(color(news-2), 0.7),
+          350deg,
+          rgba(color(news-1), 0.2)
+        );
+      }
+    }
+
+    &-swiper {
+      &-slide {
+        border: 2px solid color(news-1);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(dark-op25);
+        }
+        &-title {
+          background-color: rgba(color(news-l1), 0.7);
+        }
+      }
+    }
+  }
+}
+.Dnews {
+  .SubSelectedSlider {
+    &-container-swiper {
+      background: conic-gradient(
+        from 0.15turn at 40% 70%,
+        color(news-d1),
+        70deg,
+        rgba(color(news-d4), 0.7) 300deg,
+        rgba(color(news-d2), 0.5)
+      );
+      @include blogResponsive(lg) {
+        background: conic-gradient(
+          from 0.12turn at 40% 70%,
+          color(news-d1),
+          30deg,
+          rgba(color(news-d4), 0.7),
+          350deg,
+          rgba(color(news-d2), 0.5)
+        );
+      }
+      @include blogResponsive(md) {
+        background: conic-gradient(
+          from 0.05turn at 40% 70%,
+          color(news-d1),
+          30deg,
+          rgba(color(news-d4), 0.7),
+          350deg,
+          rgba(color(news-d2), 0.5)
+        );
+      }
+      @include blogResponsive(sm) {
+        background: conic-gradient(
+          from 0.05turn at 50% 30%,
+          color(news-d1),
+          30deg,
+          rgba(color(news-d4), 0.7),
+          350deg,
+          rgba(color(news-d2), 0.5)
+        );
+      }
+    }
+
+    &-title {
+      color: color(light-2);
+      margin-right: 2rem;
+    }
+    &-swiper {
+      &-slide {
+        border: 2px solid color(news-d1);
+      }
+      &-post {
+        &-img {
+          box-shadow: 0px 0px 5px color(light-op25);
+        }
+        &-title {
+          background-color: rgba(color(news-d1), 0.7);
+          color: color(light-2);
+        }
+      }
+    }
+  }
+}

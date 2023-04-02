@@ -1,0 +1,735 @@
+.subLastPosts {
+  // max-width: 800px;
+  grid-area: subLastPosts;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 10px 10px 0 0;
+  @include dflex();
+  flex-direction: column;
+  background: conic-gradient(
+    from 0.04turn at 30% 50%,
+    rgba(color(drink-1), 1),
+    60deg,
+    rgba(color(drink-3), 85),
+    250deg,
+    rgba(color(drink-l3), 25)
+  );
+  @include blogResponsive(lg) {
+    background: conic-gradient(
+      from 0.03turn at 30% 50%,
+      rgba(color(drink-1), 1),
+      60deg,
+      rgba(color(drink-3), 85),
+      250deg,
+      rgba(color(drink-l3), 25)
+    );
+  }
+  @include blogResponsive(md) {
+    background: conic-gradient(
+      from 0.03turn at 30% 50%,
+      rgba(color(drink-1), 1),
+      60deg,
+      rgba(color(drink-3), 85),
+      250deg,
+      rgba(color(drink-l3), 25)
+    );
+  }
+  @include blogResponsive(sm) {
+    background: conic-gradient(
+      from 0.015turn at 30% 50%,
+      rgba(color(drink-1), 1),
+      60deg,
+      rgba(color(drink-3), 85),
+      250deg,
+      rgba(color(drink-l3), 25)
+    );
+  }
+
+  &-title {
+    color: color(light-2);
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+  }
+  &-allList {
+    @include dflex;
+    flex-direction: column;
+    gap: 1rem;
+    &-ad {
+      display: none;
+    }
+    .bAd {
+      display: none;
+    }
+    @include blogResponsive(md) {
+      .bAd {
+        display: block;
+        width: 100%;
+        &-title {
+          margin-bottom: 1rem;
+        }
+        &-list {
+          flex-direction: row;
+          &-item {
+            border-radius: 5px;
+            &-title {
+              font-size: 1.2rem;
+            }
+            &-image {
+              grid-area: img;
+              width: 100%;
+              max-width: 10rem;
+            }
+            &-details {
+              height: 100%;
+              max-height: 7rem;
+              padding: 1rem;
+              border-radius: 10px;
+              max-width: 20rem;
+              margin-top: 1rem;
+              &-line {
+                &-item {
+                  font-size: 1rem;
+                  &-name {
+                    font-size: 1.1rem;
+                    margin-left: 0.1rem;
+                  }
+                  &-space {
+                    font-size: 1.2rem;
+                  }
+                  &-is {
+                    font-size: 1.2rem;
+                    margin-bottom: 1rem;
+                  }
+                }
+              }
+            }
+            &-offAndPrice {
+              margin-left: 1rem;
+            }
+            &-off {
+              &-text {
+                font-size: 1rem;
+              }
+              &-num {
+                font-size: 1rem;
+                border-radius: 3px;
+              }
+            }
+            &-price {
+              &-value {
+                font-size: 1.4rem;
+                font-family: iransansnum;
+              }
+              svg {
+                margin-bottom: 3rem;
+                margin-right: -0.5rem;
+              }
+            }
+            &-desc {
+              font-size: 1rem;
+              font-family: iransansnum;
+              grid-area: desc;
+              &-text {
+                &-persent {
+                  color: rgb(191, 13, 123);
+                }
+              }
+            }
+          }
+        }
+      }
+      // .bAd
+      .sAd {
+        display: none;
+      }
+    }
+    @include blogResponsive(sm) {
+      .bAd {
+        display: none;
+        &-list-item-image {
+          max-width: 12rem;
+        }
+      }
+      &-ad {
+        display: block;
+        width: 100%;
+        .bAd {
+          @include dflex;
+          flex-direction: column;
+          &-list {
+            width: 100%;
+          }
+        }
+      }
+    }
+    @include blogResponsive(sm) {
+      .bAd {
+        background: transparent;
+        &-title {
+          display: none;
+        }
+      }
+    }
+  }
+  &-list {
+    @include dflex;
+    gap: 1rem;
+    @include blogResponsive(sm) {
+      flex-direction: column;
+    }
+
+    &-item {
+      border-radius: 10px 10px 0 0;
+      padding: 1rem;
+      background-color: color(light-op50);
+      @include blur-6;
+      // width: 100%;
+      height: 100%;
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      a {
+        @include dflex(space-between);
+        flex-direction: column;
+        color: color(dark-1);
+        text-decoration: none;
+        height: 100%;
+        @include blogResponsive(sm) {
+          display: grid;
+          grid-template-areas:
+            "title title title title title"
+            "img img img desc desc"
+            "Daw DaW DaW DaW DaW";
+        }
+      }
+      &-image {
+        background-size: cover;
+        object-fit: cover;
+        width: 100%;
+        height: 20rem;
+        border-radius: 10px;
+        @include blogResponsive(sm) {
+          height: 12rem;
+          grid-area: img;
+        }
+      }
+      &-title {
+        text-align: center;
+        font-size: 1.3rem;
+        line-height: 2.5rem;
+        margin-top: 1rem;
+        @include blogResponsive(sm) {
+          grid-area: title;
+        }
+      }
+      &-desc {
+        margin: 1rem 0;
+        @include blogResponsive(sm) {
+          line-height: 2rem;
+          padding: 1.5rem;
+          grid-area: desc;
+        }
+      }
+      &-dateAndWriter {
+        margin-top: 1.5rem;
+        @include dflex();
+        gap: 0.5rem;
+        margin-right: auto;
+        .profileIcon {
+          &-st1 {
+            stroke: color(dark-2);
+          }
+        }
+        @include blogResponsive(sm) {
+          grid-area: DaW;
+        }
+      }
+    }
+  }
+  &-seeMoreBtn {
+    border-radius: 10px;
+    border: transparent;
+    background: color(drink-l1);
+    margin: 3rem auto;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: color(dark-2);
+    &:hover {
+      background: color(drink-l2);
+      transform: scale(1.02);
+    }
+  }
+}
+.Ddrink {
+  .subLastPosts {
+    background: conic-gradient(
+      from 0.04turn at 30% 50%,
+      color(drink-d5),
+      60deg,
+      color(drink-d4),
+      250deg,
+      color(drink-d2)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(drink-d5),
+        60deg,
+        color(drink-d4),
+        250deg,
+        color(drink-d2)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(drink-d5),
+        60deg,
+        color(drink-d4),
+        250deg,
+        color(drink-d2)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.015turn at 30% 50%,
+        color(drink-d5),
+        60deg,
+        color(drink-d4),
+        250deg,
+        color(drink-d2)
+      );
+    }
+    &-list {
+      &-item {
+        background-color: color(dark-op25);
+        &-title {
+          color: color(light-2);
+        }
+        &-desc {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+    &-seeMoreBtn {
+      background: color(drink-d1);
+      color: color(light-2);
+      margin: 3rem auto;
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      &:hover {
+        background: color(drink-d2);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+.coffee {
+  .subLastPosts {
+    background: conic-gradient(
+      from 0.04turn at 30% 50%,
+      color(coffee-1),
+      60deg,
+      rgba(color(coffee-1), 0.5),
+      250deg,
+      rgba(color(coffee-1), 0.25)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(coffee-1),
+        60deg,
+        rgba(color(coffee-1), 0.5),
+        250deg,
+        rgba(color(coffee-1), 0.25)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(coffee-1),
+        60deg,
+        rgba(color(coffee-1), 0.5),
+        250deg,
+        rgba(color(coffee-1), 0.25)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.015turn at 30% 50%,
+        color(coffee-1),
+        60deg,
+        rgba(color(coffee-1), 0.5),
+        250deg,
+        rgba(color(coffee-1), 0.25)
+      );
+    }
+    &-list {
+      &-item {
+        background-color: color(light-op25);
+      }
+    }
+    &-seeMoreBtn {
+      background: color(coffee-l4);
+      &:hover {
+        background: color(coffee-3);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+.Dcoffee {
+  .subLastPosts {
+    background: conic-gradient(
+      from 0.04turn at 30% 50%,
+      rgba(color(coffee-d1), 0.1),
+      60deg,
+      rgba(color(coffee-d2), 0.8),
+      250deg,
+      rgba(color(coffee-d5), 0.75)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        rgba(color(coffee-d1), 0.1),
+        60deg,
+        rgba(color(coffee-d2), 0.8),
+        250deg,
+        rgba(color(coffee-d5), 0.75)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        rgba(color(coffee-d1), 0.1),
+        60deg,
+        rgba(color(coffee-d2), 0.8),
+        250deg,
+        rgba(color(coffee-d5), 0.75)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.015turn at 30% 50%,
+        rgba(color(coffee-d1), 0.75),
+        60deg,
+        rgba(color(coffee-d2), 0.75),
+        250deg,
+        rgba(color(coffee-d5), 0.75)
+      );
+    }
+    &-list {
+      &-item {
+        background-color: color(dark-op50);
+        &-title {
+          color: color(light-2);
+        }
+        &-desc {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+    &-seeMoreBtn {
+      background: color(coffee-d5);
+      color: color(light-2);
+      margin: 3rem auto;
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      &:hover {
+        background: color(coffee-d4);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+.tools {
+  .subLastPosts {
+    background: conic-gradient(
+      from 0.04turn at 30% 50%,
+      color(tools-1),
+      60deg,
+      rgba(color(tools-2), 0.7),
+      250deg,
+      rgba(color(tools-1), 0.2)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(tools-1),
+        60deg,
+        rgba(color(tools-2), 0.7),
+        250deg,
+        rgba(color(tools-1), 0.2)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(tools-1),
+        60deg,
+        rgba(color(tools-2), 0.7),
+        250deg,
+        rgba(color(tools-1), 0.2)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.015turn at 30% 50%,
+        color(tools-1),
+        60deg,
+        rgba(color(tools-2), 0.7),
+        250deg,
+        rgba(color(tools-1), 0.2)
+      );
+    }
+    &-list {
+      &-item {
+        background-color: color(light-op50);
+      }
+    }
+    &-seeMoreBtn {
+      background: color(tools-l2);
+      &:hover {
+        background: color(tools-l1-5);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+.Dtools {
+  .subLastPosts {
+    background: conic-gradient(
+      from 0.04turn at 30% 50%,
+      color(tools-d1),
+      60deg,
+      rgba(color(tools-d2), 0.7),
+      250deg,
+      rgba(color(tools-l1), 0.2)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(tools-d1),
+        60deg,
+        rgba(color(tools-d2), 0.7),
+        250deg,
+        rgba(color(tools-1), 0.2)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(tools-d1),
+        60deg,
+        rgba(color(tools-d2), 0.7),
+        250deg,
+        rgba(color(tools-1), 0.2)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.015turn at 30% 50%,
+        color(tools-d1),
+        60deg,
+        rgba(color(tools-d2), 0.7),
+        250deg,
+        rgba(color(tools-1), 0.2)
+      );
+    }
+    &-list {
+      &-item {
+        background-color: color(dark-op50);
+        &-title {
+          color: color(light-2);
+        }
+        &-desc {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+    &-seeMoreBtn {
+      background: color(tools-d4);
+      color: color(light-2);
+      margin: 3rem auto;
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      &:hover {
+        background: color(tools-d3);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+.news {
+  .subLastPosts {
+    background: conic-gradient(
+      from 0.04turn at 30% 50%,
+      color(news-1),
+      60deg,
+      rgba(color(news-2), 0.7),
+      250deg,
+      rgba(color(news-1), 0.2)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(news-1),
+        60deg,
+        rgba(color(news-2), 0.7),
+        250deg,
+        rgba(color(news-1), 0.2)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(news-1),
+        60deg,
+        rgba(color(news-2), 0.7),
+        250deg,
+        rgba(color(news-1), 0.2)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.015turn at 30% 50%,
+        color(news-1),
+        60deg,
+        rgba(color(news-2), 0.7),
+        250deg,
+        rgba(color(news-1), 0.2)
+      );
+    }
+    &-list {
+      &-item {
+        background-color: color(light-op50);
+      }
+    }
+    &-seeMoreBtn {
+      background: color(news-l2);
+      &:hover {
+        background: color(news-l1-5);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+.Dnews {
+  .subLastPosts {
+    background: conic-gradient(
+      from 0.04turn at 30% 50%,
+      color(news-d1),
+      60deg,
+      rgba(color(news-d2), 0.7),
+      250deg,
+      rgba(color(news-l1), 0.2)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(news-d1),
+        60deg,
+        rgba(color(news-d2), 0.7),
+        250deg,
+        rgba(color(news-1), 0.2)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 30% 50%,
+        color(news-d1),
+        60deg,
+        rgba(color(news-d2), 0.7),
+        250deg,
+        rgba(color(news-1), 0.2)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.015turn at 30% 50%,
+        color(news-d1),
+        60deg,
+        rgba(color(news-d2), 0.7),
+        250deg,
+        rgba(color(news-1), 0.2)
+      );
+    }
+    &-list {
+      &-item {
+        background-color: color(dark-op50);
+        &-title {
+          color: color(light-2);
+        }
+        &-desc {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+    &-seeMoreBtn {
+      background: color(news-d4);
+      color: color(light-2);
+      margin: 3rem auto;
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      &:hover {
+        background: color(news-d3);
+        transform: scale(1.02);
+      }
+    }
+  }
+}

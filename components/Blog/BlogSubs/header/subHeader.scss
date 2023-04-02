@@ -1,0 +1,150 @@
+.subHeader {
+  height: 30rem;
+  padding: 2rem;
+  background: color(drink-1);
+  background: linear-gradient(
+    0deg,
+    rgba(color(drink-l1), 0.25) 0%,
+    color(drink-1) 40%
+  );
+  @include blogResponsive(lg) {
+    height: 25rem;
+  }
+  @include blogResponsive(md) {
+    height: 25rem;
+    background: linear-gradient(
+      0deg,
+      rgba(color(drink-l1), 0.25) 0%,
+      color(drink-1) 20%
+    );
+  }
+  @include blogResponsive(sm) {
+    height: 15rem;
+  }
+
+  &-container {
+    width: 100%;
+    max-width: 1676px;
+    margin: 0 auto;
+    @include dflex(center, center);
+  }
+  &-title {
+    width: 50%;
+    font-size: 5rem;
+    font-weight: 600;
+    color: color(light-2);
+    white-space: nowrap;
+    text-align: center;
+    @include blogResponsive(lg) {
+      font-size: 3.5rem;
+    }
+    @include blogResponsive(md) {
+      margin-top: 5rem;
+      font-size: 2.5rem;
+    }
+    @include blogResponsive(sm) {
+      font-size: 2rem;
+    }
+  }
+  &-img {
+    width: 50%;
+    max-width: 60rem;
+    margin-top: 6rem;
+    @include blogResponsive(lg) {
+      max-width: 70rem;
+    }
+    @include blogResponsive(md) {
+      margin-top: 10rem;
+      max-width: 60rem;
+    }
+    @include blogResponsive(sm) {
+      margin-top: 5rem;
+      max-width: 50rem;
+    }
+  }
+}
+.Ddrink {
+  .subHeader {
+    background: linear-gradient(
+      0deg,
+      rgba(color(drink-d1), 1) 0%,
+      color(dark-op50) 30%
+    );
+    @include blogResponsive(md) {
+      background: linear-gradient(
+        0deg,
+        rgba(color(drink-d1), 1) 10%,
+        color(dark-op25) 20%
+      );
+    }
+  }
+}
+.coffee {
+  .subHeader {
+    background: linear-gradient(
+      0deg,
+      rgba(color(coffee-l4), 0.25) 0%,
+      color(coffee-1) 30%
+    );
+    @include blogResponsive(md) {
+      background: linear-gradient(
+        0deg,
+        rgba(color(coffee-1), 0.25) 0%,
+        color(coffee-1) 20%
+      );
+    }
+  }
+}
+.Dcoffee {
+  .subHeader {
+    background: linear-gradient(
+      0deg,
+      color(coffee-d4) 0%,
+      color(coffee-d2) 30%
+    );
+    @include blogResponsive(md) {
+      background: linear-gradient(
+        0deg,
+        color(coffee-d4) 0%,
+        color(coffee-d2) 20%
+      );
+    }
+  }
+}
+.tools {
+  .subHeader {
+    background: linear-gradient(0deg, color(tools-l2) 0%, color(tools-1) 30%);
+    @include blogResponsive(md) {
+      background: linear-gradient(0deg, color(tools-l2) 0%, color(tools-1) 20%);
+    }
+  }
+}
+.Dtools {
+  .subHeader {
+    background: linear-gradient(0deg, color(tools-d1) 0%, color(tools-d2) 30%);
+    @include blogResponsive(md) {
+      background: linear-gradient(
+        0deg,
+        color(tools-d1) 0%,
+        color(tools-d3) 20%
+      );
+    }
+  }
+}
+/////
+.news {
+  .subHeader {
+    background: linear-gradient(0deg, color(news-l2) 0%, color(news-1) 30%);
+    @include blogResponsive(md) {
+      background: linear-gradient(0deg, color(news-l2) 0%, color(news-1) 20%);
+    }
+  }
+}
+.Dnews {
+  .subHeader {
+    background: linear-gradient(0deg, color(news-d0) 0%, color(news-d2) 50%);
+    @include blogResponsive(md) {
+      background: linear-gradient(0deg, color(news-d1) 0%, color(news-d3) 20%);
+    }
+  }
+}

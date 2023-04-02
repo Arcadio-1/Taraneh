@@ -1,0 +1,63 @@
+.dateOfPost {
+  @include dflex();
+
+  &-text {
+    margin-right: 0.5rem;
+  }
+}
+.writerOfPost {
+  @include dflex();
+
+  &-text {
+    margin-right: 0.5rem;
+  }
+}
+.likeAndDislike {
+  @include dflex;
+  gap: 1rem;
+  img {
+    opacity: 0.9;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .item {
+    position: relative;
+  }
+  span {
+    font-family: iransansnum;
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    font-size: 1.3rem;
+  }
+  &-like {
+    color: color(success);
+  }
+  &-dislike {
+    color: color(error);
+  }
+}
+.dark {
+  .dateOfPost {
+    &-text {
+      color: color(light-2);
+    }
+    svg {
+      path {
+        fill: color(light-2);
+      }
+    }
+  }
+  .writerOfPost {
+    &-text {
+      color: color(light-2);
+    }
+    svg {
+      .profileIcon {
+        &-st1 {
+          stroke: color(light-1);
+        }
+      }
+    }
+  }
+}

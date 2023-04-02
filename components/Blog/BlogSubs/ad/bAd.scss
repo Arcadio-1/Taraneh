@@ -1,0 +1,451 @@
+.bAd {
+  padding: 1rem;
+  background: conic-gradient(
+    from 0.03turn at 30% 60%,
+    color(drink-1),
+    60deg,
+    rgba(color(drink-2), 0.5) 250deg,
+    rgba(color(drink-2), 0.1)
+  );
+  @include blogResponsive(lg) {
+    min-width: 40rem;
+  }
+  &-title {
+    margin-left: auto;
+    margin-bottom: 2rem;
+    color: color(light-2);
+    font-size: 2rem;
+    @include blogResponsive(md) {
+      display: none;
+    }
+  }
+  &-list {
+    @include dflex;
+    gap: 1rem;
+    flex-direction: column;
+
+    a {
+      text-decoration: none;
+      color: color(dark-2);
+    }
+    &-item {
+      background-color: rgba(color(drink-l2), 0.5);
+      padding: 1rem;
+      @include blur-5;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 45rem;
+      margin: 1rem auto;
+      &:hover {
+        transform: scale(1.01);
+      }
+      &-title {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: color(dark-2);
+        margin-bottom: 0px;
+      }
+      &-down {
+        display: grid;
+        width: 100%;
+        grid-template-areas:
+          "img img dtls dtls dtls"
+          "img img price price price"
+          "desc desc desc desc desc";
+      }
+      &-image {
+        grid-area: img;
+        width: 100%;
+        max-width: 14rem;
+      }
+      &-details {
+        height: 100%;
+        max-height: 8rem;
+        font-family: iransansnum;
+        background-color: rgba(color(drink-2), 0.4);
+        padding: 1rem;
+        border-radius: 20px;
+        grid-area: dtls;
+        @include dflex(space-between);
+        flex-direction: column;
+        max-width: 22rem;
+        margin-top: 1rem;
+        &-line {
+          width: 100%;
+          @include dflex(space-between);
+          &-item {
+            @include dflex;
+            font-size: 1.3rem;
+            &-name {
+              font-size: 1.3rem;
+              color: rgba(color(drink-d2), 1);
+              margin-left: 0.3rem;
+            }
+            &-from {
+              margin-top: 1rem;
+              color: rgba(color(drink-2), 0.5);
+            }
+            &-space {
+              font-size: 1.5rem;
+              color: rgb(191, 13, 123);
+            }
+            &-is {
+              font-size: 1.5rem;
+              margin-bottom: 1rem;
+              color: rgb(191, 13, 123);
+            }
+          }
+        }
+      }
+      &-offAndPrice {
+        margin-right: auto;
+        margin-left: 2rem;
+        @include dflex;
+        grid-area: price;
+      }
+      &-off {
+        @include dflex;
+        &-text {
+          font-size: 1.2rem;
+          color: #cd0a0a;
+        }
+        &-num {
+          font-family: iransansnum;
+          color: color(light-2);
+          font-size: 1.5rem;
+          background-color: #b00808;
+          padding: 0.1rem 0.2rem;
+          margin-top: 3.5rem;
+          margin-right: -0.8rem;
+          border-radius: 5px;
+        }
+      }
+      &-price {
+        @include dflex;
+        &-value {
+          font-size: 1.8rem;
+          font-family: iransansnum;
+        }
+        svg {
+          margin-bottom: 3rem;
+          margin-right: -0.5rem;
+        }
+      }
+      &-desc {
+        font-size: 1.5rem;
+        font-family: iransansnum;
+        grid-area: desc;
+        &-text {
+          &-persent {
+            color: rgb(191, 13, 123);
+          }
+        }
+      }
+    }
+  }
+}
+.Ddrink {
+  .bAd {
+    background: conic-gradient(
+      from 0.03turn at 30% 60%,
+      color(drink-d1),
+      60deg,
+      rgba(color(drink-d2), 0.8),
+      250deg,
+      rgba(color(drink-d3), 0.5)
+    );
+    &-list-item {
+      background-color: color(dark-op50);
+      &-title {
+        color: color(light-2);
+      }
+      &-details {
+        background-color: color(dark-op25);
+        &-line-item {
+          &-name {
+            color: color(light-2);
+          }
+          &-from {
+            margin-top: 1rem;
+            color: color(light-op50);
+          }
+          &-space {
+            font-size: 1.5rem;
+            color: #da158e;
+          }
+          &-is {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #da158e;
+          }
+        }
+      }
+      &-off {
+        &-text {
+          color: rgb(250, 129, 129);
+        }
+      }
+      &-price {
+        color: color(light-2);
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-desc {
+        &-text {
+          color: color(light-2);
+          &-persent {
+            color: rgb(255, 21, 21);
+          }
+        }
+      }
+    }
+  }
+}
+.coffee {
+  .bAd {
+    background: conic-gradient(
+      from 0.03turn at 30% 60%,
+      color(coffee-2),
+      60deg,
+      rgba(color(coffee-2), 0.5),
+      250deg,
+      rgba(color(coffee-2), 0.25)
+    );
+    &-list-item {
+      background-color: color(light-op75);
+      &-details {
+        background-color: color(light-op75);
+      }
+    }
+  }
+}
+.Dcoffee {
+  .bAd {
+    background: conic-gradient(
+      from 0.03turn at 30% 60%,
+      color(coffee-d2),
+      60deg,
+      rgba(color(coffee-d2), 0.8),
+      250deg,
+      rgba(color(coffee-d2), 0.5)
+    );
+    &-list-item {
+      background-color: color(dark-op50);
+      &-title {
+        color: color(light-2);
+      }
+      &-details {
+        background-color: color(dark-op25);
+        &-line-item {
+          &-name {
+            color: color(light-2);
+          }
+          &-from {
+            margin-top: 1rem;
+            color: color(light-op50);
+          }
+          &-space {
+            font-size: 1.5rem;
+            color: #da158e;
+          }
+          &-is {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #da158e;
+          }
+        }
+      }
+      &-off {
+        &-text {
+          color: rgb(250, 129, 129);
+        }
+      }
+      &-price {
+        color: color(light-2);
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-desc {
+        &-text {
+          color: color(light-2);
+          &-persent {
+            color: rgb(255, 21, 21);
+          }
+        }
+      }
+    }
+  }
+}
+.tools {
+  .bAd {
+    background: conic-gradient(
+      from 0.03turn at 30% 60%,
+      color(tools-1),
+      60deg,
+      rgba(color(tools-2), 0.6),
+      250deg,
+      rgba(color(tools-l2), 0.3)
+    );
+    &-list-item {
+      background-color: color(light-op50);
+      &-details {
+        background-color: color(tools-l1);
+      }
+    }
+  }
+}
+.Dtools {
+  .bAd {
+    background: conic-gradient(
+      from 0.03turn at 30% 60%,
+      color(tools-d1),
+      60deg,
+      color(tools-d2),
+      250deg,
+      rgba(color(tools-l1), 0.1)
+    );
+    &-list-item {
+      background-color: color(dark-op50);
+      &-title {
+        color: color(light-2);
+      }
+      &-details {
+        background-color: color(dark-op25);
+        &-line-item {
+          &-name {
+            color: color(light-2);
+          }
+          &-from {
+            margin-top: 1rem;
+            color: color(light-op50);
+          }
+          &-space {
+            font-size: 1.5rem;
+            color: #da158e;
+          }
+          &-is {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #da158e;
+          }
+        }
+      }
+      &-off {
+        &-text {
+          color: rgb(250, 129, 129);
+        }
+      }
+      &-price {
+        color: color(light-2);
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-desc {
+        &-text {
+          color: color(light-2);
+          &-persent {
+            color: rgb(255, 21, 21);
+          }
+        }
+      }
+    }
+  }
+}
+.news {
+  .bAd {
+    background: conic-gradient(
+      from 0.03turn at 30% 60%,
+      color(news-1),
+      60deg,
+      rgba(color(news-2), 0.6),
+      250deg,
+      rgba(color(news-l2), 0.3)
+    );
+    &-list-item {
+      background-color: rgba(color(news-l1), 0.8);
+      &-details {
+        background-color: color(news-l1);
+      }
+      &-desc {
+        &-text {
+          &-persent {
+            color: rgb(138, 7, 7);
+          }
+        }
+      }
+    }
+  }
+}
+.Dnews {
+  .bAd {
+    background: conic-gradient(
+      from 0.03turn at 30% 60%,
+      color(news-d1),
+      60deg,
+      color(news-d2),
+      250deg,
+      color(news-3)
+    );
+    @include blogResponsive(md) {
+      background: transparent;
+    }
+    &-list-item {
+      background-color: color(dark-op75);
+      &-title {
+        color: color(light-2);
+      }
+      &-details {
+        background-color: color(dark-op25);
+        &-line-item {
+          &-name {
+            color: color(light-2);
+          }
+          &-from {
+            margin-top: 1rem;
+            color: color(light-op50);
+          }
+          &-space {
+            font-size: 1.5rem;
+            color: #da158e;
+          }
+          &-is {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #da158e;
+          }
+        }
+      }
+      &-off {
+        &-text {
+          color: rgb(250, 129, 129);
+        }
+      }
+      &-price {
+        color: color(light-2);
+        svg {
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+      &-desc {
+        &-text {
+          color: color(light-2);
+          &-persent {
+            color: rgb(255, 21, 21);
+          }
+        }
+      }
+    }
+  }
+}

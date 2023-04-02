@@ -1,0 +1,179 @@
+.blogSkaleton {
+  background-color: color(dark-3);
+  padding-bottom: 10rem;
+  max-width: 1678px;
+  margin: 0 auto;
+  ul {
+    list-style: none;
+  }
+  .animation {
+    animation: backColor 0.6s linear 0s infinite alternate;
+  }
+  @keyframes backColor {
+    from {
+      opacity: 0.3;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  &-hero {
+    height: 30vh;
+    background-color: color(dark-4);
+  }
+  &-selected {
+    padding: 2rem;
+    background-color: color(dark-5);
+    &-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: color(light-2);
+    }
+    &-list {
+      padding: 1rem 2rem;
+      @include dflex;
+      gap: 2rem;
+      background-color: color(dark-op50);
+      overflow: hidden;
+      &-item {
+        border: 2px solid color(light-op50);
+        height: 20rem;
+        width: 100%;
+        background-color: color(light-op25);
+        min-width: 15rem;
+      }
+    }
+  }
+  &-new {
+    padding: 2rem;
+    background-color: color(dark-4);
+    &-title {
+      font-size: 1.2rem;
+      color: color(light-2);
+    }
+    &-container {
+      padding: 2rem;
+      @include dflex(space-between);
+      background-color: color(light-op25);
+      @include blogResponsive(md) {
+        flex-direction: column;
+      }
+    }
+    &-list {
+      padding: 1rem;
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+      width: 45%;
+      background-color: color(light-op25);
+      @include blogResponsive(md) {
+        width: 100%;
+      }
+
+      &-item {
+        height: 10rem;
+        background-color: color(light-op25);
+      }
+    }
+    &-main {
+      padding: 2rem;
+      background-color: color(dark-5);
+      width: 45%;
+      height: 54rem;
+      &-image {
+        border-radius: 10px;
+        height: 70%;
+        background-color: color(light-5);
+      }
+      &-text {
+        margin-top: 2rem;
+        border-radius: 10px;
+        height: 25%;
+
+        background-color: color(light-5);
+      }
+      @include blogResponsive(md) {
+        width: 100%;
+      }
+    }
+  }
+  &-random {
+    padding: 1rem;
+    background-color: color(dark-5);
+    &-title {
+      font-size: 1.2rem;
+      color: color(light-2);
+    }
+    // &-container {
+    // }
+    &-list {
+      @include dflex(space-evenly);
+      gap: 1rem;
+      padding: 1rem;
+      overflow: hidden;
+      &-item {
+        width: 100%;
+        max-width: 25rem;
+        min-width: 14rem;
+        &-container {
+          height: 25rem;
+          @include dflex(space-between);
+          flex-direction: column;
+          background-color: color(light-op25);
+          padding: 1rem;
+        }
+        &-image {
+          width: 100%;
+          height: 70%;
+          //   border: 2px solid red;
+          background-color: color(light-op50);
+        }
+        &-text {
+          width: 100%;
+          height: 25%;
+          margin-top: 1rem;
+          //   border: 2px solid red;
+          background-color: color(light-op50);
+        }
+      }
+    }
+  }
+  &-related {
+    margin: 2rem;
+    @include dflex(space-evenly);
+    gap: 1rem;
+    @include blogResponsive(md) {
+      flex-direction: column;
+    }
+    &-container {
+      height: 60rem;
+      width: 100%;
+      max-width: 40rem;
+      background-color: color(dark-5);
+      padding: 2rem 1rem;
+      border-radius: 5px;
+      @include blogResponsive(md) {
+        max-width: 100%;
+      }
+    }
+    &-title {
+      font-size: 1.2rem;
+      color: color(light-2);
+    }
+    &-list {
+      height: 90%;
+      margin-top: 2rem;
+      list-style: none;
+      padding: 0;
+      @include dflex;
+      flex-direction: column;
+      gap: 1rem;
+      &-item {
+        background-color: color(light-op25);
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

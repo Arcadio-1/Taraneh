@@ -36,3 +36,14 @@
 /////////blog
 @import "../components/Blog/Layout/Header/BHeader.scss";
 @import "../components/Blog/Layout/Footer/BFooter.scss";
+
+@import "../components/Blog/LoadingSkelton/homePage/homePageLoading1678.scss";
+@import "../components/Blog/ui/BlogUi.scss";
+@import "../components/Blog/BlogPost/blogPost.scss";
+
+@import "../components/Blog/HomePageSections/Hero/BHero.scss";
+@import "../components/Blog/HomePageSections/SelectedSlider/SelectedSlider.scss";
+@import "../components/Blog/HomePageSections/newPosts/newPosts.scss";
+@import "../components/Blog/HomePageSections/randomPosts/randomPosts.scss";
+@import "../components/Blog/HomePageSections/ad/adStyle.scss";
+@import "../components/Blog/HomePageSections/related/related.scss";

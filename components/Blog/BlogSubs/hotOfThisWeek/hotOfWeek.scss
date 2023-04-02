@@ -1,0 +1,289 @@
+.hotOfWeek {
+  background-color: antiquewhite;
+  padding: 1.5rem;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  background: conic-gradient(
+    from 0.03turn at 30% 30%,
+    color(drink-1),
+    60deg,
+    rgba(color(drink-1), 0.8),
+    250deg,
+    rgba(color(drink-l1), 0.2)
+  );
+  &-title {
+    color: color(light-2);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    @include blogResponsive(md) {
+      font-size: 1.5rem;
+    }
+  }
+  &-list {
+    @include dflex(flex-start, flex-start);
+    gap: 1rem;
+    flex-direction: column;
+    a {
+      color: color(dark-2);
+      width: 100%;
+      text-decoration: none;
+      &:hover {
+        transform: scale(1.01);
+      }
+    }
+    .bAd {
+      padding: 0;
+      background: transparent;
+      width: 100%;
+      // grid-column: 1/3;
+      &-title {
+        display: none;
+      }
+    }
+    .sAd {
+      display: none;
+    }
+    @include blogResponsive(sm) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      .sAd {
+        display: block;
+        &-title {
+          display: none;
+        }
+        &-list {
+          flex-direction: row;
+        }
+      }
+    }
+    &-item {
+      @include dflex(space-between);
+      background-color: rgba(color(drink-l1), 0.75);
+      padding-left: 1rem;
+      @include blur-5;
+      border-radius: 5px;
+      width: 100%;
+      @include blogResponsive(sm) {
+        padding: 0.8rem;
+        flex-direction: column;
+      }
+      &-image {
+        border-radius: 5px;
+        background-size: cover;
+        object-fit: cover;
+        width: 40%;
+        height: 12rem;
+        @include blogResponsive(sm) {
+          width: 100%;
+        }
+      }
+      &-data {
+        height: 8rem;
+        width: 60%;
+        margin: 1rem;
+        @include dflex(space-between);
+        flex-direction: column;
+        @include blogResponsive(sm) {
+          margin: 0;
+          width: 100%;
+        }
+        &-title {
+          line-height: 2rem;
+          font-size: 1.3rem;
+          text-align: right;
+          margin-left: auto;
+          line-height: 2.3rem;
+          @include blogResponsive(sm) {
+          }
+        }
+        &-dateAndWriter {
+          margin-right: auto;
+          gap: 1rem;
+          @include dflex(flex-end);
+          .profileIcon {
+            &-st1 {
+              stroke: color(dark-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Ddrink {
+  .hotOfWeek {
+    background: conic-gradient(
+      from 0.03turn at 30% 30%,
+      color(drink-d5),
+      60deg,
+      rgba(color(drink-d2), 0.8),
+      250deg,
+      rgba(color(drink-d3), 0.2)
+    );
+    &-list-item {
+      background-color: color(dark-op25);
+      &-data {
+        &-title {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.coffee {
+  .hotOfWeek {
+    background: conic-gradient(
+      from 0.03turn at 30% 30%,
+      color(coffee-1),
+      60deg,
+      color(coffee-2),
+      250deg,
+      rgba(color(coffee-1), 0.25)
+    );
+    &-list-item {
+      background-color: color(light-op50);
+    }
+  }
+}
+.Dcoffee {
+  .hotOfWeek {
+    background: conic-gradient(
+      from 0.03turn at 30% 30%,
+      color(coffee-d2),
+      60deg,
+      rgba(color(coffee-d1), 0.95),
+      250deg,
+      rgba(color(coffee-d1), 0.15)
+    );
+    &-list-item {
+      background-color: color(dark-op50);
+      &-data {
+        &-title {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.tools {
+  .hotOfWeek {
+    background: conic-gradient(
+      from 0.03turn at 30% 30%,
+      color(tools-1),
+      60deg,
+      rgba(color(tools-2), 0.6),
+      250deg,
+      rgba(color(tools-l2), 0.3)
+    );
+    &-list-item {
+      background-color: color(light-op50);
+    }
+  }
+}
+.Dtools {
+  .hotOfWeek {
+    background: conic-gradient(
+      from 0.03turn at 30% 30%,
+      color(tools-d1),
+      60deg,
+      color(tools-d2),
+      250deg,
+      rgba(color(tools-l1), 0.1)
+    );
+    &-list-item {
+      background-color: color(dark-op50);
+      &-data {
+        &-title {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.news {
+  .hotOfWeek {
+    background: conic-gradient(
+      from 0.03turn at 30% 30%,
+      color(news-1),
+      60deg,
+      rgba(color(news-2), 0.6),
+      250deg,
+      rgba(color(news-l2), 0.3)
+    );
+    &-list-item {
+      background-color: rgba(color(news-l1), 0.8);
+    }
+  }
+}
+.Dnews {
+  .hotOfWeek {
+    background: conic-gradient(
+      from 0.03turn at 30% 30%,
+      color(news-d1),
+      60deg,
+      color(news-d2),
+      250deg,
+      color(news-3)
+    );
+    &-list-item {
+      background-color: color(dark-op50);
+      &-data {
+        &-title {
+          color: color(light-2);
+        }
+        &-dateAndWriter {
+          color: color(light-2);
+          .clockIcon {
+            path {
+              fill: color(light-2);
+            }
+          }
+          .profileIcon {
+            &-st1 {
+              stroke: color(light-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}

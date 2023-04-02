@@ -1,0 +1,488 @@
+.sAd {
+  // grid-area: sAd;
+  width: 100%;
+  // margin: 0 1rem;
+  padding: 1rem;
+  border-radius: 10px 10px 0 0;
+  background: conic-gradient(
+    from 0.15turn at 40% 70%,
+    color(drink-1),
+    70deg,
+    rgba(color(drink-2), 0.8),
+    300deg,
+    rgba(color(drink-2), 0.5)
+  );
+  @include blogResponsive(lg) {
+    background: conic-gradient(
+      from 0.12turn at 40% 70%,
+      color(drink-1),
+      30deg,
+      rgba(color(drink-2), 0.8),
+      350deg,
+      rgba(color(drink-2), 0.5)
+    );
+  }
+  @include blogResponsive(md) {
+    background: conic-gradient(
+      from 0.05turn at 40% 70%,
+      color(drink-1),
+      30deg,
+      rgba(color(drink-2), 0.8),
+      350deg,
+      rgba(color(drink-2), 0.5)
+    );
+  }
+  @include blogResponsive(sm) {
+    background: conic-gradient(
+      from 0.05turn at 50% 30%,
+      color(drink-1),
+      30deg,
+      rgba(color(drink-2), 0.8),
+      350deg,
+      rgba(color(drink-2), 0.5)
+    );
+  }
+  &-title {
+    color: color(light-2);
+    font-size: 2rem;
+    @include blogResponsive(md) {
+      font-size: 1.5rem;
+    }
+  }
+  &-list {
+    @include dflex(space-between);
+    gap: 10px;
+    @include blogResponsive(md) {
+      // flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: color(dark-2);
+    }
+    &-slide {
+      border-radius: 10px;
+      width: 22rem;
+      height: 30rem;
+      max-width: 22rem;
+    }
+    &-item {
+      padding: 1rem;
+      @include dflex();
+      flex-direction: column;
+      background-color: rgba(color(drink-l2), 0.8);
+      @include blur-5;
+      width: 100%;
+      max-width: 20rem;
+      height: 23rem;
+      border-radius: 5px;
+      @include blogResponsive(md) {
+        margin-bottom: 1rem;
+      }
+      &:hover {
+        transform: scale(1.01);
+      }
+
+      &-image {
+        width: 100%;
+        max-width: 15rem;
+        max-height: 15rem;
+        margin: 0 auto;
+      }
+      &-title {
+        text-align: center;
+        font-size: 1.2rem;
+      }
+      &-down {
+        @include dflex();
+      }
+      &-offPersent {
+        font-family: iransansnum;
+        background-color: rgb(181, 7, 7);
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+        margin: 1rem;
+        margin-bottom: 0.5rem;
+        span {
+          color: color(light-2);
+        }
+      }
+      &-price {
+        font-family: iransansnum;
+      }
+    }
+  }
+}
+.Ddrink {
+  .sAd {
+    background: conic-gradient(
+      from 0.15turn at 40% 70%,
+      color(drink-d2),
+      70deg,
+      color(drink-d3),
+      300deg,
+      color(drink-d4)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.12turn at 40% 70%,
+        color(drink-d2),
+        30deg,
+        color(drink-d3),
+        350deg,
+        color(drink-d4)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.05turn at 40% 70%,
+        color(drink-d2),
+        30deg,
+        color(drink-d3),
+        350deg,
+        color(drink-d4)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.05turn at 50% 30%,
+        color(drink-d2),
+        30deg,
+        color(drink-d3),
+        350deg,
+        color(drink-d4)
+      );
+    }
+    &-list-item {
+      background-color: rgba(color(drink-d2), 0.7);
+      &-title {
+        color: color(light-2);
+      }
+      &-price {
+        color: color(light-2);
+      }
+      svg {
+        path {
+          fill: rgb(218, 8, 8);
+        }
+      }
+    }
+  }
+}
+.coffee {
+  .sAd {
+    background: conic-gradient(
+      from 0.15turn at 40% 70%,
+      color(coffee-1),
+      70deg,
+      color(coffee-2),
+      300deg,
+      rgba(color(coffee-2), 0.25)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.12turn at 40% 70%,
+        color(coffee-1),
+        30deg,
+        color(coffee-2),
+        350deg,
+        rgba(color(coffee-2), 0.25)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.05turn at 40% 70%,
+        color(coffee-1),
+        30deg,
+        color(coffee-2),
+        350deg,
+        rgba(color(coffee-2), 0.25)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.05turn at 50% 30%,
+        color(coffee-1),
+        30deg,
+        color(coffee-2),
+        350deg,
+        rgba(color(coffee-2), 0.25)
+      );
+    }
+    &-list-item {
+      background-color: color(light-op75);
+      svg {
+        path {
+          fill: rgb(218, 8, 8);
+        }
+      }
+    }
+  }
+}
+.Dcoffee {
+  .sAd {
+    background: conic-gradient(
+      from 0.15turn at 40% 70%,
+      color(coffee-d3),
+      70deg,
+      rgba(color(coffee-d2), 0.8),
+      300deg,
+      rgba(color(coffee-2), 0.25)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.12turn at 40% 70%,
+        color(coffee-d3),
+        30deg,
+        rgba(color(coffee-d2), 0.8),
+        350deg,
+        rgba(color(coffee-2), 0.25)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.05turn at 40% 70%,
+        color(coffee-d3),
+        30deg,
+        rgba(color(coffee-d2), 0.8),
+        350deg,
+        rgba(color(coffee-2), 0.25)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.05turn at 50% 30%,
+        color(coffee-d3),
+        30deg,
+        rgba(color(coffee-d2), 0.8),
+        350deg,
+        rgba(color(coffee-2), 0.25)
+      );
+    }
+    &-list-item {
+      background-color: rgba(color(coffee-d1), 0.4);
+      &-title {
+        color: color(light-2);
+      }
+      &-price {
+        color: color(light-2);
+      }
+      svg {
+        path {
+          fill: rgb(218, 8, 8);
+        }
+      }
+    }
+  }
+}
+.tools {
+  .sAd {
+    background: conic-gradient(
+      from 0.15turn at 40% 70%,
+      color(tools-1),
+      70deg,
+      rgba(color(tools-l2), 0.5),
+      300deg,
+      rgba(color(tools-l1), 0.3)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.12turn at 40% 70%,
+        color(tools-1),
+        30deg,
+        rgba(color(tools-l2), 0.5),
+        350deg,
+        rgba(color(tools-l1), 0.3)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.05turn at 40% 70%,
+        color(tools-1),
+        30deg,
+        rgba(color(tools-l2), 0.5),
+        350deg,
+        rgba(color(tools-l1), 0.3)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.05turn at 50% 30%,
+        color(tools-1),
+        30deg,
+        rgba(color(tools-l2), 0.5),
+        350deg,
+        rgba(color(tools-l1), 0.3)
+      );
+    }
+    &-list-item {
+      background-color: color(light-op75);
+      svg {
+        path {
+          fill: rgb(218, 8, 8);
+        }
+      }
+    }
+  }
+}
+.Dtools {
+  .sAd {
+    background: conic-gradient(
+      from 0.15turn at 40% 70%,
+      color(tools-d2),
+      70deg,
+      rgba(color(tools-d3), 0.5),
+      300deg,
+      rgba(color(tools-l1), 0.3)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.12turn at 40% 70%,
+        color(tools-d2),
+        30deg,
+        rgba(color(tools-d3), 0.5),
+        350deg,
+        rgba(color(tools-l1), 0.3)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.05turn at 40% 70%,
+        color(tools-d2),
+        30deg,
+        rgba(color(tools-l2), 0.5),
+        350deg,
+        rgba(color(tools-d3), 0.5)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.05turn at 50% 30%,
+        color(tools-d2),
+        30deg,
+        rgba(color(tools-d3), 0.5),
+        350deg,
+        rgba(color(tools-l1), 0.3)
+      );
+    }
+    &-list-item {
+      background-color: rgba(color(tools-d1), 0.4);
+      &-title {
+        color: color(light-2);
+      }
+      &-price {
+        color: color(light-2);
+      }
+      svg {
+        path {
+          fill: rgb(218, 8, 8);
+        }
+      }
+    }
+  }
+}
+.news {
+  .sAd {
+    background: conic-gradient(
+      from 0.15turn at 40% 70%,
+      color(news-1),
+      70deg,
+      rgba(color(news-l2), 0.5),
+      300deg,
+      rgba(color(news-l1), 0.3)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.12turn at 40% 70%,
+        color(news-1),
+        30deg,
+        rgba(color(news-l2), 0.5),
+        350deg,
+        rgba(color(news-l1), 0.3)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 10% 30%,
+        color(news-1),
+        30deg,
+        rgba(color(news-l2), 0.5),
+        350deg,
+        rgba(color(news-l1), 0.3)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.05turn at 50% 30%,
+        color(news-1),
+        30deg,
+        rgba(color(news-l2), 0.5),
+        350deg,
+        rgba(color(news-l1), 0.3)
+      );
+    }
+    &-list-item {
+      background-color: color(light-op75);
+      svg {
+        path {
+          fill: rgb(218, 8, 8);
+        }
+      }
+    }
+  }
+}
+.Dnews {
+  .sAd {
+    background: conic-gradient(
+      from 0.15turn at 40% 70%,
+      color(news-d2),
+      70deg,
+      rgba(color(news-d3), 0.5),
+      300deg,
+      rgba(color(news-l1), 0.3)
+    );
+    @include blogResponsive(lg) {
+      background: conic-gradient(
+        from 0.12turn at 40% 70%,
+        color(news-d2),
+        30deg,
+        rgba(color(news-d3), 0.5),
+        350deg,
+        rgba(color(news-l1), 0.3)
+      );
+    }
+    @include blogResponsive(md) {
+      background: conic-gradient(
+        from 0.03turn at 10% 30%,
+        color(news-d2),
+        30deg,
+        rgba(color(news-d2), 0.5),
+        350deg,
+        rgba(color(news-l3), 0.5)
+      );
+    }
+    @include blogResponsive(sm) {
+      background: conic-gradient(
+        from 0.05turn at 50% 30%,
+        color(news-d2),
+        30deg,
+        rgba(color(news-d3), 0.5),
+        350deg,
+        rgba(color(news-l1), 0.3)
+      );
+    }
+    &-list-item {
+      background-color: rgba(color(coffee-d1), 0.4);
+      &-title {
+        color: color(light-2);
+      }
+      &-price {
+        color: color(light-2);
+      }
+      svg {
+        path {
+          fill: rgb(218, 8, 8);
+        }
+      }
+    }
+  }
+}

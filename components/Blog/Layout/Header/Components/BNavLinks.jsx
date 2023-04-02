@@ -1,20 +1,17 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import CatSubLinks from "./menu/CatSubLinks";
 import Link from "next/link";
 import ArrowsIcon from "../../../../ui/Icons/arrowsIcon";
 import MenuIcon from "../../../../ui/Icons/MenuIcon";
-import { blogGetBlogNavLinks } from "../../../../../store/Blog/getData/BlogGetDataAction";
 import { useDispatch, useSelector } from "react-redux";
-// import useToggleMenu from "../../../../../Hook/UseToggoleMenu";
 import { blogUiAction } from "../../../../../store/Blog/ui/blogUislice";
 import { uiAction } from "../../../../../store/ui/uiSlice";
 
 const BNavLinks = (props) => {
-  const dispatchNavLinks = useDispatch();
   const dispatchBackDrop = useDispatch();
   const dispatchShowMenu = useDispatch();
-  const navLinks = useSelector((state) => state.blogGetData.blogNavLinks);
-  // const { isShowMenu, menuRef: cartRef, showMenuHandler } = useToggleMenu();
+  const [navLinks, setNavLinks] = useState([]);
+  const [navLinksStatus, setNavLinksStatus] = useState([]);
   const windowWidth = useSelector((state) => state.ui.windowWidth);
 
   const showMenuHandler = () => {
@@ -24,9 +21,48 @@ const BNavLinks = (props) => {
     dispatchBackDrop(uiAction.showBackDrop());
     dispatchShowMenu(blogUiAction.setIsShowBlogMenu(true));
   };
+
   useEffect(() => {
-    dispatchNavLinks(blogGetBlogNavLinks());
-  }, [dispatchNavLinks]);
+    const getNavLinks = async () => {
+      try {
+        setNavLinksStatus({
+          status: "loading",
+          title: "در حال دریافت",
+          message: "در حال دریافت سربرگ ها",
+        });
+        const request = await fetch("/api/blog/ui/getNavLinks", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!request.ok) {
+          throw new Error(data.error, "خطا در دریافت سربرگ کد 1");
+        }
+        const response = await request.json();
+        if (response.status !== "success") {
+          throw new Error(data.error, "خطا در دریافت لیست سربرگ کد 2");
+        }
+        const links = [];
+        for (const key in response.data) {
+          links.push({
+            id: key,
+            title: response.data[key].title,
+            path: response.data[key].link,
+          });
+        }
+        setNavLinks((prev) => {
+          return (prev = links);
+        });
+      } catch (error) {
+        setNavLinksStatus({
+          status: "error",
+          title: "خطا در دریافت سربرگ ها",
+          message: error.message,
+        });
+      }
+    };
+    getNavLinks();
+  }, []);
 
   // useEffect(() => {
   //   console.log(navLinks);

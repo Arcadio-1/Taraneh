@@ -34,7 +34,6 @@ const BlogMenu = () => {
   const menuClass = isShowMenu ? `${isItDark} showBmenu` : "";
 
   useEffect(() => {
-    console.log(backdropStatus);
     if (!backdropStatus) {
       dispatch(blogUiAction.setIsShowBlogMenu(false));
     }

@@ -1,0 +1,257 @@
+.randomPostAd {
+  display: none;
+  margin-right: 1rem;
+  background-color: color(light-op50);
+  padding: 1rem;
+  &-header {
+    font-family: iranyekan;
+    font-size: 1.5rem;
+  }
+  &-list {
+    list-style: none;
+    @include dflex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 1rem;
+    @include blogResponsive(md) {
+      flex-direction: row;
+    }
+    &-item {
+      border-radius: 10px;
+      background-color: color(light-op75);
+      margin: 1rem auto;
+      width: 100%;
+      &-container {
+        text-decoration: none;
+        padding: 1rem;
+        @include dflex;
+        flex-direction: column;
+        text-align: center;
+      }
+      &-image {
+        width: 100%;
+        max-width: 15rem;
+      }
+      &-title {
+        color: color(dark-2);
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      &-pricing {
+        @include dflex;
+        &-offPersent {
+          margin: 1rem 0 0 0.5rem;
+          font-size: 1.2rem;
+          border-radius: 5px;
+          padding: 0.1rem 0.3rem;
+          font-family: iransansnum;
+          color: color(light-1);
+          background-color: tomato;
+        }
+        &-price {
+          color: color(dark-2);
+          font-size: 1.5rem;
+          font-family: iransansnum;
+        }
+      }
+    }
+  }
+  @include blogResponsive(lg) {
+    display: block;
+  }
+}
+.relatedAd {
+  display: none;
+  background-color: color(dark-op25);
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 5px;
+  @include blogResponsive(lg) {
+    display: block;
+  }
+  @include blogResponsive(md) {
+    background-color: transparent;
+  }
+  &-title {
+    font-size: 1.5rem;
+    font-family: iranyekan;
+    color: color(dark-1);
+    border-bottom: 2px solid color(dark-op25);
+    padding-bottom: 1rem;
+  }
+  &-list {
+    list-style: none;
+    padding: 0;
+    &-item {
+      background-color: color(light-1);
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 5px;
+      @include blogResponsive(md) {
+        margin: 1rem auto;
+        // max-width: 50rem;
+      }
+      &-container {
+        text-decoration: none;
+        display: grid;
+        grid-template-areas:
+          "title title title title title "
+          "img img desc desc desc "
+          "img img desc desc desc "
+          "img img desc desc desc "
+          "img img price price price "
+          "sugges sugges sugges sugges sugges ";
+        @include blogResponsive(md) {
+          grid-template-areas:
+            "img img title title title "
+            "img img desc desc price "
+            "img img sugges sugges sugges ";
+        }
+        @include blogResponsive(sm) {
+          grid-template-areas:
+            "title title title title title "
+            "img img desc desc desc "
+            "img img desc desc desc "
+            "img img desc desc desc "
+            "img img price price price "
+            "sugges sugges sugges sugges sugges ";
+        }
+      }
+
+      &-title {
+        grid-area: title;
+        color: color(dark-3);
+        font-size: 1.3rem;
+      }
+
+      &-image {
+        grid-area: img;
+        width: 100%;
+        @include blogResponsive(md) {
+          max-width: 12rem;
+          min-width: 8rem;
+        }
+      }
+      &-desc {
+        @include dflex;
+        grid-area: desc;
+        color: color(dark-op75);
+      }
+      &-pricing {
+        grid-area: price;
+        @include dflex(flex-end);
+        margin-right: 1rem;
+        &-discount {
+          margin-left: -1rem;
+          color: tomato;
+        }
+        &-offPersent {
+          margin-top: 3rem;
+          border-radius: 5px;
+          padding: 0rem 0.3rem;
+          font-size: 1rem;
+          font-family: iransansnum;
+          background-color: rgb(210, 60, 34);
+          color: color(light-1);
+        }
+        &-price {
+          color: color(dark-op75);
+          font-size: 1.3rem;
+          font-weight: 650;
+          font-family: iransansnum;
+        }
+        svg {
+          margin-bottom: 1rem;
+          path {
+            fill: color(dark-op75);
+          }
+        }
+      }
+      &-sugges {
+        grid-area: sugges;
+        margin: 0;
+        @include dflex(flex-start);
+        gap: 0.3rem;
+        &-persent {
+          font-family: iransansnum;
+          font-weight: 600;
+          color: color(g1-6);
+        }
+        &-pesons {
+          color: color(dark-4);
+          font-weight: 600;
+          font-family: iransansnum;
+        }
+        &-text {
+          font-family: iranyekan;
+        }
+      }
+    }
+  }
+}
+.dark {
+  .randomPostAd {
+    background-color: color(dark-op50);
+    &-header {
+      color: color(light-2);
+    }
+    &-list {
+      &-item {
+        background-color: color(light-op25);
+        &-title {
+          color: color(light-2);
+        }
+        &-pricing {
+          &-price {
+            color: color(light-2);
+          }
+        }
+      }
+    }
+    @include blogResponsive(lg) {
+      display: block;
+    }
+  }
+  .relatedAd {
+    background-color: color(dark-op50);
+    &-title {
+      color: color(light-2);
+      border-bottom: 2px solid color(light-op25);
+    }
+    &-list {
+      &-item {
+        background-color: color(dark-5);
+        &-title {
+          color: color(light-2);
+        }
+        &-middle {
+          &-desc {
+            color: color(light-op75);
+          }
+        }
+        &-pricing {
+          &-price {
+            color: color(light-op75);
+          }
+          svg {
+            path {
+              fill: color(light-op75);
+            }
+          }
+        }
+        &-sugges {
+          &-persent {
+            color: color(g1-6);
+          }
+          &-pesons {
+            color: color(light-3);
+          }
+          &-text {
+            color: color(light-2);
+          }
+        }
+      }
+    }
+  }
+}

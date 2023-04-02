@@ -12,12 +12,11 @@ const BHeader = () => {
   const location = useRouter();
   const isDark = useSelector((state) => state.blogUi.isDark);
   const sub = useSelector((state) => state.blogUi.blogSub);
-  //   useEffect(() => {
-  //     console.log(sub);
-  //   }, [sub]);
+  const subsClass = useSelector((state) => state.blogUi.subsClass);
 
   const dispatch = useDispatch();
-  let theClass = "";
+  // let theClass = "";
+  const path = location.pathname;
 
   const [showMiniSearch, setShowMiniSearch] = useState(false);
   const [position, setPosition] = useState(window.pageYOffset);
@@ -27,25 +26,21 @@ const BHeader = () => {
     setShowMiniSearch((prev) => !prev);
   };
 
-  const containerClass = showMiniSearch
-    ? "BHeader-container gridWithSearch"
-    : "BHeader-container";
   useEffect(() => {
     const handleScroll = () => {
-      console.log("scroling");
       let moving = window.pageYOffset;
 
       setVisible(position > moving);
       setPosition(moving);
     };
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   });
-  const cls = visible ? "BHeaderVisible" : "BHeaderHidden";
+
   useEffect(() => {
-    const path = location.pathname;
     if (path.includes("/blog/coffee")) {
       dispatch(blogUiAction.setBlogSub("coffee"));
       return;
@@ -63,36 +58,43 @@ const BHeader = () => {
       return;
     }
     dispatch(blogUiAction.setBlogSub(null));
-  }, [location, dispatch]);
+  }, [location, dispatch, path]);
 
-  switch (sub) {
-    case "coffee":
-      // console.log(sub);
-      isDark ? (theClass = "Dcoffee coffee") : (theClass = "coffee");
-      dispatch(blogUiAction.setSubsClass(theClass));
-      break;
-    case "drink":
-      isDark ? (theClass = "Ddrink drink") : (theClass = "drink");
-      dispatch(blogUiAction.setSubsClass(theClass));
-      break;
-    case "tools":
-      isDark ? (theClass = "Dtools tools") : (theClass = "tools");
-      dispatch(blogUiAction.setSubsClass(theClass));
-      break;
-    case "news":
-      isDark ? (theClass = "Dnews news") : (theClass = "news");
-      dispatch(blogUiAction.setSubsClass(theClass));
-      break;
-    default:
-      theClass = "";
-      dispatch(blogUiAction.setSubsClass(""));
-      break;
-  }
+  useEffect(() => {
+    switch (sub) {
+      case "coffee":
+        dispatch(
+          blogUiAction.setSubsClass(isDark ? "Dcoffee coffee" : "coffee")
+        );
+        break;
+      case "drink":
+        dispatch(blogUiAction.setSubsClass(isDark ? "Ddrink drink" : "drink"));
+        break;
+      case "tools":
+        dispatch(blogUiAction.setSubsClass(isDark ? "Dtools tools" : "tools"));
+        break;
+      case "news":
+        dispatch(blogUiAction.setSubsClass(isDark ? "Dnews news" : "news"));
+        break;
+      default:
+        dispatch(blogUiAction.setSubsClass(""));
+        break;
+    }
+  }, [isDark, sub, dispatch]);
 
-  const headerClass = isDark && theClass === "" ? "dark" : "";
   return (
-    <header className={`BHeader ${headerClass} ${theClass} ${cls}`}>
-      <div className={containerClass}>
+    <header
+      className={`BHeader ${
+        isDark && subsClass === "" ? "dark" : ""
+      } ${subsClass} ${visible ? "BHeaderVisible" : "BHeaderHidden"}`}
+    >
+      <div
+        className={
+          showMiniSearch
+            ? "BHeader-container gridWithSearch"
+            : "BHeader-container"
+        }
+      >
         <BNavLinks
           onToggleMiniSearch={toggleMiniSeachHandler}
           miniSearchShowed={showMiniSearch}
