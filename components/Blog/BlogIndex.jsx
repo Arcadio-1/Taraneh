@@ -1,11 +1,11 @@
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import BHero from "../../components/BLOG/HomePageSections/Hero/BHero";
-import NewPosts from "../../components/BLOG/HomePageSections/newPosts/NewPosts";
-import RandomPosts from "../../components/BLOG/HomePageSections/randomPosts/RandomPosts";
-import Related from "../../components/BLOG/HomePageSections/related/Related";
-import SelectedSlider from "../../components/BLOG/HomePageSections/SelectedSlider/SelectedSlider";
-import HomePageLoading from "../../components/BLOG/LoadingSkelton/homePage/HomePageLoading1678";
+import BHero from "./HomePageSections/Hero/BHero";
+import NewPosts from "./HomePageSections/newPosts/NewPosts";
+import RandomPosts from "./HomePageSections/randomPosts/RandomPosts";
+import Related from "./HomePageSections/related/Related";
+import SelectedSlider from "./HomePageSections/SelectedSlider/SelectedSlider";
+import HomePageLoading from "./LoadingSkelton/homePage/HomePageLoading1678";
 import {
   getAdProducts,
   getBlogPosts,
