@@ -5,7 +5,8 @@ import PostHeadViews from "./PostHeadViews";
 import LikeAndDislike from "../LikeAndDislike";
 import Sharing from "../Sharing";
 import DateOfPostNum from "../../../ui/DateOfPostNum";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 
 const PostHead = (props) => {
   const { title, writer, date, views, liked, disLike, notes, imageUrl } =
@@ -21,8 +22,8 @@ const PostHead = (props) => {
           <DateOfPostNum postDate={date} />
         </div>
         <div className="blogPost-head-innerImage">
-          <Link to={"#"}>
-            <img src={imageUrl} alt={title} />
+          <Link href={"#"}>
+            <Image src={imageUrl} alt={title} width={200} height={200} />
           </Link>
         </div>
         <PostHeadNotes notes={notes} />
@@ -33,8 +34,8 @@ const PostHead = (props) => {
         <Sharing />
       </div>
       <div className="blogPost-head-imageContainer">
-        <Link to={"#"}>
-          <img src={imageUrl} alt={title} />
+        <Link href={"#"}>
+          <Image src={imageUrl} alt={title} width={200} height={200} />
         </Link>
       </div>
     </div>

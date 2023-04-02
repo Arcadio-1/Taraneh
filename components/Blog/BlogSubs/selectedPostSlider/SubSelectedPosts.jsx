@@ -6,10 +6,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../../../ui/LoadingSpiner/loadingSpiner";
+import Link from "next/link";
+import Image from "next/image";
 
 const SubSelectedPosts = () => {
   const Posts = useSelector((state) => state.getData.blogPosts);
@@ -50,9 +51,11 @@ const SubSelectedPosts = () => {
                     id={link.id}
                     className="SubSelectedSlider-swiper-slide"
                   >
-                    <Link to={`/blog/${subCat}/${link.id}`}>
+                    <Link href={`/blog/${subCat}/${link.id}`}>
                       <div className="SubSelectedSlider-swiper-post">
-                        <img
+                        <Image
+                          height={150}
+                          width={150}
                           className="SubSelectedSlider-swiper-post-img"
                           src={link.imageUrl}
                           alt={link.title}

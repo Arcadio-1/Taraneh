@@ -16,12 +16,6 @@ const BlogIndex = () => {
     (state) => state.blogUi.blogPostsStatus
   );
 
-  const blogPosts = useSelector((state) => state.blogGetData.blogPosts);
-
-  // useEffect(() => {
-  //   console.log(getAllBlogPostsStatus);
-  // }, [getAllBlogPostsStatus]);
-
   useEffect(() => {
     dispatch(getBlogPosts());
     dispatch(getAdProducts());

@@ -1,6 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 // import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import SAd from "../../../BlogSubs/ad/SAd";
 import SubSelectedPosts from "../../../BlogSubs/selectedPostSlider/SubSelectedPosts";
 import LikeAndDislike from "../LikeAndDislike";
@@ -16,12 +17,12 @@ const PostData = (props) => {
         <p>{desc.substr(0, 400)}</p>
         <p>{desc.substr(0, 500)}</p>
         <p>{desc.substr(0, 300)}</p>
-        <img src={imageUrl} alt={title} />
+        <Image src={imageUrl} alt={title} width={100} height={100} />
         <p>{desc.substr(0, 500)}</p>
         <p>{desc.substr(0, 400)}</p>
         <p>{desc.substr(0, 600)}</p>
         <p>{desc.substr(0, 300)}</p>
-        <img src={imageUrl} alt={title} />
+        <Image src={imageUrl} alt={title} width={100} height={100} />
         <p>{desc.substr(0, 500)}</p>
         <p>{desc.substr(0, 300)}</p>
         <p>{desc.substr(0, 400)}</p>
@@ -36,7 +37,7 @@ const PostData = (props) => {
               {tags.map((item) => {
                 return (
                   <li key={item} className="blogPost-body-down-tags-list-item">
-                    <Link to={"#"}>#{item}</Link>
+                    <Link href={"#"}>#{item}</Link>
                   </li>
                 );
               })}

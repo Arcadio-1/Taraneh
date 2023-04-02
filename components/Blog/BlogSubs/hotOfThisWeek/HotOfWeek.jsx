@@ -17,7 +17,7 @@ const HotOfWeek = (props) => {
         .slice(props.from, props.to)
         .map((item) => item));
     });
-  }, [posts]);
+  }, [posts, props.from, props.to]);
   return (
     <section className="hotOfWeek">
       <h2 className="hotOfWeek-title">مطالب داغ هفته</h2>

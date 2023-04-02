@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -8,31 +9,39 @@ const SubHeader = () => {
     <section className="subHeader">
       <div className="subHeader-container">
         {blogSub === "coffee" && (
-          <img
+          <Image
             className="subHeader-img"
             src="/image/subHeders/coffee.png"
-            alt=""
+            alt="coffee"
+            width={50}
+            height={50}
           />
         )}
         {blogSub === "drink" && (
-          <img
+          <Image
             className="subHeader-img"
             src="/image/subHeders/drinks.png"
-            alt=""
+            alt="drinks"
+            width={50}
+            height={50}
           />
         )}
         {blogSub === "news" && (
-          <img
+          <Image
             className="subHeader-img"
             src="/image/subHeders/news.png"
-            alt=""
+            alt="news"
+            width={50}
+            height={50}
           />
         )}
         {blogSub === "tools" && (
-          <img
+          <Image
             className="subHeader-img"
             src="/image/subHeders/tools.png"
-            alt=""
+            alt="tools"
+            width={50}
+            height={50}
           />
         )}
       </div>

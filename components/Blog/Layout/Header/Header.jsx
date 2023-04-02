@@ -15,7 +15,6 @@ const BHeader = () => {
   const subsClass = useSelector((state) => state.blogUi.subsClass);
 
   const dispatch = useDispatch();
-  // let theClass = "";
   const path = location.pathname;
 
   const [showMiniSearch, setShowMiniSearch] = useState(false);

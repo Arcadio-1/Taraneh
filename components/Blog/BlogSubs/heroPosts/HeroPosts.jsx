@@ -1,6 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 const HeroPosts = () => {
   const [heroPosts, setHeroPosts] = useState([]);
@@ -24,11 +25,13 @@ const HeroPosts = () => {
               className={`heroPosts-item heroPosts-item-${index}`}
               key={item.id}
             >
-              <Link to={`/drink/${item.id}`}>
-                <img
+              <Link href={`/drink/${item.id}`}>
+                <Image
                   className="heroPosts-item-image"
                   src={item.imageUrl}
                   alt={item.title}
+                  width={100}
+                  height={100}
                 />
                 <div className="heroPosts-item-titleBg">
                   <h2 className="heroPosts-item-title">{item.title}</h2>

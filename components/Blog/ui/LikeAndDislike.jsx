@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const LikeAndDislike = (props) => {
@@ -5,11 +6,21 @@ const LikeAndDislike = (props) => {
     <div className="likeAndDislike">
       <div className="likeAndDislike-like item">
         <span>{props.like}</span>
-        <img src="/image/Blog/icons/like.svg" alt="like" />
+        <Image
+          src="/image/Blog/icons/like.svg"
+          alt="like"
+          width={50}
+          height={50}
+        />
       </div>
       <div className="likeAndDislike-dislike item">
         <span>{props.like}</span>
-        <img src="/image/Blog/icons/dislike.svg" alt="like" />
+        <Image
+          src="/image/Blog/icons/dislike.svg"
+          alt="dislike"
+          width={50}
+          height={50}
+        />
       </div>
     </div>
   );
