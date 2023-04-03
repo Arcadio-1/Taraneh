@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import TomanIcon from "../../../ui/Icons/tomanIcon";
+import TomanIcon from "../../../../ui/Icons/tomanIcon";
 const BAdItem = (props) => {
   const { id, title, imageLink, statistics, taste, price } = props.item;
   return (

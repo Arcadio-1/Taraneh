@@ -5,10 +5,10 @@ import SAd from "../ad/SAd";
 import BAd from "../ad/BAd";
 
 const HotOfWeek = (props) => {
-  const posts = useSelector((state) => state.getData.blogPosts);
-  const blogSub = useSelector((state) => state.ui.blogSub);
+  const posts = useSelector((state) => state.blogGetData.blogPosts);
+  const blogSub = useSelector((state) => state.blogUi.blogSub);
 
-  const status = useSelector((state) => state.ui.getAllBlogPostsStatus);
+  const status = useSelector((state) => state.blogUi.blogPostsStatus);
   const [hotOfWeek, setHotOfWeek] = useState();
   useEffect(() => {
     const allHotOfWeek = posts.filter((item) => item.cat === "hotOfWeek");

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import TomanIcon from "../../../ui/Icons/tomanIcon";
+import TomanIcon from "../../../../ui/Icons/tomanIcon";
 
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,8 +13,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const SAd = (props) => {
-  const adProducts = useSelector((state) => state.getData.adProducts);
-  const status = useSelector((state) => state.ui.getAdProductsStatus);
+  const adProducts = useSelector((state) => state.blogGetData.blogAdProducts);
+  const status = useSelector((state) => state.blogUi.blogAdProductsStatus);
   const [toShow, setToShow] = useState();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const SAd = (props) => {
   return (
     <section className="sAd">
       <h2 className="sAd-title">محصولات مرتبط</h2>
-      {toShow && status && status.status === "Success" && (
+      {toShow && status.status === "success" && (
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={1}

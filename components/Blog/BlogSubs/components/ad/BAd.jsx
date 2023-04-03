@@ -11,17 +11,17 @@ import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 
 const BAd = (props) => {
-  const AdProducts = useSelector((state) => state.getData.adProducts);
-  const status = useSelector((state) => state.ui.getAdProductsStatus);
+  const adProducts = useSelector((state) => state.blogGetData.blogAdProducts);
+  const status = useSelector((state) => state.blogUi.blogAdProductsStatus);
   const [toShow, setToShow] = useState();
   useEffect(() => {
-    const allBAd = AdProducts.filter((item) => item.adCat === "b-ad");
+    const allBAd = adProducts.filter((item) => item.adCat === "b-ad");
     setToShow(allBAd.slice(props.from, props.to).map((item) => item));
-  }, [AdProducts, props]);
+  }, [adProducts, props]);
   return (
     <section className="bAd">
       <h2 className="bAd-title">محصولات پیشنهادی</h2>
-      {toShow && status && status.status === "Success" && (
+      {toShow && status.status === "success" && (
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={1}

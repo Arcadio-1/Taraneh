@@ -1,10 +1,10 @@
-import WriterOfPost from "../../ui/WriterOfPost";
-import DateOfPost from "../../ui/DateOfPost";
-import { Link } from "react-router-dom";
 import Image from "next/image";
+import WriterOfPost from "../../../ui/WriterOfPost";
+import DateOfPost from "../../../ui/DateOfPost";
+import Link from "next/link";
 const hotOfWeekItem = (props) => {
   return (
-    <Link to={`/blog/${props.blogSub}/${props.item.id}`}>
+    <Link href={`/blog/${props.blogSub}/${props.item.id}`}>
       <div className="hotOfWeek-list-item">
         <Image
           width={100}

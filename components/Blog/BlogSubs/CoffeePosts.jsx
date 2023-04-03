@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import PostList from "../../../components/BLOG/BlogSubs/postList/PostList";
+import PostList from "../postList/PostList";
 import {
   getAdProducts,
   getBlogPosts,

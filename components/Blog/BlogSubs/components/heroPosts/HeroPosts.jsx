@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 const HeroPosts = () => {
   const [heroPosts, setHeroPosts] = useState([]);
-  const posts = useSelector((state) => state.getData.blogPosts);
-  const status = useSelector((state) => state.ui.getAllBlogPostsStatus);
+  const posts = useSelector((state) => state.blogGetData.blogPosts);
+  const status = useSelector((state) => state.blogUi.blogPostsStatus);
   useEffect(() => {
     setHeroPosts((prev) => {
       return (prev = posts.filter((item) => {
@@ -17,7 +17,6 @@ const HeroPosts = () => {
   return (
     <section className="heroPosts">
       {heroPosts &&
-        status &&
         status.status === "success" &&
         heroPosts.map((item, index) => {
           return (

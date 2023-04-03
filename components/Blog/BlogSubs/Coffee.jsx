@@ -1,16 +1,16 @@
 import React, { Fragment, useEffect } from "react";
-import SubHeader from "../../../components/BLOG/BlogSubs/header/SubHeader";
-import HeroPosts from "../../../components/BLOG/BlogSubs/heroPosts/HeroPosts";
-import SubSelectedPosts from "../../../components/BLOG/BlogSubs/selectedPostSlider/SubSelectedPosts";
-import LastPosts from "../../../components/BLOG/BlogSubs/lastPosts/LastPosts";
-import HotOfWeek from "../../../components/BLOG/BlogSubs/hotOfThisWeek/HotOfWeek";
-import BAd from "../../../components/BLOG/BlogSubs/ad/BAd";
-import SAd from "../../../components/BLOG/BlogSubs/ad/SAd";
+import SubHeader from "./components/header/SubHeader";
+import HeroPosts from "./components/heroPosts/HeroPosts";
+import SubSelectedPosts from "./components/selectedPostSlider/SubSelectedPosts";
+import LastPosts from "./components/lastPosts/LastPosts";
+import HotOfWeek from "./components/hotOfThisWeek/HotOfWeek";
+import BAd from "./components/ad/BAd";
+import SAd from "./components/ad/SAd";
 import { useDispatch } from "react-redux";
 import {
   getAdProducts,
   getBlogPosts,
-} from "../../../Store/Data/getData/getDataActions";
+} from "../../../store/Blog/getData/BlogGetDataAction";
 const Coffee = () => {
   const dispatch = useDispatch();
   useEffect(() => {

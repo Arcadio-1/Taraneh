@@ -1,0 +1,63 @@
+.PDrink {
+  &-hotOfWeekAndAdContainer {
+    display: grid;
+    grid-template-areas: "subLastPosts subLastPosts subLastPosts subLastPosts HotAndAd HotAndAd";
+    width: 100%;
+    max-width: 1678px;
+    margin: 0 auto;
+    &-hotOfWeekAndAd {
+      .hotOfWeek {
+        &-list-item-image {
+          height: 10rem;
+        }
+      }
+
+      .sAd {
+        width: auto;
+        display: none;
+      }
+      grid-area: HotAndAd;
+      min-width: 35rem;
+      @include blogResponsive(lg) {
+        @include dflex(flex-start, flex-start);
+      }
+      @include blogResponsive(md) {
+        .bAd {
+          display: none;
+        }
+        .sAd {
+          display: block;
+          background: conic-gradient(
+            from 0.03turn at 10% 30%,
+            #0d8ba4,
+            30deg,
+            #3f87a6a9,
+            350deg,
+            #ebf8e153
+          );
+
+          &-list {
+            flex-direction: column;
+            &-item {
+              min-width: 18rem;
+              height: 20rem;
+              &-image {
+                width: 100%;
+                max-width: 12rem;
+                max-height: 12rem;
+              }
+            }
+          }
+        }
+      }
+      @include blogResponsive(sm) {
+        .sAd {
+          display: none;
+        }
+      }
+    }
+    @include blogResponsive(lg) {
+      grid-template-areas: "HotAndAd" "subLastPosts";
+    }
+  }
+}

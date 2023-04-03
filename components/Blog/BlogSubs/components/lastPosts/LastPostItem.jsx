@@ -1,6 +1,6 @@
 import React from "react";
-import DateOfPost from "../../ui/DateOfPost";
-import WriterOfPost from "../../ui/WriterOfPost";
+import DateOfPost from "../../../ui/DateOfPost";
+import WriterOfPost from "../../../ui/WriterOfPost";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";

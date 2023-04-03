@@ -8,20 +8,22 @@ import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import LoadingSpinner from "../../../ui/LoadingSpiner/loadingSpiner";
+import LoadingSpinner from "../../../../ui/LoadingSpiner/loadingSpiner";
 import Link from "next/link";
 import Image from "next/image";
 
 const SubSelectedPosts = () => {
-  const Posts = useSelector((state) => state.getData.blogPosts);
+  const posts = useSelector((state) => state.blogGetData.blogPosts);
+  const status = useSelector((state) => state.blogUi.blogPostsStatus);
+  const subCat = useSelector((state) => state.blogUi.blogSub);
+
   const [selectedposts, setselectedPosts] = useState([]);
-  const status = useSelector((state) => state.ui.getAllBlogPostsStatus);
-  const subCat = useSelector((state) => state.ui.blogSub);
+
   useEffect(() => {
     setselectedPosts((prev) => {
-      return (prev = Posts.filter((item) => item.cat === "selected"));
+      return (prev = posts.filter((item) => item.cat === "selected"));
     });
-  }, [Posts]);
+  }, [posts]);
 
   return (
     <section className="SubSelectedSlider">
@@ -35,14 +37,12 @@ const SubSelectedPosts = () => {
             className="SubSelectedSlider-swiper"
             navigation
           >
-            {!status ||
-              (status.status === "Loading" && (
-                <SwiperSlide>
-                  <LoadingSpinner />
-                </SwiperSlide>
-              ))}
-            {status &&
-              status.status === "success" &&
+            {status.status === "loading" && (
+              <SwiperSlide>
+                <LoadingSpinner />
+              </SwiperSlide>
+            )}
+            {status.status === "success" &&
               selectedposts.map((link) => {
                 return (
                   <SwiperSlide
@@ -54,8 +54,8 @@ const SubSelectedPosts = () => {
                     <Link href={`/blog/${subCat}/${link.id}`}>
                       <div className="SubSelectedSlider-swiper-post">
                         <Image
-                          height={150}
-                          width={150}
+                          height={300}
+                          width={300}
                           className="SubSelectedSlider-swiper-post-img"
                           src={link.imageUrl}
                           alt={link.title}
