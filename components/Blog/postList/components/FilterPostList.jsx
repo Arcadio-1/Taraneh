@@ -1,5 +1,6 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import ArrowsIcon from "../../../ui/Icons/arrowsIcon";
 import FilterIcon from "../../../ui/Icons/FilterIcon";
 
@@ -7,16 +8,16 @@ const FilterPostList = (props) => {
   const [sortitems, setSortItems] = useState();
   const [selectedSort, setSelectedSort] = useState();
   const [isShowFilterList, setIsShowFilterList] = useState(false);
-  const location = useLocation();
-  const history = useHistory();
+  const location = useRouter();
+  // const history = useHistory();
   const btnRef = useRef();
   const toggoleFilterList = () => {
     setIsShowFilterList(!isShowFilterList);
   };
   useEffect(() => {
     const closeFilterList = (e) => {
-      console.log(e.explicitOriginalTarget);
-      console.log(btnRef.current);
+      // console.log(e.explicitOriginalTarget);
+      // console.log(btnRef.current);
       if (
         e.explicitOriginalTarget !== btnRef.current &&
         e.target.parentElement.explicitOriginalTarget !== btnRef.current
@@ -27,11 +28,14 @@ const FilterPostList = (props) => {
     document.body.addEventListener("click", closeFilterList);
     const getData = async () => {
       try {
-        const request = await fetch("/json/Blog/blogPostFilterItems.json");
+        const request = await fetch("/api/blog/ui/getBlogPostFilterItems", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
         const response = await request.json();
         const sortingItem = [];
-        for (const key in response) {
-          sortingItem.push({ ...response[key] });
+        for (const key in response.data) {
+          sortingItem.push({ ...response.data[key] });
         }
         setSortItems(sortingItem);
       } catch (error) {}
@@ -44,12 +48,12 @@ const FilterPostList = (props) => {
       return (prev = item.title);
     });
     if (props.sortType)
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${item.value}&sort=${props.sortType}`,
       });
     if (!props.sortType)
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${item.value}`,
       });

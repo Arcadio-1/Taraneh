@@ -1,8 +1,7 @@
 import React from "react";
-import Tools from "../../../components/Blog/BlogSubs/Tools";
-
+import BlogSub from "../../../components/Blog/BlogSubs/BlogSub";
 const index = () => {
-  return <Tools />;
+  return <BlogSub />;
 };
 
 export default index;

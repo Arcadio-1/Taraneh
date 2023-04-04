@@ -11,7 +11,8 @@ import {
   getAdProducts,
   getBlogPosts,
 } from "../../../store/Blog/getData/BlogGetDataAction";
-const News = () => {
+
+const BlogSub = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBlogPosts());
@@ -25,8 +26,8 @@ const News = () => {
       <div className="PDrink-hotOfWeekAndAdContainer">
         <LastPosts />
         <div className="PDrink-hotOfWeekAndAdContainer-hotOfWeekAndAd">
-          <HotOfWeek />
-          <BAd rom={0} to={4} direction={"vertical"} />
+          <HotOfWeek from={0} to={8} />
+          <BAd from={0} to={4} direction={"vertical"} />
           <SAd from={0} to={4} direction={"vertical"} />
         </div>
       </div>
@@ -34,4 +35,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default BlogSub;

@@ -11,6 +11,7 @@ import Image from "next/image";
 const PostHead = (props) => {
   const { title, writer, date, views, liked, disLike, notes, imageUrl } =
     props.post;
+  // console.log(props.post);
   return (
     <div className="blogPost-head">
       <div className="blogPost-head-data">
@@ -34,7 +35,7 @@ const PostHead = (props) => {
         <Sharing />
       </div>
       <div className="blogPost-head-imageContainer">
-        <Link href={"#"}>
+        <Link href={"/"}>
           <Image src={imageUrl} alt={title} width={200} height={200} />
         </Link>
       </div>

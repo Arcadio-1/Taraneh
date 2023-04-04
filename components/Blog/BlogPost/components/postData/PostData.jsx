@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import SAd from "../../../BlogSubs/components/ad/SAd";
+import SubSelectedPosts from "../../../BlogSubs/components/selectedPostSlider/SubSelectedPosts";
 // import { useSelector } from "react-redux";
-import SAd from "../../../BlogSubs/ad/SAd";
-import SubSelectedPosts from "../../../BlogSubs/selectedPostSlider/SubSelectedPosts";
+// import SAd from "../../../BlogSubs/ad/SAd";
+// SAd
+// import SubSelectedPosts from "../../../BlogSubs/selectedPostSlider/SubSelectedPosts";
 import LikeAndDislike from "../LikeAndDislike";
 import Sharing from "../Sharing";
 
@@ -17,12 +20,12 @@ const PostData = (props) => {
         <p>{desc.substr(0, 400)}</p>
         <p>{desc.substr(0, 500)}</p>
         <p>{desc.substr(0, 300)}</p>
-        <Image src={imageUrl} alt={title} width={100} height={100} />
+        <Image src={imageUrl} alt={title} width={700} height={700} />
         <p>{desc.substr(0, 500)}</p>
         <p>{desc.substr(0, 400)}</p>
         <p>{desc.substr(0, 600)}</p>
         <p>{desc.substr(0, 300)}</p>
-        <Image src={imageUrl} alt={title} width={100} height={100} />
+        <Image src={imageUrl} alt={title} width={700} height={700} />
         <p>{desc.substr(0, 500)}</p>
         <p>{desc.substr(0, 300)}</p>
         <p>{desc.substr(0, 400)}</p>
@@ -37,7 +40,7 @@ const PostData = (props) => {
               {tags.map((item) => {
                 return (
                   <li key={item} className="blogPost-body-down-tags-list-item">
-                    <Link href={"#"}>#{item}</Link>
+                    <Link href={"/"}>#{item}</Link>
                   </li>
                 );
               })}

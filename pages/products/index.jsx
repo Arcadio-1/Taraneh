@@ -56,7 +56,6 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const request = await curentPageProducts(query);
   const response = JSON.parse(request);
-  // console.log(response);
   return { props: response };
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
-import Coffee from "../../../components/Blog/BlogSubs/Coffee";
+import BlogSub from "../../../components/Blog/BlogSubs/BlogSub";
 const index = () => {
-  return <Coffee />;
+  return <BlogSub />;
 };
 
 export default index;

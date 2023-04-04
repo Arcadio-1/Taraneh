@@ -1,7 +1,7 @@
 import React from "react";
-import News from "../../../components/Blog/BlogSubs/News";
+import BlogSub from "../../../components/Blog/BlogSubs/BlogSub";
 const index = () => {
-  return <News />;
+  return <BlogSub />;
 };
 
 export default index;

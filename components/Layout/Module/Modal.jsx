@@ -8,14 +8,14 @@ const Modal = ({ children }) => {
   const dispatch = useDispatch();
   const windowWidth = useSelector((state) => state.ui.windowWidth);
 
-  useLayoutEffect(() => {
-    function updateSize() {
-      dispatch(uiAction.setWindowWidth(window.innerWidth));
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, [dispatch]);
+  // useLayoutEffect(() => {
+  //   function updateSize() {
+  //     dispatch(uiAction.setWindowWidth(window.innerWidth));
+  //   }
+  //   window.addEventListener("resize", updateSize);
+  //   updateSize();
+  //   return () => window.removeEventListener("resize", updateSize);
+  // }, [dispatch]);
 
   useEffect(() => {
     setMounted(true);

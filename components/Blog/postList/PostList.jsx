@@ -1,12 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import SubHeader from "../header/SubHeader";
-import FilterPostList from "./FilterPostList";
-import Pagination from "./Pagination";
-import PostListItem from "./PostListItem";
-import SortPostList from "./SortPostList";
-import SubSelectedPosts from "../selectedPostSlider/SubSelectedPosts";
-// import { useSelector } from "react-redux";
+import SubHeader from "../BlogSubs/components/header/SubHeader";
+import FilterPostList from "./components/FilterPostList";
+import Pagination from "./components/Pagination";
+import PostListItem from "./components/PostListItem";
+import SortPostList from "./components/SortPostList";
+import SubSelectedPosts from "../BlogSubs/components/selectedPostSlider/SubSelectedPosts";
+import { useRouter } from "next/router";
 
 const filtring = (posts, filterType) => {
   if (!filterType || filterType === "all") {
@@ -55,51 +54,64 @@ const PostForPage = (posts, pageNum) => {
     return posts[pageNum - 1];
   }
 };
-const PostList = (props) => {
+const PostList = () => {
   const [post, setPost] = useState();
-  const [status, setstatus] = useState();
+  const [status, setstatus] = useState({
+    status: null,
+    title: null,
+    message: null,
+  });
   useEffect(() => {
     const getdata = async () => {
-      setstatus({ status: "loading", message: "Loading..." });
+      setstatus({
+        status: "loading",
+        title: "در حال دریافت",
+        message: "در حال دریافت لیست مطالب",
+      });
       try {
-        const request = await fetch(
-          `/json/Blog/categorised/${props.category}Posts.json`
-        );
-        const response = await request.json();
-        if (!request.ok) {
-          throw new Error(
-            response.error.message ||
-              "somthing went Wrong in geting categorised posts"
-          );
-        }
-        const posts = [];
-        for (const key in response) {
-          posts.push({ ...response[key] });
-        }
-        // console.log(posts);
-        setPost((prev) => {
-          return (prev = posts);
+        const request = await fetch("/api/blog/data/getAllPostLong", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
         });
-        setstatus({ status: "success", message: "successfuly..." });
+        if (!request.ok) {
+          throw new Error(response.error.message || "خطا در دریافت لیست مطالب");
+        }
+        const response = await request.json();
+        if (response.status !== "success") {
+          throw new Error("خطا در دریافت اطلاعات لیست مطالب");
+        }
+        const temPosts = [];
+        for (const key in response.data) {
+          temPosts.push({ ...response.data[key] });
+        }
+        setPost((prev) => {
+          return (prev = temPosts);
+        });
+        setstatus({
+          status: "success",
+          title: "با موفقیت دریافت شد",
+          message: "لیست مطالب با موفقیت دریافت شد",
+        });
       } catch (error) {
-        setstatus({ status: "error", message: error });
+        setstatus({
+          status: "error",
+          title: "در حال دریافت",
+          message: error.message,
+        });
       }
     };
     getdata();
-  }, [props.category]);
+  }, []);
 
-  const location = useLocation();
-  const urlParam = new URLSearchParams(location.search);
-  const pageNum = urlParam.get("page");
-  const sortType = urlParam.get("sort");
-  const filterType = urlParam.get("type");
+  const router = useRouter();
+  const pageNum = router.query.page;
+  const sortType = router.query.sort;
+  const filterType = router.query.type;
   let pagenatedPosts;
   if (post) {
     const filterdPosts = filtring(post, filterType);
     const sortedPosts = sorting(filterdPosts, sortType);
     pagenatedPosts = pagenation(sortedPosts);
-
-    // console.log(pagenatedPosts.pagenatedPost);
   }
   let prodPerPage = [];
   if (pagenatedPosts && pagenatedPosts.pagenatedPost.length > 0) {
@@ -117,21 +129,14 @@ const PostList = (props) => {
           <h3 className="postList-postsList-title">لیست مطالب</h3>
           <div className="postList-postsList-container">
             {post &&
-              status &&
               status.status === "success" &&
               prodPerPage.map((item) => {
-                return (
-                  <PostListItem
-                    key={item.id}
-                    item={item}
-                    cat={props.category}
-                  />
-                );
+                return <PostListItem key={item._id} item={item} />;
               })}
           </div>
         </div>
         <div className="postList-pagination">
-          {post && status && status.status === "success" && (
+          {post && status.status === "success" && (
             <Pagination
               filterType={filterType}
               sortType={sortType}

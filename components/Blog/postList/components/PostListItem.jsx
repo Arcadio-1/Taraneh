@@ -5,24 +5,25 @@ import { useSelector } from "react-redux";
 import DateOfPost from "../../ui/DateOfPost";
 import WriterOfPost from "../../ui/WriterOfPost";
 const PostListItem = (props) => {
-  const subBlog = useSelector((state) => state.ui.blogSub);
+  const { item } = props;
+  const subBlog = useSelector((state) => state.blogUi.blogSub);
   return (
     <article className="postList-postsList-item">
-      <Link href={`/blog/${subBlog}/${props.item.id}`}>
+      <Link href={`/blog/${subBlog}/${item._id}`}>
         <Image
           height={150}
           width={150}
           className="postList-postsList-item-image"
-          src={props.item.imageUrl}
-          alt={props.item.title}
+          src={item.imageUrl}
+          alt={item.title}
         />
-        <h3 className="postList-postsList-item-title">{props.item.title}</h3>
+        <h3 className="postList-postsList-item-title">{item.title}</h3>
         <p className="postList-postsList-item-desc">
-          {props.item.desc.substr(0, 180)}...
+          {item.desc.substr(0, 180)}...
         </p>
         <div className="postList-postsList-item-dateAndWriter">
-          <WriterOfPost postWriter={props.item.writer} />
-          <DateOfPost postDate={props.item.date} />
+          <WriterOfPost postWriter={item.writer} />
+          <DateOfPost postDate={item.date} />
         </div>
       </Link>
     </article>

@@ -11,25 +11,29 @@ const Layout = (props) => {
   //////////////
   const isDark = useSelector((state) => state.blogUi.isDark);
   const subclass = useSelector((state) => state.blogUi.subsClass);
+  const windowWidth = useSelector((state) => state.ui.windowWidth);
   const mainClass = isDark && subclass === "" ? "dark" : "";
   const router = useRouter();
   const sizeDispatch = useDispatch();
   const dispatchIsBlog = useDispatch();
   const isBlog = useSelector((state) => state.ui.isBlog);
-
+  useEffect(() => {
+    console.log(windowWidth);
+  }, [windowWidth]);
   useEffect(() => {
     const blog = router.pathname.includes("/blog");
     dispatchIsBlog(uiAction.setIsBlog(blog));
   }, [dispatchIsBlog, router.pathname]);
 
-  useLayoutEffect(() => {
-    function updateSize() {
-      sizeDispatch(uiAction.setWindowWidth(window.innerWidth));
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, [sizeDispatch]);
+  // useLayoutEffect(() => {
+  //   console.log(window.innerWidth);
+  //   function updateSize() {
+  //     sizeDispatch(uiAction.setWindowWidth(window.innerWidth));
+  //   }
+  //   window.addEventListener("resize", updateSize);
+  //   updateSize();
+  //   return () => window.removeEventListener("resize", updateSize);
+  // }, [sizeDispatch]);
 
   return (
     <Fragment>

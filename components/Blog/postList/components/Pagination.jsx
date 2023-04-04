@@ -1,5 +1,6 @@
+import { useRouter } from "next/router";
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+// import { useHistory, useLocation } from "react-router-dom";
 import ArrowsIcon from "../../../ui/Icons/arrowsIcon";
 
 const Pagination = (props) => {
@@ -7,8 +8,8 @@ const Pagination = (props) => {
   // console.log(propsPageNum);
   const numberOfBtn = 3;
   const pageNum = propsPageNum ? +propsPageNum : 1;
-  const location = useLocation();
-  const history = useHistory();
+  const location = useRouter();
+  // const location = useHistory();
   const pages = [];
   for (let i = 1; i <= numberOfPages; i++) {
     pages.push(i);
@@ -19,26 +20,26 @@ const Pagination = (props) => {
       return;
     }
     if (pageNum && sortType && filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${filterType}&sort=${sortType}&page=${pageNum - 1}`,
       });
     }
     if (pageNum && !sortType && !filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?page=${pageNum - 1}`,
       });
     }
     if (pageNum && sortType && !filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?sort=${sortType}&page=${pageNum - 1}`,
       });
     }
 
     if (pageNum && !sortType && filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${filterType}&page=${pageNum - 1}`,
       });
@@ -50,21 +51,21 @@ const Pagination = (props) => {
       return;
     }
     if (sortType && filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${filterType}&sort=${sortType}&page=${+pageNum + 1}`,
       });
       return;
     }
     if (!sortType && filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${filterType}&page=${pageNum + 1}`,
       });
       return;
     }
     if (sortType && !filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?sort=${sortType}&page=${pageNum + 1}`,
       });
@@ -72,7 +73,7 @@ const Pagination = (props) => {
     }
     if (!sortType && !filterType) {
       console.log(pageNum);
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?page=${pageNum + 1}`,
       });
@@ -80,25 +81,25 @@ const Pagination = (props) => {
   };
   const pageNumberHandler = (num) => {
     if (sortType && filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${filterType}&sort=${sortType}&page=${num}`,
       });
     }
     if (!sortType && filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${filterType}&page=${num}`,
       });
     }
     if (sortType && !filterType) {
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?sort=${sortType}&page=${num}`,
       });
     }
     if (!sortType && !filterType) {
-      history.push({ pathname: location.pathname, search: `?page=${num}` });
+      location.push({ pathname: location.pathname, search: `?page=${num}` });
     }
   };
 

@@ -1,5 +1,6 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+// import { useHistory, useLocation } from "react-router-dom";
 import ArrowsIcon from "../../../ui/Icons/arrowsIcon";
 import SortIcon from "../../../ui/Icons/SortIcon";
 
@@ -8,8 +9,8 @@ const SortPostList = (props) => {
   const [sortitems, setSortItems] = useState();
   const [selectedFilter, setSelectedFilter] = useState();
   const [isShowDropDown, setIsShowDropDown] = useState(false);
-  const history = useHistory();
-  const location = useLocation();
+  // const location = useHistory();
+  const location = useRouter();
   useEffect(() => {
     const closeDropDown = (e) => {
       // console.log(e.target.parentElement.explicitOriginalTarget);
@@ -24,11 +25,15 @@ const SortPostList = (props) => {
     document.body.addEventListener("click", closeDropDown);
     const getData = async () => {
       try {
-        const request = await fetch("/json/Blog/blogPostsSortItems.json");
+        const request = await fetch("/api/blog/ui/getBlogPostsSortItems", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
         const response = await request.json();
+        // console.log(response);
         const sortingItem = [];
-        for (const key in response) {
-          sortingItem.push({ ...response[key] });
+        for (const key in response.data) {
+          sortingItem.push({ ...response.data[key] });
         }
         setSortItems(sortingItem);
       } catch (error) {}
@@ -44,12 +49,12 @@ const SortPostList = (props) => {
       return (prev = item.title);
     });
     if (props.filterType)
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?type=${props.filterType}&sort=${item.value}`,
       });
     if (!props.filterType)
-      history.push({
+      location.push({
         pathname: location.pathname,
         search: `?sort=${item.value}`,
       });

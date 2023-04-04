@@ -1,5 +1,6 @@
+import Link from "next/link";
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ShareIcon from "../../../ui/Icons/ShareIcon";
 import FaceBookIcon from "../../../ui/Icons/socialMediaIcons/FaceBookIcon";
 import InstagramIcon from "../../../ui/Icons/socialMediaIcons/InstagramIcon";
@@ -16,32 +17,32 @@ const Sharing = () => {
       </div>
       <ul className="blogPost-head-sharing-list">
         <li className="blogPost-head-sharing-list-item">
-          <Link to={`//www.facebook.com`}>
+          <Link href={`www.facebook.com`}>
             <FaceBookIcon />
           </Link>
         </li>
         <li className="blogPost-head-sharing-list-item">
-          <Link to={`//www.facebook.com`}>
+          <Link href={`www.facebook.com`}>
             <LinkedInIcon />
           </Link>
         </li>
         <li className="blogPost-head-sharing-list-item">
-          <Link to={`//www.facebook.com`}>
+          <Link href={`www.facebook.com`}>
             <InstagramIcon />
           </Link>
         </li>
         <li className="blogPost-head-sharing-list-item">
-          <Link to={`//www.facebook.com`}>
+          <Link href={`www.facebook.com`}>
             <WhatsappIcon />
           </Link>
         </li>
         <li className="blogPost-head-sharing-list-item">
-          <Link to={`//www.facebook.com`}>
+          <Link href={`www.facebook.com`}>
             <TwitterIcon />
           </Link>
         </li>
         <li className="blogPost-head-sharing-list-item">
-          <Link to={`//www.facebook.com`}>
+          <Link href={`www.facebook.com`}>
             <TelegramIcon />
           </Link>
         </li>

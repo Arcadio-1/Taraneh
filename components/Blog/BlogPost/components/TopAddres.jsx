@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ArrowsIcon from "../../../ui/Icons/arrowsIcon";
 import HomeIcon from "../../../ui/Icons/HomeIcon";
 
@@ -22,17 +23,17 @@ const TopAddres = (props) => {
   };
   return (
     <div className="blogPost-topAddres">
-      <Link className="blogPost-topAddres-link" to={"/blog"}>
+      <Link className="blogPost-topAddres-link" href={"/blog"}>
         <HomeIcon />
       </Link>
       <ArrowsIcon arrowType="left" />
-      <Link className="blogPost-topAddres-link" to={`/blog/${subCat}`}>
+      <Link className="blogPost-topAddres-link" href={`/blog/${subCat}`}>
         {category(subCat)}
       </Link>
       <ArrowsIcon arrowType="left" />
       <Link
         className="blogPost-topAddres-link"
-        to={`/blog/${subCat}/${props.post.id}`}
+        href={`/blog/${subCat}/${props.post.id}`}
       >
         {props.post.title}
       </Link>
