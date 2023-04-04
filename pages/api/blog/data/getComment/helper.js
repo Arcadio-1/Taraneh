@@ -14,7 +14,7 @@ export const getComment = async (id) => {
       return {
         status: "notfound",
         message: "کامنت یافت نشد",
-        comment: null,
+        comment: { comments: [] },
       };
     }
     return {

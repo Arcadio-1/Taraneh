@@ -9,7 +9,7 @@ import {
   getBlogPosts,
 } from "../../../store/Blog/getData/BlogGetDataAction";
 import { useDispatch } from "react-redux";
-// import Comments from "./components/Comments/Comments";
+import Comments from "./components/Comments/Comments";
 const Post = ({ blogPost, comments }) => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -58,7 +58,7 @@ const Post = ({ blogPost, comments }) => {
         <div className="blogPost-body">
           <div className="blogPost-body-main">
             <PostData post={blogPost} />
-            {/* <Comments comments={comments} /> */}
+            <Comments comments={comments} />
             {/* <Comments id={blogPost.id} /> */}
           </div>
           <aside className="blogPost-body-aside">
