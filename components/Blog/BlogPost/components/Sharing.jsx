@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 // import { Link } from "react-router-dom";
 import ShareIcon from "../../../ui/Icons/ShareIcon";
-import FaceBookIcon from "../../../ui/Icons/socialMediaIcons/FaceBookIcon";
+import FacebookIcon from "../../../ui/Icons/socialMediaIcons/FacebookIcon";
 import InstagramIcon from "../../../ui/Icons/socialMediaIcons/InstagramIcon";
 import LinkedInIcon from "../../../ui/Icons/socialMediaIcons/LinkedInIcon";
 import TelegramIcon from "../../../ui/Icons/socialMediaIcons/TelegramIcon";
@@ -18,7 +18,7 @@ const Sharing = () => {
       <ul className="blogPost-head-sharing-list">
         <li className="blogPost-head-sharing-list-item">
           <Link href={`www.facebook.com`}>
-            <FaceBookIcon />
+            <FacebookIcon />
           </Link>
         </li>
         <li className="blogPost-head-sharing-list-item">
