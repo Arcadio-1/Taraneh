@@ -7,8 +7,8 @@ const Modal = ({ children }) => {
   let overLay;
   const dispatch = useDispatch();
   const windowWidth = useSelector((state) => state.ui.windowWidth);
-
   // useLayoutEffect(() => {
+  //   console.log(window.innerWidth);
   //   function updateSize() {
   //     dispatch(uiAction.setWindowWidth(window.innerWidth));
   //   }

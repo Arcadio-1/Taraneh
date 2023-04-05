@@ -25,6 +25,13 @@ const Layout = (props) => {
     dispatchIsBlog(uiAction.setIsBlog(blog));
   }, [dispatchIsBlog, router.pathname]);
 
+  // const windowWidthx = window.innerWidth;
+
+  // console.log(windowWidthx);
+  // useEffect(() => {
+  //   console.log(windowWidthx);
+  // }, [windowWidthx]);
+
   // useLayoutEffect(() => {
   //   console.log(window.innerWidth);
   //   function updateSize() {
@@ -34,6 +41,19 @@ const Layout = (props) => {
   //   updateSize();
   //   return () => window.removeEventListener("resize", updateSize);
   // }, [sizeDispatch]);
+
+  useEffect(() => {
+    console.log(window.innerWidth);
+    function updateSize() {
+      sizeDispatch(uiAction.setWindowWidth(window.innerWidth));
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, [sizeDispatch]);
+  // useLayoutEffect(() => {
+  //   console.log(window.innerWidth);
+  // }, []);
 
   return (
     <Fragment>
