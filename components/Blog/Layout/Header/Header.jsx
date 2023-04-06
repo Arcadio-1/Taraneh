@@ -25,6 +25,10 @@ const BHeader = () => {
     setShowMiniSearch((prev) => !prev);
   };
 
+  // useEffect(() => {
+  //   dispatch(blogGetData)
+  // }, [])
+
   useEffect(() => {
     const handleScroll = () => {
       let moving = window.pageYOffset;

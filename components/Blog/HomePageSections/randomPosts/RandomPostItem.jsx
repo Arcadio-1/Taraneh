@@ -7,7 +7,7 @@ import Image from "next/image";
 const RandomPostItem = (props) => {
   return (
     <article className="randomPosts-list-item">
-      <Link href={props.item.id}>
+      <Link href={`blog/${props.item.sub}/${props.item.id}`}>
         <div className="randomPosts-list-item-image">
           <Image
             src={props.item.imageUrl}

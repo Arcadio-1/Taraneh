@@ -4,7 +4,7 @@ import DateOfPost from "../../../ui/DateOfPost";
 import Link from "next/link";
 const hotOfWeekItem = (props) => {
   return (
-    <Link href={`/blog/${props.blogSub}/${props.item.id}`}>
+    <Link href={`/blog/${props.item.sub}/${props.item.id}`}>
       <div className="hotOfWeek-list-item">
         <Image
           width={100}

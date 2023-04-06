@@ -8,7 +8,7 @@ const LastPostItem = (props) => {
   const subCat = useSelector((state) => state.ui.blogSub);
   return (
     <article className="subLastPosts-list-item">
-      <Link href={`${subCat}/${props.item.id}`}>
+      <Link href={`${props.item.sub}/${props.item.id}`}>
         <Image
           height={150}
           width={150}

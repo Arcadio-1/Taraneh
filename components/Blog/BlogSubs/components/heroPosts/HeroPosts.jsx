@@ -24,7 +24,7 @@ const HeroPosts = () => {
               className={`heroPosts-item heroPosts-item-${index}`}
               key={item.id}
             >
-              <Link href={`/drink/${item.id}`}>
+              <Link href={`/blog/${item.sub}/${item.id}`}>
                 <Image
                   className="heroPosts-item-image"
                   src={item.imageUrl}

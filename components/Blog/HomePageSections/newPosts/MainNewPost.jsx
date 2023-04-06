@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import DateOfPost from "../../ui/DateOfPost";
 import WriterOfPost from "../../ui/WriterOfPost";
+import Link from "next/link";
 
 const MainNewPost = () => {
   const posts = useSelector((state) => state.blogGetData.blogPosts);
@@ -22,12 +23,14 @@ const MainNewPost = () => {
       {lastPost && status.status === "success" && (
         <div className="newPosts-main-container">
           <div className="newPosts-main-image">
-            <Image
-              src={lastPost.imageUrl}
-              alt={lastPost.title}
-              width={300}
-              height={300}
-            />
+            <Link href={`blog/${lastPost.sub}/${lastPost.id}`}>
+              <Image
+                src={lastPost.imageUrl}
+                alt={lastPost.title}
+                width={300}
+                height={300}
+              />
+            </Link>
           </div>
           <div className="newPosts-main-dateAndWriter">
             <DateOfPost postDate={lastPost.date} />
@@ -35,7 +38,9 @@ const MainNewPost = () => {
           </div>
           <h1 className="newPosts-main-title">{lastPost.title}</h1>
           <p className="newPosts-main-description">{lastPost.desc}</p>
-          <p className="newPosts-main-raedMore">بیشر بخوانید</p>
+          <Link href={`blog/${lastPost.sub}/${lastPost.id}`}>
+            <p className="newPosts-main-raedMore">بیشر بخوانید</p>
+          </Link>
         </div>
       )}
     </div>

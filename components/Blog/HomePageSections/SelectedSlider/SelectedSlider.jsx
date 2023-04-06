@@ -48,7 +48,7 @@ const SelectedSlider = () => {
                   id={link.id}
                   className="selectedPostsSlider-swiper-slide"
                 >
-                  <Link href={`/products/${link.id}/${link.title}`}>
+                  <Link href={`/blog/${link.sub}/${link.id}`}>
                     <div className="selectedPostsSlider-swiper-post">
                       <Image
                         className="selectedPostsSlider-swiper-post-img"

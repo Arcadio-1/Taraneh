@@ -51,7 +51,7 @@ const SubSelectedPosts = () => {
                     id={link.id}
                     className="SubSelectedSlider-swiper-slide"
                   >
-                    <Link href={`/blog/${subCat}/${link.id}`}>
+                    <Link href={`/blog/${link.sub}/${link.id}`}>
                       <div className="SubSelectedSlider-swiper-post">
                         <Image
                           height={300}

@@ -5,9 +5,9 @@ import DateOfPost from "../../../ui/DateOfPost";
 import WriterOfPost from "../../../ui/WriterOfPost";
 
 const NewPostListItem = (props) => {
-  const { id, title, date, writer, imageUrl } = props.item;
+  const { id, title, date, writer, imageUrl, sub } = props.item;
   return (
-    <Link href={id} className="newPosts-list-item">
+    <Link href={`blog/${sub}/${id}`} className="newPosts-list-item">
       <div className="newPosts-list-item-image">
         <Image src={imageUrl} alt={title} width={200} height={200} />
       </div>
