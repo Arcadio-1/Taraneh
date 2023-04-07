@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { uiAction } from "../../../store/ui/uiSlice.js";
 import Logo from "./components/Logo";
 import Search from "./components/Search";
 import Log from "./components/Log";
@@ -99,27 +100,36 @@ const Header = () => {
   useEffect(() => {
     if (status === "unauthenticated") {
       try {
-        dispatchCartListStatus({
-          status: "loading",
-          titile: "در حال بررسی",
-          message: " در حال دریافت لیست سفارشات در حافظه مروگر",
-        });
+        dispatchCartListStatus(
+          uiAction.setCartListStatus({
+            status: "loading",
+            title: "در حال دریافت لیست خرید",
+            message: "در حال دریافت لیست خرید از سرور",
+          })
+        );
 
         const localStorageCartList = getLocalStorageCartItems();
-        dispatchCartList(
-          getDataSliceActions.setCardItems(localStorageCartList)
+        if (localStorageCartList) {
+          dispatchCartList(
+            getDataSliceActions.setCardItems(localStorageCartList)
+          );
+        }
+
+        dispatchCartListStatus(
+          uiAction.setCartListStatus({
+            status: "success",
+            titile: "با موفقیت دریافت شد",
+            message: "لیست سفارشات در حافظه مروگر با موفقیت دریافت شد",
+          })
         );
-        dispatchCartListStatus({
-          status: "success",
-          titile: "با موفقیت دریافت شد",
-          message: "لیست سفارشات در حافظه مروگر با موفقیت دریافت شد",
-        });
       } catch (error) {
-        dispatchCartListStatus({
-          status: "error",
-          titile: "خطا در دریافت",
-          message: "خطا در دریافت لیست سفارشات در حافظه مرورگر",
-        });
+        dispatchCartListStatus(
+          uiAction.setCartListStatus({
+            status: "error",
+            titile: "خطا در دریافت",
+            message: "خطا در دریافت لیست سفارشات در حافظه مرورگر",
+          })
+        );
       }
     }
     if (status === "authenticated") {

@@ -26,10 +26,12 @@ const BackDrop = () => {
             isShow ? "opacity-100 visible" : "opacity-0 invisible "
           }`}
         ></div>,
-        overLay
+        document.getElementById("overLay")
       )}
     </Fragment>
-  ) : null;
+  ) : (
+    <div></div>
+  );
 };
 
 export default BackDrop;

@@ -6,7 +6,7 @@ import { getComments, getPaths, getSingleProduct } from "../api/helper";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
-  console.log(product);
+  // console.log(product);
   return (
     <Fragment>
       <Head>
