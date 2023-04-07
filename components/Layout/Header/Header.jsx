@@ -32,16 +32,17 @@ const Header = () => {
     if (status === "authenticated") {
       const localStorageCartList = getLocalStorageCartItems();
       if (
-        cartListStatus &&
         cartListStatus.status === "success" &&
         localStorageCartList.length > 0
       ) {
         try {
-          dispatchSyncCartList({
-            status: "loading",
-            titile: "در حال بررسی",
-            message: "در حال همگام سازی لیست سفارشات",
-          });
+          dispatchSyncCartList(
+            uiAction.setSyncCartListStatus({
+              status: "loading",
+              titile: "در حال بررسی",
+              message: "در حال همگام سازی لیست سفارشات",
+            })
+          );
           const id = data.user.email._id;
           const mixed = [...cartItems, ...localStorageCartList];
           const result = Object.values(
@@ -68,22 +69,25 @@ const Header = () => {
               throw new Error("خطا در همگام سازی لیست سفارشات");
             }
             resetLocalStorageCartItems();
-            dispatchSyncCartList({
-              status: "success",
-              titile: "همگام سازی با موفقیت انجام شد",
-              message:
-                "همگام سازی لیست سفارشات در حافظه مرورگر و لیست سفارشات در سرور با موفقیت انجام شد",
-            });
+            dispatchSyncCartList(
+              uiAction.setSyncCartListStatus({
+                titile: "همگام سازی با موفقیت انجام شد",
+                message:
+                  "همگام سازی لیست سفارشات در حافظه مرورگر و لیست سفارشات در سرور با موفقیت انجام شد",
+              })
+            );
             dispatchCartList(getOrederList(id));
             console.log(response);
           };
           sendMergedCartList(result, id);
         } catch (error) {
-          dispatchSyncCartList({
-            status: "loading",
-            titile: "در حال بررسی",
-            message: error.message || "خطا نامشخص در همگام سازی",
-          });
+          dispatchSyncCartList(
+            uiAction.setSyncCartListStatus({
+              status: "loading",
+              titile: "در حال بررسی",
+              message: error.message || "خطا نامشخص در همگام سازی",
+            })
+          );
         }
       }
     }
