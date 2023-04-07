@@ -3,21 +3,22 @@ import WriterOfPost from "../../../ui/WriterOfPost";
 import DateOfPost from "../../../ui/DateOfPost";
 import Link from "next/link";
 const hotOfWeekItem = (props) => {
+  const { id, title, imageUrl, writer, date, sub } = props.item;
   return (
-    <Link href={`/blog/${props.item.sub}/${props.item.id}`}>
+    <Link href={`/blog/${sub}/${id}/${title}`}>
       <div className="hotOfWeek-list-item">
         <Image
           width={100}
           height={100}
           className="hotOfWeek-list-item-image"
-          src={props.item.imageUrl}
-          alt={props.item.title}
+          src={imageUrl}
+          alt={title}
         />
         <div className="hotOfWeek-list-item-data">
-          <h3 className="hotOfWeek-list-item-data-title">{props.item.title}</h3>
+          <h3 className="hotOfWeek-list-item-data-title">{title}</h3>
           <div className="hotOfWeek-list-item-data-dateAndWriter">
-            <WriterOfPost postWriter={props.item.writer} />
-            <DateOfPost postDate={props.item.date} />
+            <WriterOfPost postWriter={writer} />
+            <DateOfPost postDate={date} />
           </div>
         </div>
       </div>

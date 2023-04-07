@@ -6,18 +6,8 @@ import LastPosts from "./components/lastPosts/LastPosts";
 import HotOfWeek from "./components/hotOfThisWeek/HotOfWeek";
 import BAd from "./components/ad/BAd";
 import SAd from "./components/ad/SAd";
-import { useDispatch } from "react-redux";
-import {
-  getAdProducts,
-  getBlogPosts,
-} from "../../../store/Blog/getData/BlogGetDataAction";
 
 const BlogSub = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getBlogPosts());
-    dispatch(getAdProducts());
-  });
   return (
     <Fragment>
       <SubHeader />

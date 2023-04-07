@@ -7,7 +7,7 @@ import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import LoadingSpinner from "../../../ui/LoadingSpiner/loadingSpiner";
+import LoadingSpinner from "../../../../ui/LoadingSpiner/loadingSpiner";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -48,7 +48,7 @@ const SelectedSlider = () => {
                   id={link.id}
                   className="selectedPostsSlider-swiper-slide"
                 >
-                  <Link href={`/blog/${link.sub}/${link.id}`}>
+                  <Link href={`/blog/${link.sub}/${link.id}/${link.title}`}>
                     <div className="selectedPostsSlider-swiper-post">
                       <Image
                         className="selectedPostsSlider-swiper-post-img"

@@ -7,6 +7,7 @@ const HeroPosts = () => {
   const [heroPosts, setHeroPosts] = useState([]);
   const posts = useSelector((state) => state.blogGetData.blogPosts);
   const status = useSelector((state) => state.blogUi.blogPostsStatus);
+
   useEffect(() => {
     setHeroPosts((prev) => {
       return (prev = posts.filter((item) => {
@@ -14,6 +15,7 @@ const HeroPosts = () => {
       }));
     });
   }, [posts]);
+
   return (
     <section className="heroPosts">
       {heroPosts &&
@@ -24,7 +26,7 @@ const HeroPosts = () => {
               className={`heroPosts-item heroPosts-item-${index}`}
               key={item.id}
             >
-              <Link href={`/blog/${item.sub}/${item.id}`}>
+              <Link href={`/blog/${item.sub}/${item.id}/${item.title}`}>
                 <Image
                   className="heroPosts-item-image"
                   src={item.imageUrl}

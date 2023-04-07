@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import DateOfPost from "../../ui/DateOfPost";
-import WriterOfPost from "../../ui/WriterOfPost";
+import DateOfPost from "../../../ui/DateOfPost";
+import WriterOfPost from "../../../ui/WriterOfPost";
 import Link from "next/link";
 
 const MainNewPost = () => {
@@ -23,7 +23,9 @@ const MainNewPost = () => {
       {lastPost && status.status === "success" && (
         <div className="newPosts-main-container">
           <div className="newPosts-main-image">
-            <Link href={`blog/${lastPost.sub}/${lastPost.id}`}>
+            <Link
+              href={`blog/${lastPost.sub}/${lastPost.id}/${lastPost.title}`}
+            >
               <Image
                 src={lastPost.imageUrl}
                 alt={lastPost.title}

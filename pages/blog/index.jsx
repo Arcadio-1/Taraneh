@@ -1,12 +1,7 @@
 import React from "react";
-import BlogIndex from "../../components/Blog/BlogIndex";
-
+import Home from "../../components/Blog/Home/Home";
 const index = () => {
-  return (
-    <div>
-      <BlogIndex />
-    </div>
-  );
+  return <Home />;
 };
 
 export default index;

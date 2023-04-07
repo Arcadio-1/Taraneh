@@ -9,7 +9,7 @@ const PostListItem = (props) => {
   const subBlog = useSelector((state) => state.blogUi.blogSub);
   return (
     <article className="postList-postsList-item">
-      <Link href={`/blog/${subBlog}/${item._id}`}>
+      <Link href={`/blog/${subBlog}/${item._id}/${item.title}`}>
         <Image
           height={150}
           width={150}

@@ -1,5 +1,5 @@
-import WriterOfPost from "../../ui/WriterOfPost";
-import DateOfPost from "../../ui/DateOfPost";
+import WriterOfPost from "../../../ui/WriterOfPost";
+import DateOfPost from "../../../ui/DateOfPost";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,10 @@ const RelatedItem = (props) => {
   const { id, title, desc, writer, date, imageUrl, sub } = props.item;
   return (
     <article className="related-list-item">
-      <Link href={`blog/${sub}/${id}`} className="related-list-item-container">
+      <Link
+        href={`blog/${sub}/${id}/${title}`}
+        className="related-list-item-container"
+      >
         <div className="related-list-item-image">
           <Image src={imageUrl} alt={title} width={200} height={200} />
         </div>

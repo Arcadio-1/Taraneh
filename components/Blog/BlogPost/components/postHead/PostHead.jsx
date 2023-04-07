@@ -7,11 +7,12 @@ import Sharing from "../Sharing";
 import DateOfPostNum from "../../../ui/DateOfPostNum";
 import Link from "next/link";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const PostHead = (props) => {
-  const { title, writer, date, views, liked, disLike, notes, imageUrl } =
+  const sub = useSelector((state) => state.blogUi.blogSub);
+  const { title, writer, date, views, liked, disLike, notes, imageUrl, _id } =
     props.post;
-  // console.log(props.post);
   return (
     <div className="blogPost-head">
       <div className="blogPost-head-data">
@@ -23,7 +24,7 @@ const PostHead = (props) => {
           <DateOfPostNum postDate={date} />
         </div>
         <div className="blogPost-head-innerImage">
-          <Link href={"#"}>
+          <Link href={`/blog/${sub}/${_id}/${title}`}>
             <Image src={imageUrl} alt={title} width={200} height={200} />
           </Link>
         </div>
@@ -35,7 +36,7 @@ const PostHead = (props) => {
         <Sharing />
       </div>
       <div className="blogPost-head-imageContainer">
-        <Link href={"/"}>
+        <Link href={`/blog/${sub}/${_id}/${title}`}>
           <Image src={imageUrl} alt={title} width={200} height={200} />
         </Link>
       </div>

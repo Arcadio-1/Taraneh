@@ -1,25 +1,16 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import HotOfWeek from "../BlogSubs/components/hotOfThisWeek/HotOfWeek";
 import PostHead from "./components/postHead/PostHead";
 import PostData from "./components/postData/PostData";
 import SubSelectedPosts from "../BlogSubs/components/selectedPostSlider/SubSelectedPosts";
 import TopAddres from "./components/TopAddres";
-import {
-  getAdProducts,
-  getBlogPosts,
-} from "../../../store/Blog/getData/BlogGetDataAction";
-import { useDispatch } from "react-redux";
 import Comments from "./components/Comments/Comments";
+
 const Post = ({ blogPost, comments }) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getBlogPosts());
-    dispatch(getAdProducts());
-  });
   return (
     <Fragment>
       <section className="blogPost">
-        <TopAddres post={blogPost} />
+        <TopAddres title={blogPost.title} id={blogPost._id} />
         <PostHead post={blogPost} />
         <div className="blogPost-body">
           <div className="blogPost-body-main">
@@ -32,7 +23,6 @@ const Post = ({ blogPost, comments }) => {
         </div>
         <SubSelectedPosts />
       </section>
-      {/* )} */}
     </Fragment>
   );
 };

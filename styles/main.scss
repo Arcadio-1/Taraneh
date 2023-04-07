@@ -37,21 +37,21 @@
 @import "../components/Blog/Layout/Header/BHeader.scss";
 @import "../components/Blog/Layout/Footer/BFooter.scss";
 
-@import "../components/Blog/LoadingSkelton/homePage/homePageLoading1678.scss";
+@import "../components/Blog/Home/LoadingSkelton/homePageLoading1678.scss";
 @import "../components/Blog/ui/BlogUi.scss";
 @import "../components/Blog/BlogPost/blogPost.scss";
 
 @import "../components/Blog/BlogSubs/components/ad/bAd.scss";
 @import "../components/Blog/BlogSubs/components/ad/sAd.scss";
 
-@import "../components/Blog/HomePageSections/Hero/BHero.scss";
-@import "../components/Blog/HomePageSections/SelectedSlider/SelectedSlider.scss";
-@import "../components/Blog/HomePageSections/newPosts/newPosts.scss";
-@import "../components/Blog/HomePageSections/randomPosts/randomPosts.scss";
-@import "../components/Blog/HomePageSections/ad/adStyle.scss";
-@import "../components/Blog/HomePageSections/related/related.scss";
+@import "../components/Blog/Home/components/Hero/BHero.scss";
+@import "../components/Blog/Home/components/SelectedSlider/SelectedSlider.scss";
+@import "../components/Blog/Home/components/newPosts/newPosts.scss";
+@import "../components/Blog/Home/components/randomPosts/randomPosts.scss";
+@import "../components/Blog/Home/components/ad/adStyle.scss";
+@import "../components/Blog/Home/components/related/related.scss";
 
-@import "../components/Blog/BlogSubs/style.scss";
+@import "../components/Blog/BlogSubs/blogSub";
 
 @import "../components/Blog/BlogSubs/components/header/subHeader.scss";
 @import "../components/Blog/BlogSubs/components/heroPosts/heroPosts.scss";

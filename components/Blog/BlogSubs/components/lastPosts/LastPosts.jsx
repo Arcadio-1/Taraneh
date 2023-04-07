@@ -17,7 +17,6 @@ const LastPosts = () => {
   const [toShowG5, setToshowG5] = useState([]);
 
   useEffect(() => {
-    console.log(posts);
     const allLastPosts = posts.filter((item) => item.cat === "sub-last-posts");
     setToshowG1(allLastPosts.slice(0, 3).map((item) => item));
     setToshowG2(allLastPosts.slice(3, 6).map((item) => item));

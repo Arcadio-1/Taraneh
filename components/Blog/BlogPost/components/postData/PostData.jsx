@@ -3,16 +3,11 @@ import Link from "next/link";
 import React from "react";
 import SAd from "../../../BlogSubs/components/ad/SAd";
 import SubSelectedPosts from "../../../BlogSubs/components/selectedPostSlider/SubSelectedPosts";
-// import { useSelector } from "react-redux";
-// import SAd from "../../../BlogSubs/ad/SAd";
-// SAd
-// import SubSelectedPosts from "../../../BlogSubs/selectedPostSlider/SubSelectedPosts";
 import LikeAndDislike from "../LikeAndDislike";
 import Sharing from "../Sharing";
 
 const PostData = (props) => {
   const { desc, imageUrl, title, tags, liked, disLike } = props.post;
-  // const size = useSelector((state) => state.ui.size);
   return (
     <div className="blogPost-body-main-container">
       <div className="blogPost-body-detials">

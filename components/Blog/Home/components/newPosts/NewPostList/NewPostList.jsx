@@ -8,12 +8,6 @@ const NewPostList = () => {
 
   const [newPost, setNewPost] = useState();
 
-  // useEffect(() => {
-  //   if (posts) {
-  //     console.log(posts);
-  //   }
-  // }, [posts]);
-
   useEffect(() => {
     setNewPost((prev) => {
       return (prev = posts.filter((item) => item.cat === "new-posts"));

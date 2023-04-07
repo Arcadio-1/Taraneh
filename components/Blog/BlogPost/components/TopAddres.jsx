@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 import ArrowsIcon from "../../../ui/Icons/arrowsIcon";
 import HomeIcon from "../../../ui/Icons/HomeIcon";
 
-const TopAddres = (props) => {
-  const subCat = useSelector((state) => state.ui.blogSub);
-  const category = (cat) => {
-    switch (cat) {
+const TopAddres = ({ title, id }) => {
+  const subCat = useSelector((state) => state.blogUi.blogSub);
+  const category = () => {
+    switch (subCat) {
       case "drink":
         return "روش تهیه انواع نوشیدنی";
       case "coffee":
@@ -21,6 +21,7 @@ const TopAddres = (props) => {
         return;
     }
   };
+
   return (
     <div className="blogPost-topAddres">
       <Link className="blogPost-topAddres-link" href={"/blog"}>
@@ -28,14 +29,14 @@ const TopAddres = (props) => {
       </Link>
       <ArrowsIcon arrowType="left" />
       <Link className="blogPost-topAddres-link" href={`/blog/${subCat}`}>
-        {category(subCat)}
+        {category()}
       </Link>
       <ArrowsIcon arrowType="left" />
       <Link
         className="blogPost-topAddres-link"
-        href={`/blog/${subCat}/${props.post.id}`}
+        href={`/blog/${subCat}/${id}/${title}`}
       >
-        {props.post.title}
+        {title}
       </Link>
     </div>
   );

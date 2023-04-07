@@ -8,13 +8,20 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { blogUiAction } from "../../../../store/Blog/ui/blogUislice";
+import {
+  getAdProducts,
+  getBlogPosts,
+} from "../../../../store/Blog/getData/BlogGetDataAction";
 const BHeader = () => {
   const location = useRouter();
   const isDark = useSelector((state) => state.blogUi.isDark);
   const sub = useSelector((state) => state.blogUi.blogSub);
   const subsClass = useSelector((state) => state.blogUi.subsClass);
 
-  const dispatch = useDispatch();
+  const dispatchPosts = useDispatch();
+  const dispatchAdProducts = useDispatch();
+  const dispatchSub = useDispatch();
+  const dispatchSubClass = useDispatch();
   const path = location.pathname;
 
   const [showMiniSearch, setShowMiniSearch] = useState(false);
@@ -24,15 +31,14 @@ const BHeader = () => {
   const toggleMiniSeachHandler = () => {
     setShowMiniSearch((prev) => !prev);
   };
-
-  // useEffect(() => {
-  //   dispatch(blogGetData)
-  // }, [])
+  useEffect(() => {
+    dispatchPosts(getBlogPosts());
+    dispatchAdProducts(getAdProducts());
+  }, [dispatchPosts, dispatchAdProducts]);
 
   useEffect(() => {
     const handleScroll = () => {
       let moving = window.pageYOffset;
-
       setVisible(position > moving);
       setPosition(moving);
     };
@@ -45,45 +51,51 @@ const BHeader = () => {
 
   useEffect(() => {
     if (path.includes("/blog/coffee")) {
-      dispatch(blogUiAction.setBlogSub("coffee"));
+      dispatchSub(blogUiAction.setBlogSub("coffee"));
       return;
     }
     if (path.includes("/blog/drink")) {
-      dispatch(blogUiAction.setBlogSub("drink"));
+      dispatchSub(blogUiAction.setBlogSub("drink"));
       return;
     }
     if (path.includes("/blog/tools")) {
-      dispatch(blogUiAction.setBlogSub("tools"));
+      dispatchSub(blogUiAction.setBlogSub("tools"));
       return;
     }
     if (path.includes("/blog/news")) {
-      dispatch(blogUiAction.setBlogSub("news"));
+      dispatchSub(blogUiAction.setBlogSub("news"));
       return;
     }
-    dispatch(blogUiAction.setBlogSub(null));
-  }, [location, dispatch, path]);
+    dispatchSub(blogUiAction.setBlogSub(null));
+  }, [location, dispatchSub, path]);
 
   useEffect(() => {
     switch (sub) {
       case "coffee":
-        dispatch(
+        dispatchSubClass(
           blogUiAction.setSubsClass(isDark ? "Dcoffee coffee" : "coffee")
         );
         break;
       case "drink":
-        dispatch(blogUiAction.setSubsClass(isDark ? "Ddrink drink" : "drink"));
+        dispatchSubClass(
+          blogUiAction.setSubsClass(isDark ? "Ddrink drink" : "drink")
+        );
         break;
       case "tools":
-        dispatch(blogUiAction.setSubsClass(isDark ? "Dtools tools" : "tools"));
+        dispatchSubClass(
+          blogUiAction.setSubsClass(isDark ? "Dtools tools" : "tools")
+        );
         break;
       case "news":
-        dispatch(blogUiAction.setSubsClass(isDark ? "Dnews news" : "news"));
+        dispatchSubClass(
+          blogUiAction.setSubsClass(isDark ? "Dnews news" : "news")
+        );
         break;
       default:
-        dispatch(blogUiAction.setSubsClass(""));
+        dispatchSubClass(blogUiAction.setSubsClass(""));
         break;
     }
-  }, [isDark, sub, dispatch]);
+  }, [isDark, sub, dispatchSubClass]);
 
   return (
     <header

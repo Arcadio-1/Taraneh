@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import TomanIcon from "../../../ui/Icons/tomanIcon";
+import TomanIcon from "../../../../ui/Icons/tomanIcon";
 
 const RandomAd1158 = () => {
   const [randomAdProducts, setRandomAdProducts] = useState();
@@ -24,7 +24,7 @@ const RandomAd1158 = () => {
             return (
               <li key={item.id} className="randomPostAd-list-item">
                 <Link
-                  href={item.id}
+                  href={`/product/${item.id}`}
                   className="randomPostAd-list-item-container"
                 >
                   <Image

@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import TomanIcon from "../../../ui/Icons/tomanIcon";
+import TomanIcon from "../../../../ui/Icons/tomanIcon";
 
 const RelatedAd1158 = () => {
   const adProducts = useSelector((state) => state.blogGetData.blogAdProducts);
@@ -21,7 +21,7 @@ const RelatedAd1158 = () => {
   return (
     <section className="relatedAd">
       <h2 className="relatedAd-title">محصولات پیشنهادی</h2>
-      {status && status.status === "success" && relatedAd && (
+      {status.status === "success" && relatedAd && (
         <ul className="relatedAd-list">
           {relatedAd.map((item, index) => {
             if (size > 720 && index === 5) {
@@ -29,7 +29,10 @@ const RelatedAd1158 = () => {
             }
             return (
               <li key={item.id} className="relatedAd-list-item">
-                <Link href={item.id} className="relatedAd-list-item-container">
+                <Link
+                  href={`/product/${item.id}`}
+                  className="relatedAd-list-item-container"
+                >
                   <h3 className="relatedAd-list-item-title">{item.title}</h3>
                   <Image
                     className="relatedAd-list-item-image"

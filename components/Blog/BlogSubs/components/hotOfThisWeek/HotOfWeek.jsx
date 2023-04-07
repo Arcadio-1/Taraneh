@@ -21,7 +21,7 @@ const HotOfWeek = (props) => {
   return (
     <section className="hotOfWeek">
       <h2 className="hotOfWeek-title">مطالب داغ هفته</h2>
-      {hotOfWeek && status && status.status === "success" && (
+      {hotOfWeek && status.status === "success" && (
         <div className="hotOfWeek-list">
           {hotOfWeek.map((item, index) => {
             return (

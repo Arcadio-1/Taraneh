@@ -8,7 +8,6 @@ export const getComment = async (id) => {
     }
     const db = client.db();
     const comment = await db.collection("comments").findOne({ _id: id });
-    console.log(comment);
     // console.log(comment);
     if (!comment) {
       return {

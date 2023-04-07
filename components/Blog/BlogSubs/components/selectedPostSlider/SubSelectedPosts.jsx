@@ -15,7 +15,6 @@ import Image from "next/image";
 const SubSelectedPosts = () => {
   const posts = useSelector((state) => state.blogGetData.blogPosts);
   const status = useSelector((state) => state.blogUi.blogPostsStatus);
-  const subCat = useSelector((state) => state.blogUi.blogSub);
 
   const [selectedposts, setselectedPosts] = useState([]);
 
@@ -51,7 +50,7 @@ const SubSelectedPosts = () => {
                     id={link.id}
                     className="SubSelectedSlider-swiper-slide"
                   >
-                    <Link href={`/blog/${link.sub}/${link.id}`}>
+                    <Link href={`/blog/${link.sub}/${link.id}/${link.title}`}>
                       <div className="SubSelectedSlider-swiper-post">
                         <Image
                           height={300}
