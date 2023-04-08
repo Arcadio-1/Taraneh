@@ -152,7 +152,7 @@ export const getPaths = async () => {
     }
     const { allProducts } = getProductsReq;
     const paths = allProducts.map((item) => {
-      return { id: item.id };
+      return { id: item.id, title: item.title };
     });
     // console.log(paths);
     return JSON.stringify({

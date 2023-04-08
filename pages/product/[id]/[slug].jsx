@@ -1,8 +1,7 @@
 import Head from "next/head";
-import { Router } from "next/router";
 import React, { Fragment } from "react";
-import ProductDetails from "../../components/ProductDetails/ProductDetails";
-import { getComments, getPaths, getSingleProduct } from "../api/helper";
+import ProductDetails from "../../../components/ProductDetails/ProductDetails";
+import { getComments, getPaths, getSingleProduct } from "../../api/helper";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
@@ -82,9 +81,9 @@ export async function getStaticPaths() {
   }
   const { allPath } = paths;
   const pathesParams = allPath.map((item) => {
-    return { params: { id: item.id } };
+    return { params: { id: item.id, slug: item.title } };
   });
-
+  //   console.log(pathesParams);
   return { paths: pathesParams, fallback: false };
 }
 

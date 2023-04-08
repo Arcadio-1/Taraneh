@@ -8,7 +8,6 @@ const index = (props) => {
 };
 
 export async function getServerSideProps(context) {
-  console.log(context);
   const id = context.params.id;
   const post = await getPost(id);
   const comment = await getComment(id);
