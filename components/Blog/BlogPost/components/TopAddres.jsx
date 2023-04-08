@@ -27,17 +27,19 @@ const TopAddres = ({ title, id }) => {
       <Link className="blogPost-topAddres-link" href={"/blog"}>
         <HomeIcon />
       </Link>
-      <ArrowsIcon arrowType="left" />
+      {/* <ArrowsIcon arrowType="left" /> */}
+      <span className="blogPost-topAddres-backslash">/</span>
       <Link className="blogPost-topAddres-link" href={`/blog/${subCat}`}>
         {category()}
       </Link>
-      <ArrowsIcon arrowType="left" />
-      <Link
+      {/* <span className="blogPost-topAddres-backslash">/</span> */}
+      {/* <ArrowsIcon arrowType="left" /> */}
+      {/* <Link
         className="blogPost-topAddres-link"
         href={`/blog/${subCat}/${id}/${title}`}
       >
         {title}
-      </Link>
+      </Link> */}
     </div>
   );
 };

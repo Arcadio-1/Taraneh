@@ -55,9 +55,9 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
   //   console.log(clearListStatus);
   // }, [clearListStatus]);
 
-  useEffect(() => {
-    console.log(changeAmountStatus);
-  }, [changeAmountStatus]);
+  // useEffect(() => {
+  //   console.log(changeAmountStatus);
+  // }, [changeAmountStatus]);
 
   const amountHandler = async (type) => {
     if (login === "unauthenticated") {

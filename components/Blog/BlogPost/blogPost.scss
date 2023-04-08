@@ -606,8 +606,17 @@
 .drink {
   .blogPost {
     &-topAddres {
+      @include dflex(flex-start);
       &-link {
         color: color(dark-2);
+        font-size: 1.3rem;
+        svg {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+      &-backslash {
+        margin: 0 0.5rem 0 0.5rem;
       }
       .arrowIcon {
         path {

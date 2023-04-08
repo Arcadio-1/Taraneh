@@ -38,7 +38,11 @@ function MyApp({ Component, pageProps }) {
         <Layout>
           <div id="overLay"></div>
           {!loading && <Component {...pageProps} />}
-          {loading && <LoadingSpinner text={"در حال بارگزاری"} />}
+          {loading && (
+            <div className="w-full h-28 my-10">
+              <LoadingSpinner text={"در حال بارگزاری"} />
+            </div>
+          )}
         </Layout>
       </SessionProvider>
     </Provider>
