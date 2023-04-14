@@ -1,11 +1,9 @@
 import Head from "next/head";
-import { Router } from "next/router";
 import React, { Fragment } from "react";
 import ProductDetails from "../../../components/ProductDetails/ProductDetails";
-// import { getComments, getPaths, getProduct } from "../../api/helper";
 import { getProduct } from "../../api/shop/data/getSingleProduct/helper";
 import { getComments } from "../../api/shop/data/getComments/helper";
-import { getPaths } from "../../api/helper";
+import { getPaths } from "../../api/shop/functions/getPaths";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
