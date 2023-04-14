@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { varifiypassword, getHashedPassword } from "../../../lib/hashHelper";
-import { getClient } from "../helper";
+import { getClient } from "../util/functions/getClient";
 
 async function handler(req, res) {
   try {

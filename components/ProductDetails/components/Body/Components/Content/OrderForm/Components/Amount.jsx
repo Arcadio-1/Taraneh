@@ -8,7 +8,6 @@ import {
 } from "../../../../../../../../lib/utilFunctions";
 import { getOrederList } from "../../../../../../../../store/ManageData/GetData/GetDataAction";
 import { getDataSliceActions } from "../../../../../../../../store/ManageData/GetData/GetDataSlice";
-import { uiAction } from "../../../../../../../../store/ui/uiSlice";
 import CloseIcon from "../../../../../../../ui/Icons/CloseIcon";
 import Minus from "../../../../../../../ui/Icons/Minus";
 import PlusIcon from "../../../../../../../ui/Icons/PlusIcon";
@@ -83,7 +82,7 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
               message: "در حال پاکسازی سبد خرید",
             });
           });
-          const request = await fetch("/api/ordring", {
+          const request = await fetch("/api/shop/data/post-put-delete-Order/", {
             method: "DELETE",
             body: JSON.stringify({
               userId: data.user.email._id,
@@ -174,7 +173,7 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
             return item;
           });
         }
-        const request = await fetch("/api/ordring/amountManaging", {
+        const request = await fetch("/api/shop/data/changeAmount/", {
           method: "POST",
           body: JSON.stringify({
             userId: data.user.email._id,

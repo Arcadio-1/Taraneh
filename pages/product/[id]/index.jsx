@@ -2,11 +2,14 @@ import Head from "next/head";
 import { Router } from "next/router";
 import React, { Fragment } from "react";
 import ProductDetails from "../../../components/ProductDetails/ProductDetails";
-import { getComments, getPaths, getSingleProduct } from "../../api/helper";
+// import { getComments, getPaths, getProduct } from "../../api/helper";
+import { getProduct } from "../../api/shop/data/getSingleProduct/helper";
+import { getComments } from "../../api/shop/data/getComments/helper";
+import { getPaths } from "../../api/helper";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
-  // console.log(product);
+  console.log(comments);
   return (
     <Fragment>
       <Head>
@@ -15,18 +18,19 @@ const ProductDetailsPage = (props) => {
         <meta name="viewport" content="width=device-width" />
         <meta name="description" content={`${product.description}`} />
       </Head>
-      <ProductDetails product={product} comments={comments} />
+      <ProductDetails product={product} comments={comments.comments} />
     </Fragment>
   );
 };
 
 export async function getStaticProps(context) {
   const id = context.params.id;
-  const productJson = await getSingleProduct(id);
+  const productJson = await getProduct(id);
   const commentsJson = await getComments(id);
+  // console.log(commentsJson);
   const product = JSON.parse(productJson);
   const comments = JSON.parse(commentsJson);
-  // console.log(comments);
+  console.log(comments);
   if (product.status === "error") {
     return {
       props: {
@@ -66,7 +70,7 @@ export async function getStaticProps(context) {
         status: product.status,
         message: product.message,
         product: product.product,
-        comments: comments.commentsList,
+        comments: comments.comments,
       },
       revalidate: 6000,
     };

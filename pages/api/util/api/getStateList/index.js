@@ -1,5 +1,4 @@
-import React from "react";
-import { getClient } from "../helper";
+import { getClient } from "../../../helper";
 
 async function handler(req, res) {
   if (req.method === "GET") {

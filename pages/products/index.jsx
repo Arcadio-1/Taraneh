@@ -1,24 +1,21 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
-
 import ShopHero from "../../components/Products/Main/ShopHero";
 import ListingManage from "../../components/Products/Main/ListingManage";
 import ProductsList from "../../components/Products/Main/ProductsList";
 import PaginationNav from "../../components/Products/Main/PaginationNav";
-
 import Brands from "../../components/Products/SideMenu/Brands";
 import FilterByPrice from "../../components/Products/SideMenu/FilterByPrice";
 import Status from "../../components/Products/SideMenu/Status";
 import Categories from "../../components/Products/SideMenu/Categories";
 import SideAd from "../../components/Products/SideMenu/SideAd";
-import { curentPageProducts } from "../api/helper";
+import { curentPageProducts } from "../api/shop/functions/curentPageProducts";
 import LoadingSpiner from "../../components/ui/LoadingSpiner/loadingSpiner";
 import FilterMenu from "../../components/Products/ModuleMenu/filterMenu";
 import Head from "next/head";
 
 const index = (props) => {
-  // console.log(props);
-  if (props.allProducts.length === 0) {
+  if (props.products.length === 0) {
     <LoadingSpiner text={"محصولی یافت نشد"} />;
   }
   return (
@@ -33,17 +30,17 @@ const index = (props) => {
         </section>
         <section className="productsPage-body">
           <aside className="productsPage-aside hideInMD">
-            <Categories products={props.allProducts} />
-            <FilterByPrice products={props.allProducts} />
+            <Categories products={props.products} />
+            <FilterByPrice products={props.products} />
             <Status />
-            <Brands products={props.allProducts} />
-            <SideAd products={props.allProducts} />
-            <FilterMenu products={props.allProducts} />
+            <Brands products={props.products} />
+            <SideAd products={props.products} />
+            <FilterMenu products={props.products} />
           </aside>
           <main className="productsPage-main">
             <ShopHero />
             <ListingManage />
-            <ProductsList products={props.products} />
+            <ProductsList products={props.pagenatedPosts} />
             <PaginationNav numberOfPages={props.numberOfPages} />
           </main>
         </section>

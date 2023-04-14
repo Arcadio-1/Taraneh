@@ -18,13 +18,11 @@ const CategoryList = (props) => {
   // ];
   return (
     <Fragment>
-      {links.status === "success" && (
-        <ul className="sideMenu-category-list">
-          {links.data.map((item) => {
-            return <CategoryItem child={false} key={item.id} item={item} />;
-          })}
-        </ul>
-      )}
+      <ul className="sideMenu-category-list">
+        {links.map((item) => {
+          return <CategoryItem child={false} key={item.id} item={item} />;
+        })}
+      </ul>
     </Fragment>
   );
 };

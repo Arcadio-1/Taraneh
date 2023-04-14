@@ -8,15 +8,18 @@ const PaginationNav = (props) => {
   let { numberOfPages } = props;
   const router = useRouter();
   const { query, pathname } = router;
+  // console.log(query);
   const { sortType, filterType } = router.query;
   const { page } = query;
   const numberOfBtn = 3;
-  const pageNum = page || 1;
+  const pageNum = +page || 1;
   const pages = [];
   for (let i = 1; i <= numberOfPages; i++) {
     pages.push(i);
   }
+  // console.log(pages);
   const prevBtnHandler = () => {
+    console.log(pageNum);
     if (!pageNum || pageNum === 1) {
       return;
     }

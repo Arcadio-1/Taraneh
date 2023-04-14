@@ -34,14 +34,14 @@ const SideMenu = (props) => {
 
   useEffect(() => {
     const getNavLinks = async () => {
-      const categoryNavLinksJson = await fetch("/api/helperAPI/getNavLinks", {
+      const categoryNavLinksJson = await fetch("/api/shop/ui/getNavLinks", {
         method: "GET",
       });
       const result = await categoryNavLinksJson.json();
       if (!result || result.status === "error") {
         setCategoryNavLinksStatus((prev) => (prev = "error"));
       }
-      setCategoryNavLinks((prev) => (prev = result));
+      setCategoryNavLinks((prev) => (prev = result.links));
       setCategoryNavLinksStatus((prev) => (prev = "success"));
     };
     getNavLinks();

@@ -1,4 +1,4 @@
-import { getClient } from "./helper";
+import { getClient } from "../../functions/getClient";
 
 async function handler(req, res) {
   if (req.method !== "POST") {

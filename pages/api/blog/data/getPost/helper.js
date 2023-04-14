@@ -1,4 +1,4 @@
-import { getClient } from "../../../helper";
+import { getClient } from "../../../util/functions/getClient";
 
 export const getPost = async (id) => {
   try {

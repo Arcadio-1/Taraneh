@@ -5,7 +5,6 @@ import Body from "./components/Body/Body";
 import SubCard from "./components/SubCard/SubCard";
 const ProductDetails = (props) => {
   const { comments, product } = props;
-
   const {
     packaging,
     category,

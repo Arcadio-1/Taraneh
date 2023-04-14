@@ -1,5 +1,5 @@
-const StarIcon = (props) => {
-  const { isOn } = props;
+const StarIcon = ({ isOn }) => {
+  // const { isOn } = props;
   const on = { fill: "gold" };
   const off = { fill: "gray" };
   return (

@@ -6,15 +6,18 @@ const FrequentPurchases = () => {
   const [products, setProducts] = useState();
   useEffect(() => {
     const getProduct = async () => {
-      const request = await fetch("/api/helperAPI/getAdProducts", {
+      const request = await fetch("/api/shop/data/getAdProducts/", {
         method: "GET",
       });
-      const data = await request.json();
-      // console.log(data);
+      const response = await request.json();
+      console.log(response);
 
-      if (data.status === "success") {
+      if (response.status === "success") {
         setProducts((prev) => {
-          return (prev = { status: data.status, data: data.products });
+          return (prev = {
+            status: response.status,
+            data: response.adProducts,
+          });
         });
       }
     };

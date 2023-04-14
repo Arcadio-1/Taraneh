@@ -1,11 +1,26 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useRef, useState } from "react";
 import CommentsList from "./Comments/CommentsList";
 import Form from "./Form/Form";
+
 const Reviws = ({ comments, title, postId }) => {
   const numberOfComments = comments.length;
-  const { status } = useSession();
+  const formRef = useRef();
+  const textRef = useRef();
+
+  const focusOnText = () => {
+    textRef.current.focus();
+    formRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    });
+  };
+
+  const { data, status } = useSession();
+  const [replyTo, setReplyTo] = useState(null);
+
   return (
     <div className="subCard-reviwe p-2 flex flex-col gap-5">
       <div className="">
@@ -28,7 +43,17 @@ const Reviws = ({ comments, title, postId }) => {
             </div>
           </div>
         )}
-        {status === "authenticated" && <Form postId={postId} />}
+        {status === "authenticated" && (
+          <Form
+            postId={postId}
+            replyTo={replyTo}
+            setReplyTo={setReplyTo}
+            userData={data.user.email}
+            firstComment={!comments.length}
+            textRef={textRef}
+            formRef={formRef}
+          />
+        )}
       </div>
 
       <p className="text-xl">
@@ -37,7 +62,14 @@ const Reviws = ({ comments, title, postId }) => {
         <span className="font-bold"> {title} </span>
         <span>ثبت شده</span>
       </p>
-      {comments && <CommentsList comments={comments} />}
+      {comments && (
+        <CommentsList
+          comments={comments}
+          replyTo={replyTo}
+          setReplyTo={setReplyTo}
+          onTextFocus={focusOnText}
+        />
+      )}
       {!comments && (
         <div>
           <p className="text-xl text-center">اولین نظر را شما بدهید</p>

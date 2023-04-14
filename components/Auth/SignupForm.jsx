@@ -224,7 +224,7 @@ const SignupForm = ({ currentPage }) => {
 
   useEffect(() => {
     const getStates = async () => {
-      const request = await fetch("/api/signup/getStates", {
+      const request = await fetch("/api/util/api/getStateList/", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -248,7 +248,7 @@ const SignupForm = ({ currentPage }) => {
     setStateError(false);
     setGetCitiesStatus("loading");
     const getcities = async (stateId) => {
-      const request = await fetch(`/api/signup/${stateId}`, {
+      const request = await fetch(`/api/util/api/getStateCityes/${stateId}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });

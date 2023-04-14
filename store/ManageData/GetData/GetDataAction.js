@@ -12,24 +12,16 @@ export const getAllProducts = () => {
         })
       );
 
-      const request = await fetch("/api/productsManager", {
+      const request = await fetch("/api/shop/data/getAllProducts/", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-
-      // console.log(request);
-      // console.log("request");
-      // if (request.status === "error") {
-      //   throw new Error("خطا در دریافت لیست محصولات");
-      // }
-
       const data = await request.json();
-      // console.log(data);
       if (data.status === "error") {
         throw new Error("خطا در دریافت اطلاعات لیست محصولات");
       }
 
-      dispatch(getDataSliceActions.getProducts(data.data));
+      dispatch(getDataSliceActions.getProducts(data.products));
 
       dispatch(
         uiAction.setGetAllProductsStatus({
@@ -59,7 +51,7 @@ export const getOrederList = (id) => {
         })
       );
 
-      const orders = await fetch(`/api/ordring/getOrderList/${id}`, {
+      const orders = await fetch(`/api/shop/data/getOrderList/${id}`, {
         method: "GET",
       });
       if (!orders) {
@@ -69,10 +61,10 @@ export const getOrederList = (id) => {
       if (response.status !== "success") {
         throw new Error("خطا در دریافت لیست خرید");
       }
-      if (response.orders) {
-        dispatch(getDataSliceActions.setCardItems(response.orders.orders));
+      if (response.orderList) {
+        dispatch(getDataSliceActions.setCardItems(response.orderList.orders));
       }
-      if (!response.orders) {
+      if (!response.orderList) {
         dispatch(getDataSliceActions.setCardItems([]));
       }
       dispatch(
@@ -107,7 +99,7 @@ export const getCartItemsData = (items) => {
       const mylist = [];
       const cartListArray = await items.map(async (item) => {
         const request = await fetch(
-          `/api/helperAPI/getSingleProduct/${item.ProductId}`,
+          `/api/shop/data/getSingleProduct/${item.ProductId}`,
           {
             method: "GET",
           }

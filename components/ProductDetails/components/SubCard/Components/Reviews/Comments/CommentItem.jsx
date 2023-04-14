@@ -1,15 +1,31 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import StarIcon from "../../../../../../ui/Icons/StarIcon";
-const CommentItem = ({ comment, comments }) => {
+const CommentItem = ({
+  comment,
+  comments,
+  setReplyTo,
+  replyTo,
+  onTextFocus,
+}) => {
+  const setReplyToHandler = (item) => {
+    onTextFocus();
+    setReplyTo((prev) => {
+      return (prev = item);
+    });
+  };
+
   const nestedComments = (comments || []).map((item) => {
-    if (item.parent === comment.id) {
+    if (item.parent && item.parent.id === comment.id) {
       return (
         <CommentItem
           key={item.id}
           comment={item}
           type="child"
           comments={comments}
+          setReplyTo={setReplyTo}
+          replyTo={replyTo}
+          onTextFocus={onTextFocus}
         />
       );
     }
@@ -17,7 +33,13 @@ const CommentItem = ({ comment, comments }) => {
   return (
     <div className=" reviwe-item-container border-r-2 border-gray-100">
       <div className="reviwe-item flex gap-5 mr-2 ">
-        <div className="reviwe-item-profile">
+        <div
+          className={`reviwe-item-profile ${
+            replyTo && replyTo.id === comment.id
+              ? "pr-2  border-r-4 border-red-800"
+              : ""
+          } `}
+        >
           <Image
             src={"/image/ui/nika.jpg"}
             alt={"nika"}
@@ -46,7 +68,10 @@ const CommentItem = ({ comment, comments }) => {
           <div className="">
             <p className="text-lg">{comment.text}</p>
           </div>
-          <button className="bg-cyan-600 text-white py-1 px-10 rounded-xl text-lg">
+          <button
+            onClick={setReplyToHandler.bind(null, comment)}
+            className="bg-cyan-600 text-white py-1 px-10 rounded-xl text-lg"
+          >
             پاسخ
           </button>
         </div>

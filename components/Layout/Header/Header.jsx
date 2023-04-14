@@ -54,7 +54,7 @@ const Header = () => {
           );
           const sendMergedCartList = async (cartList, id) => {
             const methodFlag = cartItems.length > 0 ? "PUT" : "POST";
-            const request = await fetch("/api/ordring/mergeCartItems", {
+            const request = await fetch("/api/shop/data/mergeOrders/", {
               method: methodFlag,
               body: JSON.stringify({
                 userId: id,

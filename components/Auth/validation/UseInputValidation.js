@@ -24,8 +24,13 @@ const useInputValidation = (validation) => {
   const isValid = validation(inputState.inputValue);
   const errorStatus = !isValid && inputState.isTuched;
 
-  const inputChangeHandler = (e) => {
-    dispatchInputState({ type: "INPUT", inputValue: e.target.value });
+  const inputChangeHandler = (e, value) => {
+    if (value) {
+      dispatchInputState({ type: "INPUT", inputValue: value });
+    }
+    if (!value) {
+      dispatchInputState({ type: "INPUT", inputValue: e.target.value });
+    }
   };
 
   const inputBlurHandler = () => {

@@ -80,7 +80,7 @@ const OrderForm = ({ price, id, availableWeights, availableGrind }) => {
         );
         const methodFlag =
           cartItemsData && cartItemsData.length > 0 ? "PUT" : "POST";
-        const request = await fetch("/api/ordring", {
+        const request = await fetch("/api/shop/data/post-put-delete-Order/", {
           method: methodFlag,
           body: JSON.stringify({
             isInsert: true,

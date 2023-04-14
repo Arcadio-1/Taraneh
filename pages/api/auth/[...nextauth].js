@@ -1,7 +1,7 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { varifiypassword } from "../../../lib/hashHelper";
-import { getClient } from "../helper";
+import { getClient } from "../util/functions/getClient";
 
 export default NextAuth({
   session: {
