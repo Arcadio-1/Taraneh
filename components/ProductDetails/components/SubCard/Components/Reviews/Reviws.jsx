@@ -62,15 +62,15 @@ const Reviws = ({ comments, title, postId }) => {
         <span className="font-bold"> {title} </span>
         <span>ثبت شده</span>
       </p>
-      {comments && (
+      {!!numberOfComments && (
         <CommentsList
-          comments={comments}
+          comments={comments.comments}
           replyTo={replyTo}
           setReplyTo={setReplyTo}
           onTextFocus={focusOnText}
         />
       )}
-      {!comments && (
+      {!numberOfComments && (
         <div>
           <p className="text-xl text-center">اولین نظر را شما بدهید</p>
         </div>

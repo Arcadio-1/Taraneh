@@ -3,9 +3,12 @@ import React, { Fragment } from "react";
 import ProductDetails from "../../../components/ProductDetails/ProductDetails";
 import { getProduct } from "../../api/shop/data/getSingleProduct/helper";
 import { getComments } from "../../api/shop/data/getComments/helper";
+import LoadingSpinner from "../../../components/ui/LoadingSpiner/loadingSpiner";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
+  console.log(status);
+  console.log(message);
   return (
     <Fragment>
       <Head>
@@ -14,7 +17,10 @@ const ProductDetailsPage = (props) => {
         <meta name="viewport" content="width=device-width" />
         <meta name="description" content={`${product.description}`} />
       </Head>
-      <ProductDetails product={product} comments={comments.comments} />
+      {status === "success" && (
+        <ProductDetails product={product} comments={comments.comments} />
+      )}
+      {status === "error" && <LoadingSpinner text={"صفحه مورد نظر یافت نشد"} />}
     </Fragment>
   );
 };

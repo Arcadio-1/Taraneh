@@ -4,9 +4,12 @@ import ProductDetails from "../../../components/ProductDetails/ProductDetails";
 import { getProduct } from "../../api/shop/data/getSingleProduct/helper";
 import { getComments } from "../../api/shop/data/getComments/helper";
 import { getPaths } from "../../api/shop/functions/getPaths";
+import LoadingSpinner from "../../../components/ui/LoadingSpiner/loadingSpiner";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
+  console.log(status);
+  console.log(message);
   console.log(comments);
   return (
     <Fragment>
@@ -16,7 +19,10 @@ const ProductDetailsPage = (props) => {
         <meta name="viewport" content="width=device-width" />
         <meta name="description" content={`${product.description}`} />
       </Head>
-      <ProductDetails product={product} comments={comments.comments} />
+      {status === "success" && (
+        <ProductDetails product={product} comments={comments} />
+      )}
+      {status === "error" && <LoadingSpinner text={"صفحه مورد نظر یافت نشد"} />}
     </Fragment>
   );
 };
@@ -40,7 +46,7 @@ export async function getStaticProps(context) {
       revalidate: 6000,
     };
   }
-  if (product.status === "notFound") {
+  if (product.status === "error") {
     return {
       props: {
         status: product.status,
@@ -51,7 +57,7 @@ export async function getStaticProps(context) {
       revalidate: 6000,
     };
   }
-  if (product.status === "success" && comments.status === "notfound") {
+  if (product.status === "success" && comments.status === "error") {
     return {
       props: {
         status: product.status,
