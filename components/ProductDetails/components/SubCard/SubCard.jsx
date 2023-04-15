@@ -12,6 +12,7 @@ const SubCard = (props) => {
     });
   };
   const { comments, product } = props;
+  console.log(comments);
   const {
     packaging,
     category,

@@ -64,7 +64,7 @@ const Reviws = ({ comments, title, postId }) => {
       </p>
       {!!numberOfComments && (
         <CommentsList
-          comments={comments.comments}
+          comments={comments}
           replyTo={replyTo}
           setReplyTo={setReplyTo}
           onTextFocus={focusOnText}
