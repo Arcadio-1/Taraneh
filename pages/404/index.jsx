@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import NotFound from "../components/ui/notFound/NotFound";
+import NotFound from "../../components/ui/notFound/NotFound";
 import Head from "next/head";
 
 const index = () => {

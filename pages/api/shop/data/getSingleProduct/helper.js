@@ -8,7 +8,6 @@ export const getProduct = async (id) => {
     }
     const db = client.db();
     const request = await db.collection("allProducts").findOne({ id: id });
-    // console.log(request);
     client.close();
     if (!request) {
       throw new Error("محصول مورد نظر یافت نشد");

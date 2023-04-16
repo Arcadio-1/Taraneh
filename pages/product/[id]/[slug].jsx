@@ -3,24 +3,20 @@ import React, { Fragment } from "react";
 import ProductDetails from "../../../components/ProductDetails/ProductDetails";
 import { getProduct } from "../../api/shop/data/getSingleProduct/helper";
 import { getComments } from "../../api/shop/data/getComments/helper";
-import LoadingSpinner from "../../../components/ui/LoadingSpiner/loadingSpiner";
+import NotFound from "../../../components/ui/notFound/NotFound";
 
 const ProductDetailsPage = (props) => {
   const { status, message, product, comments } = props;
-  console.log(status);
-  console.log(message);
   return (
     <Fragment>
       <Head>
         <title>{`فروشگاه اینترنتی کافه ترانه | ${product.title}`}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width" />
         <meta name="description" content={`${product.description}`} />
       </Head>
       {status === "success" && (
         <ProductDetails product={product} comments={comments.comments} />
       )}
-      {status === "error" && <LoadingSpinner text={"صفحه مورد نظر یافت نشد"} />}
+      {status === "error" && <NotFound text={"صفحه مورد نظر یافت نشد"} />}
     </Fragment>
   );
 };

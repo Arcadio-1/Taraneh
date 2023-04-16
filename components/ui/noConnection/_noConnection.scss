@@ -1,0 +1,101 @@
+.noConnection {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin: 3rem 0rem;
+  @include dflex(center, flex-start);
+  gap: 1rem;
+  &-head {
+    @include dflex(center, flex-start);
+    flex-direction: column;
+    gap: 3rem;
+  }
+  &-btn {
+    @include dflex(space-between);
+    gap: 0.5rem;
+    position: relative;
+    background-color: color(light-3);
+    padding: 0.5rem 1.5rem;
+    padding-right: 4rem;
+    border-radius: 20px;
+    &-text {
+      font-size: 2rem;
+    }
+    .homeIcon_2 {
+      // position: absolute;
+      fill: color(light-1);
+      width: 3rem;
+      height: 3rem;
+    }
+    .clickIcon {
+      position: absolute;
+      right: -8px;
+      stroke: #3c2b35;
+      top: 18px;
+    }
+  }
+  &-image {
+  }
+  &-title {
+    white-space: nowrap;
+    font-family: iranyekan;
+    font-size: 3rem;
+    color: #424242;
+    // text-shadow: 0px 0px 5px rgba(#333, 0.5);
+    font-weight: 700;
+  }
+  &-heroImg {
+    max-width: 30rem;
+    width: 100%;
+  }
+  @include responsive(md) {
+    &-head {
+      gap: 1rem;
+    }
+    &-btn {
+      padding-right: 3rem;
+      border-radius: 15px;
+      &-text {
+        font-size: 1.5rem;
+      }
+      .homeIcon_2 {
+        width: 2rem;
+        height: 2rem;
+      }
+      .clickIcon {
+        width: 4rem;
+        height: 4rem;
+        top: 15px;
+      }
+    }
+    &-title {
+      font-size: 3rem;
+    }
+  }
+  @include responsive(sm) {
+    align-items: center;
+    flex-direction: column-reverse;
+    &-head {
+      gap: 1rem;
+    }
+    &-btn {
+      padding-right: 3rem;
+      border-radius: 15px;
+      &-text {
+        font-size: 1.5rem;
+      }
+      .homeIcon_2 {
+        width: 2rem;
+        height: 2rem;
+      }
+      .clickIcon {
+        width: 4rem;
+        height: 4rem;
+        top: 15px;
+      }
+    }
+    &-title {
+      font-size: 3rem;
+    }
+  }
+}

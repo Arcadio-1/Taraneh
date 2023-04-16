@@ -8,6 +8,7 @@ export const getComments = async (id) => {
     }
     const db = client.db();
     const request = await db.collection("comments-2").findOne({ _id: id });
+    client.close();
     if (!request) {
       throw new Error("کامنت یافت نشد");
     }

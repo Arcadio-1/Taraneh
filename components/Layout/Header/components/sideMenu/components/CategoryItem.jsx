@@ -12,7 +12,6 @@ const CategoryItem = ({ item, child }) => {
   const { isShowMenu, menuRef, showMenuHandler } = useToggleMenu();
   const dispatchisShowMenu = useDispatch();
   const isShowCategoresHandler = (e) => {
-    console.log(e);
     showMenuHandler();
     const listHeight = categoryListRef.current.clientHeight;
     setCategoryHeight(`${listHeight + 20}px`);
