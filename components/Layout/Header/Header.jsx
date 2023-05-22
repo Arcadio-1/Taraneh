@@ -138,6 +138,7 @@ const Header = () => {
     }
     if (status === "authenticated") {
       const id = data.user.email._id;
+      // console.log(id);
       dispatchCartList(getOrederList(id));
     }
   }, [status, dispatchCartList, dispatchCartListStatus, data]);

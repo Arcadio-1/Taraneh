@@ -6,70 +6,70 @@ import store from "../store/store";
 import { SessionProvider } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
+// import { Fragment } from "react";
 import LoadingSpinner from "../components/ui/LoadingSpiner/loadingSpiner";
 import "../components/Products/SideMenu/multuRangeSlider/multiRangeSlider.css";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
-  // const router = useRouter();
-  // const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
-  //   const handleStart = (url) => url !== router.asPath && setLoading(true);
-  //   const handleComplete = (url) => url === router.asPath && setLoading(false);
+  //   console.log(router.asPath);
+  // }, [router.asPath]);
 
-  //   router.events.on("routeChangeStart", handleStart);
-  //   router.events.on("routeChangeComplete", handleComplete);
-  //   router.events.on("routeChangeError", handleComplete);
+  // useEffect(() => {
+  //   console.log(loading);
+  // }, [loading]);
 
-  //   return () => {
-  //     router.events.off("routeChangeStart", handleStart);
-  //     router.events.off("routeChangeComplete", handleComplete);
-  //     router.events.off("routeChangeError", handleComplete);
-  //   };
-  // });
+  // useEffect(() => {
+  //   console.log(router.events);
+  // }, [router.events]);
 
   useEffect(() => {
-    const registerServiceWorker = async () => {
-      if ("serviceWorker" in navigator) {
-        try {
-          const registration = await navigator.serviceWorker.register(
-            "/servic_worker.js",
-            {
-              scope: "/",
-            }
-          );
-          if (registration.installing) {
-            console.log("Service worker installing");
-          } else if (registration.waiting) {
-            console.log("Service worker installed");
-          } else if (registration.active) {
-            console.log("Service worker active");
-          }
-        } catch (error) {
-          console.error(`Registration failed with ${error}`);
-        }
-      }
+    const handleStart = (url) => url !== router.asPath && setLoading(true);
+    const handleComplete = (url) => url === router.asPath && setLoading(false);
+    // console.log(handleStart);
+    // console.log(handleStart);
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
     };
+  });
 
-    // registerServiceWorker();
-  }, []);
+  // useEffect(() => {
+  //   const registerServiceWorker = async () => {
+  //     if ("serviceWorker" in navigator) {
+  //       try {
+  //         const registration = await navigator.serviceWorker.register(
+  //           "/servic_worker.js",
+  //           {
+  //             scope: "/",
+  //           }
+  //         );
+  //         if (registration.installing) {
+  //           console.log("Service worker installing");
+  //         } else if (registration.waiting) {
+  //           console.log("Service worker installed");
+  //         } else if (registration.active) {
+  //           console.log("Service worker active");
+  //         }
+  //       } catch (error) {
+  //         console.error(`Registration failed with ${error}`);
+  //       }
+  //     }
+  //   };
 
-  // return (
-  //   <Provider store={store}>
-  //     <SessionProvider session={pageProps.session}>
-  //       <Layout>
-  //         <div id="overLay"></div>
-  //         {!loading && <Component {...pageProps} />}
-  //         {loading && (
-  //           <div className="w-full h-28 my-10">
-  //             <LoadingSpinner text={"در حال بارگزاری"} />
-  //           </div>
-  //         )}
-  //       </Layout>
-  //     </SessionProvider>
-  //   </Provider>
-  // );
+  //   // registerServiceWorker();
+  // }, []);
+
   return (
     <Fragment>
       <Head>
@@ -79,17 +79,42 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1"
         ></meta>
         <meta name="کافه ترانه" content="فروشگاه اینترنتی کافه ترانه"></meta>
-      </Head>
+      </Head>{" "}
       <Provider store={store}>
         <SessionProvider session={pageProps.session}>
           <Layout>
             <div id="overLay"></div>
-            <Component {...pageProps} />
+            {!loading && <Component {...pageProps} />}
+            {loading && (
+              <div className="w-full h-28 my-10">
+                <LoadingSpinner text={"در حال بارگزاری"} />
+              </div>
+            )}
           </Layout>
         </SessionProvider>
       </Provider>
     </Fragment>
   );
+  // return (
+  //   <Fragment>
+  //     <Head>
+  //       <meta charset="utf-8" />
+  //       <meta
+  //         name="viewport"
+  //         content="width=device-width, initial-scale=1"
+  //       ></meta>
+  //       <meta name="کافه ترانه" content="فروشگاه اینترنتی کافه ترانه"></meta>
+  //     </Head>
+  //     <Provider store={store}>
+  //       <SessionProvider session={pageProps.session}>
+  //         <Layout>
+  //           <div id="overLay"></div>
+  //           <Component {...pageProps} />
+  //         </Layout>
+  //       </SessionProvider>
+  //     </Provider>
+  //   </Fragment>
+  // );
 }
 
 export default MyApp;

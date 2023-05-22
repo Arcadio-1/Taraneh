@@ -89,422 +89,424 @@
       @include dflex;
       width: 100%;
     }
-    .productDetails-image {
-      position: relative;
-      width: 33%;
-      @include dflex(flex-start);
-      flex-direction: column;
-      // border: 2px solid red;
-      @include responsive(md) {
-        width: 100%;
+  }
+}
+.productDetails-image {
+  position: relative;
+  width: 33%;
+  @include dflex(flex-start);
+  flex-direction: column;
+  // border: 2px solid red;
+  @include responsive(md) {
+    width: 100%;
+  }
+  &-tags {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    &-offPersent {
+      font-family: iransansnum;
+      font-size: 1.4em;
+      border-radius: 3px;
+      @include dflex;
+      color: color(light-2);
+      background-color: color(g3-2);
+    }
+    &-sells {
+      border-radius: 3px;
+      margin-top: 0.5em;
+      color: color(light-2);
+      padding: 0.2em 0.5em;
+      background-color: color(dark-5);
+    }
+  }
+  &-mainImage {
+    max-width: 40rem;
+    .swiper {
+      &-slide {
+        @include dflex;
       }
-      &-tags {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 10;
-        &-offPersent {
-          font-family: iransansnum;
-          font-size: 1.4em;
-          border-radius: 3px;
-          @include dflex;
-          color: color(light-2);
-          background-color: color(g3-2);
-        }
-        &-sells {
-          border-radius: 3px;
-          margin-top: 0.5em;
-          color: color(light-2);
-          padding: 0.2em 0.5em;
-          background-color: color(dark-5);
-        }
-      }
-      &-mainImage {
-        max-width: 40rem;
-        .swiper {
-          &-slide {
-            @include dflex;
-          }
-        }
-        img {
-        }
-      }
-      &-subImage {
-        margin-top: 1em;
-        .showMore {
-          li {
-            position: relative;
-            &:last-child {
-              &::before {
-                content: "...";
-                font-size: 4em;
-                position: absolute;
-                text-align: center;
-                @include blur-3;
-                top: 0px;
-                right: 0px;
-                width: 100%;
-                height: 100%;
-              }
-            }
-          }
-        }
-        &-list {
-          @include dflex;
-          flex-wrap: nowrap;
-          gap: 1em;
-        }
-        &-item {
-          border: 2px solid rgba(color(dark-2), 0.1);
-          min-height: 100%;
-          flex-shrink: 1;
-          flex-grow: 1;
-          flex-basis: 1;
-          height: 7rem;
-          width: 7rem;
-          border-radius: 3px;
-          @include dflex;
-          img {
+    }
+    img {
+    }
+  }
+  &-subImage {
+    margin-top: 1em;
+    .showMore {
+      li {
+        position: relative;
+        &:last-child {
+          &::before {
+            content: "...";
+            font-size: 4em;
+            position: absolute;
+            text-align: center;
+            @include blur-3;
+            top: 0px;
+            right: 0px;
             width: 100%;
+            height: 100%;
           }
         }
       }
     }
-    .productDetails-details {
-      width: 67%;
-      @include dflex(space-between, flex-start);
-      padding: 1em;
-      // border: 2px solid green;
-      @include responsive(lg) {
-        flex-direction: column;
-      }
-      @include responsive(md) {
-        @include dflex;
+    &-list {
+      @include dflex;
+      flex-wrap: nowrap;
+      gap: 1em;
+    }
+    &-item {
+      border: 2px solid rgba(color(dark-2), 0.1);
+      min-height: 100%;
+      flex-shrink: 1;
+      flex-grow: 1;
+      flex-basis: 1;
+      height: 7rem;
+      width: 7rem;
+      border-radius: 3px;
+      @include dflex;
+      img {
         width: 100%;
       }
     }
-    .productDetails-content {
-      // border: 2px solid red;
-      width: 40%;
-      @include responsive(lg) {
-        width: 100%;
-      }
+  }
+}
+.productDetails-details {
+  width: 67%;
+  @include dflex(space-between, flex-start);
+  padding: 1em;
+  // border: 2px solid green;
+  @include responsive(lg) {
+    flex-direction: column;
+  }
+  @include responsive(md) {
+    @include dflex;
+    width: 100%;
+  }
+}
+.productDetails-content {
+  // border: 2px solid red;
+  width: 40%;
+  @include responsive(lg) {
+    width: 100%;
+  }
 
-      &-status {
-        display: flex;
-        &-item {
-          padding: 0.3em 0.5em;
-          border-radius: 3px;
-          color: color(light-2);
-        }
-        .available {
-          background-color: color(g1-2);
-        }
-        .notAvailable {
-          background-color: color(error);
-        }
-      }
-      &-shortDescription {
-        margin-top: 2em;
-        &-text {
-          color: color(dark-4);
-        }
-      }
-      &-orderingForm {
-        border: 2px solid rgba(color(dark-2), 0.1);
-        border-radius: 5px;
-        padding: 1rem 0.5rem;
-      }
-      &-actions {
-        margin-top: 2em;
-        @include dflex(flex-start);
-        gap: 1.5em;
-        margin-left: auto;
-        &-btn {
-          cursor: pointer;
-          padding: 0.3em 1em;
-          border-radius: 10px;
-          font-size: 1.2em;
-          border: 2px solid rgba(color(dark-2), 0.2);
-          @include dflex(flex-start);
-          color: color(dark-4);
-          gap: 0.3em;
-          &:last-child {
-            border: transparent;
-          }
-          svg {
-            path {
-              fill: color(dark-4);
-            }
-          }
-        }
-      }
-      &-checkList {
-        // border: 2px solid red;
-        border-bottom: 2px solid rgba(color(dark-2), 0.1);
-        margin-top: 2em;
-        &-list {
-        }
-        &-item {
-          @include dflex(flex-start);
-          gap: 0.3em;
-          margin-bottom: 0.3em;
-          svg {
-          }
-          label {
-          }
-          span {
-          }
-        }
-      }
-      &-meta {
-        margin-top: 1em;
-        &-list {
-        }
-        &-item {
-          @include dflex(flex-start);
-        }
-        &-tags {
-          @include dflex;
-          &-list {
-            @include dflex;
-          }
-          &-item {
-            a {
-              &::after {
-                content: " , ";
-              }
-            }
-            &:last-child {
-              a::after {
-                content: "";
-              }
-            }
-            &-space {
-            }
-          }
-        }
-      }
-      &-sharing {
-        margin-top: 2em;
-        @include dflex(flex-start, flex-start);
-        flex-direction: column;
-        gap: 0.5em;
-        &-label {
-          @include dflex;
-          svg {
-            width: 1.7em;
-            height: 1.7em;
-            path {
-              fill: color(g3-5);
-            }
-            polyline {
-              fill: color(g3-5);
-            }
-          }
-        }
-        &-title {
-        }
-        &-list {
-          @include dflex;
-          gap: 0.5em;
-        }
-        &-item {
-          a {
-            svg {
-              opacity: 0.6;
-              width: 2.5em;
-              height: 2.5em;
-              path {
-                fill: color(dark-4);
-              }
-              rect {
-                fill: color(dark-4);
-              }
-            }
-            &:hover {
-              svg {
-                opacity: 1;
-              }
-            }
-          }
-        }
-      }
+  &-status {
+    display: flex;
+    &-item {
+      padding: 0.3em 0.5em;
+      border-radius: 3px;
+      color: color(light-2);
     }
-    .productDetails-message {
-      // border: 2px solid purple;
-      @include dflex(flex-end);
-      width: 60%;
-      flex-direction: column;
-      gap: 2rem;
-      @include responsive(lg) {
-        justify-content: flex-start;
-        margin-top: 1em;
-        width: 100%;
+    .available {
+      background-color: color(g1-2);
+    }
+    .notAvailable {
+      background-color: color(error);
+    }
+  }
+  &-shortDescription {
+    margin-top: 2em;
+    &-text {
+      color: color(dark-4);
+    }
+  }
+  &-orderingForm {
+    border: 2px solid rgba(color(dark-2), 0.1);
+    border-radius: 5px;
+    padding: 1rem 0.5rem;
+  }
+  &-actions {
+    margin-top: 2em;
+    @include dflex(flex-start);
+    gap: 1.5em;
+    margin-left: auto;
+    &-btn {
+      cursor: pointer;
+      padding: 0.3em 1em;
+      border-radius: 10px;
+      font-size: 1.2em;
+      border: 2px solid rgba(color(dark-2), 0.2);
+      @include dflex(flex-start);
+      color: color(dark-4);
+      gap: 0.3em;
+      &:last-child {
+        border: transparent;
       }
-      &-card {
-        padding: 1.5em;
-        background-color: color(light-2);
-        border-radius: 5px;
-        @include responsive(md) {
-          // @include dflex;
-          width: 100%;
-        }
-      }
-      &-list {
-        @include dflex(flex-start, flex-start);
-        flex-direction: column;
-        gap: 1em;
-      }
-      &-item {
-        @include dflex;
-        flex-wrap: nowrap;
-        gap: 0.5em;
-        svg {
+      svg {
+        path {
           fill: color(dark-4);
-          polyline {
-            stroke: color(dark-4);
-          }
-          circle {
-            stroke: color(dark-4);
-          }
-          path {
-            stroke: color(dark-4);
-          }
-          line {
-            stroke: color(dark-4);
-          }
-        }
-        span {
-          white-space: nowrap;
         }
       }
     }
   }
-  .subCard {
-    &-information {
-      // border: 2px solid red;
-      table {
-        margin-top: 2em;
-        // border: 2px solid red;
-        width: 100%;
+  &-checkList {
+    // border: 2px solid red;
+    border-bottom: 2px solid rgba(color(dark-2), 0.1);
+    margin-top: 2em;
+    &-list {
+    }
+    &-item {
+      @include dflex(flex-start);
+      gap: 0.3em;
+      margin-bottom: 0.3em;
+      svg {
       }
-
-      tbody {
-        // @include dflex;
-        // flex-direction: column;
-        // gap: 2em;
+      label {
       }
-      tr {
-        // @include dflex(flex-start);
-        // gap: 2em;
-        width: 100%;
-        border-radius: 5px;
-        margin-top: 5em;
-        &:nth-child(odd) {
-          background-color: #f2f2f2;
-        }
+      span {
       }
-      th {
-        // max-width: 6rem;
-        padding: 1em;
-        // width: 30%;
-        // border: 2px solid red;
-        // margin-top: 2em;
-        @include dflex(flex-start, flex-start);
+    }
+  }
+  &-meta {
+    margin-top: 1em;
+    &-list {
+    }
+    &-item {
+      @include dflex(flex-start);
+    }
+    &-tags {
+      @include dflex;
+      &-list {
+        @include dflex;
       }
-      td {
-        // width: 70%;
-      }
-      &-innerTable {
-        // border: 2px solid rebeccapurple;
-        tr {
-          margin-top: 5em;
-          &:nth-child(odd) {
-            background-color: transparent;
+      &-item {
+        a {
+          &::after {
+            content: " , ";
           }
         }
-        th {
-          padding: 10em;
-          display: none;
+        &:last-child {
+          a::after {
+            content: "";
+          }
         }
-        td {
-          padding: 1em;
+        &-space {
         }
       }
     }
-    &-reviwe {
-      .userIcon {
-        width: 1.5em;
-        height: 1.5em;
-      }
-      .form-rate {
-        label {
-          // border: 2px solid red;
-          // svg {
-          //   border: 2px solid red;
-          // }
-          input {
-            &:checked ~ svg {
-              path {
-                fill: gold;
-              }
-            }
-          }
+  }
+  &-sharing {
+    margin-top: 2em;
+    @include dflex(flex-start, flex-start);
+    flex-direction: column;
+    gap: 0.5em;
+    &-label {
+      @include dflex;
+      svg {
+        width: 1.7em;
+        height: 1.7em;
+        path {
+          fill: color(g3-5);
         }
-
-        &-starG {
-          cursor: pointer;
-          &:hover {
-            svg {
-              path {
-                fill: gold;
-              }
-            }
-          }
+        polyline {
+          fill: color(g3-5);
         }
       }
-      .reviwe-item {
-        border-bottom: 1px solid rgba(color(dark-2), 0.4);
-        margin-top: 1rem;
-        @include dflex(flex-start, flex-start);
-        padding-bottom: 1rem;
-        // border-right: 2px solid rgb(214, 214, 214);
-        border-image: linear-gradient(
-            to left,
-            rgba(150, 150, 150, 0.277) 50%,
-            transparent 50%
-          )
-          100% 1;
-        // &-container {
-        //   display: flex;
-        //   &::before {
-        //     content: "";
-        //     display: flex;
-        //     width: 5px;
-        //     border: 2px solid red;
-        //     height: 70%;
-        //   }
-        // }
-        &-profile {
-          // width: 10%;
-          img {
-            border-radius: 50%;
-            max-width: 5rem;
-            max-height: 5rem;
+    }
+    &-title {
+    }
+    &-list {
+      @include dflex;
+      gap: 0.5em;
+    }
+    &-item {
+      a {
+        svg {
+          opacity: 0.6;
+          width: 2.5em;
+          height: 2.5em;
+          path {
+            fill: color(dark-4);
+          }
+          rect {
+            fill: color(dark-4);
           }
         }
-        &-content {
-          // width: 80%;
-        }
-        &-child {
-          padding-right: 3em;
-          // @include dflex(flex-start, flex-start);
+        &:hover {
+          svg {
+            opacity: 1;
+          }
         }
       }
     }
   }
 }
+.productDetails-message {
+  // border: 2px solid purple;
+  @include dflex(flex-end);
+  width: 60%;
+  flex-direction: column;
+  gap: 2rem;
+  @include responsive(lg) {
+    justify-content: flex-start;
+    margin-top: 1em;
+    width: 100%;
+  }
+  &-card {
+    padding: 1.5em;
+    background-color: color(light-2);
+    border-radius: 5px;
+    @include responsive(md) {
+      // @include dflex;
+      width: 100%;
+    }
+  }
+  &-list {
+    @include dflex(flex-start, flex-start);
+    flex-direction: column;
+    gap: 1em;
+  }
+  &-item {
+    @include dflex;
+    flex-wrap: nowrap;
+    gap: 0.5em;
+    svg {
+      fill: color(dark-4);
+      polyline {
+        stroke: color(dark-4);
+      }
+      circle {
+        stroke: color(dark-4);
+      }
+      path {
+        stroke: color(dark-4);
+      }
+      line {
+        stroke: color(dark-4);
+      }
+    }
+    span {
+      white-space: nowrap;
+    }
+  }
+}
+
+.subCard {
+  &-information {
+    // border: 2px solid red;
+    table {
+      margin-top: 2em;
+      // border: 2px solid red;
+      width: 100%;
+    }
+
+    tbody {
+      // @include dflex;
+      // flex-direction: column;
+      // gap: 2em;
+    }
+    tr {
+      // @include dflex(flex-start);
+      // gap: 2em;
+      width: 100%;
+      border-radius: 5px;
+      margin-top: 5em;
+      &:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
+    }
+    th {
+      // max-width: 6rem;
+      padding: 1em;
+      // width: 30%;
+      // border: 2px solid red;
+      // margin-top: 2em;
+      @include dflex(flex-start, flex-start);
+    }
+    td {
+      // width: 70%;
+    }
+    &-innerTable {
+      // border: 2px solid rebeccapurple;
+      tr {
+        margin-top: 5em;
+        &:nth-child(odd) {
+          background-color: transparent;
+        }
+      }
+      th {
+        padding: 10em;
+        display: none;
+      }
+      td {
+        padding: 1em;
+      }
+    }
+  }
+  &-reviwe {
+    .userIcon {
+      width: 1.5em;
+      height: 1.5em;
+    }
+    .form-rate {
+      label {
+        // border: 2px solid red;
+        // svg {
+        //   border: 2px solid red;
+        // }
+        input {
+          &:checked ~ svg {
+            path {
+              fill: gold;
+            }
+          }
+        }
+      }
+
+      &-starG {
+        cursor: pointer;
+        &:hover {
+          svg {
+            path {
+              fill: gold;
+            }
+          }
+        }
+      }
+    }
+    .reviwe-item {
+      border-bottom: 1px solid rgba(color(dark-2), 0.4);
+      margin-top: 1rem;
+      @include dflex(flex-start, flex-start);
+      padding-bottom: 1rem;
+      // border-right: 2px solid rgb(214, 214, 214);
+      border-image: linear-gradient(
+          to left,
+          rgba(150, 150, 150, 0.277) 50%,
+          transparent 50%
+        )
+        100% 1;
+      // &-container {
+      //   display: flex;
+      //   &::before {
+      //     content: "";
+      //     display: flex;
+      //     width: 5px;
+      //     border: 2px solid red;
+      //     height: 70%;
+      //   }
+      // }
+      &-profile {
+        // width: 10%;
+        img {
+          border-radius: 50%;
+          max-width: 5rem;
+          max-height: 5rem;
+        }
+      }
+      &-content {
+        // width: 80%;
+      }
+      &-child {
+        padding-right: 3em;
+        // @include dflex(flex-start, flex-start);
+      }
+    }
+  }
+}
+
 .productDetails-form {
   @include dflex(flex-start, flex-start);
   flex-direction: column;

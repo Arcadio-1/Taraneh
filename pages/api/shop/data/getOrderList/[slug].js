@@ -4,12 +4,15 @@ async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const id = req.query.slug;
+      // console.log(id);
       const client = await getClient("helper-data");
       if (!client) {
         throw new Error("خطا در اتصال به سرور");
       }
+
       const db = client.db();
       const request = await db.collection("orders").findOne({ _id: id });
+      // console.log(request);
       if (!request) {
         throw new Error("سبد خرید مورد نظر یافت نشد");
       }

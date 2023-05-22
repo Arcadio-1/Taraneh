@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ProductRate from "./productRate";
 import ProductPrice from "./ProductPrice";
 import ExpansIcon from "../Icons/ExpansIcon";
 import LikeIcon from "../Icons/LikeIcon";
-import PlusIcon from "../Icons/PlusIcon";
-import MinusIcon from "../Icons/Minus";
+import ProductModal from "../../productModal/ProductModal";
+import { useDispatch, useSelector } from "react-redux";
+import useToggleMenu from "../../../Hook/UseToggoleMenu";
+import { uiAction } from "../../../store/ui/uiSlice";
 
 const ProductCard = (props) => {
   const { id, price, title, sell, statistics, imageLink, status } = props.item;
+
+  const isBackdropShowen = useSelector((state) => state.ui.isShowBackDrop);
+
+  const { isShowMenu, menuRef, showMenuHandler } = useToggleMenu();
+  const dispatch = useDispatch();
+
+  const closeSideMenuHandler = useCallback(() => {
+    dispatch(uiAction.hideBackDrop());
+    dispatch(uiAction.closeModal());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!isBackdropShowen) {
+      closeSideMenuHandler();
+    }
+  }, [isBackdropShowen, closeSideMenuHandler]);
+
+  // console.log(props.item);
 
   return (
     <div
       className={`productCard ${props.listStyle === "1" && "showInRow"}`}
       onMouseOver={() => {}}
+      // ref={menuRef}
     >
+      {isShowMenu && <ProductModal modalRef={menuRef} product={props.item} />}
       <div className="productCard-thumbnail">
         <div className="productCard-thumbnail-tags">
           {price.offPersent > 0 && (
@@ -30,8 +52,15 @@ const ProductCard = (props) => {
             <p className="productCard-thumbnail-tags-topSell">پرفروش</p>
           )}
         </div>
-        <div title="مشاهده سریع" className="productCard-thumbnail-icons">
-          <div className="productCard-thumbnail-icons-expans">
+        <div className="productCard-thumbnail-icons">
+          <div
+            onClick={() => {
+              showMenuHandler();
+              dispatch(uiAction.showBackDrop());
+            }}
+            title="مشاهده سریع"
+            className="productCard-thumbnail-icons-expans"
+          >
             <ExpansIcon />
           </div>
           <div

@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { uiAction } from "../../../store/ui/uiSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import { uiAction } from "../../../store/ui/uiSlice";
 const Modal = ({ children }) => {
   const [mounted, setMounted] = useState(false);
   let overLay;
-  const dispatch = useDispatch();
-  const windowWidth = useSelector((state) => state.ui.windowWidth);
+  // const dispatch = useDispatch();
+  // const windowWidth = useSelector((state) => state.ui.windowWidth);
   // useLayoutEffect(() => {
   //   console.log(window.innerWidth);
   //   function updateSize() {

@@ -22,7 +22,7 @@ const BackDrop = () => {
       {ReactDOM.createPortal(
         <div
           onClick={closeHandler}
-          className={`backDrop transition-all ease-in-out duration-500 ${
+          className={`backDrop transition-all ease-in-out duration-500 z-50 ${
             isShow ? "opacity-100 visible" : "opacity-0 invisible "
           }`}
         ></div>,
