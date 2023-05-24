@@ -13,6 +13,9 @@
       border: 1px solid rgba(color(dark-2), 0.1);
       border-radius: 10px;
       padding: 2rem 1rem;
+      @include responsive(md) {
+        border: transparent;
+      }
       .title {
         display: inline;
         font-size: 1.2rem;
@@ -58,6 +61,18 @@
       }
     }
     .personalInfo {
+      &-title {
+        padding-bottom: 1rem;
+        display: none;
+        h1 {
+          color: color(dark-2);
+          font-size: 1.4rem;
+          font-weight: 600;
+        }
+        @include responsive(md) {
+          @include dflex(flex-start);
+        }
+      }
       .container {
         .col {
           .item {
@@ -87,128 +102,192 @@
       }
     }
   }
-  &-sideMenu {
-    width: 22%;
-    border: 1px solid rgba(color(dark-2), 0.1);
-    padding: 2rem 0.5rem;
-    border-radius: 10px;
-    min-width: 20rem;
-    .profile-profileCard {
-      border-bottom: 1px solid rgba(color(dark-4), 0.1);
-      margin-bottom: 1em;
-      .head {
-        @include dflex(space-between);
-        gap: 0.5rem;
-        position: relative;
-        &::before {
-          content: "";
-          top: 2.9rem;
-          right: 1.4rem;
-          height: 7rem;
-          position: absolute;
-          border-right: 2px solid rgba(color(dark-2), 0.1);
+  .profile-profileCard {
+    border-bottom: 1px solid rgba(color(dark-4), 0.1);
+    margin-bottom: 1em;
+    .head {
+      @include dflex(space-between);
+      gap: 0.5rem;
+      position: relative;
+      &::before {
+        content: "";
+        @include responsive(md) {
+          display: none;
         }
-        &-image {
-          img {
-            border-radius: 50%;
-          }
+        top: 2.9rem;
+        right: 1.4rem;
+        height: 7rem;
+        position: absolute;
+        border-right: 2px solid rgba(color(dark-2), 0.1);
+      }
+      &-image {
+        img {
+          border-radius: 50%;
         }
-        &-data {
-          margin-left: auto;
-          .fullname {
-            font-family: iranyekan;
-            font-weight: 600;
-          }
-          .mobile {
-            color: color(dark-5);
-            font-family: iransansnum;
-          }
+      }
+      &-data {
+        margin-left: auto;
+        .fullname {
+          font-family: iranyekan;
+          font-weight: 600;
         }
-        &-edit {
-          .editIcon {
-            width: 1.7rem;
-            height: 1.7rem;
-            opacity: 0.7;
-            path {
-              fill: color(g3-2);
-            }
+        .mobile {
+          color: color(dark-5);
+          font-family: iransansnum;
+        }
+      }
+      &-edit {
+        .editIcon {
+          width: 1.7rem;
+          height: 1.7rem;
+          opacity: 0.7;
+          path {
+            fill: color(g3-2);
           }
         }
       }
-      .subs {
-        margin-top: 1.5rem;
-        &-list {
-          padding-right: 2.3rem;
+    }
+    .mdSubs {
+      border-top: 1px solid rgba(color(dark-2), 0.1);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      display: none;
+      @include responsive(md) {
+        @include dflex(flex-start);
+      }
+      gap: 2rem;
+      &-item {
+        @include dflex;
+        gap: 1rem;
+        &-image {
         }
-        &-item {
-          position: relative;
-          @include dflex(space-between);
-          margin-bottom: 1rem;
-          &::before {
-            content: "";
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            right: -1.2rem;
-            background-color: rgba(color(dark-2), 0.5);
-            border-radius: 50%;
-          }
-          &-head {
-            a {
-              font-size: 0.9rem;
-              color: color(g3-3);
-              @include dflex(flex-start);
-              margin-top: 0.3rem;
-              .arrowIcon {
-                path {
-                  fill: color(g3-3);
-                }
-              }
+        &-content {
+          @include dflex(flex-start, flex-start);
+          gap: 0.5rem;
+          flex-direction: column;
+          svg {
+            width: 1.5rem;
+            path {
+              fill: color(dark-5);
             }
           }
-          &-data {
+          span {
             font-family: iransansnum;
-            .tomanIcon {
-              width: 1.5rem;
-              height: 1.5rem;
+          }
+          a {
+            font-size: 1.1rem;
+            @include dflex;
+            font-weight: 600;
+            color: color(g3-2);
+            svg {
               path {
-                fill: color(dark-3);
+                fill: color(g3-2);
               }
             }
           }
         }
       }
     }
-    .profile-menuList {
-      .list {
+    .subs {
+      @include responsive(md) {
+        display: none;
       }
-      .item {
-        margin-bottom: 1em;
-        border-bottom: 1px solid rgba(color(dark-4), 0.1);
-        padding-bottom: 1em;
-        a {
-          padding-right: 1em;
-          @include dflex(flex-start);
-          gap: 0.5em;
-        }
-        .title {
-        }
+      margin-top: 1.5rem;
+      &-list {
+        padding-right: 2.3rem;
       }
-      .selectedItem {
-        // border-right: 3px solid color(g1-5);
+      &-item {
         position: relative;
-        &::after {
+        @include dflex(space-between);
+        margin-bottom: 1rem;
+        &::before {
           content: "";
           position: absolute;
-          top: 0;
-          right: -3px;
-          height: 2.5em;
-          width: 3px;
-          background-color: color(g1-5);
+          width: 8px;
+          height: 8px;
+          right: -1.2rem;
+          background-color: rgba(color(dark-2), 0.5);
+          border-radius: 50%;
         }
-        .title {
-          font-weight: 600;
+        &-head {
+          a {
+            font-size: 0.9rem;
+            color: color(g3-3);
+            @include dflex(flex-start);
+            margin-top: 0.3rem;
+            .arrowIcon {
+              path {
+                fill: color(g3-3);
+              }
+            }
+          }
         }
+        &-data {
+          font-family: iransansnum;
+          .tomanIcon {
+            width: 1.5rem;
+            height: 1.5rem;
+            path {
+              fill: color(dark-3);
+            }
+          }
+        }
+      }
+    }
+  }
+  &-sideMenu {
+    width: 22%;
+    border: 1px solid rgba(color(dark-2), 0.1);
+    padding: 2rem 0.5rem;
+    border-radius: 10px;
+    min-width: 20rem;
+  }
+  .profile-menuList {
+    .list {
+    }
+    .item {
+      padding: 1em;
+      border-bottom: 1px solid rgba(color(dark-4), 0.1);
+      padding-bottom: 1em;
+      a {
+        padding-right: 1em;
+        @include dflex(flex-start);
+        gap: 0.5em;
+      }
+      .title {
+      }
+      &:hover {
+        background-color: rgba(color(dark-2), 0.05);
+      }
+      @include responsive(md) {
+        @include dflex(space-between);
+        &::after {
+          font-size: 1.3rem;
+          content: ">";
+          // position: absolute;
+          // top: 0;
+          // right: -3px;
+          // height: 2.5em;
+          // width: 3px;
+          // background-color: color(g1-5);
+        }
+      }
+    }
+    .selectedItem {
+      // border-right: 3px solid color(g1-5);
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -3px;
+        height: 2.5em;
+        width: 3px;
+        background-color: color(g1-5);
+      }
+      .title {
+        font-weight: 600;
       }
     }
   }

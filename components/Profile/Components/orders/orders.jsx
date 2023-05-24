@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import SearchIcon from "../../../ui/Icons/SearchIcon";
+import BackIcon from "../../../ui/Icons/BackIcon";
 
 const Orders = () => {
   const router = useRouter();
@@ -21,7 +22,14 @@ const Orders = () => {
   return (
     <div className="profile-orders border rounded-xl">
       <div className="flex justify-between py-8 px-5 w-full">
-        <h1 className="text-xl">تاریخچه سفارش ها</h1>
+        <div className=" flex items-center">
+          <div className="p-1">
+            <Link href={"/profile"}>
+              <BackIcon />
+            </Link>
+          </div>
+          <h1 className="text-xl">تاریخچه سفارش ها</h1>
+        </div>
         <div>
           <SearchIcon />
         </div>

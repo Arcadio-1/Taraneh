@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import BackIcon from "../../../ui/Icons/BackIcon";
 
 const MyList = () => {
   const router = useRouter();
@@ -19,11 +20,13 @@ const MyList = () => {
   };
   return (
     <div className="profile-orders border rounded-xl">
-      <div className="flex justify-between py-8 px-5 w-full">
+      <div className="flex items-center justify-start py-8 px-5 w-full">
+        <div className="p-1">
+          <Link href={"/profile"}>
+            <BackIcon />
+          </Link>
+        </div>
         <h1 className="text-xl">لیست ها</h1>
-        {/* <div>
-          <SearchIcon />
-        </div> */}
       </div>
       <div className="">
         <ul className=" border-b border-gray-200 pb-1 flex gap-1 text-lg ">

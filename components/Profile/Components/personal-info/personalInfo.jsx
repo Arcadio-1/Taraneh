@@ -9,6 +9,8 @@ import ChangeEmail from "./Components/ChangeEmail";
 import ChangeMobileNumber from "./Components/ChangeMobileNumber";
 import ChangePassword from "./Components/ChangePassword";
 import { ChangePersonalInfo } from "./Components/ChangePersonalInfo";
+import Link from "next/link";
+import BackIcon from "../../../ui/Icons/BackIcon";
 
 const PersonalInfo = () => {
   const { data } = useSession();
@@ -243,7 +245,14 @@ const PersonalInfo = () => {
           onClose={toggolIsShowEditBirthdateWindow}
         />
       )}
-
+      <div className="personalInfo-title">
+        <div className="p-1">
+          <Link href={"/profile"}>
+            <BackIcon />
+          </Link>
+        </div>
+        <h1>اطلاعات حساب کاربری</h1>
+      </div>
       <div className="container rounded-lg border-gray-300 grid grid-cols-2 border px-2 pb-2">
         <div className="col ">
           <div className="item border-l border-b">

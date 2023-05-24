@@ -7,6 +7,7 @@ import CommentIcon from "../../../../ui/Icons/CommentIcon";
 import LikeIcon from "../../../../ui/Icons/LikeIcon";
 import ExitIcon from "../../../../ui/Icons/ExitIcon";
 import { signOut } from "next-auth/react";
+import SettingIcon from "../../../../ui/Icons/settingIcon";
 
 const ProfileMenu = ({ closeMenu }) => {
   const { data: session, status } = useSession();
@@ -38,6 +39,10 @@ const ProfileMenu = ({ closeMenu }) => {
         <li className="profileMenu-item" onClick={closeMenu}>
           <CommentIcon />
           <Link href={"/profile"}>دیدگاه ها</Link>
+        </li>
+        <li className="profileMenu-item" onClick={closeMenu}>
+          <SettingIcon />
+          <Link href={"/dashboard"}> مدیریت فروشگاه</Link>
         </li>
         <li
           className="profileMenu-item"
