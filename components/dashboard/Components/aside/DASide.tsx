@@ -1,19 +1,9 @@
-import React, { Suspense, useEffect, useState } from "react";
-import LoadingSpinner from "../../../ui/LoadingSpiner/loadingSpiner";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import List from "./components/list";
 import { Status } from "../../../../Types/enums";
-interface Link {
-  _id: string;
-  title: string;
-  link: string;
-  parent: string;
-  icon: string;
-}
-type LinkList = [Link] | [];
+import { DashboardNavLinkList } from "../../Types/Types";
 const DASide = () => {
-  const [navLinks, setNavLinks] = useState<LinkList>([]);
+  const [navLinks, setNavLinks] = useState<DashboardNavLinkList>([]);
   const [navLinksStatus, setGetNavLinksStatus] = useState<Status>(
     Status.loading
   );
