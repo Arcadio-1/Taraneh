@@ -16,9 +16,9 @@ const Profile = () => {
   const { pathname } = router;
   const { data } = useSession();
   const size = useSelector((state) => state.ui.windowWidth);
-  useEffect(() => {
-    console.log(size);
-  }, [size]);
+  // useEffect(() => {
+  //   console.log(size);
+  // }, [size]);
   return (
     <div className="profile">
       <Breadcrumbs links={[{ link: "/profile", title: "پروفایل" }]} />

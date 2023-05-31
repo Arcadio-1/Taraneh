@@ -5,6 +5,11 @@
   margin: 3rem 0rem;
   @include dflex(center, flex-start);
   gap: 1rem;
+  padding: 0 2rem;
+  @include responsive(md) {
+    flex-direction: column;
+    align-items: center;
+  }
   &-head {
     @include dflex(center, flex-start);
     flex-direction: column;
@@ -14,7 +19,7 @@
     @include dflex(space-between);
     gap: 0.5rem;
     position: relative;
-    background-color: #ffb216;
+    // background-color: #ffb216;
     padding: 0.5rem 1.5rem;
     padding-right: 4rem;
     border-radius: 20px;
@@ -37,7 +42,7 @@
   &-image {
   }
   &-title {
-    white-space: nowrap;
+    // white-space: nowrap;
     font-family: iranyekan;
     font-size: 3rem;
     color: #424242;

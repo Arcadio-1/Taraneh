@@ -1,0 +1,66 @@
+[
+  {
+    "id": "l1",
+    "title": "داشبورد",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/dashboard.svg"
+  },
+  {
+    "id": "l2",
+    "title": "پشتیبانی",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/support.svg"
+  },
+  {
+    "id": "l3",
+
+    "title": "پردازش سفارش ها",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/proccess.svg"
+  },
+  {
+    "id": "l4",
+    "title": "کاتالوگ",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/catlog.svg"
+  },
+  {
+    "id": "l5",
+    "title": "فروش",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/orders.svg"
+  },
+  {
+    "id": "l6",
+    "title": "تیکت ها",
+    "link": "/support/tickets",
+    "parent": "l2",
+    "icon": "/image/dashboard/icons/orders.svg"
+  },
+  {
+    "id": "l7",
+    "title": "1-در انتظار تایید",
+    "link": "/orderProcess/awitApporval",
+    "parent": "l3",
+    "icon": ""
+  },
+  {
+    "id": "l8",
+    "title": "2-در انتظار ارسال",
+    "link": "/orderProcess/awitShiping",
+    "parent": "l3",
+    "icon": ""
+  },
+  {
+    "id": "l9",
+    "title": "2-در انتظار تحویل",
+    "link": "/orderProcess/awitDelivery",
+    "parent": "l3",
+    "icon": ""
+  }
+]

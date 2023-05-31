@@ -10,7 +10,7 @@ const FrequentPurchases = () => {
         method: "GET",
       });
       const response = await request.json();
-      console.log(response);
+      // console.log(response);
 
       if (response.status === "success") {
         setProducts((prev) => {

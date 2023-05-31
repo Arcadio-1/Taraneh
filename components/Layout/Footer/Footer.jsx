@@ -62,14 +62,14 @@ const Footer = () => {
     },
   ];
   const uploadHandler = async () => {
-    const data = await getFromJson("comments-2.json");
+    const data = await getFromJson("Dashbord/asideLinks.json");
     console.log(data);
-    const request = await fetch("/api/util/api/jsonUploader/", {
+    const request = await fetch("/api/util/api/jsonUploader", {
       method: "POST",
       body: JSON.stringify({
         items: data,
-        serverName: "products",
-        collectionName: "comments-2",
+        serverName: "helper-data",
+        collectionName: "dashboard-nav-links",
       }),
       headers: { "Content-Type": "application/json" },
     });

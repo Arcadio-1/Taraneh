@@ -1,11 +1,11 @@
-import { getSession } from "next-auth/react";
 import React from "react";
-import Profile from "../../../components/Profile/Profile";
+import Dashboard from "../../components/dashboard/dashboard";
+import { getSession } from "next-auth/react";
 
 const index = () => {
   return (
     <div>
-      <Profile />
+      <Dashboard />
     </div>
   );
 };

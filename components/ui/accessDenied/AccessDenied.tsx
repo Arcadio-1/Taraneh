@@ -2,14 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import ClickIcon from "../Icons/ClickIcon";
 import HomeIcon_2 from "../Icons/HomeIcon_2";
-const NotFound = () => {
+
+const AccessDenied = () => {
   return (
     <div className="notFound">
       <div className="notFound-head">
-        <h1 className="notFound-title">صفحه مورد نظر یافت نشد</h1>
+        <h1 className="notFound-title">دسترسی مجاز نیست!</h1>
         <Link href={"/"}>
-          <div className="notFound-btn bg-[#ffb216]">
-            <span className="notFound-btn-text">بازگشت به صفحه اصلی</span>
+          <div className="notFound-btn bg-red-600">
+            <span className="notFound-btn-text text-gray-50">
+              بازگشت به صفحه اصلی
+            </span>
             <HomeIcon_2 />
             <ClickIcon />
           </div>
@@ -18,7 +21,7 @@ const NotFound = () => {
       <div className="notFound-image">
         <Image
           className="notFound-heroImg"
-          src={"/image/404.png"}
+          src={"/image/access_denied.png"}
           width={300}
           height={300}
           alt="404"
@@ -27,4 +30,5 @@ const NotFound = () => {
     </div>
   );
 };
-export default NotFound;
+
+export default AccessDenied;

@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/access_denied",
         permenent: false,
       },
     };

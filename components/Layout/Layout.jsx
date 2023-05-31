@@ -7,6 +7,10 @@ import { useRouter } from "next/router";
 import { uiAction } from "../../store/ui/uiSlice";
 import BHeader from "../Blog/Layout/Header/Header";
 import BFooter from "../Blog/Layout/Footer/Footer";
+import DHeader from "../dashboard/Components/Header/DHeader";
+import DFooter from "../dashboard/Components/footer/DFooter";
+import DASide from "../dashboard/Components/aside/DASide";
+import DContent from "../dashboard/Components/content/DContent";
 const Layout = (props) => {
   //////////////
   const isDark = useSelector((state) => state.blogUi.isDark);
@@ -21,6 +25,7 @@ const Layout = (props) => {
   useEffect(() => {
     const blog = router.pathname.includes("/blog");
     dispatchIsBlog(uiAction.setIsBlog(blog));
+    console.log(router.pathname);
   }, [dispatchIsBlog, router.pathname]);
 
   useEffect(() => {
@@ -31,6 +36,23 @@ const Layout = (props) => {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, [sizeDispatch]);
+  if (router.pathname === "/dashboard") {
+    return (
+      <Fragment>
+        <BackDrop />
+        <div>
+          <DASide />
+          <div>
+            <DHeader />
+            <DContent>
+              <main className="MAIN">{props.children}</main>
+            </DContent>
+            <DFooter />
+          </div>
+        </div>
+      </Fragment>
+    );
+  }
 
   return (
     <Fragment>

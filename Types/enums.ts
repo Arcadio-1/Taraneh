@@ -9,3 +9,8 @@ export enum CoffeeType {
   mix,
   nune,
 }
+export enum Status {
+  loading,
+  error,
+  success,
+}

@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "../store/store";
 import { SessionProvider } from "next-auth/react";
 import { useRouter } from "next/router";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, Suspense, useEffect, useState } from "react";
 // import { Fragment } from "react";
 import LoadingSpinner from "../components/ui/LoadingSpiner/loadingSpiner";
 import "../components/Products/SideMenu/multuRangeSlider/multiRangeSlider.css";
@@ -84,12 +84,15 @@ function MyApp({ Component, pageProps }) {
         <SessionProvider session={pageProps.session}>
           <Layout>
             <div id="overLay"></div>
-            {!loading && <Component {...pageProps} />}
+            <Suspense fallback={<LoadingSpinner text={"در حال بارگزاری"} />}>
+              <Component {...pageProps} />
+            </Suspense>
+            {/* {!loading && <Component {...pageProps} />}
             {loading && (
               <div className="w-full h-28 my-10">
                 <LoadingSpinner text={"در حال بارگزاری"} />
               </div>
-            )}
+            )} */}
           </Layout>
         </SessionProvider>
       </Provider>
