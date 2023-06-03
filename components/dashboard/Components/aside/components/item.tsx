@@ -13,19 +13,17 @@ const Item = (props: props) => {
   const { link } = props;
   const [height, setHeight] = useState(0);
   const ref = React.useRef<HTMLUListElement>();
-  const [extend, setExtend] = useState<boolean>(false);
 
   const [selected, setSelected] = useState<string>("");
   const selectedHandler = (id: string) => {
+    if (id === selected) {
+      return setSelected("");
+    }
     setSelected(id);
   };
 
   const extandToggler = (id: string) => {
-    console.log(id);
     props.selectedHandler(id);
-    setExtend((prev) => {
-      return (prev = !prev);
-    });
   };
   useLayoutEffect(() => {
     if (ref.current) {
@@ -84,6 +82,3 @@ const Item = (props: props) => {
 };
 
 export default Item;
-//  ${
-//             extend ? "openDashNav" : "closeDashNav"
-//           }

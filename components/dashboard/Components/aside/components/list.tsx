@@ -9,9 +9,11 @@ type Props = {
   links: DashboardNavLinkList;
 };
 const List = (props: Props) => {
-  const [extand, setExtand] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("");
   const selectedHandler = (id: string) => {
+    if (id === selected) {
+      return setSelected("");
+    }
     setSelected(id);
   };
   return (
