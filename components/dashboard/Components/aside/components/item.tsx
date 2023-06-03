@@ -1,27 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, {
-  Fragment,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Fragment, useLayoutEffect, useState } from "react";
 import { DashboardNavLink, DashboardNavLinkList } from "../../../Types/Types";
 import ArrowsIcon from "../../../../ui/Icons/arrowsIcon";
 interface props {
-  links: DashboardNavLinkList;
   link: DashboardNavLink;
+  selected: string;
+  selectedHandler: (id: string) => void;
 }
 
 const Item = (props: props) => {
-  const { link, links } = props;
+  const { link } = props;
   const [height, setHeight] = useState(0);
   const ref = React.useRef<HTMLUListElement>();
   const [extend, setExtend] = useState<boolean>(false);
 
-  const extandToggler = () => {
-    // setExtend(false);
+  const [selected, setSelected] = useState<string>("");
+  const selectedHandler = (id: string) => {
+    setSelected(id);
+  };
+
+  const extandToggler = (id: string) => {
+    console.log(id);
+    props.selectedHandler(id);
     setExtend((prev) => {
       return (prev = !prev);
     });
@@ -29,7 +30,6 @@ const Item = (props: props) => {
   useLayoutEffect(() => {
     if (ref.current) {
       setHeight(ref.current.offsetHeight);
-      console.log(height);
     }
   }, [height]);
 
@@ -37,32 +37,25 @@ const Item = (props: props) => {
     <Fragment>
       <Link
         onClick={() => {
-          if (props.link.hasChild) {
-            extandToggler();
-          }
+          extandToggler(link.id);
         }}
-        href={props.link.link}
+        href={link.link}
         className="pr-4 pb-2 flex gap-1 justify-between pl-2"
       >
         <div className="flex gap-2">
-          {props.link.icon && (
-            <Image
-              src={props.link.icon}
-              alt={props.link.title}
-              width={15}
-              height={15}
-            />
+          {link.icon && (
+            <Image src={link.icon} alt={link.title} width={15} height={15} />
           )}
-          <span className="text-xl text-light_2">{props.link.title}</span>
+          <span className="text-xl text-light_2">{link.title}</span>
         </div>
-        {props.link.hasChild && <ArrowsIcon arrowType={"down"} />}
+        {link.hasChild && <ArrowsIcon arrowType={"down"} />}
       </Link>
 
-      {props.link.hasChild && (
+      {link.hasChild && (
         <div
           className={`cItem testingTransision overflow-hidden`}
           style={
-            extend
+            props.selected === link.id
               ? {
                   padding: "5px",
                   overflow: "scroll",
@@ -72,10 +65,14 @@ const Item = (props: props) => {
           }
         >
           <ul ref={ref} className="pr-6">
-            {props.link.childs.map((itemy: DashboardNavLink) => {
+            {link.childs.map((itemy: DashboardNavLink) => {
               return (
                 <li key={itemy.id} className="dASide-content-item pb-2 pt-2">
-                  <Item link={itemy} links={itemy.childs} />
+                  <Item
+                    selected={selected}
+                    selectedHandler={selectedHandler}
+                    link={itemy}
+                  />
                 </li>
               );
             })}

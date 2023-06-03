@@ -10,6 +10,10 @@ type Props = {
 };
 const List = (props: Props) => {
   const [extand, setExtand] = useState<boolean>(false);
+  const [selected, setSelected] = useState<string>("");
+  const selectedHandler = (id: string) => {
+    setSelected(id);
+  };
   return (
     <div className="mt-2">
       <ul className="dASide-content-list">
@@ -24,7 +28,11 @@ const List = (props: Props) => {
                   className="pItem dASide-content-item pt-4 pb-4 border-[1px] border-g3_1 border-opacity-50"
                   key={link._id}
                 >
-                  <Item links={props.links} link={link} />
+                  <Item
+                    selected={selected}
+                    selectedHandler={selectedHandler}
+                    link={link}
+                  />
                 </li>
               );
             }
