@@ -5,5 +5,7 @@ export interface DashboardNavLink {
   link: string;
   parent: string;
   icon: string;
+  hasChild: boolean;
+  childs: [DashboardNavLink] | [];
 }
 export type DashboardNavLinkList = [DashboardNavLink] | [];

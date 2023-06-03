@@ -1,0 +1,222 @@
+[
+  {
+    "id": "1",
+    "title": "داشبورد",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/dashboard.svg",
+    "hasChild": false,
+    "childs": []
+  },
+  {
+    "id": "2",
+    "title": "پشتیبانی",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/support.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "2-1",
+        "title": "تیکت ها",
+        "link": "/support/tickets",
+        "parent": "l2",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "پردازش سفارش ها",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/proccess.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "3-1",
+        "title": "1-در انتظار تایید",
+        "link": "/orderProcess/awitApporval",
+        "parent": "l4",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "3-2",
+        "title": "2-در انتظار ارسال",
+        "link": "/orderProcess/awitShiping",
+        "parent": "l4",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "3-3",
+        "title": "3-در انتظار تحویل",
+        "link": "/orderProcess/awitDelivery",
+        "parent": "l4",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "کاتالوگ",
+    "link": "#",
+    "parent": "root",
+    "icon": "/image/dashboard/icons/catlog.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "4-1",
+        "title": "کالا",
+        "link": "/catlog/products",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-2",
+        "title": "دسته بندی",
+        "link": "/catlog/category",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-3",
+        "title": "تولید کنندگان",
+        "link": "/catlog/manifactors",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-4",
+        "title": "ویرایش انبوه کالا ها",
+        "link": "/catlog/bulkEdit",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-5",
+        "title": "نظر ها درباره کالا",
+        "link": "/catlog/productReviwes",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-6",
+        "title": "تگ های کالا",
+        "link": "/catlog/productsTags",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-7",
+        "title": "گزارش کمبود موجودی",
+        "link": "/catlog/lowStockReport",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-8",
+        "title": "ویژگی",
+        "link": "#",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": true,
+        "childs": [
+          {
+            "id": "4-8-1",
+            "title": "ویژگی های کالا",
+            "link": "/catlog/attribute/products",
+            "parent": "l16",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-2",
+            "title": "مشخصات فنی",
+            "link": "/catlog/attribute/specification",
+            "parent": "l16",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-3",
+            "title": "دسته بندی مشخصات فنی",
+            "link": "/catlog/attribute/specificationManage",
+            "parent": "l16",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-4",
+            "title": "ویژگی های پرداخت",
+            "link": "/catlog/attribute/",
+            "parent": "l16",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-5",
+            "title": "پیوست ها",
+            "link": "/catlog/attribute/attachment",
+            "parent": "l16",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          }
+        ]
+      },
+      {
+        "id": "4-9",
+        "title": "پرسش های کالا",
+        "link": "/catlog/question",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-10",
+        "title": "ویرایش قیمت های ارزی کالا",
+        "link": "/catlog/",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-11",
+        "title": "نمایش دسته بندی همهجا",
+        "link": "/catlog/anyWhereCategory",
+        "parent": "l8",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  }
+]

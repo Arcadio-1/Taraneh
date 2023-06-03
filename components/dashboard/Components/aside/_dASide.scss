@@ -1,0 +1,73 @@
+.dASide {
+  position: fixed;
+  right: 0;
+  top: 0;
+  max-width: 26rem;
+  // background-color: color(light-2);
+  background-color: rgba(color(g3-3), 0.7);
+  height: 100vh;
+  &-header {
+    background: #0d6efd;
+    background: linear-gradient(90deg, #0d6efd, #408cfd);
+    border-radius: 0 0 100% 100%/5em;
+    padding-bottom: 1rem;
+    &-search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 2rem;
+      border: 2px solid green;
+      svg {
+        border: 2px solid red;
+        path {
+          fill: color(light-5);
+        }
+      }
+      input {
+        border: 2px solid red;
+        padding: 2px;
+        border-radius: 5px;
+      }
+    }
+    &-logo {
+      @include dflex;
+      svg {
+        max-width: 12rem;
+        path {
+          fill: color(light-2);
+        }
+      }
+    }
+  }
+  &-content {
+    &-list {
+      .pItem {
+        background-color: rgba(color(g3-3), 0.7);
+      }
+      .cItem {
+        background-color: rgba(color(g3-3), 0.8);
+      }
+    }
+    &-item {
+      // padding-top: 1rem;
+      // padding-bottom: 1rem;
+      span {
+        font-size: 1.5rem;
+      }
+      svg {
+        path {
+          fill: snow;
+        }
+      }
+    }
+  }
+}
+.testingTransision {
+  transition: all 200ms linear;
+}
+.openDashNav {
+  height: 15rem;
+}
+.closeDashNav {
+  height: 0rem;
+}

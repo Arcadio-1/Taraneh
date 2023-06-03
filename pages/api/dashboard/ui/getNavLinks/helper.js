@@ -7,7 +7,10 @@ export const getDashboardNavLinks = async () => {
       throw new Error("خطا در اتصال به سرور");
     }
     const db = client.db();
-    const request = await db.collection("dashboard-nav-links").find().toArray();
+    const request = await db
+      .collection("dashboard-nav-links-2")
+      .find()
+      .toArray();
     if (!request) {
       throw new Error("خطا در دریافت لیست ابزار");
     }

@@ -25,7 +25,6 @@ const Layout = (props) => {
   useEffect(() => {
     const blog = router.pathname.includes("/blog");
     dispatchIsBlog(uiAction.setIsBlog(blog));
-    console.log(router.pathname);
   }, [dispatchIsBlog, router.pathname]);
 
   useEffect(() => {
