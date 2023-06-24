@@ -21,8 +21,8 @@
       }
     }
     .mailIcon {
-      fill: color(dark-2);
-      fill: none;
+      stroke: color(dark-2);
+      // fill: none;
     }
     .mobileIcon {
       fill: color(dark-2);
@@ -143,6 +143,90 @@
       height: 2.5em;
       path {
         fill: rgba(color(dark-1), 0.6);
+      }
+    }
+  }
+  .unvalidItem {
+    .FormItem {
+      &-input {
+        &:focus {
+          outline: 1px solid color(g1-5);
+        }
+      }
+    }
+    .labelUper {
+      color: rgba(color(g1-5), 0.7);
+    }
+
+    .userIcon {
+      path {
+        stroke: color(g1-5);
+        fill: color(g1-5);
+      }
+    }
+    .mailIcon {
+      stroke: color(g1-5);
+      // fill: none;
+    }
+    .mobileIcon {
+      fill: color(g1-5);
+    }
+    .addressIcon {
+      fill: color(g1-5);
+    }
+    .calenderIcon {
+      path {
+        fill: color(g1-5);
+      }
+      rect {
+        fill: color(g1-5);
+      }
+    }
+    .keyIcon {
+      &-path {
+        fill: color(g1-5);
+      }
+    }
+  }
+  .validItem {
+    .FormItem {
+      &-input {
+        &:focus {
+          outline: 1px solid color(g1-2);
+        }
+      }
+    }
+    .labelUper {
+      color: rgba(color(g1-2), 0.7);
+    }
+
+    .userIcon {
+      path {
+        stroke: color(g1-2);
+        fill: color(g1-2);
+      }
+    }
+    .mailIcon {
+      stroke: color(g1-2);
+      // fill: none;
+    }
+    .mobileIcon {
+      fill: color(g1-2);
+    }
+    .addressIcon {
+      fill: color(g1-2);
+    }
+    .calenderIcon {
+      path {
+        fill: color(g1-2);
+      }
+      rect {
+        fill: color(g1-2);
+      }
+    }
+    .keyIcon {
+      &-path {
+        fill: color(g1-2);
       }
     }
   }

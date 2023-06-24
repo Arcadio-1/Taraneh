@@ -11,6 +11,7 @@ export const getDashboardNavLinks = async () => {
       .collection("dashboard-nav-links-2")
       .find()
       .toArray();
+    // console.log(request);
     if (!request) {
       throw new Error("خطا در دریافت لیست ابزار");
     }

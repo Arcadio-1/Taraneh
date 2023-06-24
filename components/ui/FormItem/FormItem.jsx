@@ -27,11 +27,12 @@ const FormItem = ({
   // }
   return (
     <div className={`FormItem ${clsName ? clsName : ""} ${value && "mt-5"}`}>
-      <div className="FormItem-container">
-        <label
-          htmlFor={htmlId}
-          className={`FormItem-icon ${isValid ? "validIcons" : ""}`}
-        >
+      <div
+        className={`FormItem-container ${isValid ? "validItem" : ""} ${
+          error ? "unvalidItem" : ""
+        } `}
+      >
+        <label htmlFor={htmlId} className={`FormItem-icon`}>
           {children}
         </label>
         <label

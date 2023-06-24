@@ -513,7 +513,7 @@ const SignupForm = ({ currentPage }) => {
           <div className="Form-item-container">
             <h2 className="text-gray-500 mb-5">تاریخ تولد :</h2>
             <div className="flex justify-evenly">
-              <div className="w-28">
+              <div className="w-28 ">
                 <FormItem
                   onBlur={yearBlurHandler}
                   onChange={yearChangeHandler}
@@ -523,6 +523,7 @@ const SignupForm = ({ currentPage }) => {
                   label="سال"
                   htmlId="year"
                   inputType="text"
+                  inputCls={"text-center pl-3"}
                   errorMsg={" خطا! مثال: 1378"}
                 >
                   <CalenderIcon />
@@ -537,6 +538,7 @@ const SignupForm = ({ currentPage }) => {
                   error={monthError}
                   label="ماه"
                   htmlId="month"
+                  inputCls={"text-center pl-3"}
                   inputType="text"
                   errorMsg={" خطا! مثال: 8"}
                 >
@@ -552,6 +554,7 @@ const SignupForm = ({ currentPage }) => {
                   error={dayError}
                   label="روز"
                   htmlId="day"
+                  inputCls={"text-center pl-3"}
                   inputType="text"
                   errorMsg={" خطا! مثال: 16"}
                 >
@@ -722,14 +725,20 @@ const SignupForm = ({ currentPage }) => {
           </div>
 
           <div className="Form-item-container">
-            <div className="FormItem">
+            <div
+              className={`FormItem ${
+                isAddressValid ? "focus:outline-g1_2" : ""
+              } ${addressError ? "unvalidItem" : ""}`}
+            >
               <textarea
                 onChange={addressChangeHandler}
                 onBlur={addressBlurHandler}
                 value={addressValue}
                 required
                 placeholder="آدرس (بلوار پیروزی,خیابان 26 شرقی مجتمع بهار,بلوک اول,طبقه دوم,واحد سوم)"
-                className="FormItem-textArea"
+                className={`FormItem-textArea ${
+                  isAddressValid ? "focus:outline-g1_2" : ""
+                }`}
               />
               {addressError && (
                 <p className="FormItem-errorMsg">

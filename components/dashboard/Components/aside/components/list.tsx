@@ -9,6 +9,7 @@ type Props = {
   links: DashboardNavLinkList;
 };
 const List = (props: Props) => {
+  console.log(props.links);
   const [selected, setSelected] = useState<string>("");
   const selectedHandler = (id: string) => {
     if (id === selected) {
@@ -24,20 +25,18 @@ const List = (props: Props) => {
         )}
         {props.status === Status.success &&
           props.links.map((link: DashboardNavLink) => {
-            if (link.parent === "root") {
-              return (
-                <li
-                  className="pItem dASide-content-item pt-4 pb-4 border-[1px] border-g3_1 border-opacity-50"
-                  key={link._id}
-                >
-                  <Item
-                    selected={selected}
-                    selectedHandler={selectedHandler}
-                    link={link}
-                  />
-                </li>
-              );
-            }
+            return (
+              <li
+                className="pItem dASide-content-item pt-4 pb-4 border-[1px] border-g3_1 border-opacity-50"
+                key={link._id}
+              >
+                <Item
+                  selected={selected}
+                  selectedHandler={selectedHandler}
+                  link={link}
+                />
+              </li>
+            );
           })}
       </ul>
     </div>

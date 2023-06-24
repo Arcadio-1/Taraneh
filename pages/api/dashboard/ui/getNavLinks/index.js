@@ -5,6 +5,7 @@ async function handler(req, res) {
     try {
       const request = await getDashboardNavLinks();
       const response = await JSON.parse(request);
+      // console.log(response);
       if (!response || response.status === "error") {
         throw new Error(
           response.message || "خطا در بارگزاری اطلاعات لیست ابزار"

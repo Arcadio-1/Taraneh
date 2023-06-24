@@ -11,11 +11,13 @@ interface props {
 
 const Item = (props: props) => {
   const { link } = props;
+  console.log(link);
   const [height, setHeight] = useState(0);
   const ref = React.useRef<HTMLUListElement>();
 
   const [selected, setSelected] = useState<string>("");
   const selectedHandler = (id: string) => {
+    // props.selectedHandler("");
     if (id === selected) {
       return setSelected("");
     }
