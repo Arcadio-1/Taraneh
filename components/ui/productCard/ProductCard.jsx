@@ -12,6 +12,7 @@ import { uiAction } from "../../../store/ui/uiSlice";
 
 const ProductCard = (props) => {
   const { id, price, title, sell, statistics, imageLink, status } = props.item;
+  console.log(imageLink);
 
   const isBackdropShowen = useSelector((state) => state.ui.isShowBackDrop);
 

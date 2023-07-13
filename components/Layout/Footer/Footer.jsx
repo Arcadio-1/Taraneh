@@ -62,14 +62,14 @@ const Footer = () => {
     },
   ];
   const uploadHandler = async () => {
-    const data = await getFromJson("Dashbord/asideLinks-2.json");
+    const data = await getFromJson("/products.json");
     console.log(data);
     const request = await fetch("/api/util/api/jsonUploader", {
       method: "POST",
       body: JSON.stringify({
         items: data,
-        serverName: "helper-data",
-        collectionName: "dashboard-nav-links-2",
+        serverName: "products",
+        collectionName: "allProducts",
       }),
       headers: { "Content-Type": "application/json" },
     });
@@ -86,7 +86,7 @@ const Footer = () => {
             <FooterNav key={index} title={item.title} items={item.items} />
           );
         })}
-        <p onClick={uploadHandler}>upload Json</p>
+        {/* <p onClick={uploadHandler}>upload Json</p> */}
       </div>
       <div className="footer-socialAndContact">
         <Contact />
