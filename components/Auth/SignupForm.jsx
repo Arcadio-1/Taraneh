@@ -16,7 +16,7 @@ import NotifCard from "../ui/NotifCard";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import CalenderIcon from "../ui/Icons/CalenderIcon";
-import { jalaliToGregorian } from "../../lib/utilFunctions";
+import { fixNumbers, jalaliToGregorian } from "../../lib/utilFunctions";
 
 const SignupForm = ({ currentPage }) => {
   const stateRef = useRef();
@@ -62,16 +62,17 @@ const SignupForm = ({ currentPage }) => {
     const regexEn = RegExp(/^\d{10}$/);
     const regexFa = RegExp(/^\[۰۱۲۳۴۵۶۷۸۹]{10}$/);
 
-    const check = +value[9];
+    const fixedValue = fixNumbers(value);
+    const check = +fixedValue[9];
     const sum =
-      value
+      fixedValue
         .split("")
         .slice(0, 9)
         .reduce((acc, x, i) => acc + +x * (10 - i), 0) % 11;
     const isChecked = sum < 2 ? check === sum : check + sum === 11;
-
-    const isValidEn = regexEn.test(value);
-    const isValidFa = regexFa.test(value);
+    // console.log(fixed);
+    const isValidEn = regexEn.test(fixedValue);
+    const isValidFa = regexFa.test(fixedValue);
     const isValid = (isValidEn || isValidFa) && isChecked;
     return isValid;
   });

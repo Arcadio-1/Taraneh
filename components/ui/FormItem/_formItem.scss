@@ -1,6 +1,6 @@
 .FormItem {
   width: 100%;
-  // margin-bottom: 2.9em;
+  margin-bottom: 2rem;
   &-container {
     @include dflex;
     position: relative;
@@ -45,8 +45,10 @@
     // height: 1.9em;
     width: 100%;
     // font-family: iransans;
+    padding-right: 1rem;
     font-family: iransansnum;
     line-height: 2.5em;
+    font-size: 1.3rem;
     &:focus {
       outline: 1px solid blue;
     }
