@@ -79,7 +79,7 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1"
         ></meta>
         <meta name="کافه ترانه" content="فروشگاه اینترنتی کافه ترانه"></meta>
-      </Head>{" "}
+      </Head>
       <Provider store={store}>
         <SessionProvider session={pageProps.session}>
           <Layout>

@@ -81,7 +81,7 @@ const BNavLinks = (props) => {
               );
             })}
             <li className="BNavLinks-list-item catLink">
-              <Link href={"blog/cat"}>
+              <Link href={"/blog"}>
                 دسته بندی مطالب <ArrowsIcon arrowType="down" />
               </Link>
               <CatSubLinks />

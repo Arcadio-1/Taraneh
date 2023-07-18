@@ -67,7 +67,7 @@ const BlogMenu = () => {
               <ArrowsIcon arrowType={isShowDropList ? "up" : "down"} />
             </h2>
 
-            {isShowDropList && <CatSubLinks />}
+            {isShowDropList && <CatSubLinks onCliclClose={CloseMenuHandler} />}
           </li>
         </ul>
       </section>

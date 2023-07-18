@@ -7,26 +7,26 @@ import DrinkMakerIcon from "../../../../../ui/Icons/DrinkMakerIcon";
 import { useDispatch } from "react-redux";
 import { blogUiAction } from "../../../../../../store/Blog/ui/blogUislice";
 
-const CatSubLinks = () => {
+const CatSubLinks = ({ onCliclClose }) => {
   const dispatchIsShowBlogMenu = useDispatch();
   const CloseMenuHandler = () => {
     dispatchIsShowBlogMenu(blogUiAction.setIsShowBlogMenu(false));
   };
   return (
     <ul className="Bmenu-list-item-inner">
-      <li onClick={CloseMenuHandler} className="Bmenu-list-item-inner-item">
+      <li onClick={onCliclClose} className="Bmenu-list-item-inner-item">
         <Link href={"/blog/coffee"}>
           <CoffeeIcon />
           قهوه شناسی
         </Link>
       </li>
-      <li onClick={CloseMenuHandler} className="Bmenu-list-item-inner-item">
+      <li onClick={onCliclClose} className="Bmenu-list-item-inner-item">
         <Link href={"/blog/drink"}>
           <DrinkIcon />
           نوشیدنی ها
         </Link>
       </li>
-      <li onClick={CloseMenuHandler} className="Bmenu-list-item-inner-item">
+      <li onClick={onCliclClose} className="Bmenu-list-item-inner-item">
         <Link href={"/blog/tools"}>
           <DrinkMakerIcon />
           ابزار تهیه نوشیدنی
