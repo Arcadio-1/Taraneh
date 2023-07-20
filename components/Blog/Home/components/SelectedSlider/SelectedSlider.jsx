@@ -17,9 +17,11 @@ const SelectedSlider = () => {
   const status = useSelector((state) => state.blogUi.blogPostsStatus);
 
   useEffect(() => {
-    setselectedPosts((prev) => {
-      return (prev = Posts.filter((item) => item.cat === "selected"));
-    });
+    if (Posts) {
+      setselectedPosts((prev) => {
+        return (prev = Posts.filter((item) => item.cat === "selected"));
+      });
+    }
   }, [Posts]);
 
   return (

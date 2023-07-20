@@ -14,7 +14,7 @@ const SideMenu = (props) => {
   const isBackdropShowen = useSelector((state) => state.ui.isShowBackDrop);
   const dispatch = useDispatch();
   const categoryListRef = useRef();
-  const [categoryNavLinks, setCategoryNavLinks] = useState();
+  const [categoryNavLinks, setCategoryNavLinks] = useState(null);
   const [ctegoryNavLinksStatus, setCategoryNavLinksStatus] =
     useState("loading");
   const [categoryHeight, setCategoryHeight] = useState(0);
@@ -97,7 +97,7 @@ const SideMenu = (props) => {
                 }
               >
                 <div ref={categoryListRef} className="sideMenu-Category-Wraper">
-                  {ctegoryNavLinksStatus === "success" && (
+                  {ctegoryNavLinksStatus === "success" && categoryNavLinks && (
                     <CategoryList
                       links={categoryNavLinks}
                       status={ctegoryNavLinksStatus}

@@ -11,11 +11,13 @@ const MainNewPost = () => {
   const [lastPost, setLastPost] = useState();
 
   useEffect(() => {
-    setLastPost((prev) => {
-      let newMain = [];
-      newMain = posts.filter((item) => item.cat === "new-main-post");
-      return (prev = newMain[0]);
-    });
+    if (posts) {
+      setLastPost((prev) => {
+        let newMain = [];
+        newMain = posts.filter((item) => item.cat === "new-main-post");
+        return (prev = newMain[0]);
+      });
+    }
   }, [posts]);
 
   return (

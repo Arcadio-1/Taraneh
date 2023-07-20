@@ -12,7 +12,11 @@ const index = () => {
 
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
-  if (!session) {
+  const test = JSON.stringify(session);
+  const test2 = JSON.parse(test);
+  const rank = test2.user.email.rank;
+  console.log(rank);
+  if (rank !== "admin") {
     return {
       redirect: {
         destination: "/access_denied",

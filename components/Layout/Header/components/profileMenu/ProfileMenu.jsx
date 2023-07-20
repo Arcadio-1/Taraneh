@@ -40,10 +40,13 @@ const ProfileMenu = ({ closeMenu }) => {
           <CommentIcon />
           <Link href={"/profile"}>دیدگاه ها</Link>
         </li>
-        <li className="profileMenu-item" onClick={closeMenu}>
-          <SettingIcon />
-          <Link href={"/dashboard"}> مدیریت فروشگاه</Link>
-        </li>
+        {session.user.email.rank === "admin" && (
+          <li className="profileMenu-item" onClick={closeMenu}>
+            <SettingIcon />
+            <Link href={"/dashboard"}> مدیریت فروشگاه</Link>
+          </li>
+        )}
+
         <li
           className="profileMenu-item"
           onClick={() => {

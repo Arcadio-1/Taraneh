@@ -9,9 +9,11 @@ const NewPostList = () => {
   const [newPost, setNewPost] = useState();
 
   useEffect(() => {
-    setNewPost((prev) => {
-      return (prev = posts.filter((item) => item.cat === "new-posts"));
-    });
+    if (posts) {
+      setNewPost((prev) => {
+        return (prev = posts.filter((item) => item.cat === "new-posts"));
+      });
+    }
   }, [posts]);
   return (
     <div className="newPosts-list">

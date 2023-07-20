@@ -11,7 +11,6 @@ interface props {
 
 const Item = (props: props) => {
   const { link } = props;
-  console.log(link);
   const [height, setHeight] = useState(0);
   const ref = React.useRef<HTMLUListElement>();
 

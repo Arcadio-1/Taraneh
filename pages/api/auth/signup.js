@@ -8,9 +8,9 @@ async function handler(req, res) {
   try {
     const { state, city, password, email, mobile, codeMeli } = req.body;
 
-    const useExist = await existCheak(email, mobile, codeMeli);
-    if (useExist) {
-      throw new Error(useExist);
+    const userExist = await existCheak(email, mobile, codeMeli);
+    if (userExist) {
+      throw new Error(userExist);
     }
 
     const stateAndCity = await getStateAndcity(state, city);
@@ -21,6 +21,7 @@ async function handler(req, res) {
       password: hashedPassword,
       stateName: stateAndCity.stateName,
       cityName: stateAndCity.cityName,
+      rank: "user",
     };
 
     const client = await getClient("users");
