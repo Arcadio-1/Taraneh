@@ -3,7 +3,7 @@ import List from "./components/list";
 import { Status } from "../../../../Types/enums";
 import { DashboardNavLinkList } from "../../Types/Types";
 import Search from "./components/search";
-import Header from "./components/header";
+import Logo from "./components/logo";
 const DASide = () => {
   const [navLinks, setNavLinks] = useState<DashboardNavLinkList>([]);
   const [navLinksStatus, setGetNavLinksStatus] = useState<Status>(
@@ -35,7 +35,7 @@ const DASide = () => {
     <div className="aside-container">
       <div className="aside-header">
         <Search />
-        <Header />
+        <Logo />
       </div>
       <div className="aside-content">
         <List links={navLinks} status={navLinksStatus} />

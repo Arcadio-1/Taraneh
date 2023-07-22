@@ -1,6 +1,6 @@
 import React from "react";
 import LogoIcon from "../../../../ui/Icons/LogoIcon";
-const Header = () => {
+const Logo = () => {
   return (
     <div className="aside-header-logo">
       <LogoIcon />
@@ -8,4 +8,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Logo;

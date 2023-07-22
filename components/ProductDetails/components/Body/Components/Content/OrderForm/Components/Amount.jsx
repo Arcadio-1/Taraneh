@@ -36,18 +36,20 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
   });
 
   useEffect(() => {
-    setItemAmount((prev) => {
-      const amount = cartItems.filter((item) => {
-        if (item._id === id) {
-          return item.amount;
+    if (cartItems.length > 0) {
+      setItemAmount((prev) => {
+        const amount = cartItems.filter((item) => {
+          if (item._id === id) {
+            return item.amount;
+          }
+        });
+        if (amount.length > 0) {
+          return (prev = amount[0].amount);
         }
-      });
-      if (amount.length > 0) {
-        return (prev = amount[0].amount);
-      }
 
-      return (prev = prev);
-    });
+        return (prev = prev);
+      });
+    }
   }, [cartItems, id]);
 
   // useEffect(() => {
