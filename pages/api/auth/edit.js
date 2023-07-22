@@ -9,6 +9,7 @@ async function handler(req, res) {
 
       const client = await getClient("users");
       if (!client) {
+        client.close();
         throw new Error("خطا در اتصال به سرور");
       }
 
@@ -30,6 +31,7 @@ async function handler(req, res) {
               },
             }
           );
+          client.close();
           res.status(201).json({
             status: "success",
             message: "تغییر مشخصات با موفقیت انجام شد",
@@ -45,6 +47,7 @@ async function handler(req, res) {
               },
             }
           );
+          client.close();
           res.status(201).json({
             status: "success",
             message: "تغییر شماره موبایل با موفقیت انجام شد",
@@ -60,6 +63,7 @@ async function handler(req, res) {
               },
             }
           );
+          client.close();
           res.status(201).json({
             status: "success",
             message: "تغییر ایمیل با موفقیت انجام شد",
@@ -83,6 +87,7 @@ async function handler(req, res) {
               },
             }
           );
+          client.close();
           res.status(201).json({
             status: "success",
             message: "تغییر کلمه با موفقیت انجام شد",
@@ -98,6 +103,7 @@ async function handler(req, res) {
               },
             }
           );
+          client.close();
           res.status(201).json({
             status: "success",
             message: "تغییر تاریخ تولد با موفقیت انجام شد",
@@ -109,10 +115,14 @@ async function handler(req, res) {
       }
 
       if (!request) {
+        client.close();
+
         throw new Error("Edit is Faild");
       }
     }
   } catch (error) {
+    client.close();
+
     res.status(203).json({
       status: "error",
       message: error.message || "خطا در ثبت اطلاعات",

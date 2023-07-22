@@ -20,6 +20,7 @@ async function handler(req, res) {
         _id: _id,
         comments: [comment],
       });
+      client.close();
       if (!request) {
         throw new Error("خطا در ارسال کامنت");
       }
@@ -34,6 +35,7 @@ async function handler(req, res) {
       request = await db
         .collection("comments-2")
         .updateOne({ _id: _id }, { $push: { comments: comment } });
+      client.close();
       if (!request) {
         throw new Error("خطا در ارسال کامنت");
       }
@@ -44,6 +46,7 @@ async function handler(req, res) {
       });
     }
   } catch (error) {
+    client.close();
     res.status(404).json({
       status: "error",
       message: error.message || "خطا در ارسال کامنت شما برای این محصول",

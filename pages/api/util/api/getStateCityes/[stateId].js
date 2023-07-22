@@ -9,6 +9,7 @@ async function handler(req, res) {
       .collection("cities")
       .find({ state: stateId })
       .toArray();
+    client.close();
     res.status(200).json({ status: "success", cities: result });
   }
 }

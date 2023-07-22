@@ -86,15 +86,15 @@ const TotalCard = ({ actionType }) => {
           </tr>
         </tbody>
       </table>
-      <div className="shiping-totalCard-actions">
+      <div className="totalCard-actions">
         {actionType === "cuntinue" && (
           <Link href={"/checkout/payment"}>
-            <button>ادامه</button>
+            <button className="totalCard-actions-cuntinue">ادامه</button>
           </Link>
         )}
         {actionType === "pay" && (
           <Link href={"/checkout/payment"}>
-            <button>پرداخت</button>
+            <button className="totalCard-actions-pay">پرداخت</button>
           </Link>
         )}
       </div>

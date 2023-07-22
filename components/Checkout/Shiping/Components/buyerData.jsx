@@ -3,7 +3,7 @@ import React from "react";
 
 const BuyerData = () => {
   const { data } = useSession();
-  console.log(data.user.email);
+  // console.log(data.user.email);
   const { name, family, stateName, cityName, address, mobile, zipCode } =
     data.user.email;
   return (

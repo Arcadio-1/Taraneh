@@ -11,7 +11,7 @@ export const getAdProducts = async () => {
       .collection("allProducts")
       .find({ isAd: true })
       .toArray();
-
+    client.close();
     if (!request) {
       throw new Error("خطا در دریافت لیست محصولات تبلیغاتی");
     }
@@ -21,6 +21,7 @@ export const getAdProducts = async () => {
       adProducts: request,
     });
   } catch (error) {
+    client.close();
     return JSON.stringify({
       status: "error",
       message: error.message || "بروز خطا در دریافت لیست محصولات تبلیغاتی",

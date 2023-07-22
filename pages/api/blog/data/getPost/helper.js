@@ -8,6 +8,7 @@ export const getPost = async (id) => {
     }
     const db = client.db();
     const post = await db.collection("blogPostsLong").findOne({ _id: id });
+    client.close();
     // console.log(post);
     if (!post) {
       return {
@@ -22,6 +23,7 @@ export const getPost = async (id) => {
       post: post,
     };
   } catch (error) {
+    client.close();
     return {
       status: "error",
       message: "خطا در دریافت اطلاعات",

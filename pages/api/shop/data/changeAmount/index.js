@@ -14,6 +14,7 @@ async function handler(req, res) {
       const request = await db
         .collection("orders")
         .findOneAndUpdate({ _id: userId }, { $set: { orders: orders } });
+      client.close();
       if (!request) {
         throw new Error("faild in send request");
       }
@@ -24,6 +25,7 @@ async function handler(req, res) {
       });
     }
   } catch (error) {
+    client.close();
     res
       .status(404)
       .json({ status: "", message: error.message, response: null });

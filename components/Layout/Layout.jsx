@@ -7,10 +7,6 @@ import { useRouter } from "next/router";
 import { uiAction } from "../../store/ui/uiSlice";
 import BHeader from "../Blog/Layout/Header/Header";
 import BFooter from "../Blog/Layout/Footer/Footer";
-import DHeader from "../dashboard/Components/Header/DHeader";
-import DFooter from "../dashboard/Components/footer/DFooter";
-import DASide from "../dashboard/Components/aside/DASide";
-import DContent from "../dashboard/Components/content/DContent";
 const Layout = (props) => {
   //////////////
   const isDark = useSelector((state) => state.blogUi.isDark);
@@ -39,16 +35,7 @@ const Layout = (props) => {
     return (
       <Fragment>
         <BackDrop />
-        <div>
-          <DASide />
-          <div>
-            <DHeader />
-            <DContent>
-              <main className="MAIN">{props.children}</main>
-            </DContent>
-            <DFooter />
-          </div>
-        </div>
+        <main className="MAIN">{props.children}</main>
       </Fragment>
     );
   }

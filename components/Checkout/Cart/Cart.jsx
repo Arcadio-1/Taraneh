@@ -8,9 +8,9 @@ import Setup from "../Components/Setup/Setup";
 import Breadcrumbs from "../../ui/Breadcrumbs/Breadcrumbs";
 const Cart = () => {
   const cartItemsData = useSelector((state) => state.getData.cartItemsData);
-  useEffect(() => {
-    console.log(cartItemsData);
-  }, [cartItemsData]);
+  // useEffect(() => {
+  //   console.log(cartItemsData);
+  // }, [cartItemsData]);
   return (
     <div className="cart">
       <Breadcrumbs links={[{ link: "cart", title: "سبد خرید" }]} />

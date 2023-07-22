@@ -131,13 +131,13 @@ const uiSlice = createSlice({
         message: action.payload.message,
       };
     },
-    setClearListStatus(state, action) {
-      state.clearListStatus = {
-        status: action.payload.status,
-        title: action.payload.title,
-        message: action.payload.message,
-      };
-    },
+    // setClearListStatus(state, action) {
+    //   state.clearListStatus = {
+    //     status: action.payload.status,
+    //     title: action.payload.title,
+    //     message: action.payload.message,
+    //   };
+    // },
     setGetUiStatus(state, action) {
       state.getUiStatus = {
         status: action.payload.status,

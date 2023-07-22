@@ -15,11 +15,13 @@ async function handler(req, res) {
     const result = await db
       .collection(collectionName)
       .insertMany(items, options);
+    client.close();
     if (!result) {
       throw new Error("insert faild");
     }
     res.status(200).json({ message: "success", result: result });
   } catch (error) {
+    client.close();
     res.status(201).json({ message: error.message });
   }
 }

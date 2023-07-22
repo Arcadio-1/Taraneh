@@ -61,7 +61,7 @@ const existCheak = async (email, mobile, codeMeli) => {
   const isThisCodeMeliExist = await db
     .collection("userList")
     .findOne({ codeMeli: codeMeli });
-
+  client.close();
   if (isThisEmailExist) {
     return "ایمیل شما ثبت شده است لطفا از قسمت ورود وارد شوید";
   }

@@ -4,11 +4,13 @@ export const getComment = async (id) => {
   try {
     const client = await getClient("blog");
     if (!client) {
+      client.close();
       throw new Error(client.error || "عدم دسترسی به سرور");
     }
     const db = client.db();
     const comment = await db.collection("comments").findOne({ _id: id });
     // console.log(comment);
+    client.close();
     if (!comment) {
       return {
         status: "notfound",
@@ -22,6 +24,8 @@ export const getComment = async (id) => {
       comment: comment,
     };
   } catch (error) {
+    client.close();
+
     return {
       status: "error",
       message: "خطا در دریافت اطلاعات",

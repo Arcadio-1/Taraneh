@@ -18,7 +18,7 @@ const List = (props: Props) => {
   };
   return (
     <div className="mt-2">
-      <ul className="dASide-content-list">
+      <ul className="aside-content-list">
         {props.status === Status.loading && (
           <LoadingSpinner type={"loading"} text={"بارگیری..."} />
         )}
@@ -26,7 +26,7 @@ const List = (props: Props) => {
           props.links.map((link: DashboardNavLink) => {
             return (
               <li
-                className="pItem dASide-content-item pt-4 pb-4 border-[1px] border-g3_1 border-opacity-50"
+                className="aside-content-item aside-content-item-parent "
                 key={link._id}
               >
                 <Item

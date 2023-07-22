@@ -1,18 +1,16 @@
 import React from "react";
 import DASide from "./Components/aside/DASide";
-import DHeader from "./Components/Header/DHeader";
-import DContent from "./Components/content/DContent";
-import DFooter from "./Components/footer/DFooter";
+import DMain from "./Components/main/DMain";
 
 const Dashboard = () => {
   return (
-    <div>
-      {/* <DASide />
-      <div>
-        <DHeader />
-        <DContent />
-        <DFooter />
-      </div> */}
+    <div className="dashboard">
+      <div className="dashboard-aside">
+        <DASide />
+      </div>
+      <div className="dashboard-main">
+        <DMain />
+      </div>
     </div>
   );
 };

@@ -32,12 +32,12 @@ const DASide = () => {
     getNavLinks();
   }, []);
   return (
-    <div className="dASide">
-      <div className="dASide-header">
+    <div className="aside-container">
+      <div className="aside-header">
         <Search />
         <Header />
       </div>
-      <div className="dASide-content">
+      <div className="aside-content">
         <List links={navLinks} status={navLinksStatus} />
       </div>
     </div>

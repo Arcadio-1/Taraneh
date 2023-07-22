@@ -3,7 +3,7 @@ import React from "react";
 const SettingIcon = () => {
   return (
     <div>
-      <svg enable-background="new 0 0 32 32" viewBox="0 0 32 32">
+      <svg enableBackground="new 0 0 32 32" viewBox="0 0 32 32">
         <circle
           cx="16"
           cy="16"

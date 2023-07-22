@@ -54,8 +54,9 @@ export const getOrederList = (id) => {
       const orders = await fetch(`/api/shop/data/getOrderList/${id}`, {
         method: "GET",
       });
-      if (!orders) {
-        throw new Error("خطا در دریافت اطلاعات لیست خرید از سرور");
+      if (!orders.ok) {
+        console.log(orders);
+        dispatch(getDataSliceActions.setCardItems([]));
       }
       const response = await orders.json();
       if (response.status !== "success") {

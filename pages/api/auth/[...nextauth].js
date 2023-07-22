@@ -13,6 +13,7 @@ export default NextAuth({
       async authorize(credentials) {
         const client = await getClient("users");
         if (!client) {
+          client.close();
           throw new Error("خطا در اتصال به سرور");
         }
 
@@ -22,6 +23,7 @@ export default NextAuth({
         );
         const isEmailValid = emailRegex.test(emailString);
         if (!isEmailValid) {
+          client.close();
           throw new Error("ایمیل وارد شده صحیح نیست");
         }
 
@@ -30,6 +32,7 @@ export default NextAuth({
           email: emailString,
         });
         if (!user) {
+          client.close();
           throw new Error("حساب کاربری شما یافت نشد!");
         }
 
@@ -38,6 +41,8 @@ export default NextAuth({
         );
         const isPasswordValid = passwordRegex.test(credentials.password);
         if (!isPasswordValid) {
+          client.close();
+
           throw new Error("پسورد وارد شده صحیح نیست");
         }
         const isPasswordCreact = await varifiypassword(
@@ -45,6 +50,7 @@ export default NextAuth({
           user.password
         );
         if (!isPasswordCreact) {
+          client.close();
           throw new Error("پسورد وارد شده صحیح نیست");
         }
         client.close();

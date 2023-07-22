@@ -1,0 +1,105 @@
+.dashboard {
+  @include dflex(flex-start, flex-start);
+  &-aside {
+    position: sticky;
+    right: 0;
+    top: 0;
+    max-width: 26rem;
+    background-color: rgba(color(g3-3), 0.7);
+    height: 100vh;
+    .aside-container {
+    }
+    .aside-header {
+      background: #0d6efd;
+      background: linear-gradient(90deg, #0d6efd, #408cfd);
+      border-radius: 0 0 100% 100%/5em;
+      padding-bottom: 1rem;
+      &-search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 2rem;
+        border: 2px solid green;
+        svg {
+          path {
+            fill: color(light-5);
+          }
+        }
+        input {
+          padding: 2px;
+          border-radius: 5px;
+        }
+      }
+      &-logo {
+        @include dflex;
+        svg {
+          max-width: 12rem;
+          path {
+            fill: color(light-2);
+          }
+        }
+      }
+    }
+    .aside-content {
+      &-list {
+      }
+      &-item {
+        overflow: hidden;
+        padding: 1rem;
+        border-bottom: 2px solid rgba(color(g3-1), 0.7);
+        // overflow: hidden;
+        &-parent {
+          background-color: rgba(color(g3-3), 0.7);
+        }
+        &-childs {
+          direction: ltr;
+          height: 100%;
+          background-color: rgba(color(g3-3), 0.8);
+          max-height: 30rem;
+          overflow: auto;
+          overflow-x: hidden;
+          // &::-webkit-scrollbar {
+          //   // background: red;
+          //   border-radius: 5px;
+          // }
+          &-list {
+            // overflow: hidden;
+          }
+        }
+        a {
+          @include dflex(space-between);
+          .title {
+            @include dflex(flex-start);
+            gap: 0.3rem;
+            img {
+              width: 2rem;
+              height: 2rem;
+            }
+            .text {
+              color: color(light-2);
+            }
+          }
+        }
+        span {
+          font-size: 1.5rem;
+        }
+        svg {
+          path {
+            fill: snow;
+          }
+        }
+      }
+    }
+    .testingTransision {
+      transition: all 200ms linear;
+    }
+    .openDashNav {
+      height: 15rem;
+    }
+    .closeDashNav {
+      height: 0rem;
+    }
+  }
+  &-main {
+  }
+}

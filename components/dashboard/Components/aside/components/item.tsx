@@ -16,7 +16,6 @@ const Item = (props: props) => {
 
   const [selected, setSelected] = useState<string>("");
   const selectedHandler = (id: string) => {
-    // props.selectedHandler("");
     if (id === selected) {
       return setSelected("");
     }
@@ -39,34 +38,33 @@ const Item = (props: props) => {
           extandToggler(link.id);
         }}
         href={link.link}
-        className="pr-4 pb-2 flex gap-1 justify-between pl-2"
       >
-        <div className="flex gap-2">
+        <div className="title">
           {link.icon && (
-            <Image src={link.icon} alt={link.title} width={15} height={15} />
+            <Image src={link.icon} alt={link.title} width={30} height={30} />
           )}
-          <span className="text-xl text-light_2">{link.title}</span>
+          <span className="text">{link.title}</span>
         </div>
         {link.hasChild && <ArrowsIcon arrowType={"down"} />}
       </Link>
 
       {link.hasChild && (
         <div
-          className={`cItem testingTransision overflow-hidden`}
+          className="aside-content-item-childs"
           style={
             props.selected === link.id
               ? {
                   padding: "5px",
-                  overflow: "scroll",
+                  // overflow: "scroll",
                   height: `${height + 10}px `,
                 }
               : { height: "0px" }
           }
         >
-          <ul ref={ref} className="pr-6">
+          <ul ref={ref} className="aside-content-item-childs-list">
             {link.childs.map((itemy: DashboardNavLink) => {
               return (
-                <li key={itemy.id} className="dASide-content-item pb-2 pt-2">
+                <li key={itemy.id} className="aside-content-item">
                   <Item
                     selected={selected}
                     selectedHandler={selectedHandler}

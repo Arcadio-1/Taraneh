@@ -91,14 +91,14 @@
     @include dflex;
     a {
       margin-right: auto;
-    }
-    button {
-      font-size: 1.3rem;
-      border-radius: 5px;
-      margin-right: auto;
-      color: color(light-1);
-      padding: 0.2rem 3rem;
-      background-color: rgba(color(g1-2), 1);
+      button {
+        font-size: 1.3rem;
+        border-radius: 5px;
+        margin-right: auto;
+        color: color(light-1);
+        padding: 0.2rem 3rem;
+        background-color: rgba(color(g1-2), 1);
+      }
     }
   }
 }

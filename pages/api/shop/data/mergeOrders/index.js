@@ -15,6 +15,7 @@ const handler = async (req, res) => {
         _id: userId,
         orders: orders,
       });
+      client.close();
       if (!request) {
         throw new Error("(همگام سازی)خطا در ساخت لیست خرید");
       }
@@ -28,6 +29,7 @@ const handler = async (req, res) => {
       request = await db
         .collection("orders")
         .findOneAndUpdate({ _id: userId }, { $set: { orders: orders } });
+      client.close();
       if (!request) {
         throw new Error("(همگام سازی)خطا در افزودن سفارشات به لیست خرید");
       }
@@ -38,6 +40,7 @@ const handler = async (req, res) => {
       });
     }
   } catch (error) {
+    client.close();
     res
       .status(404)
       .json({ status: "error", message: error.message, response: null });

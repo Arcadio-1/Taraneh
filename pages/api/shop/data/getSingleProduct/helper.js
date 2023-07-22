@@ -18,6 +18,7 @@ export const getProduct = async (id) => {
       product: request,
     });
   } catch (error) {
+    client.close();
     return JSON.stringify({
       status: "error",
       message: error.message || "خطا در دریافت محصول",

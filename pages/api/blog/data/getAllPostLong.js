@@ -9,6 +9,7 @@ async function handler(req, res) {
       }
       const db = client.db();
       const result = await db.collection("blogPostsLong").find().toArray();
+      client.close();
       if (!result) {
         throw new Error("دسترسی به اطلاعات ممکن نیست");
       }
@@ -18,6 +19,7 @@ async function handler(req, res) {
         data: result,
       });
     } catch (error) {
+      client.close();
       res.status(201).json({
         status: error.message,
         message: error.message,

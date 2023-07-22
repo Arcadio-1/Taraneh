@@ -208,6 +208,7 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
       }
     }
   };
+
   if (!remove && !clearList) {
     return (
       <div className="relative">

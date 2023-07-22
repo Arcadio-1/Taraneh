@@ -17,6 +17,7 @@ async function handler(req, res) {
         _id: userId,
         orders: [orders],
       });
+      client.close();
       if (!request) {
         throw new Error("خطا در افزودن محصول به سبد");
       }
@@ -31,6 +32,7 @@ async function handler(req, res) {
       request = await db
         .collection("orders")
         .updateOne({ _id: userId }, { $push: { orders: orders } });
+      client.close();
       if (!request) {
         throw new Error("خطا در افزودن محصول به سبد");
       }
@@ -43,6 +45,7 @@ async function handler(req, res) {
 
     if (req.method === "DELETE") {
       request = await db.collection("orders").findOneAndDelete({ _id: userId });
+      client.close();
       if (!request) {
         throw new Error("خطا در پاکسازی سبد");
       }
@@ -53,6 +56,7 @@ async function handler(req, res) {
       });
     }
   } catch (error) {
+    client.close();
     res
       .status(404)
       .json({ status: "error", message: error.message, response: null });

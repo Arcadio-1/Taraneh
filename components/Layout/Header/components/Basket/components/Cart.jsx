@@ -12,9 +12,7 @@ import LoadingSpinner from "../../../../../ui/LoadingSpiner/loadingSpiner";
 
 const Cart = ({ showMenuHandler }) => {
   const cartListData = useSelector((state) => state.getData.cartItemsData);
-  const cartListDataStatus = useSelector(
-    (state) => state.ui.cartListDataStatus
-  );
+  const cartListDataStatus = useSelector((state) => state.ui.cartListStatus);
   const [cartModalData, setCartModalData] = useState({
     amount: 0,
     totalPrice: 0,
