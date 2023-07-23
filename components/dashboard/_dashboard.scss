@@ -1,5 +1,6 @@
 .dashboard {
   @include dflex(flex-start, flex-start);
+  width: 100%;
   &-aside {
     position: sticky;
     right: 0;
@@ -127,5 +128,28 @@
     }
   }
   &-main {
+    height: 100vh;
+    flex: 1 0 auto;
+    // background: hsla(171, 87%, 67%, 1);
+
+    background: linear-gradient(
+      90deg,
+      hsla(171, 87%, 67%, 1) 0%,
+      hsla(236, 100%, 72%, 1) 100%
+    );
+
+    // background: -moz-linear-gradient(
+    //   90deg,
+    //   hsla(171, 87%, 67%, 1) 0%,
+    //   hsla(236, 100%, 72%, 1) 100%
+    // );
+
+    // background: -webkit-linear-gradient(
+    //   90deg,
+    //   hsla(171, 87%, 67%, 1) 0%,
+    //   hsla(236, 100%, 72%, 1) 100%
+    // );
+
+    // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#61F4DE", endColorstr="#6E78FF", GradientType=1 );
   }
 }

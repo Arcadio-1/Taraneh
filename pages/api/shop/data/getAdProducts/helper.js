@@ -21,7 +21,6 @@ export const getAdProducts = async () => {
       adProducts: request,
     });
   } catch (error) {
-    client.close();
     return JSON.stringify({
       status: "error",
       message: error.message || "بروز خطا در دریافت لیست محصولات تبلیغاتی",

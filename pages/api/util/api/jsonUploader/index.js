@@ -7,6 +7,7 @@ async function handler(req, res) {
   const { items, serverName, collectionName } = req.body;
   try {
     const client = await getClient(serverName);
+    console.log(client);
     if (!client) {
       throw new Error("field at get client");
     }
@@ -21,7 +22,6 @@ async function handler(req, res) {
     }
     res.status(200).json({ message: "success", result: result });
   } catch (error) {
-    client.close();
     res.status(201).json({ message: error.message });
   }
 }

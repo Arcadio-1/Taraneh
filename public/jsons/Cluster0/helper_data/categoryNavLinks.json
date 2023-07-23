@@ -1,0 +1,188 @@
+[
+  {
+    "id": "l1",
+    "title": "قهوه شرکتی",
+    "link": "/prducts?category=packaged",
+    "icon": "CoffeeBagIcon",
+    "subLinks": [
+      {
+        "id": "l0",
+        "title": "نمایش همه",
+        "link": "/prducts?category=packaged",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l1",
+        "title": "بن مانو",
+        "link": "/prducts?category=packaged&brand='bonmano'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l2",
+        "title": "فرمند",
+        "link": "/prducts?category=packaged&brand='Farmand'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l3",
+        "title": "مولتی کافه",
+        "link": "/prducts?category=packaged&brand='MultiCafe'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l4",
+        "title": "تلنت",
+        "link": "/prducts?category=packaged&brand='talent'",
+        "icon": "",
+        "subLinks": []
+      }
+    ]
+  },
+  {
+    "id": "l2",
+    "title": "قهوه فله",
+    "link": "/prducts?category=دانه قهوه",
+    "icon": "CoffeeBeansIcon",
+    "subLinks": [
+      {
+        "id": "l0",
+        "title": "نمایش همه",
+        "link": "/prducts?category=دانه قهوه",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l1",
+        "title": "عربیکا",
+        "link": "/prducts?category=دانه قهوه&coffeeType='arabica'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l2",
+        "title": "ربوستا",
+        "link": "/prducts?category=دانه قهوه&coffeeType='robusta'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l3",
+        "title": "میکس",
+        "link": "/prducts?category=دانه قهوه&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      }
+    ]
+  },
+  {
+    "id": "l3",
+    "title": "نوشیدنی فوری",
+    "link": "/prducts?category=bulk",
+    "icon": "CoffeeBeansIcon2",
+    "subLinks": [
+      {
+        "id": "l0",
+        "title": "نمایش همه",
+        "link": "/prducts?category=bulk",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l1",
+        "title": "کاپوچینو",
+        "link": "/prducts?category=bulk&coffeeType='arabica'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l2",
+        "title": "قهوه فوری",
+        "link": "/prducts?category=bulk&coffeeType='robusta'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l3",
+        "title": "کافی میت",
+        "link": "/prducts?category=bulk&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l4",
+        "title": "قهوه لاته",
+        "link": "/prducts?category=bulk&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l5",
+        "title": "چای ماسالا",
+        "link": "/prducts?category=bulk&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      }
+    ]
+  },
+  {
+    "id": "l4",
+    "title": "ابزار تهیه نوشیدنی",
+    "link": "/prducts?category=bulk",
+    "icon": "CoffeeBeansIcon2",
+    "subLinks": [
+      {
+        "id": "l0",
+        "title": "نمایش همه",
+        "link": "/prducts?category=bulk",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l1",
+        "title": "قهوه ساز",
+        "link": "/prducts?category=bulk&coffeeType='arabica'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l2",
+        "title": "اسپرسو ساز",
+        "link": "/prducts?category=bulk&coffeeType='robusta'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l3",
+        "title": "موکا",
+        "link": "/prducts?category=bulk&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l4",
+        "title": "قهوه جوش",
+        "link": "/prducts?category=bulk&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l5",
+        "title": "فرنچ پرس",
+        "link": "/prducts?category=bulk&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      },
+      {
+        "id": "l6",
+        "title": "لوازم جانبی",
+        "link": "/prducts?category=bulk&coffeeType='mix'",
+        "icon": "",
+        "subLinks": []
+      }
+    ]
+  }
+]

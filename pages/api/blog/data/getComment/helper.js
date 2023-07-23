@@ -24,8 +24,6 @@ export const getComment = async (id) => {
       comment: comment,
     };
   } catch (error) {
-    client.close();
-
     return {
       status: "error",
       message: "خطا در دریافت اطلاعات",

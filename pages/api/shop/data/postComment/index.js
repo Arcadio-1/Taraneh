@@ -46,7 +46,6 @@ async function handler(req, res) {
       });
     }
   } catch (error) {
-    client.close();
     res.status(404).json({
       status: "error",
       message: error.message || "خطا در ارسال کامنت شما برای این محصول",

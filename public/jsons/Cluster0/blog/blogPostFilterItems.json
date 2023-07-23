@@ -1,0 +1,22 @@
+[
+  {
+    "title": "همه",
+    "value": "all"
+  },
+  {
+    "title": "متن",
+    "value": "text"
+  },
+  {
+    "title": "ویدیو",
+    "value": "video"
+  },
+  {
+    "title": "پادکست",
+    "value": "podcast"
+  },
+  {
+    "title": "تصویر",
+    "value": "picture"
+  }
+]

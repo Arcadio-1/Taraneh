@@ -18,7 +18,6 @@ export const getCategoryNavLinks = async () => {
       links: request,
     });
   } catch (error) {
-    client.close();
     return JSON.stringify({
       status: "error",
       message: error.message || "خطا در دریافت لیست دسته بندی ها",

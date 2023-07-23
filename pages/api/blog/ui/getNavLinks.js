@@ -19,7 +19,6 @@ async function handler(req, res) {
         data: result,
       });
     } catch (error) {
-      client.close();
       res.status(201).json({
         status: error.message,
         message: error.message,

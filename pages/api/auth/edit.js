@@ -121,8 +121,6 @@ async function handler(req, res) {
       }
     }
   } catch (error) {
-    client.close();
-
     res.status(203).json({
       status: "error",
       message: error.message || "خطا در ثبت اطلاعات",

@@ -35,7 +35,6 @@ async function handler(req, res) {
         });
       }
     } catch (error) {
-      client.close();
       return res.status(404).json({
         status: "error",
         message:

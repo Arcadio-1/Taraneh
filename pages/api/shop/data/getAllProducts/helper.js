@@ -26,7 +26,6 @@ export const getProducts = async () => {
       });
     }
   } catch (error) {
-    client.close();
     return JSON.stringify({
       status: "error",
       message: error.message || "خطا در اتصال به سرور",

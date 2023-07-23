@@ -1,0 +1,427 @@
+[
+  {
+    "id": "1",
+    "title": "داشبورد",
+    "link": "#",
+    "icon": "/image/dashboard/icons/dashboard.svg",
+    "hasChild": false,
+    "childs": []
+  },
+  {
+    "id": "2",
+    "title": "پشتیبانی",
+    "link": "#",
+    "icon": "/image/dashboard/icons/support.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "2-1",
+        "title": "تیکت ها",
+        "link": "/support/tickets",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "پردازش سفارش ها",
+    "link": "#",
+    "icon": "/image/dashboard/icons/proccess.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "3-1",
+        "title": "1-در انتظار تایید",
+        "link": "/orderProcess/awitApporval",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "3-2",
+        "title": "2-در انتظار ارسال",
+        "link": "/orderProcess/awitShiping",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "3-3",
+        "title": "3-در انتظار تحویل",
+        "link": "/orderProcess/awitDelivery",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "کاتالوگ",
+    "link": "#",
+    "icon": "/image/dashboard/icons/catlog.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "4-1",
+        "title": "کالا",
+        "link": "/catlog/products",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-2",
+        "title": "دسته بندی",
+        "link": "/catlog/category",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-3",
+        "title": "تولید کنندگان",
+        "link": "/catlog/manifactors",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-4",
+        "title": "ویرایش انبوه کالا ها",
+        "link": "/catlog/bulkEdit",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-5",
+        "title": "نظر ها درباره کالا",
+        "link": "/catlog/productReviwes",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-6",
+        "title": "تگ های کالا",
+        "link": "/catlog/productsTags",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-7",
+        "title": "گزارش کمبود موجودی",
+        "link": "/catlog/lowStockReport",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-8",
+        "title": "ویژگی",
+        "link": "#",
+        "icon": "",
+        "hasChild": true,
+        "childs": [
+          {
+            "id": "4-8-1",
+            "title": "ویژگی های کالا",
+            "link": "/catlog/attribute/products",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-2",
+            "title": "مشخصات فنی",
+            "link": "/catlog/attribute/specification",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-3",
+            "title": "دسته بندی مشخصات فنی",
+            "link": "/catlog/attribute/specificationManage",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-4",
+            "title": "ویژگی های پرداخت",
+            "link": "/catlog/attribute/",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "4-8-5",
+            "title": "پیوست ها",
+            "link": "/catlog/attribute/attachment",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          }
+        ]
+      },
+      {
+        "id": "4-9",
+        "title": "پرسش های کالا",
+        "link": "/catlog/question",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-10",
+        "title": "ویرایش قیمت های ارزی کالا",
+        "link": "/catlog/",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "4-11",
+        "title": "نمایش دسته بندی همهجا",
+        "link": "/catlog/anyWhereCategory",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "فروش",
+    "link": "#",
+    "icon": "/image/dashboard/icons/orders.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "5-1",
+        "title": "سفارش ها",
+        "link": "/order/list",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-2",
+        "title": "پیش فاکتور ها",
+        "link": "/orders/quote",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-3",
+        "title": "مرسوله ها",
+        "link": "/orders/shipMenuList",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-4",
+        "title": "درخواست های بازگشت",
+        "link": "/orders/returnRequest",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-5",
+        "title": "پرداخت های دوره ای",
+        "link": "/orders/recurringPaymen",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-6",
+        "title": "کارت هدیه",
+        "link": "/orders/giftCard",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-7",
+        "title": "سبد های خرید فعلی",
+        "link": "/orders/currentCarts",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-8",
+        "title": "لیست علاقه مندی های فعلی",
+        "link": "/orders/currentWishList",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-9",
+        "title": "پرفروشترین ها",
+        "link": "/orders/bestSellReport",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-10",
+        "title": "کالا های فروش نرفته",
+        "link": "/orders/neverSoldReport",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-11",
+        "title": "گزارش بر اساس کشور",
+        "link": "/orders/cuontryReport",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "5-12",
+        "title": "پرداخت ها",
+        "link": "/orders/paymentManager",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "حسابداری",
+    "link": "#",
+    "icon": "/image/dashboard/icons/finance.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "6-1",
+        "title": "مدیریت پورسانت",
+        "link": "#",
+        "icon": "",
+        "hasChild": false,
+        "childs": [
+          {
+            "id": "6-1-1",
+            "title": "مدیریت پورسانت ها",
+            "link": "/finance/commistionManage",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "6-1-2",
+            "title": "تنظیمات",
+            "link": "/finance/commistionManage",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          }
+        ]
+      },
+      {
+        "id": "6-2",
+        "title": "گزارش فروشندگان",
+        "link": "/finance/sealsReport",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "مشتریان",
+    "link": "#",
+    "icon": "/image/dashboard/icons/users.svg",
+    "hasChild": true,
+    "childs": [
+      {
+        "id": "7-1",
+        "title": "کاربران",
+        "link": "/customers/list",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "7-2",
+        "title": "نقش های کاربران",
+        "link": "/customers/role",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "7-3",
+        "title": "کاربران آنلاین",
+        "link": "/customers/online",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "7-4",
+        "title": "گزارش های مشتری",
+        "link": "/customers/report",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "7-5",
+        "title": "فروشندگان",
+        "link": "/customers/vendor",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      },
+      {
+        "id": "7-6",
+        "title": "گزارش فعالیت",
+        "link": "#",
+        "icon": "",
+        "hasChild": true,
+        "childs": [
+          {
+            "id": "7-6-1",
+            "title": "گزارش فعالیت",
+            "link": "/customers/listLog",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          },
+          {
+            "id": "7-6-2",
+            "title": "انواع فعالیت",
+            "link": "/customers/listtype",
+            "icon": "",
+            "hasChild": false,
+            "childs": []
+          }
+        ]
+      },
+      {
+        "id": "7-7",
+        "title": "لیست کارشناس ها",
+        "link": "/customers/salesEcport",
+        "icon": "",
+        "hasChild": false,
+        "childs": []
+      }
+    ]
+  }
+]

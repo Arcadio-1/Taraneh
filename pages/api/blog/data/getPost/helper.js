@@ -23,7 +23,6 @@ export const getPost = async (id) => {
       post: post,
     };
   } catch (error) {
-    client.close();
     return {
       status: "error",
       message: "خطا در دریافت اطلاعات",

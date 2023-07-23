@@ -40,7 +40,6 @@ const handler = async (req, res) => {
       });
     }
   } catch (error) {
-    client.close();
     res
       .status(404)
       .json({ status: "error", message: error.message, response: null });

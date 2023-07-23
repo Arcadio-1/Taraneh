@@ -10,7 +10,7 @@ const index = () => {
   );
 };
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const session = await getSession({ req: context.req });
   const test = JSON.stringify(session);
   const test2 = JSON.parse(test);
