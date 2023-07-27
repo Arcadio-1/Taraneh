@@ -55,19 +55,30 @@ export const getOrederList = (id) => {
         method: "GET",
       });
       if (!orders.ok) {
+        console.log("fuck");
         console.log(orders);
         dispatch(getDataSliceActions.setCardItems([]));
       }
       const response = await orders.json();
+      console.log(response);
       if (response.status !== "success") {
         throw new Error("خطا در دریافت لیست خرید");
       }
+      console.log(!!response.orderList);
       if (response.orderList) {
-        dispatch(getDataSliceActions.setCardItems(response.orderList.orders));
+        console.log(response.orderList.orders);
+        if (response.orderList.orders) {
+          console.log(response.orderList.orders);
+          dispatch(getDataSliceActions.setCardItems(response.orderList.orders));
+        } else {
+          console.log(response.orderList.orders);
+          dispatch(getDataSliceActions.setCardItems([]));
+        }
       }
       if (!response.orderList) {
         dispatch(getDataSliceActions.setCardItems([]));
       }
+      // dispatch(getDataSliceActions.setCardItems([]));
       dispatch(
         uiAction.setCartListStatus({
           status: "success",

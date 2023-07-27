@@ -18,11 +18,14 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
   const { data, status: login } = useSession();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.getData.cartItems);
+  const cartListData = useSelector((state) => state.getData.cartItemsData);
+
   const [itemAmount, setItemAmount] = useState(1);
-  const clearListStatus = useSelector((state) => state.ui.clearListStatus);
-  const changeAmountStatus = useSelector(
-    (state) => state.ui.changeAmountStatus
-  );
+
+  useEffect(() => {
+    console.log(cartItems);
+    console.log(cartListData);
+  }, [cartItems, cartListData]);
 
   const [changeAmountStatusX, setChangeAmountStatus] = useState({
     status: null,
@@ -36,8 +39,10 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
   });
 
   useEffect(() => {
-    if (cartItems.length > 0) {
+    // if (cartItems && cartItems.length > 0) {
+    if (cartItems !== undefined) {
       setItemAmount((prev) => {
+        console.log(cartItems);
         const amount = cartItems.filter((item) => {
           if (item._id === id) {
             return item.amount;
@@ -50,6 +55,8 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
         return (prev = prev);
       });
     }
+
+    // }
   }, [cartItems, id]);
 
   // useEffect(() => {
@@ -61,6 +68,7 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
   // }, [changeAmountStatus]);
 
   const amountHandler = async (type) => {
+    console.log(login);
     if (login === "unauthenticated") {
       if (type === "plus") {
         changeLocalStorageCartItemAmount(id, itemAmount + 1);
@@ -197,6 +205,7 @@ const Amount = ({ selectedItem: id, remove = false, clearList = false }) => {
               message: "کاهش تعداد با موفقیت انجام شد",
             });
           });
+          console.log("wow");
           dispatch(getOrederList(data.user.email._id));
         }
       } catch (error) {
