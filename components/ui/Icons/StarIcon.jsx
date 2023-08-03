@@ -1,5 +1,6 @@
 const StarIcon = ({ isOn }) => {
   // const { isOn } = props;
+  console.log(isOn);
   const on = { fill: "gold" };
   const off = { fill: "gray" };
   return (

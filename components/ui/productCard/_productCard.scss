@@ -119,8 +119,9 @@
     // border: 2px solid red;
     width: 100%;
     &-title {
-      font: 1.4em;
-      font-weight: 400;
+      font: 2rem;
+      color: color(dark-4);
+      font-weight: 600;
     }
     &-availability {
       color: color(light-2);

@@ -55,23 +55,16 @@ export const getOrederList = (id) => {
         method: "GET",
       });
       if (!orders.ok) {
-        console.log("fuck");
-        console.log(orders);
         dispatch(getDataSliceActions.setCardItems([]));
       }
       const response = await orders.json();
-      console.log(response);
       if (response.status !== "success") {
         throw new Error("خطا در دریافت لیست خرید");
       }
-      console.log(!!response.orderList);
       if (response.orderList) {
-        console.log(response.orderList.orders);
         if (response.orderList.orders) {
-          console.log(response.orderList.orders);
           dispatch(getDataSliceActions.setCardItems(response.orderList.orders));
         } else {
-          console.log(response.orderList.orders);
           dispatch(getDataSliceActions.setCardItems([]));
         }
       }
@@ -128,7 +121,6 @@ export const getCartItemsData = (items) => {
       mylist.push({ ...cartListArray });
       var arrayOfValues = await Promise.all(cartListArray);
       dispatch(getDataSliceActions.setCardItemsData(arrayOfValues));
-      // console.log(arrayOfValues);
       dispatch(
         uiAction.setCartListDataStatus({
           status: "success",

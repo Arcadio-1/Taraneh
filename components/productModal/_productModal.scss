@@ -1,20 +1,22 @@
 .productModal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: color(light-2);
+  background-color: color(light-1);
   z-index: 100;
   width: 100%;
+  height: 80%;
   max-width: 980px;
-  max-height: 700px;
+  // max-height: 700px;
   scroll-behavior: smooth;
   overflow-y: scroll;
   padding: 1rem 2rem;
   border-radius: 10px;
   border: 2px solid rgba(128, 128, 128, 0.247);
+  // margin: 5rem;
   &-header {
-    border-bottom: 2px solid rgb(194, 194, 194);
+    // border-bottom: 2px solid rgb(194, 194, 194);
     padding-bottom: 1rem;
     margin-bottom: 1rem;
   }
@@ -23,10 +25,10 @@
     // width: 100%;
     @include dflex(flex-start, flex-start);
     gap: 1em;
-    @include responsive(md) {
-      flex-direction: column;
-      @include dflex;
-      width: 100%;
-    }
+    // @include responsive(md) {
+    //   flex-direction: column;
+    //   @include dflex;
+    //   width: 100%;
+    // }
   }
 }

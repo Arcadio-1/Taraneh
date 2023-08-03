@@ -16,7 +16,11 @@ const ProductCard = (props) => {
 
   const isBackdropShowen = useSelector((state) => state.ui.isShowBackDrop);
 
-  const { isShowMenu, menuRef, showMenuHandler } = useToggleMenu();
+  const {
+    isShowMenu,
+    menuRef,
+    showMenuHandler: toggoleProductModal,
+  } = useToggleMenu();
   const dispatch = useDispatch();
 
   const closeSideMenuHandler = useCallback(() => {
@@ -38,7 +42,13 @@ const ProductCard = (props) => {
       onMouseOver={() => {}}
       // ref={menuRef}
     >
-      {isShowMenu && <ProductModal modalRef={menuRef} product={props.item} />}
+      {isShowMenu && (
+        <ProductModal
+          modalRef={menuRef}
+          product={props.item}
+          onClose={toggoleProductModal}
+        />
+      )}
       <div className="productCard-thumbnail">
         <div className="productCard-thumbnail-tags">
           {price.offPersent > 0 && (
@@ -56,7 +66,7 @@ const ProductCard = (props) => {
         <div className="productCard-thumbnail-icons">
           <div
             onClick={() => {
-              showMenuHandler();
+              toggoleProductModal();
               dispatch(uiAction.showBackDrop());
             }}
             title="مشاهده سریع"

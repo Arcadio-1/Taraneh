@@ -61,7 +61,10 @@
           }
         }
         &-details {
+          @include dflex;
+          gap: 0.5rem;
           span {
+            font-size: 1.3rem;
             font-family: iransansnum;
           }
           label {
@@ -573,6 +576,17 @@
         flex-direction: column;
       }
     }
+    .button {
+      cursor: pointer;
+      border-radius: 5px;
+      @include dflex;
+      gap: 1rem;
+      padding: 0.3rem 1rem;
+      // background-color: rgba(color(g3-3), 1);
+      border: 2px solid rgba(color(g3-2), 0);
+      background-color: rgba(color(light-2), 1);
+      // border: 2px solid red;
+    }
     .title {
       @include dflex;
       svg {
@@ -610,16 +624,6 @@
           }
           span {
             color: color(dark-2);
-          }
-          .button {
-            cursor: pointer;
-            border-radius: 5px;
-            @include dflex;
-            gap: 1rem;
-            padding: 0.3rem 1rem;
-            // background-color: rgba(color(g3-3), 1);
-            border: 2px solid rgba(color(g3-2), 0);
-            background-color: rgba(color(light-2), 1);
           }
         }
       }
